@@ -1,5 +1,5 @@
 # mcMMO-Stats-Panel
-This website allows you to have an interactive, good looking and effective dashboard for your community to look at their rank and mcMMO statistics from any device.
+This project allows you to have an interactive, good looking and effective dashboard for your community to look at their rank and mcMMO statistics from any device.
 
 ## How to install
 1. First, host the website on any machine available in the world. It can be local hosting, like with a raspberrypi, or remote hosting thanks to international server providers.
