@@ -33,6 +33,6 @@ Moreover, you will need to have activated the PHP module of your database's driv
 
 ## License
 
-This project is licensed by Attribution-NonCommercial 4.0 International (CC BY-NC 4.0).
+This project is licensed under Attribution-NonCommercial 4.0 International (CC BY-NC 4.0).
 
 You can use the code, edit it, improve it, but no commercial use should be made. Thanks!
