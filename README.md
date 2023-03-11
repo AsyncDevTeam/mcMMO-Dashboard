@@ -2,10 +2,10 @@
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow?style=flat&logo=javascript&logoColor=white)](https://developer.mozilla.org/fr/docs/Web/JavaScript)
 [![PHP 8](https://img.shields.io/badge/PHP-8+-blue?style=flat&logo=php&logoColor=white)](https://www.php.net/releases/8.0/fr.php)
 
-# mcMMO-Stats-Panel
+# 📈 mcMMO-Stats-Panel
 This project allows you to have an interactive, good looking and effective dashboard for your community to look at their rank and mcMMO statistics from any device.
 
-## How to install
+## ⚙️ How to install
 1. First, host the website on any machine available in the world. It can be local hosting (a raspberrypi), or remote hosting thanks to international server providers (OVH, Ionos, ...).
 2. Then, edit the file `config.php` to suit your server configuration.
 
@@ -25,17 +25,17 @@ You must provide :
 
 3. Browse to your website host IP address, enjoy & share to your community!
 
-## Requirements
+## ⚠️ Requirements
 
 Your hosting machine must have a web server installed (ex: Apache or Nginx) with PHP enabled.
 
 Moreover, you have to make sure that the PHP module of the mcMMO database driver is activated.
 
-## Screenshots
+## 📸 Screenshots
 
 <i>Coming soon ...</i>
 
-## License
+## 📜 License
 
 This project is licensed under Attribution-NonCommercial 4.0 International (CC BY-NC 4.0).
 
