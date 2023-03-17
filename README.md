@@ -33,8 +33,15 @@ Moreover, you have to make sure that the PHP module of the mcMMO database driver
 
 ## 📸 Screenshots
 
-![presentation](https://stuff.nicolasvaillant.net/mcMMO/238shots_so.png) ![presentation](https://stuff.nicolasvaillant.net/mcMMO/626shots_so.png)
+![presentation](https://stuff.nicolasvaillant.net/mcMMO/626shots_so.png)
 
+Available also on mobile !
+
+![presentation](https://stuff.nicolasvaillant.net/mcMMO/238shots_so.png) 
+
+...with a dark mode too
+
+![presentation](https://stuff.nicolasvaillant.net/mcMMO/201shots_so.png)
 
 ## 📜 License
 
