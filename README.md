@@ -7,7 +7,7 @@ This project allows you to have an interactive, good looking and effective dashb
 
 ## ⚙️ How to install
 1. First, host the website on any machine available in the world. It can be local hosting (a raspberrypi), or remote hosting thanks to international server providers (OVH, Ionos, ...).
-2. Then, edit the file `config.php` to suit your server configuration.
+2. Then, edit the file [`config/config.php`](https://github.com/AsyncDevTeam/mcMMO-Stats-Panel/blob/master/config/config.php) to suit your server configuration.
 
 You must provide :
 
