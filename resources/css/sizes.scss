@@ -1,0 +1,109 @@
+body{
+  --size-aside-wide-screen:400px;
+  --size-content-wide-screen:800px;
+  --sum : calc(var(--size-aside-wide-screen) + var(--size-content-wide-screen));
+  .tabs_header{
+    @media screen and (min-width: 1800px) {padding: 0 calc((var(--width-window) - var(--sum))/2)}
+  }
+  header .main{
+    @media screen and (min-width: 1800px) {
+      padding: 0 calc((var(--width-window) - var(--sum))/2 + 1em) !important
+    }
+  }
+  .wrapper{
+    width: 100%;
+    @media screen and (min-width: 1800px) {justify-content:center!important}
+    aside{
+      min-width: var(--width-aside);
+      height: 100vh;
+      .background-fixed{width: var(--width-aside)}
+      @media screen and (min-width: 1800px) {
+        //20% de 2000px
+        width: var(--size-aside-wide-screen)!important;
+        min-width: 0;
+        padding: 1em 0!important;
+        .background-fixed{
+          background: none!important;
+          width: var(--size-aside-wide-screen)!important;
+          min-width: 0;
+        }
+      }
+    }
+    .content{
+      &.index-page{
+        width: calc(var(--width-window) - var(--width-aside) - 1em); //1em padding
+        li:not(.paginate_button){margin: 1em!important;}
+        @media screen and (max-width: 1300px) {width: 100% !important;}
+        @media screen and (max-width: 1000px) {
+          width: 100%!important;
+          margin: 0!important;
+        }
+        @media screen and (min-width: 1800px) {width: var(--size-content-wide-screen)}
+
+        .wrapper-pie{
+          @media screen and (min-width: 1800px){
+            flex-direction: column!important;
+            .chart-container{
+              width: 70%!important;
+            }
+            .array-infos-ba{
+              width: 100%!important;
+            }
+          }
+          @media screen and (max-width: 1000px){
+            flex-direction: column!important;
+            .chart-container,
+            .array-infos-ba{
+              width: 100%!important;
+            }
+          }
+        }
+      }
+      @media screen and (max-width: 1000px) {
+        width: calc(100% - 2em) !important;
+      }
+    }
+    .content-main:not(.sp){
+      max-width: calc(var(--width-window) - var(--width-aside));
+      width: 100%;
+      padding:1em;
+
+      .user-infos{
+        @media screen and (max-width: 1000px){
+          width: 100%;
+          margin-top: 0!important;
+        }
+      }
+      .labels{margin: 1em 0}
+      .content{
+        li{
+          &.user-page{margin: 1em 0!important}
+          &:last-child{margin-bottom: 0!important}
+        }
+        @media screen and (max-width: 1000px) {width: 100%!important}
+      }
+
+      @media screen and (min-width: 1800px) {
+        width: var(--size-content-wide-screen);
+        .wrapper-content{flex-direction: column!important;}
+      }
+      @media screen and (max-width: 1300px) {
+        max-width: var(--width-window);
+        margin: 0!important;
+      }
+      @media screen and (max-width: 1000px) {width: 100%!important}
+    }
+    .sp{
+      @media screen and (min-width: 1800px) {
+        .contact-content{
+          width: 100%!important;
+          margin: 1em 0!important;
+        }
+        padding: 0 calc((var(--width-window) - var(--sum))/2 + 1em) !important
+      }
+      @media screen and (max-width: 750px){
+        .searchBar_user{flex-direction: column!important;}
+      }
+    }
+  }
+}

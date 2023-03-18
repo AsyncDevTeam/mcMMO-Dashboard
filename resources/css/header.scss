@@ -1,0 +1,108 @@
+@import 'main';
+
+body{
+  header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--height-topbar);
+    z-index: 9999;
+    background: var(--w);
+    border: 1px solid var(--border-color);
+    border-bottom: 1px solid rgba(27, 31, 35, 0.15);
+    background: var(--w) !important;
+    @include colFlex;
+    align-items: stretch;
+    justify-content: space-between;
+    box-shadow: none!important;
+
+    .main{
+      @include rowFlex;
+      justify-content: space-between;
+      padding: 0 1em;
+      margin-top: auto;
+      height: 10vh;
+    }
+
+    .tabs_header{
+      @include rowFlex;
+      height: 6vh;
+      background: var(--topbar);
+      a{
+        @include rowFlex;
+        gap: .5em;
+        text-decoration: none;
+        padding: 0.5em 1em;
+        border-radius: 5px;
+        color: var(--b);
+        &:hover{color: var(--active-color)}
+      }
+      label{
+        @include rowFlex;
+        gap: .5em;
+        width: fit-content;
+        padding: 0 .5em;
+        margin: auto 1em auto auto;
+        border-radius: 5px;
+        height: 70%;
+        background: var(--border-color);
+        border: 1px solid var(--border-color);
+        color: var(--b);
+        cursor: pointer;
+        input{display: none}
+        i{transition: .5s}
+      }
+    }
+
+    #website-title{
+      text-decoration: none;
+      font-size: 1.8em;
+      color: var(--b);
+    }
+    #server-logo{
+      width: 48px;
+      aspect-ratio: 1;
+      border-radius: 2px;
+    }
+    .logo-server{
+      margin-left: auto;
+    }
+
+    .hamburger-menu{
+      display: none;
+      width: fit-content;
+      border-color: var(--border-color) !important;
+      .icon{
+        position: absolute;
+        top: -0.8em;
+        right: -1em;
+        background: var(--active-color);
+        border-radius: 1000px;
+        width: 2em;
+        aspect-ratio: 1;
+        @include centerFlex;
+        box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
+        i{color: var(--w)}
+      }
+    }
+
+    @media screen and (max-width: 1300px) {
+      *:not(.pages){
+        #website-title,
+        .right-align{
+          display: none;
+        }
+        .hamburger-menu{
+          display: block;
+        }
+      }
+    }
+    @media screen and (max-width: 750px) {
+      --height-topbar: 20vh!important;
+      .tabs_header{
+        span[class^="tabs"] {display: none}
+      }
+    }
+  }
+}

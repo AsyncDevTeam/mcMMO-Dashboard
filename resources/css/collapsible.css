@@ -1,0 +1,84 @@
+.collapsible:not(.content),
+.selected-player {
+  list-style: none;
+  width: 100%;
+}
+.collapsible:not(.content) li,
+.selected-player li {
+  overflow: hidden;
+}
+.collapsible:not(.content) li:first-child,
+.selected-player li:first-child {
+  border-radius: 5px 5px 0 0;
+}
+.collapsible:not(.content) li:first-child .collapsible-header,
+.selected-player li:first-child .collapsible-header {
+  border-bottom: 0;
+}
+.collapsible:not(.content) li:last-child,
+.selected-player li:last-child {
+  border-radius: 0 0 5px 5px;
+}
+.collapsible:not(.content) .collapsible-header,
+.selected-player .collapsible-header {
+  width: 100%;
+  padding: 1em;
+  cursor: pointer;
+  background-color: var(--btn-main-bg);
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+  color: var(--b);
+}
+.collapsible:not(.content) .collapsible-header p, .collapsible:not(.content) .collapsible-header i,
+.selected-player .collapsible-header p,
+.selected-player .collapsible-header i {
+  font-weight: bold;
+  color: var(--b);
+}
+.collapsible:not(.content) .collapsible-header:hover:not(.qv),
+.selected-player .collapsible-header:hover:not(.qv) {
+  background-color: var(--btn-main-bg-hover);
+  transition-duration: 0.1s;
+}
+.collapsible:not(.content) .collapsible-header i,
+.selected-player .collapsible-header i {
+  rotate: 0;
+  transition: rotate 0.2s;
+}
+.collapsible:not(.content) .collapsible-header i.rotate,
+.selected-player .collapsible-header i.rotate {
+  rotate: 90deg !important;
+}
+.collapsible:not(.content) .collapsible-body,
+.selected-player .collapsible-body {
+  background: var(--background-op);
+  padding: 1em;
+  color: var(--b);
+}
+.collapsible:not(.content) .collapsible-body:not(.show),
+.selected-player .collapsible-body:not(.show) {
+  display: none;
+}
+.collapsible:not(.content) .collapsible-body .buttons-to-section,
+.selected-player .collapsible-body .buttons-to-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 100%;
+  overflow-x: auto;
+}
+.collapsible:not(.content) .collapsible-body .buttons-to-section input,
+.selected-player .collapsible-body .buttons-to-section input {
+  display: none;
+}
+.collapsible:not(.content) .collapsible-body .buttons-to-section .btn-main,
+.selected-player .collapsible-body .buttons-to-section .btn-main {
+  white-space: pre-wrap;
+}
+
+/*# sourceMappingURL=collapsible.css.map */
