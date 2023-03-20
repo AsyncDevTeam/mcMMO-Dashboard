@@ -1,6 +1,7 @@
 [![HTML 5](https://img.shields.io/badge/HTML-5+-orange?style=flat&logo=html5&logoColor=white)](https://developer.mozilla.org/fr/docs/Web/HTML)
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow?style=flat&logo=javascript&logoColor=white)](https://developer.mozilla.org/fr/docs/Web/JavaScript)
 [![PHP 8](https://img.shields.io/badge/PHP-8+-blue?style=flat&logo=php&logoColor=white)](https://www.php.net/releases/8.0/fr.php)
+[![SPIGOT](https://img.shields.io/badge/Spigot-click!-D67F1D?style=flat&logoColor=white)](https://www.spigotmc.org/resources/mcmmo-statistics-website.108703/)
 
 # 📈 mcMMO-Stats-Panel
 This project allows you to have an interactive, good looking and effective dashboard for your community to look at their rank and mcMMO statistics from any device.
@@ -47,4 +48,4 @@ Available also on mobile !
 
 This project is licensed under Attribution-NonCommercial 4.0 International (CC BY-NC 4.0).
 
-You can use the code, edit it, improve it, but no commercial use should be made. Thanks!
+You can use the code, edit it, improve it, but no commercial use should be made from it. Thanks!
