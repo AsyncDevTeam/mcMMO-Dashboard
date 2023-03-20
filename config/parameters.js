@@ -21,6 +21,11 @@ const abilities_cap = {
 //Change the translation here, by default English is used, set your own language in translation.user and set translation.user.active to true
 const translation = {
     'default': {
+        'pages_name':{
+            'index': 'mcMMO Stats | Home',
+            'user': 'mcMMO Stats | _USER_',
+            'search-user': 'mcMMO Stats | Search user',
+        },
         'access' : ['en-EN', 'en-GB'],
         'ab' : {
             'swords': 'swords',
@@ -265,6 +270,11 @@ const translation = {
     },
     'user': {
         'active': false,
+        'pages_name':{
+            'index': 'mcMMO Stats | Accueil',
+            'user': 'mcMMO Stats | _USER_',
+            'search-user': 'mcMMO Stats | Rechercher un utilisateur',
+        },
         'access' : ['fr-FR'],
         'ab' : {
             'taming': 'apprivoisement',

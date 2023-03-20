@@ -20,6 +20,9 @@ let isBrowserOnline = true
 let label__darkMode = 'dark-mode-mcMMO'
 let options_collapsible = {accordion: false}
 let exact_type = window.location.pathname.split("/").at(-1).split('.')[0]
+const loading_bar = document.querySelector('.loading-bar')
+let error_internal_server = false
+
 
 function setToast(type, text, timer){
     let options_toast
@@ -136,6 +139,10 @@ function changeLanguage(value){
     r.style.setProperty('--grad2', settings.colors.page.gradient.gradient_2);
 }());
 
+(function setTitle(){
+    document.title = translation[languageSelect].pages_name[exact_type]
+}());
+
 (function (){
     const class_ = '.'
     if(translation.user.active === true){
@@ -187,18 +194,54 @@ const fLoadServerInfos = async() => {
     }
 }
 
-let error_internal_server = false
-fLoadServerInfos().then(infos => {
-    if(infos !== false){
-        if(infos.max_players === -1){
-            console.log('database-error')
-            error_internal_server = true
-            setToast('error', translation[languageSelect].content_page.toast.error_db, 0)
-        }else{
-            error_internal_server = false
-        }
+const fLoadTopLeaderboard = async() => {
+    try {
+        const response = await fetch(requestTopLeaderboard, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: new URLSearchParams({csrf_token: csrfToken}),
+        });
+        const leaderboard = await response.json()
+        return {
+            status: 'success',
+            data: leaderboard,
+            from: 'fLoadTopLeaderboard'
+        };
+    } catch (error) {
+        console.error(error)
+        return {
+            status: 'failed',
+            data: null,
+            from: 'fLoadTopLeaderboard'
+        };
     }
-});
+}
+const fLoadLeaderboard = async() => {
+    try {
+        const response = await fetch(requestLeaderboard, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: new URLSearchParams({ csrf_token: csrfToken }),
+        });
+        const leaderboard = await response.json()
+        return {
+            status: 'success',
+            data: leaderboard,
+            from: 'fLoadLeaderboard'
+        };
+    } catch (error) {
+        console.error(error)
+        return {
+            status: 'failed',
+            data: null,
+            from: 'fLoadLeaderboard'
+        };
+    }
+}
 
 function iconModifier(elems, uni){
     if(uni){

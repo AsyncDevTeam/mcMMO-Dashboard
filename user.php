@@ -23,34 +23,8 @@ session_start();
     <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js" defer></script>
 </head>
 <body>
-<header>
-    <div class="main">
-        <button class="hamburger-menu btn-main" onclick="openSidebar()">
-            <i class="fa-solid fa-bars"></i>
-            <div class="icon hidden"><i class="fa-solid fa-eye"></i></div>
-        </button>
-        <a id="website-title" href="index.php">mcMMO Stats</a>
-        <a href="index.php">
-            <img src="resources/others/textures/defaultLogo/def.webp" alt="Logo of server running the website"
-                 id="server-logo">
-        </a>
-    </div>
-    <div class="tabs_header">
-        <a href="index.php">
-            <i class="fa-solid fa-house"></i>
-            <span class="tabs-1"></span>
-        </a>
-        <a href="search-user.php">
-            <i class="fa-solid fa-user"></i>
-            <span class="tabs-2"></span>
-        </a>
-        <label for="darkMode-input">
-            <input type="checkbox" id="darkMode-input">
-            <i class="fa-solid fa-circle-half-stroke"></i>
-            <span class="tabs-dm"></span>
-        </label>
-    </div>
-</header>
+<!-- header include-->
+<?php require "resources/php/includes/header.php" ?>
 <main>
     <label for="no-display-input">
         <input type="text" class="copyToClipboard hidden" value="" id="no-display-input">

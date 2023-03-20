@@ -1974,6 +1974,42 @@ body header .hamburger-menu .icon {
 body header .hamburger-menu .icon i {
   color: var(--w);
 }
+body header .loading-bar {
+  height: 5px;
+  width: 100vw;
+  background: var(--topbar);
+  position: absolute;
+  bottom: -1px;
+  left: -1px;
+}
+body header .loading-bar .container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+body header .loading-bar .container .loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  height: 100%;
+  border-radius: 100px;
+  background: var(--active-color);
+  animation: 3s loading infinite ease-in;
+}
+body header .loading-bar .container .loader:nth-child(1) {
+  animation-delay: 1s;
+}
+@keyframes loading {
+  0% {
+    width: 0;
+    margin-left: -100%;
+  }
+  100% {
+    width: 100%;
+    margin-left: 100%;
+  }
+}
 @media screen and (max-width: 1300px) {
   body header *:not(.pages) #website-title,
 body header *:not(.pages) .right-align {

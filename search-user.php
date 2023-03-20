@@ -38,15 +38,18 @@ session_start();
             <i class="fa-solid fa-user"></i>
             <span class="tabs-2"></span>
         </a>
-        <!--        <a href="contact.html">-->
-        <!--            <i class="fa-solid fa-at"></i>-->
-        <!--            <span class="tabs-3"></span>-->
-        <!--        </a>-->
+
         <label for="darkMode-input">
             <input type="checkbox" id="darkMode-input">
             <i class="fa-solid fa-circle-half-stroke"></i>
             <span class="tabs-dm"></span>
         </label>
+    </div>
+    <div class="loading-bar">
+        <div class="container">
+            <span class="loader"></span>
+            <span class="loader"></span>
+        </div>
     </div>
 </header>
 <main>

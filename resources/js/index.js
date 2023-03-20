@@ -4,62 +4,51 @@ if(!isBrowserOnline){stylePageOffline()}
 let initComplete_leaderboard
 let datasetChartAbilities = []
 
-fLoadServerInfos().then(infos => {
-    console.log(infos)
-    if(infos !== false){
-        if('error' in infos && infos.error !== -1) {
+fLoadServerInfos().then(async infos => {
+    if (infos !== false) {
+        if ('error' in infos && infos.error !== -1) {
             error_internal_server = true
             setToast('error', infos.error, 0)
             return
         }
-        if(infos.max_players === -1){
+        if (infos.max_players === -1) {
             error_internal_server = true
             dataBaseError()
-        }else{
+        } else {
             console.log('Online')
             error_internal_server = false;
-            (async() => {
-                try {
-                    const response = await fetch(requestLeaderboard, {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/x-www-form-urlencoded",
-                        },
-                        body: new URLSearchParams({ csrf_token: csrfToken }),
-                    });
-                    const leaderboard = await response.json()
-                    if(leaderboard !== false){
-                        quickViewSetup(leaderboard)
-                        databaseLoad(leaderboard)
-                        loadDatasetChartAbilities(leaderboard)
-                        chartAbilities(leaderboard)
-                        chartAbilitiesMinMax(leaderboard)
-                        chartEachAbilities(leaderboard)
-                        chartBestAbilities(leaderboard)
-                        localStorage.setItem('ldb', JSON.stringify(leaderboard))
-                    }else{console.log("No Leaderboard")}
-                } catch (error) {
-                    console.error(error)
-                }
-            })();
-            (async() => {
-                try {
-                    const response = await fetch(requestTopLeaderboard, {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/x-www-form-urlencoded",
-                        },
-                        body: new URLSearchParams({ csrf_token: csrfToken }),
-                    });
-                    const leaderboard = await response.json()
-                    if(leaderboard !== false){
-                        last_refresh_bp.innerText = translation[languageSelect].refresh.index.replace('_HOUR_', getHM())
-                        addBP(leaderboard)
-                    }
-                } catch (error) {
-                    console.error(error)
-                }
-            })();
+            setServerStats(infos);
+
+            const fLoadLeaderboard_ =  await fLoadLeaderboard()
+            const fLoadTopLeaderboard_ =  await fLoadTopLeaderboard()
+
+            if(fLoadLeaderboard_.status === 'success'){
+                const data = fLoadLeaderboard_.data
+                if(data !== null){
+                    quickViewSetup(data)
+                    databaseLoad(data)
+                    loadDatasetChartAbilities(data)
+                    chartAbilities(data)
+                    chartAbilitiesMinMax(data)
+                    chartEachAbilities(data)
+                    chartBestAbilities(data)
+                    localStorage.setItem('ldb', JSON.stringify(data))
+                }else{console.log("No Leaderboard")}
+            }
+
+            if(fLoadTopLeaderboard_.status === 'success'){
+                const data = fLoadTopLeaderboard_.data
+                if(data !== null){
+                    last_refresh_bp.innerText = translation[languageSelect].refresh.index.replace('_HOUR_', getHM())
+                    addBP(data)
+                }else{console.log("No Leaderboard")}
+            }
+
+            await Promise.all([fLoadLeaderboard_, fLoadTopLeaderboard_]).then(() => {
+                loading_bar.classList.add('hidden')
+            }).catch((error) => {
+                console.error('error : ', error);
+            });
         }
     }
 });
@@ -408,7 +397,6 @@ function databaseLoad(player){
 
     let username,
         username_img
-    console.log(player.players)
     let leaderboard_table = $('#leaderboard_table').DataTable({
         data: player.players,
         columns: [
@@ -595,5 +583,3 @@ let scrollable_leaderboard = setInterval(() => {
         ele.addEventListener('mousedown', mouseDownHandler)
     }
 }, 500)
-
-

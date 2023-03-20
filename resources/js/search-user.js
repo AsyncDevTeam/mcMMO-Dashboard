@@ -1,7 +1,7 @@
 const s = document.querySelector('.result-search')
 let nb_player = 0
 
-fLoadServerInfos().then(infos => {
+fLoadServerInfos().then(async infos => {
     if(infos !== false){
         if('error' in infos && infos.error !== -1) {
             error_internal_server = true
@@ -14,40 +14,28 @@ fLoadServerInfos().then(infos => {
         }else{
             //Online
             error_internal_server = false;
-            (async() => {
-                try {
-                    const response = await fetch(requestLeaderboard, {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/x-www-form-urlencoded",
-                        },
-                        body: new URLSearchParams({ csrf_token: csrfToken }),
-                    });
-                    const leaderboard = await response.json()
-                    if(leaderboard !== false){
-                        setCard(leaderboard)
-                    }
-                } catch (error) {
-                    console.error(error)
+
+            const fLoadLeaderboard_ =  await fLoadLeaderboard()
+            const fLoadTopLeaderboard_ =  await fLoadTopLeaderboard()
+
+            if(fLoadLeaderboard_.status === 'success'){
+                const data = fLoadLeaderboard_.data
+                if(data !== null){
+                    setCard(data)
                 }
-            })();
-            (async() => {
-                try {
-                    const response = await fetch(requestTopLeaderboard, {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/x-www-form-urlencoded",
-                        },
-                        body: new URLSearchParams({ csrf_token: csrfToken }),
-                    });
-                    const leaderboard = await response.json()
-                    if(leaderboard !== false){
-                        setCardBP(leaderboard)
-                    }
-                } catch (error) {
-                    console.error(error)
+            }
+            if(fLoadTopLeaderboard_.status === 'success'){
+                const data = fLoadTopLeaderboard_.data
+                if(data !== null){
+                    setCardBP(data)
                 }
-            })();
+            }
+
+            await Promise.all([fLoadLeaderboard_, fLoadTopLeaderboard_]).then(() => {
+                loading_bar.classList.add('hidden')
+            }).catch((error) => {
+                console.error('error : ', error);
+            });
         }
     }
 });

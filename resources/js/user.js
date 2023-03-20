@@ -6,10 +6,13 @@ if(!isBrowserOnline){stylePageOffline()}
 if(query !== undefined && isBrowserOnline){
     title_section.innerHTML = query.toString()
     setSkin(query.toString())
+    document.title = translation[languageSelect].pages_name[exact_type].replace(
+        '_USER_', query.toString()
+    )
 }
 
 let best_player = ""
-fLoadServerInfos().then(infos => {
+fLoadServerInfos().then(async infos => {
     if(infos !== false){
         if('error' in infos && infos.error !== -1) {
             error_internal_server = true
@@ -21,54 +24,38 @@ fLoadServerInfos().then(infos => {
             error_internal_server = true;
         }else{
             //Online
+            setServerStats(infos);
             error_internal_server = false;
-            (async() => {
-                try {
-                    const response = await fetch(requestTopLeaderboard, {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/x-www-form-urlencoded",
-                        },
-                        body: new URLSearchParams({ csrf_token: csrfToken }),
-                    });
-                    const leaderboard = await response.json()
-                    if(leaderboard !== false){
-                        best_player = leaderboard.players[0]
-                        if(best_player.name === query.toString())
-                            setToast('info', translation[languageSelect].content_page.toast.best_player, 7000)
-                            errorCompareChart()
+
+            const fLoadTopLeaderboard_ =  await fLoadTopLeaderboard()
+            const fLoadLeaderboard_ =  await fLoadLeaderboard()
+
+            if(fLoadTopLeaderboard_.status === 'success'){
+                const data = fLoadTopLeaderboard_.data
+                if(data !== null){
+                    best_player = data.players[0]
+                    if(best_player.name === query.toString()){
+                        setToast('info', translation[languageSelect].content_page.toast.best_player, 7000)
+                        errorCompareChart()
                     }
-                    return true
-                } catch (error) {
-                    console.error(error)
-                    return false
                 }
-            })().then(re => {
-                (async() => {
-                    try {
-                        const response = await fetch(requestLeaderboard, {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/x-www-form-urlencoded",
-                            },
-                            body: new URLSearchParams({ csrf_token: csrfToken }),
-                        });
-                        const leaderboard = await response.json()
-                        if(leaderboard !== false){
-                            if(re !== true){
-                                setToast('error', translation[languageSelect].content_page.toast.error_db, 7000)
-                                errorCompareChart()
-                            }else{
-                                let result_bp = leaderboard.players.find(item => item.name === best_player.name);
-                                let result_cp = leaderboard.players.find(item => item.name === query.toString());
-                                labelGet(leaderboard)
-                                chartCompare(result_bp, result_cp)
-                            }
+            }
+
+            await Promise.all([fLoadLeaderboard_, fLoadTopLeaderboard_]).then((r) => {
+                for (let i = 0; i < r.length; i++) {
+                    if(r[i].from === 'fLoadLeaderboard' && r[i].status === 'success'){
+                        const data = r[i].data
+                        if(data !== null){
+                            let result_bp = data.players.find(item => item.name === best_player.name);
+                            let result_cp = data.players.find(item => item.name === query.toString());
+                            labelGet(data)
+                            chartCompare(result_bp, result_cp)
                         }
-                    } catch (error) {
-                        console.error(error)
                     }
-                })();
+                }
+                loading_bar.classList.add('hidden')
+            }).catch((error) => {
+                console.error('error : ', error);
             });
         }
     }

@@ -163,16 +163,6 @@ const fLoadUser = async () => {
         .catch(error => {console.warn(error.message)})
 }
 
-fLoadServerInfos().then(infos => {
-    if (infos !== false) {
-        if (infos.max_players === -1) {
-
-        } else {
-            setServerStats(infos);
-        }
-    }
-});
-
 function setServerStats(infos) {
     const hostname = infos.hostname
     const max_players = infos.max_players
