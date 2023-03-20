@@ -1,12 +1,32 @@
 <?php
 
-$key = 'SERVER_ADDR';
+session_start();
 
-if (!array_key_exists($key, $_SERVER)) {
-    $key = 'LOCAL_ADDR';
+function isValidRequest()
+{
+    if (!isset($_SERVER['HTTP_REFERER'])) {
+        return false;
+    }
+
+    $referer = parse_url($_SERVER['HTTP_REFERER']);
+    $serverName = $_SERVER['SERVER_NAME'];
+
+    if ($referer['host'] !== $serverName) {
+        return false;
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        return false;
+    }
+
+    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        return false;
+    }
+
+    return true;
 }
 
-if (array_key_exists($key, $_SERVER) && $_SERVER[$key] != $_SERVER['REMOTE_ADDR']){
-    echo "{\"error\":\"Request not authorized\"}";
+if (!isValidRequest()) {
+    echo "{\"error\":\"Access denied\"}";
     exit;
 }

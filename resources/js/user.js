@@ -11,6 +11,11 @@ if(query !== undefined && isBrowserOnline){
 let best_player = ""
 fLoadServerInfos().then(infos => {
     if(infos !== false){
+        if('error' in infos && infos.error !== -1) {
+            error_internal_server = true
+            setToast('error', infos.error, 0)
+            return
+        }
         if(infos.max_players === -1){
             //Offline
             error_internal_server = true;
@@ -19,7 +24,13 @@ fLoadServerInfos().then(infos => {
             error_internal_server = false;
             (async() => {
                 try {
-                    const response = await fetch(requestTopLeaderboard)
+                    const response = await fetch(requestTopLeaderboard, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded",
+                        },
+                        body: new URLSearchParams({ csrf_token: csrfToken }),
+                    });
                     const leaderboard = await response.json()
                     if(leaderboard !== false){
                         best_player = leaderboard.players[0]
@@ -32,11 +43,19 @@ fLoadServerInfos().then(infos => {
             })();
             (async() => {
                 try {
-                    const response = await fetch(requestLeaderboard)
+                    const response = await fetch(requestLeaderboard, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded",
+                        },
+                        body: new URLSearchParams({ csrf_token: csrfToken }),
+                    });
                     const leaderboard = await response.json()
                     if(leaderboard !== false){
                         let result_bp = leaderboard.players.find(item => item.name === best_player.name);
                         let result_cp = leaderboard.players.find(item => item.name === query.toString());
+                        console.log(result_bp)
+                        console.log(result_cp)
                         labelGet(leaderboard)
                         chartCompare(result_bp, result_cp)
                     }

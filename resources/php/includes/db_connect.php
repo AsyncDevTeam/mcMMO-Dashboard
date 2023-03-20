@@ -1,5 +1,6 @@
 <?php
 
+require_once "secure.php";
 require_once "../../../config/config.php";
 /** @var ARRAY $config **/
 

@@ -3,6 +3,11 @@ let nb_player = 0
 
 fLoadServerInfos().then(infos => {
     if(infos !== false){
+        if('error' in infos && infos.error !== -1) {
+            error_internal_server = true
+            setToast('error', infos.error, 0)
+            return
+        }
         if(infos.max_players === -1){
             //Offline
             error_internal_server = true;
@@ -11,7 +16,13 @@ fLoadServerInfos().then(infos => {
             error_internal_server = false;
             (async() => {
                 try {
-                    const response = await fetch(requestLeaderboard)
+                    const response = await fetch(requestLeaderboard, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded",
+                        },
+                        body: new URLSearchParams({ csrf_token: csrfToken }),
+                    });
                     const leaderboard = await response.json()
                     if(leaderboard !== false){
                         setCard(leaderboard)
@@ -22,7 +33,13 @@ fLoadServerInfos().then(infos => {
             })();
             (async() => {
                 try {
-                    const response = await fetch(requestTopLeaderboard)
+                    const response = await fetch(requestTopLeaderboard, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded",
+                        },
+                        body: new URLSearchParams({ csrf_token: csrfToken }),
+                    });
                     const leaderboard = await response.json()
                     if(leaderboard !== false){
                         setCardBP(leaderboard)
@@ -52,7 +69,7 @@ function setCard(players){
         img.src = `https://mc-heads.net/head/${player}`
         name.innerHTML = player
 
-        clone.href = `user.html?q=${player}`
+        clone.href = `user.php?q=${player}`
         clone.setAttribute('data-total', users[i].total)
 
         s.appendChild(clone)

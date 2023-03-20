@@ -14,6 +14,7 @@ const backToTop = document.querySelectorAll('.backToTop')
 const tog_dm_icon = document.querySelectorAll('.fa-circle-half-stroke')
 const main = document.querySelector('main')
 const darkM = document.querySelector("#darkMode-input")
+const csrfToken = document.getElementById("csrf_token").value;
 let languageSelect
 let isBrowserOnline = true
 let label__darkMode = 'dark-mode-mcMMO'
@@ -173,7 +174,11 @@ function changeLanguageElement(entry, selector, s = null){
 
 const fLoadServerInfos = async() => {
     try {
-        return await fetch(requestServerStats)
+        return await fetch(requestServerStats, {
+            method: "POST",
+            headers: {"Content-Type": "application/x-www-form-urlencoded",},
+            body: new URLSearchParams({ csrf_token: csrfToken }),
+        })
             .then((response) => response.json())
             .then((json) => {return json})
     } catch (error) {

@@ -1,26 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" type="image/x-icon" href="/resources/others/textures/defaultLogo/def.ico">
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mende+Kikakui&display=swap" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.5.1.js" defer></script>
-    <!-- Toast with sweetAlert -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.16/dist/sweetalert2.all.min.js"></script>
-    <!-- User editable -->
-    <script src="../config/parameters.js" defer></script>
-    <link rel="stylesheet" href="../config/parameters.css">
-    <!-- script of the project -->
-    <script src="../resources/js/shared.js" defer></script>
-    <script src="../resources/js/search-user.js" defer></script>
+    <!-- header base -->
+    <?php require "resources/php/includes/head.php" ?>
+    <!-- script of the page -->
+    <script src="resources/js/search-user.js" defer></script>
+    <!-- custom script -->
     <script defer>
-        window.onload = function (){
+        window.onload = function () {
             const titre = translation[languageSelect].content_page.pages["search-user"].title
             const sous_titre = translation[languageSelect].content_page.pages["search-user"].subtitle
             const button = translation[languageSelect].content_page.pages["search-user"].button
@@ -29,41 +16,29 @@
             document.querySelector('.sb').innerHTML = button
         }
     </script>
-    <!-- icon from fontawesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <!-- css style of the project -->
-    <link rel="stylesheet" href="../resources/css/root.css">
-    <link rel="stylesheet" href="../resources/css/header.css">
-    <link rel="stylesheet" href="../resources/css/main.css">
-    <link rel="stylesheet" href="../resources/css/table.css">
-    <link rel="stylesheet" href="../resources/css/collapsible.css">
-    <link rel="stylesheet" href="../resources/css/media.css">
-    <link rel="stylesheet" href="../resources/css/sizes.css">
-    <!-- User editable -->
-    <link rel="stylesheet" href="../config/parameters.css">
-    <title>mcMMO Stats</title>
 </head>
 <body>
 <header>
     <div class="main pages">
-        <a id="website-title" href="../index.html">mcMMO Stats</a>
-        <a href="../index.html">
-            <img src="../resources/others/textures/defaultLogo/def.webp" alt="Logo of server running the website" id="server-logo">
+        <a id="website-title" href="index.php">mcMMO Stats</a>
+        <a href="index.php">
+            <img src="resources/others/textures/defaultLogo/def.webp" alt="Logo of server running the website"
+                 id="server-logo">
         </a>
     </div>
     <div class="tabs_header">
-        <a href="../index.html">
+        <a href="index.php">
             <i class="fa-solid fa-house"></i>
             <span class="tabs-1"></span>
         </a>
-        <a href="../pages/search-user.html">
+        <a href="search-user.php">
             <i class="fa-solid fa-user"></i>
             <span class="tabs-2"></span>
         </a>
-<!--        <a href="../pages/contact.html">-->
-<!--            <i class="fa-solid fa-at"></i>-->
-<!--            <span class="tabs-3"></span>-->
-<!--        </a>-->
+        <!--        <a href="contact.html">-->
+        <!--            <i class="fa-solid fa-at"></i>-->
+        <!--            <span class="tabs-3"></span>-->
+        <!--        </a>-->
         <label for="darkMode-input">
             <input type="checkbox" id="darkMode-input">
             <i class="fa-solid fa-circle-half-stroke"></i>
@@ -109,16 +84,7 @@
             </div>
         </div>
     </div>
-    <footer>
-        <p>
-            Made by
-            <a href="https://github.com/Royalphax">@Royalphax</a>
-            and
-            <a href="https://github.com/NicolasVaillant">@NicolasVaillant</a>
-            | Support us with a donation on <a target="_blank" href="https://paypal.me/roytreo28">Paypal</a>
-<!--            | <a href="legal.html">Legal</a>-->
-        </p>
-    </footer>
+    <?php require "resources/php/includes/footer.php" ?>
 </main>
 </body>
 </html>

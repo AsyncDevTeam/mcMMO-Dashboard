@@ -1,48 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" type="image/x-icon" href="/resources/others/textures/defaultLogo/def.ico">
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mende+Kikakui&display=swap" rel="stylesheet">
-    <!-- script used to correctly display data tables -->
-    <script src="https://code.jquery.com/jquery-3.5.1.js" defer></script>
-    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js" defer></script>
-    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js" defer></script>
-    <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js" defer></script>
-    <!-- Materialize -->
+    <!-- header base -->
+    <?php require "resources/php/includes/head.php" ?>
+    <!-- materialize -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
-    <!-- ChartJS -->
+    <!-- chartjs -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-    <!-- Toast with sweetAlert -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.16/dist/sweetalert2.all.min.js"></script>
-    <!-- User editable -->
-    <script src="config/parameters.js" defer></script>
     <!-- script of the project -->
-    <script src="resources/js/shared.js" defer></script>
     <script src="resources/js/main.js" defer></script>
     <script src="resources/js/index.js" defer></script>
     <!-- css style used to correctly display data tables -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.dataTables.min.css">
-    <!-- icon from fontawesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <!-- css style of the project -->
-    <link rel="stylesheet" href="resources/css/root.css">
-    <link rel="stylesheet" href="resources/css/main.css">
-    <link rel="stylesheet" href="resources/css/header.css">
-    <link rel="stylesheet" href="resources/css/table.css">
-    <link rel="stylesheet" href="resources/css/collapsible.css">
-    <link rel="stylesheet" href="resources/css/media.css">
-    <link rel="stylesheet" href="resources/css/sizes.css">
-    <!-- User editable -->
-    <link rel="stylesheet" href="config/parameters.css">
-    <title>mcMMO Stats</title>
+    <!-- script used to correctly display data tables -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" defer></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js" defer></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js" defer></script>
+    <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js" defer></script>
 </head>
 <body>
 <header>
@@ -51,17 +26,18 @@
             <i class="fa-solid fa-bars"></i>
             <div class="icon hidden"><i class="fa-solid fa-eye"></i></div>
         </button>
-        <a id="website-title" href="index.html">mcMMO Stats</a>
-        <a href="index.html">
-            <img src="resources/others/textures/defaultLogo/def.webp" alt="Logo of server running the website" id="server-logo">
+        <a id="website-title" href="index.php">mcMMO Stats</a>
+        <a href="index.php">
+            <img src="resources/others/textures/defaultLogo/def.webp" alt="Logo of server running the website"
+                 id="server-logo">
         </a>
     </div>
     <div class="tabs_header">
-        <a href="index.html">
+        <a href="index.php">
             <i class="fa-solid fa-house"></i>
             <span class="tabs-1"></span>
         </a>
-        <a href="pages/search-user.html">
+        <a href="search-user.php">
             <i class="fa-solid fa-user"></i>
             <span class="tabs-2"></span>
         </a>
@@ -80,7 +56,8 @@
         <aside>
             <div class="right-align bs">
                 <label for="player_research" class="searchBarWrapper">
-                    <input id="player_research" class="btn-main player_research search_player_avt" type="text" placeholder="Search a player">
+                    <input id="player_research" class="btn-main player_research search_player_avt" type="text"
+                           placeholder="Search a player">
                     <button class="btn-main" onclick="clearInput()">
                         <span class="clear_player_avt">Clear</span>
                         <i class="fa-solid fa-times"></i>
@@ -184,7 +161,8 @@
         </aside>
         <div class="right-align hidden">
             <label for="player_research_ham" class="searchBarWrapper">
-                <input id="player_research_ham" class="btn-main player_research search_player_avt" type="text" placeholder="Search a player">
+                <input id="player_research_ham" class="btn-main player_research search_player_avt" type="text"
+                       placeholder="Search a player">
                 <button class="btn-main" onclick="clearInput()">
                     <span class="clear_player_avt">Clear</span>
                     <i class="fa-solid fa-times"></i>
@@ -212,11 +190,11 @@
                 <div class="collapsible-body">
                     <table id="leaderboard_table" class="table table-bordered order-column" style="width:100%">
                         <thead>
-                            <tr class="row_table_def"></tr>
+                        <tr class="row_table_def"></tr>
                         </thead>
                         <tbody></tbody>
                         <tfoot>
-                            <tr class="row_table_def"></tr>
+                        <tr class="row_table_def"></tr>
                         </tfoot>
                     </table>
                     <div class="overTableLoading"></div>
@@ -276,20 +254,13 @@
             </li>
         </ul>
     </div>
-    <footer>
-        <p>
-            Made by
-            <a href="https://github.com/Royalphax">@Royalphax</a>
-            and
-            <a href="https://github.com/NicolasVaillant">@NicolasVaillant</a>
-            | Support us with a donation on <a target="_blank" href="https://paypal.me/roytreo28">Paypal</a>
-        </p>
-    </footer>
+    <?php require "resources/php/includes/footer.php" ?>
     <div class="sidebar-menu">
         <aside class="sm">
             <div class="right-align bs">
                 <label for="player_research_si" class="searchBarWrapper">
-                    <input id="player_research_si" class="btn-main player_research search_player_avt" type="text" placeholder="Search a player">
+                    <input id="player_research_si" class="btn-main player_research search_player_avt" type="text"
+                           placeholder="Search a player">
                     <button class="btn-main" onclick="clearInput()">
                         <span class="clear_player_avt">Clear</span>
                         <i class="fa-solid fa-times"></i>

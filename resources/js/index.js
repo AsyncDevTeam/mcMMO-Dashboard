@@ -6,6 +6,11 @@ let datasetChartAbilities = []
 
 fLoadServerInfos().then(infos => {
     if(infos !== false){
+        if('error' in infos && infos.error !== -1) {
+            error_internal_server = true
+            setToast('error', infos.error, 0)
+            return
+        }
         if(infos.max_players === -1){
             error_internal_server = true
             dataBaseError()
@@ -14,7 +19,13 @@ fLoadServerInfos().then(infos => {
             error_internal_server = false;
             (async() => {
                 try {
-                    const response = await fetch(requestLeaderboard)
+                    const response = await fetch(requestLeaderboard, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded",
+                        },
+                        body: new URLSearchParams({ csrf_token: csrfToken }),
+                    });
                     const leaderboard = await response.json()
                     if(leaderboard !== false){
                         quickViewSetup(leaderboard)
@@ -32,7 +43,13 @@ fLoadServerInfos().then(infos => {
             })();
             (async() => {
                 try {
-                    const response = await fetch(requestTopLeaderboard)
+                    const response = await fetch(requestTopLeaderboard, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded",
+                        },
+                        body: new URLSearchParams({ csrf_token: csrfToken }),
+                    });
                     const leaderboard = await response.json()
                     if(leaderboard !== false){
                         last_refresh_bp.innerText = translation[languageSelect].refresh.index.replace('_HOUR_', getHM())
@@ -125,7 +142,7 @@ function setQuickViewPlayer(username, img){
     selected_player.forEach(e => {e.innerHTML = img})
 
     seeSkill.forEach(e => {
-        e.onclick = function (){window.open(`pages/user.html?q=${username}`,"_self")}
+        e.onclick = function (){window.open(`user.php?q=${username}`,"_self")}
     })
 }
 
@@ -501,7 +518,7 @@ function addBP(player){
             label.innerText = '#' + rank + ' ' + string
             total_v.innerText = 'Lvl : ' + total
 
-            container.href = `pages/user.html?q=${string}`
+            container.href = `user.php?q=${string}`
 
             container.appendChild(img)
             wrapper.appendChild(label)
