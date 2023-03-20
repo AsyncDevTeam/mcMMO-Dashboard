@@ -35,34 +35,41 @@ fLoadServerInfos().then(infos => {
                     if(leaderboard !== false){
                         best_player = leaderboard.players[0]
                         if(best_player.name === query.toString())
-                            avoidCompareChart()
+                            setToast('info', translation[languageSelect].content_page.toast.best_player, 7000)
+                            errorCompareChart()
                     }
+                    return true
                 } catch (error) {
                     console.error(error)
+                    return false
                 }
-            })();
-            (async() => {
-                try {
-                    const response = await fetch(requestLeaderboard, {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/x-www-form-urlencoded",
-                        },
-                        body: new URLSearchParams({ csrf_token: csrfToken }),
-                    });
-                    const leaderboard = await response.json()
-                    if(leaderboard !== false){
-                        let result_bp = leaderboard.players.find(item => item.name === best_player.name);
-                        let result_cp = leaderboard.players.find(item => item.name === query.toString());
-                        console.log(result_bp)
-                        console.log(result_cp)
-                        labelGet(leaderboard)
-                        chartCompare(result_bp, result_cp)
+            })().then(re => {
+                (async() => {
+                    try {
+                        const response = await fetch(requestLeaderboard, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/x-www-form-urlencoded",
+                            },
+                            body: new URLSearchParams({ csrf_token: csrfToken }),
+                        });
+                        const leaderboard = await response.json()
+                        if(leaderboard !== false){
+                            if(re !== true){
+                                setToast('error', translation[languageSelect].content_page.toast.error_db, 7000)
+                                errorCompareChart()
+                            }else{
+                                let result_bp = leaderboard.players.find(item => item.name === best_player.name);
+                                let result_cp = leaderboard.players.find(item => item.name === query.toString());
+                                labelGet(leaderboard)
+                                chartCompare(result_bp, result_cp)
+                            }
+                        }
+                    } catch (error) {
+                        console.error(error)
                     }
-                } catch (error) {
-                    console.error(error)
-                }
-            })();
+                })();
+            });
         }
     }
 });
@@ -104,10 +111,7 @@ function labGet_infos(users, key, search, test){
     }
 }
 
-function avoidCompareChart(){
-
-    setToast('info', translation[languageSelect].content_page.toast.best_player, 7000)
-
+function errorCompareChart(){
     const abilities_level_chart_com = document.querySelector('#abilities_level_chart_com');
     abilities_level_chart_com.disabled = true
     const collapsible_user = document.querySelectorAll('.collapsible');
@@ -122,6 +126,7 @@ function avoidCompareChart(){
     header_i.classList.replace('fa-chevron-right', 'fa-lock')
     header_i.classList.remove('rotate')
 }
+
 
 fLoadUser().then(r => {
     if(!isBrowserOnline) return
@@ -416,7 +421,7 @@ function setAllAbilities(player){
 
     const b = getBestAbility(player)
 
-    abilities.forEach((e,i) => {
+    abilities.forEach(e => {
         const clone = node.cloneNode(true);
         clone.setAttribute('data-clone', 'o')
         clone.classList.add('shiny')
@@ -620,7 +625,6 @@ function setAllAbilities(player){
 
             for (let i = 0; i < levels.length; i++) {
                 const level = levels[i][0]
-                const name = levels[i][1]
 
                 function createTableLevel(){
                     const tr = document.createElement('tr')
