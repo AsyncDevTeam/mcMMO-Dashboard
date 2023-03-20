@@ -5,6 +5,7 @@ let initComplete_leaderboard
 let datasetChartAbilities = []
 
 fLoadServerInfos().then(infos => {
+    console.log(infos)
     if(infos !== false){
         if('error' in infos && infos.error !== -1) {
             error_internal_server = true
@@ -394,7 +395,7 @@ function databaseLoad(player){
 
     for (let i = 0; i < player.players.length; i++) {
         const user = player.players[i]
-        user.name_img = `<img className="img" src="https://mineskin.eu/helm/${user.name}/300.png" alt="player_heads">`
+        user.name_img = `<img class="img" src="https://mineskin.eu/helm/${user.name}/300.png" alt="player_heads">`
             + user.name
     }
 
@@ -407,6 +408,7 @@ function databaseLoad(player){
 
     let username,
         username_img
+    console.log(player.players)
     let leaderboard_table = $('#leaderboard_table').DataTable({
         data: player.players,
         columns: [
@@ -435,7 +437,7 @@ function databaseLoad(player){
         "autoWidth": false,
         "responsive": false,
         "language": translation[languageSelect].dataTable,
-        "initComplete": function(settings, json) {initComplete_leaderboard = true}
+        "initComplete": function() {initComplete_leaderboard = true}
     });
 
     $('#leaderboard_table tbody').on('click', 'tr', function () {

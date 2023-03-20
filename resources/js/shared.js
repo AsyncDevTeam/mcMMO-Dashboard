@@ -110,7 +110,7 @@ function changeLanguage(value){
     changeLanguageElement(quickView, class_)
     changeLanguageElement(buttons, class_)
 
-    if(type.includes('index')){setTable(ab)}
+    if(!['user', 'search-user'].includes(type)){setTable(ab)}
 
     function setTable(ab){
         const row_table_def = document.querySelectorAll('.row_table_def')
@@ -123,7 +123,7 @@ function changeLanguage(value){
             e.appendChild(total)
             Object.values(ab).forEach(a => {
                 const th = document.createElement('th')
-                th.innerHTML = a
+                th.innerHTML = a.toString()
                 e.appendChild(th)
             })
         })
@@ -182,6 +182,7 @@ const fLoadServerInfos = async() => {
             .then((response) => response.json())
             .then((json) => {return json})
     } catch (error) {
+        console.log(error, error.message)
         return false
     }
 }
