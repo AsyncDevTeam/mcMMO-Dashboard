@@ -28,7 +28,6 @@
     <title>mcMMO Stats</title>
     <!-- csrf token -->
     <?php
-    session_start();
     if (empty($_SESSION['csrf_token'])) {
         $_SESSION['csrf_token'] = session_create_id(bin2hex(random_bytes(16)));
     }
