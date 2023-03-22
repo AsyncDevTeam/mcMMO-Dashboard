@@ -207,16 +207,23 @@ function createElement(type, classAdd) {
     return el
 }
 
-function openSidebar() {
-
+function openSidebar(element) {
     if (!isBrowserOnline) return
-
     const sidebar = document.querySelector('.sidebar-menu')
+    const icon = document.querySelector('.icon-hamburger')
     const main = document.querySelector('main')
     const wrapper = document.querySelector('.wrapper')
     sidebar.classList.toggle('open')
     main.classList.toggle('sidebar-open')
     wrapper.classList.toggle('sidebar-open-effect')
+    const width = window.getComputedStyle(element).width
+
+    if(wrapper.classList.contains('sidebar-open-effect')){
+        icon.classList.replace('fa-bars', 'fa-times')
+        element.style.width = width
+    }else{
+        icon.classList.replace('fa-times', 'fa-bars')
+    }
 }
 
 function sortFunction(a, b) {

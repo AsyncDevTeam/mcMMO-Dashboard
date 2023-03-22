@@ -1,7 +1,7 @@
 <header>
     <div class="main">
-        <button class="hamburger-menu btn-main" onclick="openSidebar()">
-            <i class="fa-solid fa-bars"></i>
+        <button class="hamburger-menu btn-main" onclick="openSidebar(this)">
+            <i class="fa-solid fa-bars icon-hamburger"></i>
             <div class="icon hidden"><i class="fa-solid fa-eye"></i></div>
         </button>
         <a id="website-title" href="index.php">mcMMO Stats</a>
