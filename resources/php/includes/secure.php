@@ -35,6 +35,7 @@ function isValidRequest()
 }
 
 if (!$debug && !isValidRequest()) {
+    header('Content-Type: application/json');
     echo "{\"error\":\"Access denied\"}";
     exit;
 }

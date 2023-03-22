@@ -3,6 +3,7 @@
 require "../includes/secure.php";
 
 if (!isset($_GET['name'])) {
+    header('Content-Type: application/json');
     echo "{\"error\":\"No input\"}";
     exit;
 } else {
@@ -26,6 +27,7 @@ $sth_exp->execute();
 $row_lvl = $sth_lvl->fetch();
 $row_exp = $sth_exp->fetch();
 if ($row_lvl == null || $row_exp == null) {
+    header('Content-Type: application/json');
     echo "{\"error\":\"Input doesn't exist in the database\"}";
     exit;
 }

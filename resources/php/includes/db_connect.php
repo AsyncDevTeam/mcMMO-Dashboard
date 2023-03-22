@@ -16,7 +16,7 @@ try {
 	//$dbh->query("SET SQL_MODE='NO_BACKSLASH_ESCAPES';");
 
 } catch (PDOException $e) {
-
+    header('Content-Type: application/json');
     echo "{\"error\":\"".$e->getMessage()."\"}";
     die();
 
