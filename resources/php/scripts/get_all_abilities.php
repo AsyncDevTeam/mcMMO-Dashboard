@@ -31,8 +31,8 @@ foreach ($skills as $skill) {
             "player" => $max['user']
         ],
         "mean" => [
-            "value_with_zero" => round($avg_no_zero['average'], 2),
-            "value_without_zero" => round($avg_with_zero['average'], 2)
+            "value_without_zero" => round($avg_no_zero['average'], 2),
+            "value_with_zero" => round($avg_with_zero['average'], 2)
         ]
     ];
 }
