@@ -140,6 +140,7 @@ function changeLanguage(value){
 }());
 
 (function setTitle(){
+    exact_type.length === 0 ? exact_type = 'index' : exact_type
     document.title = translation[languageSelect].pages_name[exact_type]
 }());
 

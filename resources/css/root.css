@@ -40,6 +40,8 @@
     --width-table:calc(5*var(--padding) + var(--width-window) - var(--width-aside));
     --width-table-1000:calc(var(--width-window) - 4*var(--padding));
     --width-li-1000:calc(var(--width-window) - var(--padding));
+    --size-aside-wide-screen:400px;
+    --size-content-wide-screen:800px;
 }
 
 .toggle_dark_mode{
