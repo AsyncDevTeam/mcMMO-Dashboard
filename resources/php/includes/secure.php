@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * Want to debug, test the scripts and avoid "Access denied" ?
+ * Just put $debug = true; instead of false !
+ */
+
+$debug = false;
+// $debug = true;
+
 session_start();
 
 function isValidRequest()
@@ -26,7 +34,7 @@ function isValidRequest()
     return true;
 }
 
-if (!isValidRequest()) {
+if (!$debug && !isValidRequest()) {
     echo "{\"error\":\"Access denied\"}";
     exit;
 }

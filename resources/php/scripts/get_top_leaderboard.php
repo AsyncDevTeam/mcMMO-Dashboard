@@ -18,7 +18,7 @@ $sth = $dbh->prepare('SELECT user, total FROM mcmmo_users INNER JOIN mcmmo_skill
 $sth->bindParam(':top', $top, PDO::PARAM_INT);
 $sth->execute();
 
-$arr = array();
+$result = array();
 
 while ($row = $sth->fetch()) {
 
@@ -27,7 +27,7 @@ while ($row = $sth->fetch()) {
         "total" => $row['total']
     );
 
-    $arr['players'][] = $tmp_array;
+    $result['players'][] = $tmp_array;
 
 }
 
@@ -62,9 +62,11 @@ finally
 
 $error = $error || ($status == null);
 
-$arr['online_players'] = $error ? -1 : $status['players']['online'];
-$arr['max_players'] = $error ? -1 : $status['players']['max'];
+$result['online_players'] = $error ? -1 : $status['players']['online'];
+$result['max_players'] = $error ? -1 : $status['players']['max'];
 
-echo json_encode($arr);
+$json_result = json_encode($result, JSON_PRETTY_PRINT);
+header('Content-Type: application/json');
+echo $json_result;
 
 require "../includes/db_quit.php";

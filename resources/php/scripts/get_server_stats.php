@@ -30,17 +30,19 @@ try {
 $error = $error || ($status == null);
 
 // Construct our output
-$arr = array();
+$result = array();
 
 if ($config['server_port'] != "25565") {
-    $arr['hostname'] = $config['server_ip'] . ':' . $config['server_port'];
+    $result['hostname'] = $config['server_ip'] . ':' . $config['server_port'];
 } else {
-    $arr['hostname'] = $config['server_ip'];
+    $result['hostname'] = $config['server_ip'];
 }
 
-$arr['online_players'] = $error ? -1 : $status['players']['online'];
-$arr['max_players'] = $error ? -1 : $status['players']['max'];
-$arr['minecraft_version'] = $error ? "none" : $status['version']['name'];
-$arr['icon'] = $error ? "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAANSURBVBhXY6APYGAAAABpAAEwm5GQAAAAAElFTkSuQmCC" : $status['favicon'];
+$result['online_players'] = $error ? -1 : $status['players']['online'];
+$result['max_players'] = $error ? -1 : $status['players']['max'];
+$result['minecraft_version'] = $error ? "none" : $status['version']['name'];
+$result['icon'] = $error ? "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAANSURBVBhXY6APYGAAAABpAAEwm5GQAAAAAElFTkSuQmCC" : $status['favicon'];
 
-echo json_encode($arr);
+$json_result = json_encode($result, JSON_PRETTY_PRINT);
+header('Content-Type: application/json');
+echo $json_result;

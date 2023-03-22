@@ -11,7 +11,7 @@ $skills_str = implode(", ", $skills);
 $sth = $dbh->prepare('SELECT id, user, lastlogin, total, '.$skills_str.' FROM mcmmo_users INNER JOIN mcmmo_skills ON mcmmo_users.id = mcmmo_skills.user_id');
 $sth->execute();
 
-$arr = array();
+$result = array();
 
 while ($row = $sth->fetch()) {
 
@@ -30,10 +30,12 @@ while ($row = $sth->fetch()) {
 
     $tmp_array["skills"] = $values;
 
-    $arr['players'][] = $tmp_array;
+    $result['players'][] = $tmp_array;
 
 }
 
-echo json_encode($arr);
+$json_result = json_encode($result, JSON_PRETTY_PRINT);
+header('Content-Type: application/json');
+echo $json_result;
 
 require "../includes/db_quit.php";

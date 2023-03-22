@@ -30,10 +30,10 @@ if ($row_lvl == null || $row_exp == null) {
     exit;
 }
 
-$arr = array();
+$result = array();
 
-$arr["total"] = $row_lvl['total'];
-$arr["last_connection"] = $row_lvl['lastlogin'];
+$result["total"] = $row_lvl['total'];
+$result["last_connection"] = $row_lvl['lastlogin'];
 
 foreach ($skills as $skill) {
     $curr_lvl = $row_lvl[$skill];
@@ -44,9 +44,11 @@ foreach ($skills as $skill) {
         "max" => (10 * (($curr_lvl + 1) - $curr_lvl) * (($curr_lvl + 1) + $curr_lvl + 101))
     );
 
-    $arr[$skill] = $tmp_array;
+    $result[$skill] = $tmp_array;
 }
 
-echo json_encode($arr);
+$json_result = json_encode($result, JSON_PRETTY_PRINT);
+header('Content-Type: application/json');
+echo $json_result;
 
 require "../includes/db_quit.php";
