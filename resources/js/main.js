@@ -195,7 +195,8 @@ function setServerStats(infos) {
         e.innerHTML = hostname
     })
     version.forEach(e => {
-        e.innerHTML = minecraft_version
+        const regex = /§(\d)([^§]+)/g;
+        e.innerHTML = minecraft_version.replace(regex, '<span class="c-$1">$2</span>')
     })
     copyToClipboard.value = hostname
 }

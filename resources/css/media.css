@@ -2,6 +2,54 @@ body {
   font-family: "Noto Sans Mende Kikakui", sans-serif;
   background: var(--w);
 }
+body .c-1 {
+  color: #000;
+}
+body .c-2 {
+  color: #00A;
+}
+body .c-3 {
+  color: #0A0;
+}
+body .c-4 {
+  color: #0AA;
+}
+body .c-5 {
+  color: #A00;
+}
+body .c-6 {
+  color: #A0A;
+}
+body .c-7 {
+  color: #FA0;
+}
+body .c-8 {
+  color: #AAA;
+}
+body .c-9 {
+  color: #555;
+}
+body .c-10 {
+  color: #55F;
+}
+body .c-11 {
+  color: #5F5;
+}
+body .c-12 {
+  color: #5FF;
+}
+body .c-13 {
+  color: #F55;
+}
+body .c-14 {
+  color: #F5F;
+}
+body .c-15 {
+  color: #FF5;
+}
+body .c-16 {
+  color: #FFF;
+}
 body .swal2-container {
   z-index: 99999;
 }

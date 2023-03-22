@@ -18,6 +18,13 @@ body{
   font-family: 'Noto Sans Mende Kikakui', sans-serif;
   background: var(--w);
 
+  $colors: #000 #00A #0A0 #0AA #A00 #A0A #FA0 #AAA #555 #55F #5F5 #5FF #F55 #F5F #FF5 #FFF;
+  @for $i from 1 through length($colors){
+    .c-#{$i} {
+      color: nth($colors, $i);
+    }
+  }
+
   .swal2-container{z-index: 99999}
   .right-align{
     @include rowFlex;

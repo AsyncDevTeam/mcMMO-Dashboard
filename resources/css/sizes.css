@@ -1,6 +1,4 @@
 body {
-  --size-aside-wide-screen:400px;
-  --size-content-wide-screen:800px;
   --sum: calc(var(--size-aside-wide-screen) + var(--size-content-wide-screen));
 }
 @media screen and (min-width: 1800px) {

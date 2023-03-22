@@ -10,4 +10,9 @@
     --active-dark-color: 111 123 255;
     --border-of-elements-light-color: 27 31 35;
     --border-of-elements-dark-color: 255 255 255;
+
+    /*Adapt the size of the website for wide screen*/
+    /*!important is required at the end of the property to override the initial one*/
+    --size-aside-wide-screen:400px!important;
+    --size-content-wide-screen:1200px!important;
 }
