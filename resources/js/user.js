@@ -4,7 +4,6 @@ let label_player = {}
 if(!isBrowserOnline){stylePageOffline()}
 
 if(query !== undefined && isBrowserOnline){
-    title_section.innerHTML = query.toString()
     setSkin(query.toString())
     document.title = translation[languageSelect].pages_name[exact_type].replace(
         '_USER_', query.toString()
@@ -12,6 +11,7 @@ if(query !== undefined && isBrowserOnline){
 }
 
 let best_player = ""
+let bp_name = []
 fLoadServerInfos().then(async infos => {
     if(infos !== false){
         if('error' in infos && infos.error !== -1) {
@@ -34,6 +34,19 @@ fLoadServerInfos().then(async infos => {
                 const data = fLoadTopLeaderboard_.data
                 if(data !== null){
                     best_player = data.players[0]
+                    bp_name = data.players.filter((element, index) => {
+                        return index < 4;
+                    })
+                    for (let i = 0; i < bp_name.length; i++) {
+                        if(bp_name[i].name === query.toString()){
+                            name =`<span class='label-${i+1}'>${bp_name[i].name}</span>`
+                            break
+                        }else{
+                            name = query.toString()
+                        }
+                    }
+                    title_section.innerHTML = name
+
                     if(best_player.name === query.toString()){
                         setToast('info', translation[languageSelect].content_page.toast.best_player, 7000)
                         errorCompareChart()
@@ -84,7 +97,6 @@ function labGet_infos(users, key, search, test){
         all.push(temp)
     }
     const values = all.map(function(val) { return val[1] })
-
     for (let i = 0; i < all.length; i++) {
         if(test === 'min'){
             if(all[i][1] === Math.min.apply(null, values)){
@@ -113,7 +125,6 @@ function errorCompareChart(){
     header_i.classList.replace('fa-chevron-right', 'fa-lock')
     header_i.classList.remove('rotate')
 }
-
 
 fLoadUser().then(r => {
     if(!isBrowserOnline) return
@@ -168,7 +179,8 @@ function chartCompare(best_player, current_player){
                     position: 'left',
                     min : 0
                 }
-            }
+            },
+            maintainAspectRatio: false
         },
     };
 
@@ -718,7 +730,7 @@ function setChart(player){
 
     dataset.push(
         {
-            label : 'All Abilities',
+            label : 'All Abilities (exp)',
             data : skill_array,
             hidden: false,
         }
@@ -735,7 +747,8 @@ function setChart(player){
                 y: {
                     beginAtZero: true
                 }
-            }
+            },
+            maintainAspectRatio: false
         }
     };
 

@@ -14,6 +14,14 @@ fLoadServerInfos().then(async infos => {
         }else{
             //Online
             error_internal_server = false;
+            let link = document.querySelector("link[rel~='icon']");
+            if (!link) {
+                link = document.createElement('link');
+                link.rel = 'icon';
+                document.head.appendChild(link);
+            }
+            server_logo.src = infos.icon
+            link.href = infos.icon
 
             const fLoadLeaderboard_ =  await fLoadLeaderboard()
             const fLoadTopLeaderboard_ =  await fLoadTopLeaderboard()

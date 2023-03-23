@@ -24,6 +24,18 @@ body{
       color: nth($colors, $i);
     }
   }
+  $rank: #40f384 #2dcdb1 #dede00 #969696;
+  @for $i from 1 through length($rank){
+    .rank-#{$i} {
+      border: 1px solid nth($rank, $i);
+      color: var(--color);
+    }
+    .label-#{$i}{
+      padding: 0 .5em;
+      background: nth($rank, $i);
+      border-radius: 5px;
+    }
+  }
 
   .swal2-container{z-index: 99999}
   .right-align{
@@ -172,6 +184,9 @@ body{
                 img{
                   width: 20px;
                   border-radius: 2px;
+                }
+                .ranked{
+                  color: red;
                 }
               }
             }
@@ -355,8 +370,9 @@ body{
           }
 
           .chart-container{
+            @include centerFlex;
             position: relative;
-            height:auto;
+            height:60vh;
             width:100%;
             background: var(--background-op);
             padding: 1em;
@@ -365,6 +381,13 @@ body{
             &.pie{
               display: flex;
               gap: 1em;
+              @media screen and (min-width: 1800px) {
+                height: 40vh;
+              }
+            }
+
+            @media screen and (min-width: 1800px) {
+              height: 30vh;
             }
 
             @media screen and (max-width: 1000px){
@@ -372,7 +395,7 @@ body{
             }
           }
 
-          .chart_select{
+          .chart-container_select{
             @include centerFlex;
             float: none;
             margin: 1em 0;
@@ -410,7 +433,7 @@ body{
                   @include rowFlex;
                   gap: 1em;
                   &:first-child{
-                    width: 15%;
+                    width: 20%;
                     @media screen and (max-width: 1000px){
                       width: 25%;
                     }
@@ -480,6 +503,7 @@ body{
               *{text-decoration: none}
               .col{
                 display: flex;
+                flex-direction: row;
                 gap: 1em;
                 width: 100%;
                 .btn-main{
@@ -496,9 +520,14 @@ body{
                     align-items: flex-start;
                     .tot{color: #999999}
                   }
+                  .rank_img{
+                    margin-left: auto;
+                  }
                 }
               }
-
+              @media screen and (max-width: 1000px){
+                flex-direction: column;
+              }
             }
             @media screen and (max-width: 1000px){
               margin-top: 0;

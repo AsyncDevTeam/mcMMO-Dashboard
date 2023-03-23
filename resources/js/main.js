@@ -105,13 +105,6 @@ window.onscroll = function () {
 
 let TEST_MODE = false
 window.onload = function () {
-
-    // const pathname = window.location.pathname.split('/')[1]
-    // console.log(pathname, allowedUrl)
-    // if(!allowedUrl.includes(pathname)){
-    //     window.location.replace('/index.php')
-    // }
-
     document.querySelectorAll('.offline-rule')
         .forEach(e => {
             e.innerHTML = translation[languageSelect].offline.rule
@@ -165,6 +158,7 @@ const fLoadUser = async () => {
 
 function setServerStats(infos) {
     const hostname = infos.hostname
+    const icon = infos.icon
     const max_players = infos.max_players
     const minecraft_version = infos.minecraft_version
     const online_players = infos.online_players
@@ -198,6 +192,14 @@ function setServerStats(infos) {
         const regex = /§(\d)([^§]+)/g;
         e.innerHTML = minecraft_version.replace(regex, '<span class="c-$1">$2</span>')
     })
+    server_logo.src = icon
+    let link = document.querySelector("link[rel~='icon']");
+    if (!link) {
+        link = document.createElement('link');
+        link.rel = 'icon';
+        document.head.appendChild(link);
+    }
+    link.href = icon
     copyToClipboard.value = hostname
 }
 

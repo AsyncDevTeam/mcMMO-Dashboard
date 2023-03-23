@@ -14,5 +14,5 @@
     /*Adapt the size of the website for wide screen*/
     /*!important is required at the end of the property to override the initial one*/
     --size-aside-wide-screen:400px!important;
-    --size-content-wide-screen:1200px!important;
+    --size-content-wide-screen:800px!important;
 }

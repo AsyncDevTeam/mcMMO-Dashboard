@@ -50,6 +50,42 @@ body .c-15 {
 body .c-16 {
   color: #FFF;
 }
+body .rank-1 {
+  border: 1px solid #40f384;
+  color: var(--color);
+}
+body .label-1 {
+  padding: 0 0.5em;
+  background: #40f384;
+  border-radius: 5px;
+}
+body .rank-2 {
+  border: 1px solid #2dcdb1;
+  color: var(--color);
+}
+body .label-2 {
+  padding: 0 0.5em;
+  background: #2dcdb1;
+  border-radius: 5px;
+}
+body .rank-3 {
+  border: 1px solid #dede00;
+  color: var(--color);
+}
+body .label-3 {
+  padding: 0 0.5em;
+  background: #dede00;
+  border-radius: 5px;
+}
+body .rank-4 {
+  border: 1px solid #969696;
+  color: var(--color);
+}
+body .label-4 {
+  padding: 0 0.5em;
+  background: #969696;
+  border-radius: 5px;
+}
 body .swal2-container {
   z-index: 99999;
 }
@@ -236,6 +272,10 @@ body main .wrapper aside .selected-player.show .row-n .selected-player-name img,
 body main .sidebar-menu aside .selected-player.show .row-n .selected-player-name img {
   width: 20px;
   border-radius: 2px;
+}
+body main .wrapper aside .selected-player.show .row-n .selected-player-name .ranked,
+body main .sidebar-menu aside .selected-player.show .row-n .selected-player-name .ranked {
+  color: red;
 }
 body main .wrapper aside .selected-player.show .seeSkill,
 body main .sidebar-menu aside .selected-player.show .seeSkill {
@@ -479,8 +519,12 @@ body main .sidebar-menu .content .collapsible-body .overTableLoading {
 }
 body main .wrapper .content .collapsible-body .chart-container,
 body main .sidebar-menu .content .collapsible-body .chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
   position: relative;
-  height: auto;
+  height: 60vh;
   width: 100%;
   background: var(--background-op);
   padding: 1em;
@@ -491,14 +535,26 @@ body main .sidebar-menu .content .collapsible-body .chart-container.pie {
   display: flex;
   gap: 1em;
 }
+@media screen and (min-width: 1800px) {
+  body main .wrapper .content .collapsible-body .chart-container.pie,
+body main .sidebar-menu .content .collapsible-body .chart-container.pie {
+    height: 40vh;
+  }
+}
+@media screen and (min-width: 1800px) {
+  body main .wrapper .content .collapsible-body .chart-container,
+body main .sidebar-menu .content .collapsible-body .chart-container {
+    height: 30vh;
+  }
+}
 @media screen and (max-width: 1000px) {
   body main .wrapper .content .collapsible-body .chart-container,
 body main .sidebar-menu .content .collapsible-body .chart-container {
     max-width: var(--width-li-1000);
   }
 }
-body main .wrapper .content .collapsible-body .chart_select,
-body main .sidebar-menu .content .collapsible-body .chart_select {
+body main .wrapper .content .collapsible-body .chart-container_select,
+body main .sidebar-menu .content .collapsible-body .chart-container_select {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -507,8 +563,8 @@ body main .sidebar-menu .content .collapsible-body .chart_select {
   margin: 1em 0;
   justify-content: flex-end;
 }
-body main .wrapper .content .collapsible-body .chart_select select,
-body main .sidebar-menu .content .collapsible-body .chart_select select {
+body main .wrapper .content .collapsible-body .chart-container_select select,
+body main .sidebar-menu .content .collapsible-body .chart-container_select select {
   width: fit-content;
 }
 body main .wrapper .content .collapsible-body .wrapper-pie,
@@ -572,7 +628,7 @@ body main .wrapper .content .collapsible-body .wrapper-pie .array-infos-ba .row-
 body main .wrapper .content .collapsible-body .wrapper-pie .array-infos-ba .header-table td:first-child,
 body main .sidebar-menu .content .collapsible-body .wrapper-pie .array-infos-ba .row-table td:first-child,
 body main .sidebar-menu .content .collapsible-body .wrapper-pie .array-infos-ba .header-table td:first-child {
-  width: 15%;
+  width: 20%;
 }
 @media screen and (max-width: 1000px) {
   body main .wrapper .content .collapsible-body .wrapper-pie .array-infos-ba .row-table td:first-child,
@@ -676,6 +732,7 @@ body main .sidebar-menu .content li:not(.paginate_button):not([data-dtr-index])#
 body main .wrapper .content li:not(.paginate_button):not([data-dtr-index])#best-player .content_bp .col,
 body main .sidebar-menu .content li:not(.paginate_button):not([data-dtr-index])#best-player .content_bp .col {
   display: flex;
+  flex-direction: row;
   gap: 1em;
   width: 100%;
 }
@@ -706,6 +763,16 @@ body main .sidebar-menu .content li:not(.paginate_button):not([data-dtr-index])#
 body main .wrapper .content li:not(.paginate_button):not([data-dtr-index])#best-player .content_bp .col .btn-main .wrapper_a .tot,
 body main .sidebar-menu .content li:not(.paginate_button):not([data-dtr-index])#best-player .content_bp .col .btn-main .wrapper_a .tot {
   color: #999999;
+}
+body main .wrapper .content li:not(.paginate_button):not([data-dtr-index])#best-player .content_bp .col .btn-main .rank_img,
+body main .sidebar-menu .content li:not(.paginate_button):not([data-dtr-index])#best-player .content_bp .col .btn-main .rank_img {
+  margin-left: auto;
+}
+@media screen and (max-width: 1000px) {
+  body main .wrapper .content li:not(.paginate_button):not([data-dtr-index])#best-player .content_bp,
+body main .sidebar-menu .content li:not(.paginate_button):not([data-dtr-index])#best-player .content_bp {
+    flex-direction: column;
+  }
 }
 @media screen and (max-width: 1000px) {
   body main .wrapper .content li:not(.paginate_button):not([data-dtr-index])#best-player,

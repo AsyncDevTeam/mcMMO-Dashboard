@@ -21,6 +21,7 @@ session_start();
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js" defer></script>
     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js" defer></script>
     <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.1.96/css/materialdesignicons.min.css">
 </head>
 <body>
 <!-- header include-->

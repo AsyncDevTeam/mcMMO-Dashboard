@@ -26,6 +26,7 @@ session_start();
 <!-- header include-->
 <?php require "resources/php/includes/header.php" ?>
 <main>
+    <img src="" alt="">
     <label for="no-display-input">
         <input type="text" class="copyToClipboard hidden" value="" id="no-display-input">
     </label>

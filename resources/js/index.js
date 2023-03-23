@@ -3,7 +3,7 @@ const last_refresh_bp = document.getElementById('last_refresh_bp')
 if(!isBrowserOnline){stylePageOffline()}
 let initComplete_leaderboard
 let datasetChartAbilities = []
-
+let bp_name = []
 fLoadServerInfos().then(async infos => {
     if (infos !== false) {
         if ('error' in infos && infos.error !== -1) {
@@ -19,32 +19,38 @@ fLoadServerInfos().then(async infos => {
             error_internal_server = false;
             setServerStats(infos);
 
-            const fLoadLeaderboard_ =  await fLoadLeaderboard()
             const fLoadTopLeaderboard_ =  await fLoadTopLeaderboard()
-
-            if(fLoadLeaderboard_.status === 'success'){
-                const data = fLoadLeaderboard_.data
-                if(data !== null){
-                    quickViewSetup(data)
-                    databaseLoad(data)
-                    loadDatasetChartAbilities(data)
-                    chartAbilities(data)
-                    chartAbilitiesMinMax(data)
-                    chartEachAbilities(data)
-                    chartBestAbilities(data)
-                    localStorage.setItem('ldb', JSON.stringify(data))
-                }else{console.log("No Leaderboard")}
-            }
+            const fLoadLeaderboard_ =  await fLoadLeaderboard()
 
             if(fLoadTopLeaderboard_.status === 'success'){
                 const data = fLoadTopLeaderboard_.data
                 if(data !== null){
                     last_refresh_bp.innerText = translation[languageSelect].refresh.index.replace('_HOUR_', getHM())
                     addBP(data)
+                    bp_name = data.players.filter((element, index) => {
+                        return index < 4;
+                    })
+                    //     .map((element) => {
+                    //     return element.name;
+                    // });
                 }else{console.log("No Leaderboard")}
             }
 
-            await Promise.all([fLoadLeaderboard_, fLoadTopLeaderboard_]).then(() => {
+            await Promise.all([fLoadLeaderboard_, fLoadTopLeaderboard_]).then((r) => {
+                for (let i = 0; i < r.length; i++) {
+                    if(r[i].from === 'fLoadLeaderboard' && r[i].status === 'success'){
+                        const data = r[i].data
+                        if(data !== null){
+                            quickViewSetup(data)
+                            databaseLoad(data)
+                            loadDatasetChartAbilities(data)
+                            chartAbilities(data)
+                            // chartAbilitiesMinMax(data)
+                            chartEachAbilities(data)
+                            chartBestAbilities(data)
+                        }else{console.log("No Leaderboard")}
+                    }
+                }
                 loading_bar.classList.add('hidden')
             }).catch((error) => {
                 console.error('error : ', error);
@@ -103,20 +109,18 @@ function quickViewSetup(player){
             'name'  : e.name,
             'rank'  : order.indexOf(e.total) + 1,
         })
-        if(e.total === max_total){
-            //console.log(e.name)
-        }
+        if(e.total === max_total){}
     })
-    localStorage.setItem('rank_player', JSON.stringify(rank))
+    sessionStorage.setItem('rank_player', JSON.stringify(rank))
 }
 
-function setQuickViewPlayer(username, img){
+function setQuickViewPlayer(username){
     const selected_player = document.querySelectorAll('.selected-player-name')
     const sel_rank_user = document.querySelectorAll('.sel_rank_user')
     const sel_current_rank = document.querySelectorAll('.sel_current_rank')
     const seeSkill = document.querySelectorAll('.seeSkill')
 
-    const array = JSON.parse(localStorage.getItem('rank_player'))
+    const array = JSON.parse(sessionStorage.getItem('rank_player'))
 
     array.forEach(e => {
         if(e.name === username){
@@ -128,8 +132,19 @@ function setQuickViewPlayer(username, img){
             })
         }
     })
+    let name
+    for (let i = 0; i < bp_name.length; i++) {
+        if(bp_name[i].name === username){
+            name =`<span class='label-${i+1}'>${bp_name[i].name}</span>`
+            break
+        }else{
+            name = username
+        }
+    }
 
-    selected_player.forEach(e => {e.innerHTML = img})
+    selected_player.forEach(e => {
+        e.innerHTML = `<img class="img" src="https://mineskin.eu/helm/${username}/300.png" alt="player_heads">` + name
+    })
 
     seeSkill.forEach(e => {
         e.onclick = function (){window.open(`user.php?q=${username}`,"_self")}
@@ -197,11 +212,21 @@ function chartAbilities(){
                     position: 'left',
                     min : 0
                 }
+            },
+            maintainAspectRatio: false,
+            animation: {
+                onComplete: done
             }
+            // onAnimationComplete: function(){done()}
         },
     };
 
     chartAbilitiesGraph = new Chart(ctx, config);
+}
+function done(){
+    console.log('okkkkkkk')
+    var image = chartAbilitiesGraph.toBase64Image()
+    console.log(image);
 }
 
 function chartBestAbilities(player){
@@ -273,7 +298,8 @@ function chartBestAbilities(player){
                 legend: {
                     position: 'top',
                 }
-            }
+            },
+            maintainAspectRatio: false,
         },
     }
     chartBestAbilitiesGraph = new Chart(ctx_pi, config)
@@ -382,10 +408,19 @@ function chartAbilitiesMinMax(player){
 
 function databaseLoad(player){
 
+    let name
     for (let i = 0; i < player.players.length; i++) {
         const user = player.players[i]
+        for (let j = 0; j < bp_name.length; j++) {
+            if(bp_name[j].name === user.name){
+                name = `<span class='label-${j+1}'>${user.name}</span>`
+                break
+            }else{
+                name = user.name
+            }
+        }
         user.name_img = `<img class="img" src="https://mineskin.eu/helm/${user.name}/300.png" alt="player_heads">`
-            + user.name
+            + name
     }
 
     let lengthChangeAllow = true
@@ -395,8 +430,8 @@ function databaseLoad(player){
         pagingAllow = false
     }
 
-    let username,
-        username_img
+
+    let username
     let leaderboard_table = $('#leaderboard_table').DataTable({
         data: player.players,
         columns: [
@@ -430,7 +465,6 @@ function databaseLoad(player){
 
     $('#leaderboard_table tbody').on('click', 'tr', function () {
 
-        username_img = $(this)[0].querySelectorAll('td')[0].innerHTML
         username = $(this)[0].querySelectorAll('td')[0].innerText
 
         if($(this).hasClass('child')) return
@@ -457,7 +491,7 @@ function databaseLoad(player){
                 icon.classList.toggle('hidden')
             }
 
-            setQuickViewPlayer(username, username_img)
+            setQuickViewPlayer(username)
         }
     });
 
@@ -497,23 +531,39 @@ function addBP(player){
 
     function createCard(string, total, rank = null){
         const container = createElement('a', 'btn-main')
+        container.classList.add(`rank-${rank}`)
         const img = createElement('img', 'img')
+        const rank_img = createElement('img', 'rank_img')
 
         const wrapper = createElement('div', 'wrapper_a')
         const label = createElement('span', 'label')
+        label.classList.add(`label-${rank}`)
         const total_v = createElement('span', 'tot')
 
         if(rank !== null){
             img.src = `https://mineskin.eu/helm/${string}/300.png`
             label.innerText = '#' + rank + ' ' + string
             total_v.innerText = 'Lvl : ' + total
-
             container.href = `user.php?q=${string}`
-
+            switch (rank){
+                case 1:
+                    rank_img.src = '../resources/others/textures/pack/388-0.png'
+                    break
+                case 2:
+                    rank_img.src = '../resources/others/textures/pack/264-0.png'
+                    break
+                case 3:
+                    rank_img.src = '../resources/others/textures/pack/266-0.png'
+                    break
+                case 4:
+                    rank_img.src = '../resources/others/textures/pack/265-0.png'
+                    break
+            }
             container.appendChild(img)
             wrapper.appendChild(label)
             wrapper.appendChild(total_v)
             container.appendChild(wrapper)
+            container.appendChild(rank_img)
         }
 
         return container

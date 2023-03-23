@@ -8,6 +8,7 @@ const copyToClipboard = document.querySelector('.copyToClipboard')
 const server_player = document.querySelectorAll('.server-player')
 const max_players_a = document.querySelectorAll('.max_players')
 const version = document.querySelectorAll('.version')
+const server_logo = document.querySelector('#server-logo')
 const select_radio_section = document.querySelectorAll('.select-radio-section')
 const chart_select = document.querySelector('#chart_select')
 const backToTop = document.querySelectorAll('.backToTop')
@@ -20,6 +21,7 @@ let isBrowserOnline = true
 let label__darkMode = 'dark-mode-mcMMO'
 let options_collapsible = {accordion: false}
 let exact_type = window.location.pathname.split("/").at(-1).split('.')[0]
+exact_type.length === 0 ? exact_type = 'index' : exact_type
 const loading_bar = document.querySelector('.loading-bar')
 let error_internal_server = false
 
@@ -140,7 +142,6 @@ function changeLanguage(value){
 }());
 
 (function setTitle(){
-    exact_type.length === 0 ? exact_type = 'index' : exact_type
     document.title = translation[languageSelect].pages_name[exact_type]
 }());
 
