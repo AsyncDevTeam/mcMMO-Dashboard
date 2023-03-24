@@ -546,16 +546,16 @@ function addBP(player){
             container.href = `user.php?q=${string}`
             switch (rank){
                 case 1:
-                    rank_img.src = '/resources/others/textures/pack/388-0.png'
+                    rank_img.src = 'resources/others/textures/pack/388-0.png'
                     break
                 case 2:
-                    rank_img.src = '/resources/others/textures/pack/264-0.png'
+                    rank_img.src = 'resources/others/textures/pack/264-0.png'
                     break
                 case 3:
-                    rank_img.src = '/resources/others/textures/pack/266-0.png'
+                    rank_img.src = 'resources/others/textures/pack/266-0.png'
                     break
                 case 4:
-                    rank_img.src = '/resources/others/textures/pack/265-0.png'
+                    rank_img.src = 'resources/others/textures/pack/265-0.png'
                     break
             }
             container.appendChild(img)
