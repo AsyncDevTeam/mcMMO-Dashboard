@@ -35,7 +35,11 @@ fLoadServerInfos().then(async infos => {
             if(fLoadTopLeaderboard_.status === 'success'){
                 const data = fLoadTopLeaderboard_.data
                 if(data !== null){
-                    setCardBP(data)
+                    setCardBP(
+                        data.players.filter((element, index) => {
+                            return index < 4;
+                        })
+                    )
                 }
             }
 
@@ -80,20 +84,22 @@ function setCard(players){
     })
 }
 
-function setCardBP(players){
-    const users = players.players
+function setCardBP(users){
     for (let i = 0; i < s.childElementCount; i++) {
         if(s.children[i].classList.contains('user-find')){
             const name = s.children[i].querySelector('.name').innerHTML
             for (let j = 0; j < users.length; j++) {
+                const label_name = s.children[i].querySelector('.name')
+                const name_player = label_name.innerHTML
                 if(name === users[j].name){
-                    s.children[i].querySelector('.rank').classList.remove('hidden')
-                    s.children[i].querySelector('.medal').innerHTML = (j+1).toString()
+                    label_name.classList.add(`label-${j+1}`)
+                    label_name.innerHTML = `#${j+1} ${name_player}`
                     s.children[i].setAttribute('data-rank', (j+1).toString())
+                    // s.children[i].querySelector('.rank').classList.remove('hidden')
+                    // s.children[i].querySelector('.medal').innerHTML = (j+1).toString()
                 }
             }
         }
-
     }
 }
 

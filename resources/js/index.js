@@ -135,7 +135,7 @@ function setQuickViewPlayer(username){
     let name
     for (let i = 0; i < bp_name.length; i++) {
         if(bp_name[i].name === username){
-            name =`<span class='label-${i+1}'>${bp_name[i].name}</span>`
+            name =`<span class='label-${i+1}'>#${i+1} ${bp_name[i].name}</span>`
             break
         }else{
             name = username
@@ -224,9 +224,8 @@ function chartAbilities(){
     chartAbilitiesGraph = new Chart(ctx, config);
 }
 function done(){
-    console.log('okkkkkkk')
-    var image = chartAbilitiesGraph.toBase64Image()
-    console.log(image);
+    const image = chartAbilitiesGraph.toBase64Image()
+    // console.log(image);
 }
 
 function chartBestAbilities(player){
@@ -413,7 +412,7 @@ function databaseLoad(player){
         const user = player.players[i]
         for (let j = 0; j < bp_name.length; j++) {
             if(bp_name[j].name === user.name){
-                name = `<span class='label-${j+1}'>${user.name}</span>`
+                name = `<span class='label-${j+1}'>#${j+1} ${user.name}</span>`
                 break
             }else{
                 name = user.name
@@ -491,7 +490,7 @@ function databaseLoad(player){
                 icon.classList.toggle('hidden')
             }
 
-            setQuickViewPlayer(username)
+            setQuickViewPlayer(username.replace(/^#\d+\s/, ""))
         }
     });
 

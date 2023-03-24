@@ -19,8 +19,10 @@ const abilities_cap = {
     'acrobatics': 1500
 }
 //Change the translation here, by default English is used, set your own language in translation.user and set translation.user.active to true
+//New translation mode
 const translation = {
-    'default': {
+    'active': 'FR',
+    'EN': {
         'pages_name':{
             'index': 'mcMMO Stats | Home',
             'user': 'mcMMO Stats | _USER_',
@@ -268,8 +270,7 @@ const translation = {
             'alchemy' : 'The Sorcerer'
         }
     },
-    'user': {
-        'active': false,
+    'FR': {
         'pages_name':{
             'index': 'mcMMO Stats | Accueil',
             'user': 'mcMMO Stats | _USER_',
@@ -515,6 +516,254 @@ const translation = {
             'acrobatics' : "L'art du cirque",
             'fishing' : 'AFK',
             'alchemy' : 'Le sorcier'
+        }
+    },
+    'DE': {
+        'pages_name':{
+            'index': 'mcMMO Stats | Willkommen',
+            'user': 'mcMMO Stats | _USER_',
+            'search-user': 'mcMMO Stats | Suchen Sie einen Benutzer',
+        },
+        'access' : ['de-DE', 'de-DE'],
+        'ab' : {
+            'swords': 'Schwert',
+            'axes': 'Axtkampf',
+            'archery': "Bogenschießen",
+            'unarmed': 'Faustkampf',
+            'taming': 'Zähmen',
+            'woodcutting': 'Holzfäller',
+            'excavation': 'Graben',
+            'repair': 'Reparatur',
+            'fishing': 'Angeln',
+            'alchemy': 'Alchemie',
+            'herbalism': 'Kräuterkunde',
+            'mining': 'Bergbau',
+            'acrobatics': 'Akrobatik'
+        },
+        'ab_labels': {
+            'sum': 'Erfahrung',
+            'ab': 'Fähigkeiten'
+        },
+        'title': {
+            'best_player_of_server': 'Bester Spieler des Servers',
+            'worst_player_of_server': 'Schlechtester Spieler des Servers',
+            'last_co_in_server': 'Letzte Verbindung',
+            'ten_years_ago_co_in_server': 'Älteste Verbindung',
+        },
+        'content_page':{
+            'section_names': {
+                'index': {
+                    'section-1': 'Beste Spieler des Servers',
+                    'section-2': 'Alle Spieler',
+                    'section-3': 'Durch Fähigkeiten',
+                    'section-4': 'Nach Fähigkeiten (min max)',
+                    'section-5': 'Beste Fähigkeiten des Servers',
+                },
+                'user' : {
+                    'section-1': 'Fähigkeitsniveau',
+                    'section-2': 'Alle Fähigkeiten',
+                    'section-3': 'Kapazitätsvergleich',
+                    'section-3-bis': 'Der Vergleich erfolgt zwischen dem besten Spieler des Servers und dem ausgewählten Spieler.'
+                }
+            },
+            'aside': {
+                'header': {
+                    'sc-h-1': "Server Informationen",
+                    'sc-h-1-s': "Server Offline",
+                    'sc-h-2': 'Schnellauswahl',
+                },
+                'index': {
+                    'sc-b-1': 'Alle Spieler',
+                    'sc-b-2': 'Diagramm nach Fähigkeiten',
+                    'sc-b-3': 'Beste kumulative Fähigkeiten',
+                    'sc-b-999': 'Zurück nach oben'
+                },
+                'user' : {
+                    'sc-b-1': 'Spieler Info',
+                    'sc-b-2': 'Fähigkeitsstufe',
+                    'sc-b-3': 'Fähigkeiten',
+                    'sc-b-4': 'Vergleichstabelle',
+                    'sc-b-999': 'Zurück nach oben',
+                }
+            },
+            'search': {
+                'search_player_avt': 'Suche nach einen Spieler',
+                'search_abi_avt' : 'Suche nach einer Fähigkeit',
+                'no_result': 'Keine Ergebnisse gefunden - versuche die Suche erneut'
+            },
+            'buttons': {
+                'clear_player_avt': 'Leeren',
+                'sort_avt': 'Sortieren'
+            },
+            'select': {
+                'select-before': 'Zeige',
+                'select-after': 'Einträge',
+            },
+            'general': {
+                'best_ab': 'Beste Fähigkeit',
+                'label_ab': 'Bester Spieler für Fähigkeiten _AB_',
+            },
+            'toast': {
+                'IP_success' : 'IP erfolgreich kopiert',
+                'IP_error' : "Fehler beim Kopieren der IP-Adresse",
+                'best_player': 'Es kann kein Vergleich mit dem besten Spieler auf dem Server angezeigt werden',
+                'error_db': 'Fehler beim Laden der Daten'
+            },
+            'tabs': {
+                'tabs-1': 'Startseite',
+                'tabs-2': 'Spieler finden',
+                'tabs-3': 'Kontakt',
+                'tabs-dm': 'Darkmode',
+            },
+            'pages':{
+                'search-user': {
+                    'title': 'Suche nach einem Spieler',
+                    'subtitle': 'Suche nach einem Spieler, um auf seine Benutzerseite zuzugreifen',
+                    'button': 'Suchen',
+                },
+                'contact': {
+                    'title': 'Kontakt',
+                    'subtitle': 'Kontaktiere uns über folgende E-Mail _EMAIL_',
+                }
+            },
+            'quickView':{
+                'qv-tag': 'Spieler',
+                'qv-g-rank': 'Allgemein',
+                'qv-rank': 'Aktueller Rang',
+                'qv-seeSkills':'Siehe Fähigkeitsstufen'
+            }
+        },
+        'dataTable': {
+            "sProcessing":    "Wird bearbeitet...",
+            "sLengthMenu":    "Zeige <b>_MENU_</b> Einträge",
+            "sZeroRecords":   "Keine übereinstimmenden Aufzeichnungen gefunden",
+            "sEmptyTable":    "Keine Daten in der Tabelle verfügbar",
+            "sInfo":          "Zeige <b>_START_</b> bis <b>_END_</b> von <b>_TOTAL_</b> Einträgen",
+            "sInfoEmpty":     "Zeige 0 bis 0 von 0 Einträgen",
+            "sInfoFiltered":  "(filtere von _MAX_ insgesamten Einträgen)",
+            "oPaginate": {
+                "sFirst":    "Erste",
+                "sLast":    "Zuletzt",
+                "sNext":    "Nächste",
+                "sPrevious": "Vorherige"
+            }
+        },
+        'refresh' : {
+            'index': 'Aktualisiert um _HOUR_',
+            'user': 'Zuletzt online am _DATE_ _HOUR_:_MIN_'
+        },
+        'card': {
+            'best_card_label_avt': 'Aktuelles Level: _CURRENT_LVL_/_MAX_LEVEL_',
+            'card_level_avt': 'Aktuelles Level: _CURRENT_LVL_',
+            'card_level_next_avt': '_EXP_PERCENT_ % verbleibend - _EXP_LEFT_ Exp verbleibend'
+        },
+        'recommendation': {
+            'title_recommendation_avt': 'Verbessere dein Erfahrungsgewinn anhand unserer Empfehlungen.',
+            'info': 'Information von _ABI_',
+            'info_array': 'Spezielle Fähigkeiten',
+            'link': 'Link zur Fandom-Website',
+            'ab': {
+                'swords': {
+                    'def': "<b>Schwert</b> enthält Fähigkeiten, mit denen du deine Angriffe Brucheffekte hinzufügen und die Treffer des Feindes kontern kannst."
+                },
+                'axes': {
+                    'def': "<b>Axtkampf</b> ist eine Fertigkeit, die darauf basiert, die Axt als Waffe zu verwenden, um Mobs und andere Spieler zu bekämpfen. Es fügt dem Gameplay mehr Abwechslung hinzu, indem es einen neuen Waffentyp einführt, der für viele Situationen geeignet ist."
+                },
+                'archery': {
+                    'def': "<b>Bogenschießen</b> ist eine Fähigkeit, die sich darauf konzentriert, Mobs und Spielern mit Pfeil und Bogen Schaden zuzufügen."
+                },
+                'unarmed': {
+                    'def': "<b>Faustkampf</b> ist eine Kampffertigkeit; es benutzt die leere Hand des Spielers als Waffe. Es enthält viele Vorteile, wie z. B. Entwaffnen, Ablenken von Pfeilen, unbewaffnete Angriffe mit höherer Basis und mehr.",
+                    'levels' : [
+                        [0, 'Stählerner Arm (Passiv)'],
+                        [0, 'Pfeil-Ablenkung (Passiv)'],
+                        [0, 'Entwaffnen (Passiv)'],
+                        [0, 'Eiserner Griff (Passiv)'],
+                        [0, 'Berserker'],
+                    ]
+                },
+                'taming': {
+                    'def': "<b>Zähmen</b> ist eine Fertigkeit in McMMO. Wenn dein Level steigt, erhalten deine Wölfe Fähigkeiten, die den Schaden, die Verteidigung und andere Dinge erhöhen.",
+                    'levels' : [
+                        [100, 'Umweltbewusst'],
+                        [150, 'Aufschlitzen'],
+                        [200, 'Pummel'],
+                        [200, 'Schnell-Imbiss'],
+                        [250, 'Dicker Pelz'],
+                        [350, 'Heiliger Hund'],
+                        [500, 'Schock-Sicher'],
+                        [750, 'Geschärfte Krallen'],
+                    ]
+                },
+                'woodcutting': {
+                    'def': "<b>Holzfällen</b> ist eine Fähigkeit, die darauf basiert, Bäume mit einer Axt zu fällen. Das Leveln der Fertigkeit erhöht die Wahrscheinlichkeit, dass zusätzliches Holz von Bäumen fällt, sowie eine zusätzliche Dauer der Baumfäller-Fähigkeit.",
+                    'levels' : [
+                        [0, 'Doppeldrops (Passiv)'],
+                        [0, 'Auf Holz geklopft (Passiv)'],
+                        [5, 'Baumfäller'],
+                        [15, 'Blättersturm'],
+                    ]
+                },
+                'excavation': {
+                    'def': "<b>Ausgrabung</b> ist die Fähigkeit in McMMO, die sich auf die Verwendung einer Schaufel bezieht, um alles auf der Bodenkarte zu graben, einschließlich exotischer Materialien wie Seelensand. Hochrangige Bagger können leicht Diamanten aus Schmutz herstellen. "
+                },
+                'repair': {
+                    'def': "<b>Reparatur</b> ist die übergeordnete Fertigkeit der beiden aktuellen untergeordneten Fertigkeiten Schmelzen und Bergen, gepaart mit Bergbau bzw. Fischen. Es kann verwendet werden, um Werkzeuge und Rüstungen auf Eisenblöcken zu reparieren."
+                },
+                'fishing': {
+                    'def': "<b>Angeln</b> erhöht die Chance auf Fänge und kann nützliche Beute hervorbringen. Es hat auch die Shake-Fähigkeit, die Drops von Mobs zieht, ohne sie töten zu müssen."
+                },
+                'alchemy': {
+                    'def': "<b>Alchemie</b> ist eine sonstige Fertigkeit, die auf dem Brauen von Tränken basiert. Es wird durch die Herstellung und Modifikation von Tränken in einem Braustand geebnet. Darüber hinaus erhalten einige Effekte, die normalerweise mit Vanilletränken nicht erreichbar sind, benutzerdefinierte Rezepte."
+                },
+                'herbalism': {
+                    'def': "<b>Kräuterkunde</b> ist eine Fähigkeit in McMMO, die die Fähigkeit regelt, Pflanzen und Nutzpflanzen zu ernten, mit Ausnahme von Bäumen und anderen eher strukturellen Vorkommen von Pflanzen. Es erfordert mehrere Werkzeuge, um seine Fähigkeiten voll auszuschöpfen.",
+                    'levels' : [
+                        [0, 'Grüner Daumen'],
+                        [0, 'Pilz-Daumen'],
+                        [0, 'Hylian Glück'],
+                        [0, 'Doppeldrops'],
+                        [50, 'Grünes Land'],
+                        [200, "Bauernfrühstück"],
+                    ]
+                },
+                'mining':{
+                    'def': "<b>Bergbau</b> ist eine Fertigkeit, die sich auf den Abbau von Stein und Erz konzentriert. Ein bemerkenswerter Vorteil dieser Fertigkeit ist der höhere potenzielle Ertrag aus jedem Erz, der bei Verwendung einer aktiven Fertigkeit noch weiter erhöht wird.",
+                    'levels' : [
+                        [0, 'Doppeldrops'],
+                        [50, 'Superbrecher'],
+                        [125, 'Zündstoff'],
+                        [375, 'Sprengmeister'],
+                        [500, 'Explosions-Experte']
+                    ]
+                },
+                'acrobatics': {
+                    'def': "<b>Akrobatik</b> ist eine Fertigkeit, die Anmutige Rolle sowie Kampfschadensverneinung mit der Passivn Fertigkeit \"Ausweichen\" ermöglicht."
+                }
+            }
+        },
+        'offline': {
+            'rule': 'Offline - überprüfe deine Internetverbindung und versuche es erneut.',
+            'email': 'Melde ein Problem via _EMAIL_'
+        },
+        'labels_user': {
+            'best_player_of_server': {'label' : 'Bester Spieler des Servers', 'method': 'max', 'infos': 'total'},
+            'worst_player_of_server': {'label': 'Schlechtester Spieler des Servers', 'method': 'min', 'infos': 'total'},
+            'last_co_in_server': {'label': 'Harter Gamer', 'method': 'max', 'infos': 'last_connection'},
+            'ten_years_ago_co_in_server': {'label': 'Professioneller Schläfer', 'method': 'min', 'infos': 'last_connection'},
+            'taming' : 'Tierliebhaber',
+            'mining' : "Goldgräber",
+            'woodcutting' : 'Kettensägenmann',
+            'repair' : 'Nichts geht verloren',
+            'unarmed' : 'Knallhart',
+            'herbalism' : 'Gärtner in Vollzeit',
+            'excavation' : 'Hast du etwas verloren?',
+            'archery' : "Scharfschütze",
+            'swords' : 'Hervorragender Kämpfer',
+            'axes' : 'Exotischer Kämpfer',
+            'acrobatics' : "Zirkuskunst",
+            'fishing' : 'AFK',
+            'alchemy' : 'Der Zauberer'
         }
     }
 }

@@ -58,6 +58,7 @@ body .label-1 {
   padding: 0 0.5em;
   background: #40f384;
   border-radius: 5px;
+  white-space: nowrap;
 }
 body .rank-2 {
   border: 1px solid #2dcdb1;
@@ -67,6 +68,7 @@ body .label-2 {
   padding: 0 0.5em;
   background: #2dcdb1;
   border-radius: 5px;
+  white-space: nowrap;
 }
 body .rank-3 {
   border: 1px solid #dede00;
@@ -76,6 +78,7 @@ body .label-3 {
   padding: 0 0.5em;
   background: #dede00;
   border-radius: 5px;
+  white-space: nowrap;
 }
 body .rank-4 {
   border: 1px solid #969696;
@@ -85,6 +88,7 @@ body .label-4 {
   padding: 0 0.5em;
   background: #969696;
   border-radius: 5px;
+  white-space: nowrap;
 }
 body .swal2-container {
   z-index: 99999;

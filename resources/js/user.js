@@ -39,7 +39,7 @@ fLoadServerInfos().then(async infos => {
                     })
                     for (let i = 0; i < bp_name.length; i++) {
                         if(bp_name[i].name === query.toString()){
-                            name =`<span class='label-${i+1}'>${bp_name[i].name}</span>`
+                            name =`<span class='label-${i+1}'>#${i+1} ${bp_name[i].name}</span>`
                             break
                         }else{
                             name = query.toString()
@@ -427,7 +427,7 @@ function setAllAbilities(player){
 
         const ab_title = clone.querySelector('.ab-title')
         ab_title.innerHTML = translation[languageSelect].ab[e]
-        ab_title.setAttribute('data-ab', translation.default.ab[e])
+        ab_title.setAttribute('data-ab', e)
 
         const icon = clone.querySelector('.fa-solid')
         const icon_mdi = clone.querySelector('.mdi')

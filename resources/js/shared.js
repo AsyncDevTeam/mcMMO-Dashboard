@@ -25,7 +25,6 @@ exact_type.length === 0 ? exact_type = 'index' : exact_type
 const loading_bar = document.querySelector('.loading-bar')
 let error_internal_server = false
 
-
 function setToast(type, text, timer){
     let options_toast
     if(timer !== 0){
@@ -56,14 +55,8 @@ function setToast(type, text, timer){
     })
 }
 
-if(translation.user.active === true){
-    languageSelect = 'user'
-    changeLanguage('user')
-}
-else{
-    languageSelect = 'default'
-    changeLanguage('default')
-}
+languageSelect = translation.active
+changeLanguage(translation.active)
 
 darkM.addEventListener('change', (e) => {
     if(e.target.checked){
@@ -147,11 +140,6 @@ function changeLanguage(value){
 
 (function (){
     const class_ = '.'
-    if(translation.user.active === true){
-        languageSelect = 'user'
-    }else{
-        languageSelect = 'default'
-    }
     const tabs = translation[languageSelect].content_page.tabs
     changeLanguageElement(tabs, class_)
 }());
