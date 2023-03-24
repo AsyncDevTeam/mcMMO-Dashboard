@@ -5,12 +5,12 @@
 
 [>>> DEMO WEBSITE HERE <<<](https://project.therenceforot.fr/mcmmo/index.php)
 
-# 📈 mcMMO-Stats-Panel
+# 📈 mcMMO Dashboard
 This project allows you to have an interactive, good looking and effective dashboard for your community to look at their rank and mcMMO statistics from any device.
 
 ## ⚙️ How to install
 1. First, host the website on any machine available in the world. It can be local hosting (a raspberrypi), or remote hosting thanks to international server providers (OVH, Ionos, ...).
-2. Then, edit the file [`config/config.php`](https://github.com/AsyncDevTeam/mcMMO-Stats-Panel/blob/master/config/config.php) to suit your server configuration.
+2. Then, edit the file [`config/config.php`](https://github.com/AsyncDevTeam/mcMMO-Dashboard/blob/master/config/config.php) to suit your server configuration.
 
 You must provide :
 
@@ -27,6 +27,14 @@ You must provide :
 | db_driver   | Driver used for your database           | mysql             |
 
 3. Browse to your website host IP address, enjoy & share to your community!
+
+## ⬆️ How to update
+
+1. Backup all your config files (located in [`config`](https://github.com/AsyncDevTeam/mcMMO-Dashboard/blob/master/config))
+2. Replace all your site files with the new files of the [last update](https://github.com/AsyncDevTeam/mcMMO-Dashboard/releases)
+3. Compare the new config files with your backed up ones
+
+**Note:** Release notes are here to help you understand which config files were updated.
 
 ## ⚠️ Requirements
 
