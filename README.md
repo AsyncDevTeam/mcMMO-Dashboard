@@ -5,7 +5,7 @@
 
 [>>> DEMO WEBSITE HERE <<<](https://project.therenceforot.fr/mcmmo/index.php)
 
-# 📈 mcMMO-Stats-Panel
+# 📈 mcMMO Dashboard
 This project allows you to have an interactive, good looking and effective dashboard for your community to look at their rank and mcMMO statistics from any device.
 
 ## ⚙️ How to install
