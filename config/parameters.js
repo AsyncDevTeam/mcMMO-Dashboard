@@ -21,12 +21,13 @@ const abilities_cap = {
 //Change the translation here, by default English is used, set your own language in translation.user and set translation.user.active to true
 //New translation mode
 const translation = {
-    'active': 'EN',
+    'active': 'FR',
     'EN': {
         'pages_name':{
             'index': 'mcMMO Stats | Home',
             'user': 'mcMMO Stats | _USER_',
             'search-user': 'mcMMO Stats | Search user',
+            'comparison': 'mcMMO Stats | Comparison',
         },
         'access' : ['en-EN', 'en-GB'],
         'ab' : {
@@ -116,7 +117,7 @@ const translation = {
             'tabs': {
                 'tabs-1': 'Home',
                 'tabs-2': 'Find a player',
-                'tabs-3': 'Contact',
+                'tabs-3': 'Comparison',
                 'tabs-dm': 'Dark mode',
             },
             'pages':{
@@ -275,6 +276,7 @@ const translation = {
             'index': 'mcMMO Stats | Accueil',
             'user': 'mcMMO Stats | _USER_',
             'search-user': 'mcMMO Stats | Rechercher un utilisateur',
+            'comparison': 'mcMMO Stats | Comparaison',
         },
         'access' : ['fr-FR'],
         'ab' : {
@@ -364,7 +366,7 @@ const translation = {
             'tabs': {
                 'tabs-1': 'Accueil',
                 'tabs-2': 'Trouver un joueur',
-                'tabs-3': 'Contact',
+                'tabs-3': 'Comparaison',
                 'tabs-dm': 'Mode sombre',
             },
             'pages':{
@@ -523,6 +525,7 @@ const translation = {
             'index': 'mcMMO Stats | Willkommen',
             'user': 'mcMMO Stats | _USER_',
             'search-user': 'mcMMO Stats | Suchen Sie einen Benutzer',
+            'comparison': 'mcMMO Stats | Vergleich',
         },
         'access' : ['de-DE', 'de-DE'],
         'ab' : {
@@ -612,7 +615,7 @@ const translation = {
             'tabs': {
                 'tabs-1': 'Startseite',
                 'tabs-2': 'Spieler finden',
-                'tabs-3': 'Kontakt',
+                'tabs-3': 'Vergleich',
                 'tabs-dm': 'Darkmode',
             },
             'pages':{

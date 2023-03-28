@@ -55,6 +55,7 @@ table{
           display: flex;
           align-items: center;
           gap: 1em;
+          white-space: nowrap;
           img{
             width: 2em;
             border-radius: 2px;

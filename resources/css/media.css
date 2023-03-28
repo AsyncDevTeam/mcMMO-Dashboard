@@ -788,6 +788,10 @@ body main .wrapper .content li:not(.paginate_button):not([data-dtr-index]).opaci
 body main .sidebar-menu .content li:not(.paginate_button):not([data-dtr-index]).opacity-20 {
   opacity: 0.2 !important;
 }
+body main .wrapper .content-main,
+body main .sidebar-menu .content-main {
+  width: 100%;
+}
 body main .wrapper .content-main.align-center,
 body main .sidebar-menu .content-main.align-center {
   display: flex;
@@ -796,18 +800,18 @@ body main .sidebar-menu .content-main.align-center {
   align-content: center;
 }
 body main .wrapper .content-main.align-center .legal-content,
-body main .wrapper .content-main.align-center .contact-content,
+body main .wrapper .content-main.align-center .search_p,
 body main .sidebar-menu .content-main.align-center .legal-content,
-body main .sidebar-menu .content-main.align-center .contact-content {
+body main .sidebar-menu .content-main.align-center .search_p {
   display: flex;
   justify-content: center;
   align-items: center;
   align-content: center;
   flex-direction: column;
-  width: 60%;
+  width: 100%;
   align-items: flex-start;
   gap: 1em;
-  margin: 1em;
+  margin: 1em !important;
   border-radius: 5px;
   text-align: justify;
   background: var(--background);
@@ -816,22 +820,22 @@ body main .sidebar-menu .content-main.align-center .contact-content {
 body main .wrapper .content-main.align-center .legal-content .title,
 body main .wrapper .content-main.align-center .legal-content .subtitle,
 body main .wrapper .content-main.align-center .legal-content input::placeholder,
-body main .wrapper .content-main.align-center .contact-content .title,
-body main .wrapper .content-main.align-center .contact-content .subtitle,
-body main .wrapper .content-main.align-center .contact-content input::placeholder,
+body main .wrapper .content-main.align-center .search_p .title,
+body main .wrapper .content-main.align-center .search_p .subtitle,
+body main .wrapper .content-main.align-center .search_p input::placeholder,
 body main .sidebar-menu .content-main.align-center .legal-content .title,
 body main .sidebar-menu .content-main.align-center .legal-content .subtitle,
 body main .sidebar-menu .content-main.align-center .legal-content input::placeholder,
-body main .sidebar-menu .content-main.align-center .contact-content .title,
-body main .sidebar-menu .content-main.align-center .contact-content .subtitle,
-body main .sidebar-menu .content-main.align-center .contact-content input::placeholder {
+body main .sidebar-menu .content-main.align-center .search_p .title,
+body main .sidebar-menu .content-main.align-center .search_p .subtitle,
+body main .sidebar-menu .content-main.align-center .search_p input::placeholder {
   color: var(--b);
 }
 @media screen and (max-width: 1000px) {
   body main .wrapper .content-main.align-center .legal-content,
-body main .wrapper .content-main.align-center .contact-content,
+body main .wrapper .content-main.align-center .search_p,
 body main .sidebar-menu .content-main.align-center .legal-content,
-body main .sidebar-menu .content-main.align-center .contact-content {
+body main .sidebar-menu .content-main.align-center .search_p {
     width: 100%;
   }
 }
@@ -1756,10 +1760,6 @@ body main .wrapper .content li {
 body main .wrapper .content li .chart-container {
     max-width: var(--width-table-1000) !important;
   }
-}
-body main .wrapper.pages .content,
-body main .wrapper.pages .content-main {
-  width: 100% !important;
 }
 body main .wrapper.pages .content .searchBar_user,
 body main .wrapper.pages .content-main .searchBar_user {

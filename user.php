@@ -8,8 +8,6 @@ session_start();
     <?php require "resources/php/includes/head.php" ?>
     <!-- chartjs -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-    <!-- materialize -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
     <!-- script of the page -->
     <script src="resources/js/main.js" defer></script>
     <script src="resources/js/user.js" defer></script>
@@ -71,7 +69,7 @@ session_start();
                                    name="filter_section" data-section_click="user-info">
                             <label class="radio-label btn-main" for="info_user_radio">
                                 <i class="fa-solid fa-user"></i>
-                                <span class="sc-b-1">Player infos</span>
+                                <span class="sc-b-1"></span>
                             </label>
                             <input class="select-radio-section"
                                    type="radio"
@@ -79,7 +77,7 @@ session_start();
                                    name="filter_section" data-section_click="abi-lvl">
                             <label class="radio-label btn-main" for="abilities_level">
                                 <i class="fa-solid fa-lightbulb"></i>
-                                <span class="sc-b-2">Abilities Level</span>
+                                <span class="sc-b-2"></span>
                             </label>
                             <input class="select-radio-section"
                                    type="radio"
@@ -87,7 +85,7 @@ session_start();
                                    name="filter_section" data-section_click="abi-lvl-chart">
                             <label class="radio-label btn-main" for="abilities_level_chart">
                                 <i class="fa-solid fa-chart-simple"></i>
-                                <span class="sc-b-3">Chart</span>
+                                <span class="sc-b-3"></span>
                             </label>
                             <input class="select-radio-section"
                                    type="radio"
@@ -95,7 +93,7 @@ session_start();
                                    name="filter_section" data-section_click="abi-lvl-chart-compare">
                             <label class="radio-label btn-main" for="abilities_level_chart_com">
                                 <i class="fa-solid fa-chart-line"></i>
-                                <span class="sc-b-4">Comparison Chart</span>
+                                <span class="sc-b-4"></span>
                             </label>
                             <hr class="backToTop">
                             <input class="select-radio-section"
@@ -104,7 +102,7 @@ session_start();
                                    name="filter_section" data-section_click="backToTop">
                             <label class="radio-label btn-main backToTop" for="backToTop">
                                 <i class="fa-solid fa-arrow-up"></i>
-                                <span class="sc-b-999">Back to top</span>
+                                <span class="sc-b-999"></span>
                             </label>
                         </div>
                     </div>
@@ -285,7 +283,7 @@ session_start();
                                    name="filter_section" data-section_click="user-info">
                             <label class="radio-label btn-main" for="info_user_radio_ham">
                                 <i class="fa-solid fa-user"></i>
-                                <span class="sc-b-1">Player infos</span>
+                                <span class="sc-b-1"></span>
                             </label>
                             <input class="select-radio-section"
                                    type="radio"
@@ -293,7 +291,7 @@ session_start();
                                    name="filter_section" data-section_click="abi-lvl">
                             <label class="radio-label btn-main" for="abilities_level_ham">
                                 <i class="fa-solid fa-lightbulb"></i>
-                                <span class="sc-b-2">Abilities Level</span>
+                                <span class="sc-b-2"></span>
                             </label>
                             <input class="select-radio-section"
                                    type="radio"
@@ -301,7 +299,15 @@ session_start();
                                    name="filter_section" data-section_click="abi-lvl-chart">
                             <label class="radio-label btn-main" for="abilities_level_chart_ham">
                                 <i class="fa-solid fa-chart-simple"></i>
-                                <span class="sc-b-3">Chart</span>
+                                <span class="sc-b-3"></span>
+                            </label>
+                            <input class="select-radio-section"
+                                   type="radio"
+                                   id="abilities_level_chart_com_ham"
+                                   name="filter_section" data-section_click="abi-lvl-chart-compare">
+                            <label class="radio-label btn-main" for="abilities_level_chart_com_ham">
+                                <i class="fa-solid fa-chart-line"></i>
+                                <span class="sc-b-4"></span>
                             </label>
                             <hr class="backToTop">
                             <input class="select-radio-section"
@@ -310,7 +316,7 @@ session_start();
                                    name="filter_section" data-section_click="backToTop">
                             <label class="radio-label btn-main backToTop" for="backToTop_ham">
                                 <i class="fa-solid fa-arrow-up"></i>
-                                <span class="sc-b-4">Back to top</span>
+                                <span class="sc-b-999"></span>
                             </label>
                         </div>
                     </div>

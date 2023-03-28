@@ -19,6 +19,10 @@
             <i class="fa-solid fa-user"></i>
             <span class="tabs-2"></span>
         </a>
+        <a href="comparison.php">
+            <i class="fa-solid fa-table-columns"></i>
+            <span class="tabs-3"></span>
+        </a>
         <label for="darkMode-input">
             <input type="checkbox" id="darkMode-input">
             <i class="fa-solid fa-circle-half-stroke"></i>

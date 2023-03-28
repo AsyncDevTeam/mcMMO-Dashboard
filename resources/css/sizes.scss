@@ -28,15 +28,15 @@ body{
       }
     }
     .content{
+      @media screen and (min-width: 1800px) {width: var(--size-content-wide-screen) !important}
       &.index-page{
-        width: calc(var(--width-window) - var(--width-aside) - 1em); //1em padding
+        width: calc(var(--width-window) - var(--width-aside));
         li:not(.paginate_button){margin: 1em!important;}
         @media screen and (max-width: 1300px) {width: 100% !important;}
         @media screen and (max-width: 1000px) {
           width: 100%!important;
           margin: 0!important;
         }
-        @media screen and (min-width: 1800px) {width: var(--size-content-wide-screen)}
 
         .wrapper-pie{
           @media screen and (min-width: 1800px){
@@ -61,11 +61,13 @@ body{
         width: calc(100% - 2em) !important;
       }
     }
+    .content-main{
+      @media screen and (min-width: 1800px) {width: var(--size-content-wide-screen) !important}
+    }
     .content-main:not(.sp){
       max-width: calc(var(--width-window) - var(--width-aside));
       width: 100%;
       padding:1em;
-
       .user-infos{
         @media screen and (max-width: 1000px){
           width: 100%;
@@ -93,11 +95,11 @@ body{
     }
     .sp{
       @media screen and (min-width: 1800px) {
-        .contact-content{
+        .search_p{
           width: 100%!important;
           margin: 1em 0!important;
         }
-        padding: 0 calc((var(--width-window) - var(--sum))/2 + 1em) !important
+        //padding: 0 calc((var(--width-window) - var(--sum))/2 + 1em) !important
       }
       @media screen and (max-width: 750px){
         .searchBar_user{flex-direction: column!important;}

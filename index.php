@@ -6,8 +6,6 @@ session_start();
 <head>
     <!-- header base -->
     <?php require "resources/php/includes/head.php" ?>
-    <!-- materialize -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
     <!-- chartjs -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
     <!-- script of the project -->
@@ -26,7 +24,6 @@ session_start();
 <!-- header include-->
 <?php require "resources/php/includes/header.php" ?>
 <main>
-    <img src="" alt="">
     <label for="no-display-input">
         <input type="text" class="copyToClipboard hidden" value="" id="no-display-input">
     </label>
@@ -81,7 +78,7 @@ session_start();
                                    name="filter_section" data-section_click="ld-main">
                             <label class="radio-label btn-main" for="leaderboard_radio">
                                 <i class="fa-solid fa-user-group"></i>
-                                <span class="sc-b-1">Leaderboard</span>
+                                <span class="sc-b-1"></span>
                             </label>
                             <input class="select-radio-section by_abilities_radio_ham"
                                    type="radio"
@@ -89,7 +86,7 @@ session_start();
                                    name="filter_section" data-section_click="abi">
                             <label class="radio-label btn-main" for="by_abilities_radio">
                                 <i class="fa-solid fa-lightbulb"></i>
-                                <span class="sc-b-2">By abilities</span>
+                                <span class="sc-b-2"></span>
                             </label>
                             <input class="select-radio-section by_abilities_radio_ham"
                                    type="radio"
@@ -97,7 +94,7 @@ session_start();
                                    name="filter_section" data-section_click="abi-pie">
                             <label class="radio-label btn-main" for="by_abilities_radio_pie">
                                 <i class="fa-solid fa-chart-pie"></i>
-                                <span class="sc-b-3">Best cumulative abilities</span>
+                                <span class="sc-b-3"></span>
                             </label>
                             <hr class="backToTop">
                             <input class="select-radio-section backToTop_ham"
@@ -106,7 +103,7 @@ session_start();
                                    name="filter_section" data-section_click="backToTop">
                             <label class="radio-label btn-main backToTop" for="backToTop">
                                 <i class="fa-solid fa-arrow-up"></i>
-                                <span class="sc-b-999">Back to top</span>
+                                <span class="sc-b-999"></span>
                             </label>
                         </div>
                     </div>
@@ -248,7 +245,7 @@ session_start();
             <ul class="collapsible">
                 <li class="active">
                     <div class="collapsible-header" data-c="aside">
-                        <p class="sc-h-1">Server information's</p>
+                        <p class="sc-h-1"></p>
                         <i class="fa-solid fa-chevron-right rotate"></i>
                     </div>
                     <div class="collapsible-body stats-server">
@@ -273,7 +270,7 @@ session_start();
                 </li>
                 <li class="active">
                     <div class="collapsible-header" data-c="aside">
-                        <p class="sc-h-2">Shortcuts</p>
+                        <p class="sc-h-2"></p>
                         <i class="fa-solid fa-chevron-right rotate"></i>
                     </div>
                     <div class="collapsible-body">
@@ -284,7 +281,7 @@ session_start();
                                    name="filter_section" data-section_click="ld-main">
                             <label class="radio-label btn-main" for="leaderboard_radio_ham">
                                 <i class="fa-solid fa-user-group"></i>
-                                <span class="sc-b-1">Leaderboard</span>
+                                <span class="sc-b-1"></span>
                             </label>
                             <input class="select-radio-section"
                                    type="radio"
@@ -292,7 +289,7 @@ session_start();
                                    name="filter_section" data-section_click="abi">
                             <label class="radio-label btn-main" for="by_abilities_radio_ham">
                                 <i class="fa-solid fa-lightbulb"></i>
-                                <span class="sc-b-2">By abilities</span>
+                                <span class="sc-b-2"></span>
                             </label>
                             <input class="select-radio-section by_abilities_radio_ham"
                                    type="radio"
@@ -300,7 +297,7 @@ session_start();
                                    name="filter_section" data-section_click="abi-pie">
                             <label class="radio-label btn-main" for="by_abilities_radio_pie_ham">
                                 <i class="fa-solid fa-chart-pie"></i>
-                                <span class="sc-b-3">Best cumulative abilities</span>
+                                <span class="sc-b-3"></span>
                             </label>
                             <hr class="backToTop">
                             <input class="select-radio-section"
@@ -309,7 +306,7 @@ session_start();
                                    name="filter_section" data-section_click="backToTop">
                             <label class="radio-label btn-main backToTop" for="backToTop_ham">
                                 <i class="fa-solid fa-arrow-up"></i>
-                                <span class="sc-b-999">Back to top</span>
+                                <span class="sc-b-999"></span>
                             </label>
                         </div>
                     </div>

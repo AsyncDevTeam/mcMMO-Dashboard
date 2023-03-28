@@ -24,6 +24,29 @@ let exact_type = window.location.pathname.split("/").at(-1).split('.')[0]
 exact_type.length === 0 ? exact_type = 'index' : exact_type
 const loading_bar = document.querySelector('.loading-bar')
 let error_internal_server = false
+window.onload = function (){
+    const elems = document.querySelectorAll('.collapsible');
+    M.Collapsible.init(elems, options_collapsible);
+    iconModifier(elems)
+}
+
+copyToClipboardAction.forEach(e => {
+    e.addEventListener('click', function () {
+        e.classList.add('clicked')
+        navigator.clipboard.writeText(copyToClipboard.value).then(
+            () => {
+                setToast('success', translation[languageSelect].content_page.toast.IP_success, 5000)
+            },
+            () => {
+                setToast('success', translation[languageSelect].content_page.toast.IP_error, 5000)
+            }
+        )
+
+        setTimeout(function () {
+            e.classList.remove('clicked')
+        }, 1000)
+    })
+})
 
 function setToast(type, text, timer){
     let options_toast
@@ -53,6 +76,66 @@ function setToast(type, text, timer){
         icon: type,
         title: text,
     })
+}
+
+function openSidebar(element) {
+    if (!isBrowserOnline) return
+    const sidebar = document.querySelector('.sidebar-menu')
+    const icon = document.querySelector('.icon-hamburger')
+    const main = document.querySelector('main')
+    const wrapper = document.querySelector('.wrapper')
+    sidebar.classList.toggle('open')
+    main.classList.toggle('sidebar-open')
+    wrapper.classList.toggle('sidebar-open-effect')
+    const width = window.getComputedStyle(element).width
+
+    if(wrapper.classList.contains('sidebar-open-effect')){
+        icon.classList.replace('fa-bars', 'fa-times')
+        element.style.width = width
+    }else{
+        icon.classList.replace('fa-times', 'fa-bars')
+    }
+}
+
+function setServerStats(infos) {
+    const hostname = infos.hostname
+    const icon = infos.icon
+    const max_players = infos.max_players
+    const minecraft_version = infos.minecraft_version
+    const online_players = infos.online_players
+
+    if (max_players !== -1) {
+        server_player.forEach(e => {
+            e.innerHTML = online_players
+        })
+        max_players_a.forEach(e => {
+            e.innerHTML = max_players
+        })
+    } else {
+        server_player.forEach(e => {
+            e.innerHTML = "0"
+        })
+        max_players_a.forEach(e => {
+            e.innerHTML = "0"
+        })
+    }
+
+    server_ip.forEach(e => {
+        e.innerHTML = hostname
+    })
+    version.forEach(e => {
+        const regex = /§(\d)([^§]+)/g;
+        e.innerHTML = minecraft_version.replace(regex, '<span class="c-$1">$2</span>')
+    })
+    server_logo.src = icon
+    let link = document.querySelector("link[rel~='icon']");
+    if (!link) {
+        link = document.createElement('link');
+        link.rel = 'icon';
+        document.head.appendChild(link);
+    }
+    link.href = icon
+    copyToClipboard.value = hostname
 }
 
 languageSelect = translation.active
@@ -92,6 +175,7 @@ function changeLanguage(value){
 
     const sc_name_h = translation[value].content_page.aside.header
     const search = translation[value].content_page.search
+    const pages = translation[value].content_page.pages[exact_type]
     const select = translation[value].content_page.select
     const quickView = translation[value].content_page.quickView
     const buttons = translation[value].content_page.buttons
@@ -103,12 +187,13 @@ function changeLanguage(value){
 
     changeLanguageElement(search, class_, true)
     changeLanguageElement(search, class_)
+    changeLanguageElement(pages, class_)
 
     changeLanguageElement(select, class_)
     changeLanguageElement(quickView, class_)
     changeLanguageElement(buttons, class_)
 
-    if(!['user', 'search-user'].includes(type)){setTable(ab)}
+    if(!['user', 'search-user', 'comparison'].includes(type)){setTable(ab)}
 
     function setTable(ab){
         const row_table_def = document.querySelectorAll('.row_table_def')
@@ -208,6 +293,7 @@ const fLoadTopLeaderboard = async() => {
         };
     }
 }
+
 const fLoadLeaderboard = async() => {
     try {
         const response = await fetch(requestLeaderboard, {

@@ -21,41 +21,16 @@ session_start();
     </script>
 </head>
 <body>
-<header>
-    <div class="main pages">
-        <a id="website-title" href="index.php">mcMMO Stats</a>
-        <a href="index.php">
-            <img src="resources/others/textures/defaultLogo/def.webp" alt="Logo of server running the website"
-                 id="server-logo">
-        </a>
-    </div>
-    <div class="tabs_header">
-        <a href="index.php">
-            <i class="fa-solid fa-house"></i>
-            <span class="tabs-1"></span>
-        </a>
-        <a href="search-user.php">
-            <i class="fa-solid fa-user"></i>
-            <span class="tabs-2"></span>
-        </a>
-
-        <label for="darkMode-input">
-            <input type="checkbox" id="darkMode-input">
-            <i class="fa-solid fa-circle-half-stroke"></i>
-            <span class="tabs-dm"></span>
-        </label>
-    </div>
-    <div class="loading-bar">
-        <div class="container">
-            <span class="loader"></span>
-            <span class="loader"></span>
-        </div>
-    </div>
-</header>
+<!-- header include-->
+<?php require "resources/php/includes/header.php" ?>
 <main>
+    <label for="no-display-input">
+        <input type="text" class="copyToClipboard hidden" value="" id="no-display-input">
+    </label>
     <div class="wrapper pages">
+        <?php require "resources/php/includes/aside_min.php" ?>
         <div class="content-main align-center sp">
-            <div class="contact-content">
+            <div class="search_p">
                 <h1 class="title"></h1>
                 <p class="subtitle"></p>
                 <div class="searchBar_user">
@@ -91,6 +66,7 @@ session_start();
         </div>
     </div>
     <?php require "resources/php/includes/footer.php" ?>
+    <?php require "resources/php/includes/aside_min_wide.php" ?>
 </main>
 </body>
 </html>

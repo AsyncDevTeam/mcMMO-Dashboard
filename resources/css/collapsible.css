@@ -15,6 +15,10 @@
 .selected-player li:first-child .collapsible-header {
   border-bottom: 0;
 }
+.collapsible:not(.content) li.al,
+.selected-player li.al {
+  border-radius: 5px !important;
+}
 .collapsible:not(.content) li:last-child,
 .selected-player li:last-child {
   border-radius: 0 0 5px 5px;

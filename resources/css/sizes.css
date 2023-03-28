@@ -38,8 +38,13 @@ body .wrapper aside .background-fixed {
     min-width: 0;
   }
 }
+@media screen and (min-width: 1800px) {
+  body .wrapper .content {
+    width: var(--size-content-wide-screen) !important;
+  }
+}
 body .wrapper .content.index-page {
-  width: calc(var(--width-window) - var(--width-aside) - 1em);
+  width: calc(var(--width-window) - var(--width-aside));
 }
 body .wrapper .content.index-page li:not(.paginate_button) {
   margin: 1em !important;
@@ -53,11 +58,6 @@ body .wrapper .content.index-page li:not(.paginate_button) {
   body .wrapper .content.index-page {
     width: 100% !important;
     margin: 0 !important;
-  }
-}
-@media screen and (min-width: 1800px) {
-  body .wrapper .content.index-page {
-    width: var(--size-content-wide-screen);
   }
 }
 @media screen and (min-width: 1800px) {
@@ -83,6 +83,11 @@ body .wrapper .content.index-page .wrapper-pie .array-infos-ba {
 @media screen and (max-width: 1000px) {
   body .wrapper .content {
     width: calc(100% - 2em) !important;
+  }
+}
+@media screen and (min-width: 1800px) {
+  body .wrapper .content-main {
+    width: var(--size-content-wide-screen) !important;
   }
 }
 body .wrapper .content-main:not(.sp) {
@@ -130,10 +135,7 @@ body .wrapper .content-main:not(.sp) .content li:last-child {
   }
 }
 @media screen and (min-width: 1800px) {
-  body .wrapper .sp {
-    padding: 0 calc((var(--width-window) - var(--sum)) / 2 + 1em) !important;
-  }
-  body .wrapper .sp .contact-content {
+  body .wrapper .sp .search_p {
     width: 100% !important;
     margin: 1em 0 !important;
   }

@@ -541,15 +541,16 @@ body{
       }
 
       .content-main{
+        width: 100%;
         &.align-center{
           @include centerFlex;
           .legal-content,
-          .contact-content{
+          .search_p{
             @include colFlex;
-            width: 60%;
+            width: 100%;
             align-items: flex-start;
             gap: 1em;
-            margin: 1em;
+            margin: 1em!important;
             border-radius: 5px;
             text-align: justify;
             background: var(--background);
@@ -995,7 +996,6 @@ body{
           }
         }
       }
-
       .content{
         width: 100%;
         li{
@@ -1008,11 +1008,10 @@ body{
           }
         }
       }
-
       &.pages{
         .content,
         .content-main{
-          width: 100% !important;
+          //width: 100% !important;
           //margin-top: 10vh;
 
           .searchBar_user{
@@ -1095,7 +1094,6 @@ body{
         }
       }
     }
-
     footer{
       background: var(--w);
       width: 100%;
@@ -1111,7 +1109,6 @@ body{
         color: var(--active-color);
       }
     }
-
     .sidebar-menu {
       opacity: 0;
       width: 100%;

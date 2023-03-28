@@ -14,12 +14,14 @@
 <link rel="stylesheet" href="config/parameters.css">
 <!-- script of the project -->
 <script src="resources/js/shared.js" defer></script>
+<!-- materialize -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
 <!-- icon from fontawesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 <!-- css style of the project -->
 <link rel="stylesheet" href="resources/css/root.css">
 <link rel="stylesheet" href="resources/css/header.css">
-<link rel="stylesheet" href="resources/css/main.css">
+<link rel="stylesheet" href="resources/css/style.css">
 <link rel="stylesheet" href="resources/css/table.css">
 <link rel="stylesheet" href="resources/css/collapsible.css">
 <link rel="stylesheet" href="resources/css/media.css">

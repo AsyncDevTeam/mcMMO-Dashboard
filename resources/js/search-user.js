@@ -13,6 +13,7 @@ fLoadServerInfos().then(async infos => {
             error_internal_server = true;
         }else{
             //Online
+            setServerStats(infos);
             error_internal_server = false;
             let link = document.querySelector("link[rel~='icon']");
             if (!link) {

@@ -1,4 +1,4 @@
-@import 'main';
+@import 'style';
 
 body{
   header{
@@ -37,6 +37,9 @@ body{
         border-radius: 5px;
         color: var(--b);
         &:hover{color: var(--active-color)}
+        @media screen and (min-width: 1800px) {
+          &:first-child{padding-left: 0}
+        }
       }
       label{
         @include rowFlex;

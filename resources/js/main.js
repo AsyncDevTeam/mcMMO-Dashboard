@@ -6,24 +6,6 @@ select_radio_section.forEach(e => {
     })
 })
 
-copyToClipboardAction.forEach(e => {
-    e.addEventListener('click', function () {
-        e.classList.add('clicked')
-        navigator.clipboard.writeText(copyToClipboard.value).then(
-            () => {
-                setToast('success', translation[languageSelect].content_page.toast.IP_success, 5000)
-            },
-            () => {
-                setToast('success', translation[languageSelect].content_page.toast.IP_error, 5000)
-            }
-        )
-
-        setTimeout(function () {
-            e.classList.remove('clicked')
-        }, 1000)
-    })
-})
-
 function changeSection(element) {
     if (element.dataset.section_click === "backToTop")
         window.scroll(0, 0)
@@ -104,22 +86,16 @@ window.onscroll = function () {
 }
 
 let TEST_MODE = false
-window.onload = function () {
-    document.querySelectorAll('.offline-rule')
-        .forEach(e => {
-            e.innerHTML = translation[languageSelect].offline.rule
-        })
+document.querySelectorAll('.offline-rule')
+    .forEach(e => {
+        e.innerHTML = translation[languageSelect].offline.rule
+    })
 
-    const b = getBrowserInfos()
-    if (b.online !== true || TEST_MODE === true) {
-        isBrowserOnline = false
-        const hamburger_menu = document.querySelector('.hamburger-menu')
-        hamburger_menu.classList.add('disable')
-    }
-
-    const elems = document.querySelectorAll('.collapsible');
-    let inst = M.Collapsible.init(elems, options_collapsible);
-    iconModifier(elems)
+const b = getBrowserInfos()
+if (b.online !== true || TEST_MODE === true) {
+    isBrowserOnline = false
+    const hamburger_menu = document.querySelector('.hamburger-menu')
+    hamburger_menu.classList.add('disable')
 }
 
 function stylePageOffline() {
@@ -156,76 +132,10 @@ const fLoadUser = async () => {
         .catch(error => {console.warn(error.message)})
 }
 
-function setServerStats(infos) {
-    const hostname = infos.hostname
-    const icon = infos.icon
-    const max_players = infos.max_players
-    const minecraft_version = infos.minecraft_version
-    const online_players = infos.online_players
-
-    if (max_players !== -1) {
-        anim_circle.forEach(e => {
-            e.classList.remove('off')
-        })
-        server_player.forEach(e => {
-            e.innerHTML = online_players
-        })
-        max_players_a.forEach(e => {
-            e.innerHTML = max_players
-        })
-    } else {
-        anim_circle.forEach(e => {
-            e.classList.add('off')
-        })
-        server_player.forEach(e => {
-            e.innerHTML = "0"
-        })
-        max_players_a.forEach(e => {
-            e.innerHTML = "0"
-        })
-    }
-
-    server_ip.forEach(e => {
-        e.innerHTML = hostname
-    })
-    version.forEach(e => {
-        const regex = /§(\d)([^§]+)/g;
-        e.innerHTML = minecraft_version.replace(regex, '<span class="c-$1">$2</span>')
-    })
-    server_logo.src = icon
-    let link = document.querySelector("link[rel~='icon']");
-    if (!link) {
-        link = document.createElement('link');
-        link.rel = 'icon';
-        document.head.appendChild(link);
-    }
-    link.href = icon
-    copyToClipboard.value = hostname
-}
-
 function createElement(type, classAdd) {
     const el = document.createElement(type)
     el.classList.add(classAdd)
     return el
-}
-
-function openSidebar(element) {
-    if (!isBrowserOnline) return
-    const sidebar = document.querySelector('.sidebar-menu')
-    const icon = document.querySelector('.icon-hamburger')
-    const main = document.querySelector('main')
-    const wrapper = document.querySelector('.wrapper')
-    sidebar.classList.toggle('open')
-    main.classList.toggle('sidebar-open')
-    wrapper.classList.toggle('sidebar-open-effect')
-    const width = window.getComputedStyle(element).width
-
-    if(wrapper.classList.contains('sidebar-open-effect')){
-        icon.classList.replace('fa-bars', 'fa-times')
-        element.style.width = width
-    }else{
-        icon.classList.replace('fa-times', 'fa-bars')
-    }
 }
 
 function sortFunction(a, b) {

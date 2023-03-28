@@ -55,6 +55,7 @@ table tbody tr td:first-child {
   display: flex;
   align-items: center;
   gap: 1em;
+  white-space: nowrap;
 }
 table tbody tr td:first-child img {
   width: 2em;
