@@ -521,6 +521,15 @@ body main .sidebar-menu .content .collapsible-body .overTableLoading {
   background: red;
   z-index: 9999;
 }
+body main .wrapper .content .collapsible-body .chart_select,
+body main .sidebar-menu .content .collapsible-body .chart_select {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: fit-content;
+  margin-left: auto;
+}
 body main .wrapper .content .collapsible-body .chart-container,
 body main .sidebar-menu .content .collapsible-body .chart-container {
   display: flex;
@@ -1216,6 +1225,11 @@ body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-b
 body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best .ab-row .ab-bar-container {
   height: 1vh;
 }
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best {
+  opacity: 0;
+  transition: 0.5s all;
+}
 body main .wrapper .content-main .user-infos .wrapper-content .user-skin,
 body main .sidebar-menu .content-main .user-infos .wrapper-content .user-skin {
   width: 40%;
@@ -1834,6 +1848,8 @@ body main .wrapper.pages .content-main .result-search .user-find {
   border-radius: 5px;
   cursor: pointer;
   z-index: 0;
+  opacity: 0;
+  transition: 0.5s all;
 }
 body main .wrapper.pages .content .result-search .user-find img,
 body main .wrapper.pages .content-main .result-search .user-find img {

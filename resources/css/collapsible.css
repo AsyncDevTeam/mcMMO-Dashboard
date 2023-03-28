@@ -1,3 +1,2001 @@
+body {
+  font-family: "Noto Sans Mende Kikakui", sans-serif;
+  background: var(--w);
+}
+body .c-1 {
+  color: #000;
+}
+body .c-2 {
+  color: #00A;
+}
+body .c-3 {
+  color: #0A0;
+}
+body .c-4 {
+  color: #0AA;
+}
+body .c-5 {
+  color: #A00;
+}
+body .c-6 {
+  color: #A0A;
+}
+body .c-7 {
+  color: #FA0;
+}
+body .c-8 {
+  color: #AAA;
+}
+body .c-9 {
+  color: #555;
+}
+body .c-10 {
+  color: #55F;
+}
+body .c-11 {
+  color: #5F5;
+}
+body .c-12 {
+  color: #5FF;
+}
+body .c-13 {
+  color: #F55;
+}
+body .c-14 {
+  color: #F5F;
+}
+body .c-15 {
+  color: #FF5;
+}
+body .c-16 {
+  color: #FFF;
+}
+body .rank-1 {
+  border: 1px solid #40f384;
+  color: var(--color);
+}
+body .label-1 {
+  padding: 0 0.5em;
+  background: #40f384;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+body .rank-2 {
+  border: 1px solid #2dcdb1;
+  color: var(--color);
+}
+body .label-2 {
+  padding: 0 0.5em;
+  background: #2dcdb1;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+body .rank-3 {
+  border: 1px solid #dede00;
+  color: var(--color);
+}
+body .label-3 {
+  padding: 0 0.5em;
+  background: #dede00;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+body .rank-4 {
+  border: 1px solid #969696;
+  color: var(--color);
+}
+body .label-4 {
+  padding: 0 0.5em;
+  background: #969696;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+body .swal2-container {
+  z-index: 99999;
+}
+body .right-align {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  gap: 1em;
+}
+body .right-align .searchBarWrapper {
+  display: flex;
+  background: var(--w);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  box-shadow: none;
+}
+body .right-align .searchBarWrapper button {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+body .right-align .searchBarWrapper .player_research {
+  border: none;
+  box-shadow: none;
+  cursor: text !important;
+}
+body .right-align .searchBarWrapper .player_research:hover {
+  background: none;
+}
+body .right-align .searchBarWrapper input::placeholder {
+  color: var(--b);
+}
+body .right-align button {
+  width: fit-content;
+}
+body main {
+  width: 100%;
+  min-height: var(--height-window);
+  position: absolute;
+  top: 0;
+  padding-top: var(--height-topbar);
+  overflow-x: clip;
+  transition: margin-left 0.5s;
+  background: linear-gradient(135deg, var(--grad1) 0%, var(--grad2) 100%) fixed !important;
+  box-shadow: none !important;
+}
+@media screen and (max-width: 750px) {
+  body main {
+    padding-top: 20vh;
+  }
+}
+body main .no-connection {
+  padding: 2em;
+  border-radius: 5px;
+  margin: 1em 1em 0;
+  background: var(--w);
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1em;
+  position: fixed;
+  z-index: 999;
+}
+body main .no-connection i {
+  font-size: 2em;
+}
+body main .no-connection .row {
+  width: 100%;
+  padding: 1em;
+  background: #e9e9e9;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 1em;
+}
+body main .wrapper,
+body main .sidebar-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-height: calc(var(--height-window) - var(--height-topbar) - var(--height-footerbar));
+  transition: all 0.5s;
+}
+body main .wrapper.no_co,
+body main .sidebar-menu.no_co {
+  opacity: 0.2;
+}
+@media screen and (max-width: 1300px) {
+  body main .wrapper.sidebar-open-effect,
+body main .sidebar-menu.sidebar-open-effect {
+    transform: translate(var(--width-aside-1000), 0);
+    opacity: 1;
+  }
+}
+@media screen and (max-width: 750px) {
+  body main .wrapper,
+body main .sidebar-menu {
+    flex-direction: column;
+  }
+  body main .wrapper.sidebar-open-effect,
+body main .sidebar-menu.sidebar-open-effect {
+    transform: translate(100%, 0);
+    opacity: 0;
+  }
+}
+body main .wrapper aside,
+body main .sidebar-menu aside {
+  position: sticky;
+  top: var(--height-topbar);
+  padding: 1em;
+  z-index: 10;
+  background: none !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: calc(100vh - var(--height-topbar));
+  overflow-y: auto;
+}
+body main .wrapper aside .background-fixed,
+body main .sidebar-menu aside .background-fixed {
+  position: fixed;
+  background: var(--background-op);
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: -1;
+}
+body main .wrapper aside .selected-player,
+body main .sidebar-menu aside .selected-player {
+  --borderR: 5px;
+  display: none;
+  flex-direction: column;
+  margin-top: 1em;
+  position: relative;
+  background: var(--background-op);
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  border-radius: var(--borderR);
+  border: 1px solid rgba(27, 31, 35, 0.15);
+}
+body main .wrapper aside .selected-player.show,
+body main .sidebar-menu aside .selected-player.show {
+  display: flex;
+  flex-direction: column;
+}
+body main .wrapper aside .selected-player.show .row-n,
+body main .sidebar-menu aside .selected-player.show .row-n {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+}
+body main .wrapper aside .selected-player.show .row-n p,
+body main .sidebar-menu aside .selected-player.show .row-n p {
+  color: var(--b);
+}
+body main .wrapper aside .selected-player.show .row-n .selected-player-name,
+body main .sidebar-menu aside .selected-player.show .row-n .selected-player-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  gap: 0.5em;
+}
+body main .wrapper aside .selected-player.show .row-n .selected-player-name img,
+body main .sidebar-menu aside .selected-player.show .row-n .selected-player-name img {
+  width: 20px;
+  border-radius: 2px;
+}
+body main .wrapper aside .selected-player.show .row-n .selected-player-name .ranked,
+body main .sidebar-menu aside .selected-player.show .row-n .selected-player-name .ranked {
+  color: red;
+}
+body main .wrapper aside .selected-player.show .seeSkill,
+body main .sidebar-menu aside .selected-player.show .seeSkill {
+  place-content: center;
+}
+body main .wrapper aside .selected-player .collapsible-header,
+body main .sidebar-menu aside .selected-player .collapsible-header {
+  background: var(--btn-main-bg);
+  border: 0;
+  border-bottom: 1px solid rgba(27, 31, 35, 0.15);
+  box-shadow: none;
+  border-radius: var(--borderR) var(--borderR) 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: default !important;
+  padding-bottom: 1em;
+  color: var(--b);
+}
+body main .wrapper aside .selected-player .collapsible-header *:not(span):not(i),
+body main .sidebar-menu aside .selected-player .collapsible-header *:not(span):not(i) {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+body main .wrapper aside .selected-player .collapsible-header .icon,
+body main .sidebar-menu aside .selected-player .collapsible-header .icon {
+  border-radius: var(--max-br);
+  width: 2em;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body main .wrapper aside .selected-player .collapsible-header .icon i,
+body main .sidebar-menu aside .selected-player .collapsible-header .icon i {
+  color: var(--b);
+}
+body main .wrapper aside .selected-player .collapsible-body,
+body main .sidebar-menu aside .selected-player .collapsible-body {
+  border-radius: 0 0 var(--borderR) var(--borderR);
+  background: none;
+  border: 0;
+  box-shadow: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  gap: 0.5em;
+  cursor: default !important;
+  color: var(--b);
+}
+body main .wrapper aside .selected-player .collapsible-body *:not(span),
+body main .sidebar-menu aside .selected-player .collapsible-body *:not(span) {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+body main .wrapper aside .selected-player .collapsible-body .flexCol,
+body main .sidebar-menu aside .selected-player .collapsible-body .flexCol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+}
+body main .wrapper aside .selected-player .collapsible-body .btn-main,
+body main .sidebar-menu aside .selected-player .collapsible-body .btn-main {
+  background: var(--active-color);
+  color: var(--w);
+}
+body main .wrapper aside .collapsible-body,
+body main .sidebar-menu aside .collapsible-body {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5em;
+  --padding-left:.5em;
+  --margin-left:1.5em;
+}
+body main .wrapper aside .collapsible-body .size,
+body main .sidebar-menu aside .collapsible-body .size {
+  width: calc(var(--margin-left) + var(--padding-left));
+}
+body main .wrapper aside .collapsible-body .copyToClipboardAction,
+body main .sidebar-menu aside .collapsible-body .copyToClipboardAction {
+  cursor: pointer;
+  position: relative;
+  width: fit-content;
+}
+body main .wrapper aside .collapsible-body .copyToClipboardAction .anim-circle,
+body main .sidebar-menu aside .collapsible-body .copyToClipboardAction .anim-circle {
+  height: 10px;
+  width: 10px;
+  top: 50%;
+  left: -1em;
+  transform: translate(-50%, -50%);
+  color: transparent;
+  position: absolute;
+  border-radius: var(--max-br);
+  background: rgba(73, 241, 94, 0.89);
+  animation: breathe 2s linear infinite alternate;
+}
+body main .wrapper aside .collapsible-body .copyToClipboardAction .anim-circle.off,
+body main .sidebar-menu aside .collapsible-body .copyToClipboardAction .anim-circle.off {
+  background: rgba(241, 73, 112, 0.89);
+  animation: breathe_off 2s linear infinite alternate;
+}
+@keyframes breathe {
+  0% {
+    box-shadow: 0 0 0 6px rgba(55, 156, 69, 0.64);
+  }
+}
+@keyframes breathe_off {
+  0% {
+    box-shadow: 0 0 0 6px rgba(180, 56, 101, 0.64);
+  }
+}
+body main .wrapper aside .collapsible-body .copyToClipboardAction.clicked,
+body main .sidebar-menu aside .collapsible-body .copyToClipboardAction.clicked {
+  background: var(--background-op);
+  border-radius: 5px;
+}
+body main .wrapper aside .collapsible-body .nb_players,
+body main .sidebar-menu aside .collapsible-body .nb_players {
+  margin: 1em 0;
+}
+body main .wrapper aside .collapsible-body p i,
+body main .sidebar-menu aside .collapsible-body p i {
+  width: 2em;
+}
+body main .wrapper aside .collapsible-body input:disabled + label[for=abilities_level_chart_com],
+body main .sidebar-menu aside .collapsible-body input:disabled + label[for=abilities_level_chart_com] {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+body main .wrapper aside .collapsible-body hr,
+body main .sidebar-menu aside .collapsible-body hr {
+  background: var(--background-op);
+  border: 1px solid var(--background-op);
+  border-radius: var(--max-br);
+}
+body main .wrapper aside .fa-copy,
+body main .sidebar-menu aside .fa-copy {
+  color: var(--active-color);
+}
+body main .wrapper aside .header-shortcut,
+body main .sidebar-menu aside .header-shortcut {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  gap: 1em;
+  margin-top: 1em;
+}
+body main .wrapper aside .header-shortcut button,
+body main .sidebar-menu aside .header-shortcut button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  aspect-ratio: 1;
+}
+body main .wrapper aside .header-shortcut button i,
+body main .sidebar-menu aside .header-shortcut button i {
+  transition: all 0.5s;
+}
+@media screen and (max-width: 1300px) {
+  body main .wrapper aside,
+body main .sidebar-menu aside {
+    position: relative;
+    top: 0;
+    width: 100%;
+  }
+}
+body main .wrapper .content,
+body main .sidebar-menu .content {
+  list-style: none;
+}
+body main .wrapper .content .collapsible-header,
+body main .sidebar-menu .content .collapsible-header {
+  cursor: pointer;
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+body main .wrapper .content .collapsible-header .title-section,
+body main .sidebar-menu .content .collapsible-header .title-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+body main .wrapper .content .collapsible-header .title-section i,
+body main .sidebar-menu .content .collapsible-header .title-section i {
+  font-size: 20px;
+}
+body main .wrapper .content .collapsible-header #last_refresh_bp,
+body main .sidebar-menu .content .collapsible-header #last_refresh_bp {
+  white-space: nowrap;
+}
+body main .wrapper .content .collapsible-header i,
+body main .sidebar-menu .content .collapsible-header i {
+  rotate: 0;
+  transition: rotate 0.2s;
+}
+body main .wrapper .content .collapsible-header i.rotate,
+body main .sidebar-menu .content .collapsible-header i.rotate {
+  rotate: 90deg !important;
+}
+body main .wrapper .content .collapsible-body,
+body main .sidebar-menu .content .collapsible-body {
+  display: none;
+  padding: 1em;
+  overflow-x: hidden;
+  position: relative;
+  max-width: initial;
+}
+body main .wrapper .content .collapsible-body .overTableLoading,
+body main .sidebar-menu .content .collapsible-body .overTableLoading {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: red;
+  z-index: 9999;
+}
+body main .wrapper .content .collapsible-body .chart_select,
+body main .sidebar-menu .content .collapsible-body .chart_select {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: fit-content;
+  margin-left: auto;
+}
+body main .wrapper .content .collapsible-body .chart-container,
+body main .sidebar-menu .content .collapsible-body .chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  position: relative;
+  height: 60vh;
+  width: 100%;
+  background: var(--background-op);
+  padding: 1em;
+  border-radius: 10px;
+}
+body main .wrapper .content .collapsible-body .chart-container.pie,
+body main .sidebar-menu .content .collapsible-body .chart-container.pie {
+  display: flex;
+  gap: 1em;
+}
+@media screen and (min-width: 1800px) {
+  body main .wrapper .content .collapsible-body .chart-container.pie,
+body main .sidebar-menu .content .collapsible-body .chart-container.pie {
+    height: 40vh;
+  }
+}
+@media screen and (min-width: 1800px) {
+  body main .wrapper .content .collapsible-body .chart-container,
+body main .sidebar-menu .content .collapsible-body .chart-container {
+    height: 30vh;
+  }
+}
+@media screen and (max-width: 1000px) {
+  body main .wrapper .content .collapsible-body .chart-container,
+body main .sidebar-menu .content .collapsible-body .chart-container {
+    max-width: var(--width-li-1000);
+  }
+}
+body main .wrapper .content .collapsible-body .chart-container_select,
+body main .sidebar-menu .content .collapsible-body .chart-container_select {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  float: none;
+  margin: 1em 0;
+  justify-content: flex-end;
+}
+body main .wrapper .content .collapsible-body .chart-container_select select,
+body main .sidebar-menu .content .collapsible-body .chart-container_select select {
+  width: fit-content;
+}
+body main .wrapper .content .collapsible-body .wrapper-pie,
+body main .sidebar-menu .content .collapsible-body .wrapper-pie {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+}
+body main .wrapper .content .collapsible-body .wrapper-pie .chart-container,
+body main .wrapper .content .collapsible-body .wrapper-pie .array-infos-ba,
+body main .sidebar-menu .content .collapsible-body .wrapper-pie .chart-container,
+body main .sidebar-menu .content .collapsible-body .wrapper-pie .array-infos-ba {
+  width: 50%;
+}
+body main .wrapper .content .collapsible-body .wrapper-pie .array-infos-ba,
+body main .sidebar-menu .content .collapsible-body .wrapper-pie .array-infos-ba {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  margin-top: 1em;
+  width: 50%;
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  background: var(--background-op);
+  overflow-x: auto;
+}
+body main .wrapper .content .collapsible-body .wrapper-pie .array-infos-ba .row-table,
+body main .wrapper .content .collapsible-body .wrapper-pie .array-infos-ba .header-table,
+body main .sidebar-menu .content .collapsible-body .wrapper-pie .array-infos-ba .row-table,
+body main .sidebar-menu .content .collapsible-body .wrapper-pie .array-infos-ba .header-table {
+  border-bottom: 1px solid var(--border-color);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+body main .wrapper .content .collapsible-body .wrapper-pie .array-infos-ba .row-table td,
+body main .wrapper .content .collapsible-body .wrapper-pie .array-infos-ba .header-table td,
+body main .sidebar-menu .content .collapsible-body .wrapper-pie .array-infos-ba .row-table td,
+body main .sidebar-menu .content .collapsible-body .wrapper-pie .array-infos-ba .header-table td {
+  text-transform: capitalize;
+  padding: 0.5em;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  gap: 1em;
+}
+body main .wrapper .content .collapsible-body .wrapper-pie .array-infos-ba .row-table td:first-child,
+body main .wrapper .content .collapsible-body .wrapper-pie .array-infos-ba .header-table td:first-child,
+body main .sidebar-menu .content .collapsible-body .wrapper-pie .array-infos-ba .row-table td:first-child,
+body main .sidebar-menu .content .collapsible-body .wrapper-pie .array-infos-ba .header-table td:first-child {
+  width: 20%;
+}
+@media screen and (max-width: 1000px) {
+  body main .wrapper .content .collapsible-body .wrapper-pie .array-infos-ba .row-table td:first-child,
+body main .wrapper .content .collapsible-body .wrapper-pie .array-infos-ba .header-table td:first-child,
+body main .sidebar-menu .content .collapsible-body .wrapper-pie .array-infos-ba .row-table td:first-child,
+body main .sidebar-menu .content .collapsible-body .wrapper-pie .array-infos-ba .header-table td:first-child {
+    width: 25%;
+  }
+}
+body main .wrapper .content .collapsible-body .wrapper-pie .array-infos-ba .row-table td.link-table,
+body main .wrapper .content .collapsible-body .wrapper-pie .array-infos-ba .header-table td.link-table,
+body main .sidebar-menu .content .collapsible-body .wrapper-pie .array-infos-ba .row-table td.link-table,
+body main .sidebar-menu .content .collapsible-body .wrapper-pie .array-infos-ba .header-table td.link-table {
+  text-transform: none;
+  margin-left: auto;
+}
+body main .wrapper .content .collapsible-body .wrapper-pie .array-infos-ba .row-table td.link-table:first-letter,
+body main .wrapper .content .collapsible-body .wrapper-pie .array-infos-ba .header-table td.link-table:first-letter,
+body main .sidebar-menu .content .collapsible-body .wrapper-pie .array-infos-ba .row-table td.link-table:first-letter,
+body main .sidebar-menu .content .collapsible-body .wrapper-pie .array-infos-ba .header-table td.link-table:first-letter {
+  text-transform: capitalize;
+}
+body main .wrapper .content .collapsible-body .wrapper-pie .array-infos-ba .row-table:nth-last-child(-n+1),
+body main .wrapper .content .collapsible-body .wrapper-pie .array-infos-ba .header-table:nth-last-child(-n+1),
+body main .sidebar-menu .content .collapsible-body .wrapper-pie .array-infos-ba .row-table:nth-last-child(-n+1),
+body main .sidebar-menu .content .collapsible-body .wrapper-pie .array-infos-ba .header-table:nth-last-child(-n+1) {
+  border: 0;
+}
+body main .wrapper .content .collapsible-body .wrapper-pie .array-infos-ba .header-table,
+body main .sidebar-menu .content .collapsible-body .wrapper-pie .array-infos-ba .header-table {
+  background: var(--background);
+}
+@media screen and (max-width: 1300px) {
+  body main .wrapper .content .collapsible-body,
+body main .sidebar-menu .content .collapsible-body {
+    max-width: var(--width-li-1000);
+  }
+}
+body main .wrapper .content li:not(.paginate_button):not([data-dtr-index]),
+body main .sidebar-menu .content li:not(.paginate_button):not([data-dtr-index]) {
+  border-radius: 5px;
+  width: var(--width-table);
+  overflow: hidden;
+}
+body main .wrapper .content li:not(.paginate_button):not([data-dtr-index]) .collapsible-header,
+body main .sidebar-menu .content li:not(.paginate_button):not([data-dtr-index]) .collapsible-header {
+  background: var(--background-op);
+  color: var(--b);
+}
+body main .wrapper .content li:not(.paginate_button):not([data-dtr-index]) .collapsible-header.no-opener,
+body main .sidebar-menu .content li:not(.paginate_button):not([data-dtr-index]) .collapsible-header.no-opener {
+  opacity: 0.2;
+  cursor: auto;
+}
+body main .wrapper .content li:not(.paginate_button):not([data-dtr-index]) .collapsible-body,
+body main .sidebar-menu .content li:not(.paginate_button):not([data-dtr-index]) .collapsible-body {
+  background: var(--background);
+  color: var(--b);
+}
+body main .wrapper .content li:not(.paginate_button):not([data-dtr-index]) .collapsible-body .chart-container,
+body main .sidebar-menu .content li:not(.paginate_button):not([data-dtr-index]) .collapsible-body .chart-container {
+  background: none;
+}
+body main .wrapper .content li:not(.paginate_button):not([data-dtr-index]) .collapsible-body.no-opener,
+body main .sidebar-menu .content li:not(.paginate_button):not([data-dtr-index]) .collapsible-body.no-opener {
+  display: none !important;
+}
+body main .wrapper .content li:not(.paginate_button):not([data-dtr-index]).section-active,
+body main .sidebar-menu .content li:not(.paginate_button):not([data-dtr-index]).section-active {
+  height: 100%;
+  filter: blur(0);
+}
+body main .wrapper .content li:not(.paginate_button):not([data-dtr-index]).section-inactive,
+body main .sidebar-menu .content li:not(.paginate_button):not([data-dtr-index]).section-inactive {
+  filter: blur(4px);
+}
+body main .wrapper .content li:not(.paginate_button):not([data-dtr-index])#best-player .header,
+body main .sidebar-menu .content li:not(.paginate_button):not([data-dtr-index])#best-player .header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+}
+body main .wrapper .content li:not(.paginate_button):not([data-dtr-index])#best-player .content_bp,
+body main .sidebar-menu .content li:not(.paginate_button):not([data-dtr-index])#best-player .content_bp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+  gap: 1em;
+  height: 100%;
+  align-items: stretch;
+  overflow-x: auto;
+}
+body main .wrapper .content li:not(.paginate_button):not([data-dtr-index])#best-player .content_bp *,
+body main .sidebar-menu .content li:not(.paginate_button):not([data-dtr-index])#best-player .content_bp * {
+  text-decoration: none;
+}
+body main .wrapper .content li:not(.paginate_button):not([data-dtr-index])#best-player .content_bp .col,
+body main .sidebar-menu .content li:not(.paginate_button):not([data-dtr-index])#best-player .content_bp .col {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  width: 100%;
+}
+body main .wrapper .content li:not(.paginate_button):not([data-dtr-index])#best-player .content_bp .col .btn-main,
+body main .sidebar-menu .content li:not(.paginate_button):not([data-dtr-index])#best-player .content_bp .col .btn-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  justify-content: flex-start;
+  gap: 1em;
+  padding: 0.5em;
+}
+body main .wrapper .content li:not(.paginate_button):not([data-dtr-index])#best-player .content_bp .col .btn-main img,
+body main .sidebar-menu .content li:not(.paginate_button):not([data-dtr-index])#best-player .content_bp .col .btn-main img {
+  width: 2em;
+  border-radius: 2px;
+}
+body main .wrapper .content li:not(.paginate_button):not([data-dtr-index])#best-player .content_bp .col .btn-main .wrapper_a,
+body main .sidebar-menu .content li:not(.paginate_button):not([data-dtr-index])#best-player .content_bp .col .btn-main .wrapper_a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+}
+body main .wrapper .content li:not(.paginate_button):not([data-dtr-index])#best-player .content_bp .col .btn-main .wrapper_a .tot,
+body main .sidebar-menu .content li:not(.paginate_button):not([data-dtr-index])#best-player .content_bp .col .btn-main .wrapper_a .tot {
+  color: #999999;
+}
+body main .wrapper .content li:not(.paginate_button):not([data-dtr-index])#best-player .content_bp .col .btn-main .rank_img,
+body main .sidebar-menu .content li:not(.paginate_button):not([data-dtr-index])#best-player .content_bp .col .btn-main .rank_img {
+  margin-left: auto;
+}
+@media screen and (max-width: 1000px) {
+  body main .wrapper .content li:not(.paginate_button):not([data-dtr-index])#best-player .content_bp,
+body main .sidebar-menu .content li:not(.paginate_button):not([data-dtr-index])#best-player .content_bp {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 1000px) {
+  body main .wrapper .content li:not(.paginate_button):not([data-dtr-index])#best-player,
+body main .sidebar-menu .content li:not(.paginate_button):not([data-dtr-index])#best-player {
+    margin-top: 0;
+  }
+}
+body main .wrapper .content li:not(.paginate_button):not([data-dtr-index]).opacity-20,
+body main .sidebar-menu .content li:not(.paginate_button):not([data-dtr-index]).opacity-20 {
+  opacity: 0.2 !important;
+}
+body main .wrapper .content-main,
+body main .sidebar-menu .content-main {
+  width: 100%;
+}
+body main .wrapper .content-main.align-center,
+body main .sidebar-menu .content-main.align-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+body main .wrapper .content-main.align-center .legal-content,
+body main .wrapper .content-main.align-center .search_p,
+body main .sidebar-menu .content-main.align-center .legal-content,
+body main .sidebar-menu .content-main.align-center .search_p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
+  gap: 1em;
+  margin: 1em !important;
+  border-radius: 5px;
+  text-align: justify;
+  background: var(--background);
+  padding: 1em;
+}
+body main .wrapper .content-main.align-center .legal-content .title,
+body main .wrapper .content-main.align-center .legal-content .subtitle,
+body main .wrapper .content-main.align-center .legal-content input::placeholder,
+body main .wrapper .content-main.align-center .search_p .title,
+body main .wrapper .content-main.align-center .search_p .subtitle,
+body main .wrapper .content-main.align-center .search_p input::placeholder,
+body main .sidebar-menu .content-main.align-center .legal-content .title,
+body main .sidebar-menu .content-main.align-center .legal-content .subtitle,
+body main .sidebar-menu .content-main.align-center .legal-content input::placeholder,
+body main .sidebar-menu .content-main.align-center .search_p .title,
+body main .sidebar-menu .content-main.align-center .search_p .subtitle,
+body main .sidebar-menu .content-main.align-center .search_p input::placeholder {
+  color: var(--b);
+}
+@media screen and (max-width: 1000px) {
+  body main .wrapper .content-main.align-center .legal-content,
+body main .wrapper .content-main.align-center .search_p,
+body main .sidebar-menu .content-main.align-center .legal-content,
+body main .sidebar-menu .content-main.align-center .search_p {
+    width: 100%;
+  }
+}
+body main .wrapper .content-main .img-header,
+body main .sidebar-menu .content-main .img-header {
+  transition: all 0.5s;
+  height: 5vh;
+  border-radius: 2px;
+}
+body main .wrapper .content-main .img-header.hidden,
+body main .sidebar-menu .content-main .img-header.hidden {
+  opacity: 0;
+}
+body main .wrapper .content-main .img-header.visible,
+body main .sidebar-menu .content-main .img-header.visible {
+  opacity: 1;
+}
+body main .wrapper .content-main .collapsible-body .infos-user,
+body main .sidebar-menu .content-main .collapsible-body .infos-user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+body main .wrapper .content-main .collapsible-body .infos-user .col:last-child,
+body main .sidebar-menu .content-main .collapsible-body .infos-user .col:last-child {
+  margin-left: 1em;
+}
+body main .wrapper .content-main .collapsible-body .infos-user .col:last-child img,
+body main .sidebar-menu .content-main .collapsible-body .infos-user .col:last-child img {
+  height: 40vh;
+}
+body main .wrapper .content-main .user-infos,
+body main .sidebar-menu .content-main .user-infos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  margin: 0;
+  border-radius: 5px;
+  align-items: flex-start;
+  overflow: hidden;
+  width: auto;
+  color: var(--b);
+}
+body main .wrapper .content-main .user-infos .title-container,
+body main .sidebar-menu .content-main .user-infos .title-container {
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  background: var(--background-op);
+}
+body main .wrapper .content-main .user-infos .wrapper-content,
+body main .sidebar-menu .content-main .user-infos .wrapper-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  width: 100%;
+  background: var(--background);
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 100%;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card,
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card-best,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card-best {
+  width: 100%;
+  border-radius: 5px;
+  position: relative;
+  backdrop-filter: none !important;
+  background: var(--background-op);
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card[data-clone=total],
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card-best[data-clone=total],
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card[data-clone=total],
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card-best[data-clone=total] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  grid-column: span 2;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card[data-clone=total] .ab-row,
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card-best[data-clone=total] .ab-row,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card[data-clone=total] .ab-row,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card-best[data-clone=total] .ab-row {
+  padding: 1em;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card .container-title,
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card-best .container-title,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card .container-title,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card-best .container-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1em;
+  text-transform: capitalize;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card .container-title .ab-title,
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card-best .container-title .ab-title,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card .container-title .ab-title,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card-best .container-title .ab-title {
+  font-size: 2em;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card .container-title i, body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card .container-title span,
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card-best .container-title i,
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card-best .container-title span,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card .container-title i,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card .container-title span,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card-best .container-title i,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card-best .container-title span {
+  font-size: 24px;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card .ab-row,
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card-best .ab-row,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card .ab-row,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card-best .ab-row {
+  padding: 1em;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card .ab-row .ab-bar-container,
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card-best .ab-row .ab-bar-container,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card .ab-row .ab-bar-container,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card-best .ab-row .ab-bar-container {
+  width: 100%;
+  height: 1vh;
+  background: var(--w);
+  border-radius: var(--max-br);
+  position: relative;
+  overflow: hidden;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card .ab-row .ab-bar-container .ab-bar,
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card-best .ab-row .ab-bar-container .ab-bar,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card .ab-row .ab-bar-container .ab-bar,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card-best .ab-row .ab-bar-container .ab-bar {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+  border-radius: var(--max-br) 0 0 var(--max-br);
+  height: 100%;
+  background: var(--active-color);
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card .ab-row .ab-bar-container .cap-label,
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card-best .ab-row .ab-bar-container .cap-label,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card .ab-row .ab-bar-container .cap-label,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card-best .ab-row .ab-bar-container .cap-label {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-50%, -50%);
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card.best-card-in-stack .best-wrapper,
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card-best.best-card-in-stack .best-wrapper,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card.best-card-in-stack .best-wrapper,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card-best.best-card-in-stack .best-wrapper {
+  background: var(--background-op);
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  gap: 1em;
+  justify-content: flex-start;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card {
+  cursor: pointer;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card .ab-row,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card .ab-row {
+  padding: 1em;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card .ab-row:last-child,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card .ab-row:last-child {
+  padding: 0 1em 1em !important;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card .ab-row .ab-bar-label,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card .ab-row .ab-bar-label {
+  font-size: 4em;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card-best .ab-row,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card-best .ab-row {
+  padding-top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5em;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card-best .ab-row .ab-bar-container,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card-best .ab-row .ab-bar-container {
+  height: 1vh;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card-best[data-clone=total],
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .ab-card-best[data-clone=total] {
+  margin: 1em 1em 0;
+  width: auto;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1em;
+  margin: 0 1em 1em 0;
+  width: 100%;
+  margin: 1em;
+  width: -webkit-fill-available;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card,
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best {
+  width: 100%;
+  border-radius: 5px;
+  position: relative;
+  backdrop-filter: none !important;
+  background: var(--background-op);
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card[data-clone=total],
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best[data-clone=total],
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card[data-clone=total],
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best[data-clone=total] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  grid-column: span 2;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card[data-clone=total] .ab-row,
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best[data-clone=total] .ab-row,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card[data-clone=total] .ab-row,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best[data-clone=total] .ab-row {
+  padding: 1em;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card .container-title,
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best .container-title,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card .container-title,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best .container-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1em;
+  text-transform: capitalize;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card .container-title .ab-title,
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best .container-title .ab-title,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card .container-title .ab-title,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best .container-title .ab-title {
+  font-size: 2em;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card .container-title i, body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card .container-title span,
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best .container-title i,
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best .container-title span,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card .container-title i,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card .container-title span,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best .container-title i,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best .container-title span {
+  font-size: 24px;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card .ab-row,
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best .ab-row,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card .ab-row,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best .ab-row {
+  padding: 1em;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card .ab-row .ab-bar-container,
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best .ab-row .ab-bar-container,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card .ab-row .ab-bar-container,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best .ab-row .ab-bar-container {
+  width: 100%;
+  height: 1vh;
+  background: var(--w);
+  border-radius: var(--max-br);
+  position: relative;
+  overflow: hidden;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card .ab-row .ab-bar-container .ab-bar,
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best .ab-row .ab-bar-container .ab-bar,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card .ab-row .ab-bar-container .ab-bar,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best .ab-row .ab-bar-container .ab-bar {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+  border-radius: var(--max-br) 0 0 var(--max-br);
+  height: 100%;
+  background: var(--active-color);
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card .ab-row .ab-bar-container .cap-label,
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best .ab-row .ab-bar-container .cap-label,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card .ab-row .ab-bar-container .cap-label,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best .ab-row .ab-bar-container .cap-label {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-50%, -50%);
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card.best-card-in-stack .best-wrapper,
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best.best-card-in-stack .best-wrapper,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card.best-card-in-stack .best-wrapper,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best.best-card-in-stack .best-wrapper {
+  background: var(--background-op);
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  gap: 1em;
+  justify-content: flex-start;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card {
+  cursor: pointer;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card .ab-row,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card .ab-row {
+  padding: 1em;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card .ab-row:last-child,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card .ab-row:last-child {
+  padding: 0 1em 1em !important;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card .ab-row .ab-bar-label,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card .ab-row .ab-bar-label {
+  font-size: 4em;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best .ab-row,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best .ab-row {
+  padding-top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5em;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best .ab-row .ab-bar-container,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best .ab-row .ab-bar-container {
+  height: 1vh;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .wrapper-element-bp .f-best-ab .ab-card-best {
+  opacity: 0;
+  transition: 0.5s all;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .user-skin,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .user-skin {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body main .wrapper .content-main .user-infos .wrapper-content .user-skin img,
+body main .sidebar-menu .content-main .user-infos .wrapper-content .user-skin img {
+  height: 30vh;
+  margin: 2em;
+  filter: drop-shadow(0 0 5em rgb(98, 98, 98));
+}
+@media screen and (max-width: 800px) {
+  body main .wrapper .content-main .user-infos .wrapper-content,
+body main .sidebar-menu .content-main .user-infos .wrapper-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+  }
+}
+body main .wrapper .content-main .labels,
+body main .sidebar-menu .content-main .labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  color: var(--b);
+}
+body main .wrapper .content-main .labels .label-user,
+body main .sidebar-menu .content-main .labels .label-user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  gap: 0.2em;
+  background: var(--background-op);
+  border-radius: 10000px;
+  overflow: hidden;
+  cursor: pointer;
+}
+body main .wrapper .content-main .labels .label-user .title-lu,
+body main .wrapper .content-main .labels .label-user .title-lu-meaning,
+body main .sidebar-menu .content-main .labels .label-user .title-lu,
+body main .sidebar-menu .content-main .labels .label-user .title-lu-meaning {
+  width: fit-content;
+  padding: 0.5em 1em;
+}
+body main .wrapper .content-main .labels .label-user .title-lu-meaning,
+body main .sidebar-menu .content-main .labels .label-user .title-lu-meaning {
+  background: var(--btn-main-bg-hover);
+}
+body main .wrapper .content-main .collapsible-body,
+body main .sidebar-menu .content-main .collapsible-body {
+  overflow: hidden;
+}
+body main .wrapper .content-main .collapsible-body .right-align,
+body main .sidebar-menu .content-main .collapsible-body .right-align {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: flex-end;
+  align-items: stretch;
+  margin-bottom: 1em;
+}
+body main .wrapper .content-main .collapsible-body .right-align .searchBarWrapper,
+body main .sidebar-menu .content-main .collapsible-body .right-align .searchBarWrapper {
+  display: flex;
+  background: var(--w);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+}
+body main .wrapper .content-main .collapsible-body .right-align .searchBarWrapper button,
+body main .sidebar-menu .content-main .collapsible-body .right-align .searchBarWrapper button {
+  border: 0;
+  border-radius: 0;
+}
+body main .wrapper .content-main .collapsible-body .right-align .searchBarWrapper #ab_research,
+body main .sidebar-menu .content-main .collapsible-body .right-align .searchBarWrapper #ab_research {
+  border: 1px solid #fff;
+  cursor: text !important;
+}
+body main .wrapper .content-main .collapsible-body .right-align .searchBarWrapper #ab_research:hover,
+body main .sidebar-menu .content-main .collapsible-body .right-align .searchBarWrapper #ab_research:hover {
+  background: none;
+  border-radius: 0;
+}
+body main .wrapper .content-main .collapsible-body .right-align button,
+body main .sidebar-menu .content-main .collapsible-body .right-align button {
+  width: fit-content;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1em;
+  margin: 0 1em 1em 0;
+  width: 100%;
+  margin: 0 1em 0 0;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .ab-card,
+body main .wrapper .content-main .collapsible-body .card-abilities .ab-card-best,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .ab-card,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .ab-card-best {
+  width: 100%;
+  border-radius: 5px;
+  position: relative;
+  backdrop-filter: none !important;
+  background: var(--background-op);
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .ab-card[data-clone=total],
+body main .wrapper .content-main .collapsible-body .card-abilities .ab-card-best[data-clone=total],
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .ab-card[data-clone=total],
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .ab-card-best[data-clone=total] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  grid-column: span 2;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .ab-card[data-clone=total] .ab-row,
+body main .wrapper .content-main .collapsible-body .card-abilities .ab-card-best[data-clone=total] .ab-row,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .ab-card[data-clone=total] .ab-row,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .ab-card-best[data-clone=total] .ab-row {
+  padding: 1em;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .ab-card .container-title,
+body main .wrapper .content-main .collapsible-body .card-abilities .ab-card-best .container-title,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .ab-card .container-title,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .ab-card-best .container-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1em;
+  text-transform: capitalize;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .ab-card .container-title .ab-title,
+body main .wrapper .content-main .collapsible-body .card-abilities .ab-card-best .container-title .ab-title,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .ab-card .container-title .ab-title,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .ab-card-best .container-title .ab-title {
+  font-size: 2em;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .ab-card .container-title i, body main .wrapper .content-main .collapsible-body .card-abilities .ab-card .container-title span,
+body main .wrapper .content-main .collapsible-body .card-abilities .ab-card-best .container-title i,
+body main .wrapper .content-main .collapsible-body .card-abilities .ab-card-best .container-title span,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .ab-card .container-title i,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .ab-card .container-title span,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .ab-card-best .container-title i,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .ab-card-best .container-title span {
+  font-size: 24px;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .ab-card .ab-row,
+body main .wrapper .content-main .collapsible-body .card-abilities .ab-card-best .ab-row,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .ab-card .ab-row,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .ab-card-best .ab-row {
+  padding: 1em;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .ab-card .ab-row .ab-bar-container,
+body main .wrapper .content-main .collapsible-body .card-abilities .ab-card-best .ab-row .ab-bar-container,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .ab-card .ab-row .ab-bar-container,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .ab-card-best .ab-row .ab-bar-container {
+  width: 100%;
+  height: 1vh;
+  background: var(--w);
+  border-radius: var(--max-br);
+  position: relative;
+  overflow: hidden;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .ab-card .ab-row .ab-bar-container .ab-bar,
+body main .wrapper .content-main .collapsible-body .card-abilities .ab-card-best .ab-row .ab-bar-container .ab-bar,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .ab-card .ab-row .ab-bar-container .ab-bar,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .ab-card-best .ab-row .ab-bar-container .ab-bar {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+  border-radius: var(--max-br) 0 0 var(--max-br);
+  height: 100%;
+  background: var(--active-color);
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .ab-card .ab-row .ab-bar-container .cap-label,
+body main .wrapper .content-main .collapsible-body .card-abilities .ab-card-best .ab-row .ab-bar-container .cap-label,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .ab-card .ab-row .ab-bar-container .cap-label,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .ab-card-best .ab-row .ab-bar-container .cap-label {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-50%, -50%);
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .ab-card.best-card-in-stack .best-wrapper,
+body main .wrapper .content-main .collapsible-body .card-abilities .ab-card-best.best-card-in-stack .best-wrapper,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .ab-card.best-card-in-stack .best-wrapper,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .ab-card-best.best-card-in-stack .best-wrapper {
+  background: var(--background-op);
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  gap: 1em;
+  justify-content: flex-start;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .ab-card,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .ab-card {
+  cursor: pointer;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .ab-card .ab-row,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .ab-card .ab-row {
+  padding: 1em;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .ab-card .ab-row:last-child,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .ab-card .ab-row:last-child {
+  padding: 0 1em 1em !important;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .ab-card .ab-row .ab-bar-label,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .ab-card .ab-row .ab-bar-label {
+  font-size: 4em;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .ab-card-best .ab-row,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .ab-card-best .ab-row {
+  padding-top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5em;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .ab-card-best .ab-row .ab-bar-container,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .ab-card-best .ab-row .ab-bar-container {
+  height: 1vh;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .user-skin,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .user-skin {
+  grid-row: span 2;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .user-skin img,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .user-skin img {
+  height: 40vh;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .selected,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .selected {
+  background: var(--btn-main-bg-hover);
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .card-infos,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos {
+  background: var(--btn-main-bg-hover);
+  padding: 1em;
+  border-radius: 5px;
+  position: relative;
+  overflow: visible;
+  transition: all 1s;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .header-title,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .header-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  justify-content: start;
+  align-items: baseline;
+  gap: 1em;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .header-title .close-pop-up,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .header-title .close-pop-up {
+  margin-left: auto;
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  background: var(--btn-main-bg);
+  border-radius: var(--max-br);
+  height: 20px;
+  aspect-ratio: 1;
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .content,
+body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .content-card-m,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .content,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .content-card-m {
+  margin-top: 1em;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .content-card-m,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .content-card-m {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .content-card-m .def-skill,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .content-card-m .def-skill {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  text-align: justify;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .content-card-m .line,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .content-card-m .line {
+  margin: 2em 0 0.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  justify-content: start;
+  align-items: baseline;
+  gap: 1em;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills {
+  width: 100%;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  margin-top: 1em;
+  width: 100%;
+  gap: 1em;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table,
+body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table_info,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table_info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  --margin-progress-bar: 0;
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  position: relative;
+  width: 50%;
+  align-items: flex-start;
+  overflow-x: scroll;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table .row-table,
+body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table_info .row-table,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table .row-table,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table_info .row-table {
+  border-bottom: 1px solid var(--border-color);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table .row-table td,
+body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table_info .row-table td,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table .row-table td,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table_info .row-table td {
+  padding: 0.5em;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  gap: 1em;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table .row-table td:first-child,
+body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table_info .row-table td:first-child,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table .row-table td:first-child,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table_info .row-table td:first-child {
+  width: 6vw;
+}
+@media screen and (max-width: 750px) {
+  body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table .row-table td:first-child,
+body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table_info .row-table td:first-child,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table .row-table td:first-child,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table_info .row-table td:first-child {
+    width: 25%;
+  }
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table .row-table td .inactive,
+body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table_info .row-table td .inactive,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table .row-table td .inactive,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table_info .row-table td .inactive {
+  padding: 0.2em 0.5em;
+  border-radius: var(--max-br);
+  background: red;
+  color: var(--w);
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table .row-table:nth-last-child(-n+1),
+body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table_info .row-table:nth-last-child(-n+1),
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table .row-table:nth-last-child(-n+1),
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table_info .row-table:nth-last-child(-n+1) {
+  border: 0;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table .row-table.active,
+body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table_info .row-table.active,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table .row-table.active,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table_info .row-table.active {
+  color: green;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table .row-table.inactive,
+body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table_info .row-table.inactive,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table .row-table.inactive,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table_info .row-table.inactive {
+  color: red;
+}
+@media screen and (max-width: 500px) {
+  body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table .row-table,
+body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table_info .row-table,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table .row-table,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table_info .row-table {
+    min-width: 150%;
+  }
+}
+@media screen and (max-width: 1000px) {
+  body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table,
+body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table_info,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .content-card-m .wrapper_levels_skills .container_array .container_table_info {
+    width: 100%;
+  }
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .content-card-m .def-skill-link,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .content-card-m .def-skill-link {
+  margin-left: auto;
+  margin-top: 1em;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .card-infos .arrow,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .card-infos .arrow {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  margin-left: -10px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent var(--btn-main-bg-hover) transparent;
+}
+body main .wrapper .content-main .collapsible-body .card-abilities .no-element-found,
+body main .sidebar-menu .content-main .collapsible-body .card-abilities .no-element-found {
+  background: var(--background-op);
+  padding: 1em;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  gap: 1em;
+  min-height: 30vh;
+}
+body main .wrapper .content-main .content,
+body main .sidebar-menu .content-main .content {
+  background: none;
+}
+@media screen and (max-width: 1300px) {
+  body main .wrapper .content-main .content,
+body main .sidebar-menu .content-main .content {
+    margin: 0;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 1000px) {
+  body main .wrapper,
+body main .sidebar-menu {
+    width: 100%;
+  }
+}
+body main .wrapper {
+  min-height: calc(var(--height-window) - var(--height-topbar));
+}
+body main .wrapper aside .bs {
+  width: 100%;
+  margin-bottom: 1em;
+}
+body main .wrapper aside .bs label {
+  width: 100%;
+}
+body main .wrapper aside ul li .collapsible-body {
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-top: 0;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+body main .wrapper aside ul li .collapsible-body .overlay-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 1em;
+}
+body main .wrapper aside ul li:not(:last-child) .collapsible-body {
+  border-bottom: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+body main .wrapper aside ul li:not(:last-child) .collapsible-header {
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+body main .wrapper .content {
+  width: 100%;
+}
+body main .wrapper .content li {
+  width: auto !important;
+}
+@media screen and (max-width: 1300px) {
+  body main .wrapper .content li .dataTables_wrapper,
+body main .wrapper .content li .chart-container {
+    max-width: var(--width-table-1000) !important;
+  }
+}
+body main .wrapper.pages .content .searchBar_user,
+body main .wrapper.pages .content-main .searchBar_user {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 1em;
+}
+body main .wrapper.pages .content .searchBar_user label,
+body main .wrapper.pages .content-main .searchBar_user label {
+  width: 100%;
+}
+body main .wrapper.pages .content .searchBar_user label input,
+body main .wrapper.pages .content-main .searchBar_user label input {
+  width: 100%;
+  border-radius: 1000px;
+  padding: 0.8em 1em;
+  border: 1px solid var(--border-color);
+  background: var(--w);
+  color: var(--b);
+}
+body main .wrapper.pages .content .searchBar_user button,
+body main .wrapper.pages .content-main .searchBar_user button {
+  width: fit-content;
+}
+body main .wrapper.pages .content .searchBar_user button.sb,
+body main .wrapper.pages .content-main .searchBar_user button.sb {
+  display: none !important;
+}
+body main .wrapper.pages .content .sort,
+body main .wrapper.pages .content-main .sort {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  gap: 1em;
+  margin-left: auto;
+}
+body main .wrapper.pages .content .sort button,
+body main .wrapper.pages .content-main .sort button {
+  width: fit-content;
+}
+body main .wrapper.pages .content .result-search,
+body main .wrapper.pages .content-main .result-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  gap: 1em;
+  width: 100%;
+}
+body main .wrapper.pages .content .result-search .user-find,
+body main .wrapper.pages .content-main .result-search .user-find {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  text-decoration: none;
+  color: var(--b);
+  gap: 1em;
+  width: 100%;
+  padding: 1em;
+  background: var(--background);
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 0;
+  opacity: 0;
+  transition: 0.5s all;
+}
+body main .wrapper.pages .content .result-search .user-find img,
+body main .wrapper.pages .content-main .result-search .user-find img {
+  width: 2em;
+  aspect-ratio: 1;
+}
+body main .wrapper.pages .content .result-search .user-find .rank,
+body main .wrapper.pages .content-main .result-search .user-find .rank {
+  margin-left: auto;
+  display: flex;
+}
+body main .wrapper.pages .content .result-search .user-find .rank .medal,
+body main .wrapper.pages .content-main .result-search .user-find .rank .medal {
+  background: var(--background-op);
+  width: 2em;
+  aspect-ratio: 1;
+  border-radius: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+body main .wrapper.pages .content .result-search .no-element-found,
+body main .wrapper.pages .content-main .result-search .no-element-found {
+  background: var(--background-op);
+  color: var(--b);
+  padding: 1em;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  gap: 1em;
+  min-height: 30vh;
+  width: 100%;
+}
+@media screen and (max-width: 1000px) {
+  body main .wrapper.pages .content,
+body main .wrapper.pages .content-main {
+    margin: 0 !important;
+  }
+}
+body main footer {
+  background: var(--w);
+  width: 100%;
+  height: fit-content !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  padding: 1em;
+  z-index: 9999;
+  position: absolute;
+}
+body main footer p {
+  color: var(--b);
+}
+body main footer a {
+  text-decoration: none;
+  color: var(--active-color);
+}
+body main .sidebar-menu {
+  opacity: 0;
+  width: 100%;
+  transform: translate(0, 0);
+  position: fixed;
+  z-index: 9990;
+  top: 0;
+  left: -100%;
+  overflow: hidden;
+  transition: 0.5s;
+  padding-top: var(--height-topbar);
+  height: auto;
+  flex-direction: column;
+}
+body main .sidebar-menu .header-shortcut {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  gap: 1em;
+  margin-left: 1em;
+}
+body main .sidebar-menu .header-shortcut button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  aspect-ratio: 1;
+}
+body main .sidebar-menu .header-shortcut button i {
+  transition: all 0.5s;
+}
+body main .sidebar-menu .bs {
+  width: 100%;
+  margin-bottom: 1em;
+  position: relative;
+}
+body main .sidebar-menu .bs label {
+  width: 100%;
+}
+body main .sidebar-menu .collapsible-body .overlay-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 1em;
+}
+@media screen and (max-width: 1300px) {
+  body main .sidebar-menu {
+    width: var(--width-aside-1000);
+    left: var(--width-aside-1000-n);
+  }
+  body main .sidebar-menu aside {
+    padding-right: 0;
+    overflow-y: auto;
+    height: calc(100vh - var(--height-topbar));
+  }
+  body main .sidebar-menu.open {
+    transform: translate(var(--width-aside-1000), 0);
+    opacity: 1;
+  }
+  body main .sidebar-menu aside {
+    top: 0 !important;
+  }
+}
+@media screen and (max-width: 750px) {
+  body main .sidebar-menu {
+    width: 100%;
+    left: -100%;
+    padding-top: 20vh;
+    height: 100vh;
+  }
+  body main .sidebar-menu aside {
+    padding-right: 1em;
+  }
+  body main .sidebar-menu.open {
+    transform: translate(100%, 0);
+    opacity: 1;
+  }
+}
+
 .collapsible:not(.content),
 .selected-player {
   list-style: none;

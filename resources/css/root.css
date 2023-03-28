@@ -133,6 +133,7 @@ aside::-webkit-scrollbar {width: .3em}
 *.hidden{
     display: none!important;
 }
+*.fade-in{opacity: 1!important;}
 *.disable{
     opacity: .2!important;
     cursor: not-allowed;

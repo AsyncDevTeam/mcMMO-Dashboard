@@ -57,32 +57,21 @@ function setCard(players){
     const users = players.players
     const card = s.querySelector('.user-find')
     nb_player = users.length
-
-
     for (let i = 0; i < nb_player; i++) {
         const clone = card.cloneNode(true);
         clone.setAttribute('data-clone', 'o')
-
         const name = clone.querySelector('.name')
         const img = clone.querySelector('img')
         const player = users[i].name
-
         img.src = `https://mc-heads.net/head/${player}`
         name.innerHTML = player
-
         clone.href = `user.php?q=${player}`
         clone.setAttribute('data-total', users[i].total)
-
         s.appendChild(clone)
+        setTimeout(function() {
+            clone.classList.add('fade-in')
+        }, i*100);
     }
-    const shinyElements = document.querySelectorAll('.shiny')
-    shinyElements.forEach(a => {
-        a.addEventListener("mousemove", (e) => {
-            const { x, y } = a.getBoundingClientRect();
-            a.style.setProperty("--x", e.clientX - x);
-            a.style.setProperty("--y", e.clientY - y);
-        });
-    })
 }
 
 function setCardBP(users){

@@ -370,6 +370,12 @@ body{
             z-index: 9999;
           }
 
+          .chart_select{
+            @include centerFlex;
+            width: fit-content;
+            margin-left: auto;
+          }
+
           .chart-container{
             @include centerFlex;
             position: relative;
@@ -722,6 +728,10 @@ body{
               .f-best-ab{
                 @include gridTable;
                 @include element;
+                .ab-card-best{
+                  opacity: 0;
+                  transition: .5s all;
+                }
                 margin: 1em;
                 width: -webkit-fill-available;
               }
@@ -1047,7 +1057,6 @@ body{
             @include colFlex;
             gap: 1em;
             width: 100%;
-
             .user-find{
               @include rowFlex;
               justify-content: flex-start;
@@ -1060,6 +1069,8 @@ body{
               border-radius: 5px;
               cursor: pointer;
               z-index: 0;
+              opacity: 0;
+              transition: .5s all;
               img{
                 width: 2em;
                 aspect-ratio: 1;

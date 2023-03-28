@@ -323,7 +323,7 @@ function setBestAbilities(player){
         clone.style.setProperty("--y", e.clientY - y);
     });
 
-    b.best4Ab.forEach(value => {
+    b.best4Ab.forEach((value, i) => {
         const clone = node.cloneNode(true);
         clone.setAttribute('data-clone', 'o')
         clone.classList.add('shiny')
@@ -405,6 +405,9 @@ function setBestAbilities(player){
         ab_bar.style.width = Math.floor((level/level_cap)*100) + "%"
 
         stack.appendChild(clone)
+        setTimeout(function() {
+            clone.classList.add('fade-in')
+        }, i*100);
         clone.addEventListener("mousemove", (e) => {
             const { x, y } = clone.getBoundingClientRect();
             clone.style.setProperty("--x", e.clientX - x);
