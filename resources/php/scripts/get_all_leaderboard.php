@@ -8,15 +8,18 @@ require "../includes/db_connect.php";
 $skills = array("taming", "mining", "woodcutting", "repair", "unarmed", "herbalism", "excavation", "archery", "swords", "axes", "acrobatics", "fishing", "alchemy");
 $skills_str = implode(", ", $skills);
 
-$sth = $dbh->prepare('SELECT id, user, lastlogin, total, '.$skills_str.' FROM mcmmo_users INNER JOIN mcmmo_skills ON mcmmo_users.id = mcmmo_skills.user_id');
+$sth = $dbh->prepare('SELECT id, user, lastlogin, total, '.$skills_str.' FROM mcmmo_users INNER JOIN mcmmo_skills ON mcmmo_users.id = mcmmo_skills.user_id ORDER BY total DESC');
 $sth->execute();
 
 $result = array();
+
+$rank = 1;
 
 while ($row = $sth->fetch()) {
 
     $tmp_array = array(
         "id" => $row['id'],
+        "rank" => $rank,
         "name" => $row['user'],
         "total" => $row['total'],
         "last_connection" => $row['lastlogin']
@@ -32,6 +35,7 @@ while ($row = $sth->fetch()) {
 
     $result['players'][] = $tmp_array;
 
+    $rank++;
 }
 
 $json_result = json_encode($result, JSON_PRETTY_PRINT);
