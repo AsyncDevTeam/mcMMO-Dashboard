@@ -62,7 +62,10 @@ function setCard(players){
         clone.setAttribute('data-clone', 'o')
         const name = clone.querySelector('.name')
         const img = clone.querySelector('img')
+        const total = clone.querySelector('.total')
         const player = users[i].name
+        console.log(users[i])
+        total.innerText = `${users[i].total} exp`
         img.src = `https://mc-heads.net/head/${player}`
         name.innerHTML = player
         clone.href = `user.php?q=${player}`
@@ -117,51 +120,3 @@ input.addEventListener('keyup', function (){
         no_element_found.classList.add('hidden')
     }
 })
-
-let sortClickA = false
-let sortClickN = false
-
-function sortAlphabetical_s(){
-    var mylist = $('.result-search')
-    const icon = $('.sort_A')[0]
-    var listitems = mylist.children('a').get()
-
-    if(!sortClickA){
-        listitems.sort(function(a, b) {
-            return $(a).text().toUpperCase().localeCompare($(b).text().toUpperCase());
-        });
-        sortClickA = true
-        icon.classList.replace('fa-arrow-down-a-z', 'fa-arrow-down-z-a')
-    }else{
-        listitems.sort(function(b, a) {
-            return $(a).text().toUpperCase().localeCompare($(b).text().toUpperCase());
-        });
-        sortClickA = false
-        icon.classList.replace('fa-arrow-down-z-a', 'fa-arrow-down-a-z')
-    }
-    $.each(listitems, function(index, item) {
-        mylist.append(item);
-    });
-}
-function sortNumber_s(){
-    var mylist = $('.result-search')
-    const icon = $('.sort_N')[0]
-    var listitems = mylist.children('a').get()
-
-    if(!sortClickN){
-        listitems.sort(function(a, b) {
-            return +a.dataset.total - +b.dataset.total
-        });
-        sortClickN = true
-        icon.classList.replace('fa-arrow-down-1-9', 'fa-arrow-down-9-1')
-    }else{
-        listitems.sort(function(b, a) {
-            return +a.dataset.total - +b.dataset.total
-        });
-        sortClickN = false
-        icon.classList.replace('fa-arrow-down-9-1', 'fa-arrow-down-1-9')
-    }
-    $.each(listitems, function(index, item) {
-        mylist.append(item);
-    });
-}

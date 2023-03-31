@@ -28,7 +28,13 @@ session_start();
         <input type="text" class="copyToClipboard hidden" value="" id="no-display-input">
     </label>
     <div class="wrapper pages">
-        <?php require "resources/php/includes/aside_min.php" ?>
+        <?php
+            $params = array(
+                'list' => '.result-search',
+                'element' => 'a.user-find',
+            );
+            require "resources/php/includes/aside_min.php"
+        ?>
         <div class="content-main align-center sp">
             <div class="search_p">
                 <h1 class="title"></h1>
@@ -38,23 +44,13 @@ session_start();
                         <input type="text" id="sb-u" class="search_player_avt" placeholder="Search for a player">
                     </label>
                     <button class="btn-main sb"></button>
-                    <div class="sort">
-                        <button class="btn-main" onclick="sortNumber_s()">
-                            <span class="sort_avt">Sort</span>
-                            <i class="fa-solid sort_N fa-arrow-down-1-9"></i>
-                        </button>
-                        <button class="btn-main" onclick="sortAlphabetical_s()">
-                            <span class="sort_avt">Sort</span>
-                            <i class="fa-solid sort_A fa-arrow-down-a-z"></i>
-                        </button>
-                    </div>
                 </div>
                 <div class="result-search">
                     <a class="user-find" data-clone="init">
                         <img src="" alt="head of the player">
                         <p class="name"></p>
-                        <div class="rank hidden">
-                            <span class="medal"></span>
+                        <div class="rank">
+                            <span class="total"></span>
                         </div>
                     </a>
                     <div class="no-element-found hidden">
@@ -66,7 +62,13 @@ session_start();
         </div>
     </div>
     <?php require "resources/php/includes/footer.php" ?>
-    <?php require "resources/php/includes/aside_min_wide.php" ?>
+    <?php
+        $params = array(
+            'list' => '.result-search',
+            'element' => 'a.user-find',
+        );
+        require "resources/php/includes/aside_min_wide.php"
+    ?>
 </main>
 </body>
 </html>

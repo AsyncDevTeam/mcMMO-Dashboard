@@ -161,6 +161,29 @@ body{
           z-index: -1;
         }
 
+        .line-more{
+          margin-top: 1em;
+          @include centerFlex;
+          width: 100%;
+          .sort{
+            @include centerFlex;
+            gap: 1em;
+            width: 100%;
+            justify-content: flex-end;
+            button{width: fit-content}
+            .row-no-filter{
+              @include centerFlex;
+              justify-content: flex-start;
+              gap: 1em;
+              background: var(--background-op);
+              color: var(--b);
+              border-radius: 5px;
+              padding: 1em;
+              width: 100%;
+            }
+          }
+        }
+
         .selected-player{
           --borderR: 5px;
           display: none;
@@ -548,6 +571,7 @@ body{
 
       .content-main{
         width: 100%;
+
         &.align-center{
           @include centerFlex;
           .legal-content,
@@ -964,6 +988,159 @@ body{
           }
         }
 
+
+        &.compare{
+
+          --grid: 1fr 25% 1fr;
+          @mixin element{
+            display: grid;
+            grid-template-columns: var(--grid);
+            justify-items: center;
+            align-items: center;
+          }
+          .cont{
+            padding:1em;
+            background: var(--background);
+            border-radius: 5px;
+            color: var(--b);
+            position: relative;
+            .banner{
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              overflow: hidden;
+              border-radius: 5px;
+              img{width: 100%}
+            }
+            .top-skin{
+              @include element;
+              //height: 60vh;
+              z-index: 1;
+              margin-bottom: 1em;
+              position: relative;
+              img{
+                &:first-child{grid-column: 1}
+                &:last-child{grid-column: 3}
+              }
+            }
+            .header-compare{
+              @include centerFlex;
+              flex-direction: column;
+              position: sticky;
+              top: calc(var(--height-topbar) + 1em);
+              background: var(--btn-main-bg);
+              border-radius: 5px;
+              z-index: 9998;
+              box-shadow: rgba(50, 50, 93, .5) 0 0 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+              border: 1px solid var(--border-color);
+              .line-top{
+                @include element;
+                width: 100%;
+                //@include centerFlex;
+                label{
+                  width: 100%;
+                  padding: 1em;
+                  select{
+                    width: 100%;
+                    padding: 0.5em;
+                    border: 1px solid var(--border-color);
+                    background: var(--btn-main-bg);
+                    border-radius: 5px;
+                    color: var(--active-color);
+                  }
+                }
+                .cont-vs{
+                  @include centerFlex;
+                  justify-content: space-between;
+                  position: relative;
+                  width: 100%;
+                  //padding: 1em;
+                  img{
+                    width: 2em;
+                    border-radius: 5px;
+                  }
+                  .vs-compare{font-weight: bold}
+                }
+              }
+            }
+            .table-compare{
+              margin-top: 2em;
+              display: flex;
+              flex-direction: column;
+              gap: 1em;
+              .row-compare{
+                @include element;
+                align-items: stretch;
+                opacity: 0;
+                transition: 0.5s all;
+                .label-value{
+                  @include centerFlex;
+                  width: 100%;
+                  padding: 1em;
+                  position: relative;
+                  overflow: hidden;
+                  p{
+                    position: relative;
+                    z-index: 1;
+                    //padding:.5em .2em;
+                    background: var(--btn-main-bg);
+                    border-radius: 5px;
+                    //width: 100px;
+                  }
+                  &:first-child{
+                    justify-content: flex-end;
+                    .label-bg{background: var(--grad1);}
+                    .label-bg,
+                    .label-bg-max{
+                      right: 0;
+                      border-radius: 5px 0 0 5px;
+                    }
+                  }
+                  &:last-child{
+                    justify-content: flex-start;
+                    .label-bg{background: var(--grad2);}
+                    .label-bg,
+                    .label-bg-max{
+                      left: 0;
+                      border-radius: 0 5px 5px 0;
+                    }
+                  }
+                  .label-bg,
+                  .label-bg-max {
+                    position: absolute;
+                    width: 0;
+                    height: 95%;
+                    background: var(--background);
+                    z-index: 0;
+                    transition: 0.5s all;
+                  }
+                  .label-bg{top: 0}
+                  .label-bg-max{
+                    bottom: 0;
+                    height: 5%;
+                    background: var(--active-color);
+                  }
+                }
+                .label-c{
+                  @include centerFlex;
+                  justify-content: space-between;
+                  background: var(--background-op);
+                  width: 100%;
+                  padding: 1em;
+                  p{
+                    text-transform: capitalize;
+                    &:nth-child(2){
+                      padding: 0.2em 0.5em;
+                      background: var(--btn-main-bg);
+                      border-radius: 5px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
 
       @media screen and (max-width: 1000px){
@@ -1076,15 +1253,7 @@ body{
                 aspect-ratio: 1;
               }
               .rank{
-                margin-left: auto;
-                display: flex;
-                .medal{
-                  background: var(--background-op);
-                  width: 2em;
-                  aspect-ratio: 1;
-                  border-radius: 1000px;
-                  @include centerFlex;
-                }
+
               }
             }
             .no-element-found{

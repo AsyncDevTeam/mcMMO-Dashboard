@@ -27,5 +27,19 @@
                 </div>
             </li>
         </ul>
+        <div class="line-more">
+            <div class="sort">
+                <?php
+                    if (isset($params)) {
+                        $list = $params['list'];
+                        $element = $params['element'];
+                        echo "<button class=\"btn-main\" onclick=\"sort('$list', '.sort_N', '$element')\"><span class=\"sort_avt\"></span><i class=\"fa-solid sort_N fa-arrow-down-1-9\"></i></button>";
+                        echo "<button class=\"btn-main\" onclick=\"sort('$list', '.sort_A', '$element')\"><span class=\"sort_avt\"></span><i class=\"fa-solid sort_A fa-arrow-down-a-z\"></i></button>";
+                    } else {
+                        echo "<div class='row-no-filter'><i class='fa-solid fa-triangle-exclamation'></i></i><p class='no-filter-button'>Filter buttons not available</p></div>";
+                    }
+                ?>
+            </div>
+        </div>
     </aside>
 </div>

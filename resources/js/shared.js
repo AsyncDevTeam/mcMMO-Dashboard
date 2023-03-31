@@ -366,3 +366,42 @@ function classModifier(element, class_, type){
         element.forEach(e => {e.classList.toggle(class_)})
     }
 }
+
+
+let sortClick = true
+function sort(list, ico, element){
+    var mylist = $(list)
+    const icon = $(ico)[0]
+    var listitems = mylist.children(element).get()
+
+    if(!sortClick){
+        if(ico === '.sort_N'){
+            listitems.sort(function(a, b) {
+                return +a.dataset.total - +b.dataset.total
+            });
+            icon.classList.replace('fa-arrow-down-1-9', 'fa-arrow-down-9-1')
+        }else{
+            listitems.sort(function(a, b) {
+                return $(a).text().replace(/\d+/g, '').toUpperCase().localeCompare($(b).text().replace(/\d+/g, '').toUpperCase());
+            });
+            icon.classList.replace('fa-arrow-down-a-z', 'fa-arrow-down-z-a')
+        }
+        sortClick = true
+    }else{
+        if(ico === '.sort_N'){
+            listitems.sort(function(b, a) {
+                return +a.dataset.total - +b.dataset.total
+            });
+            icon.classList.replace('fa-arrow-down-9-1', 'fa-arrow-down-1-9')
+        }else{
+            listitems.sort(function(b, a) {
+                return $(a).text().replace(/\d+/g, '').toUpperCase().localeCompare($(b).text().replace(/\d+/g, '').toUpperCase());
+            });
+            icon.classList.replace('fa-arrow-down-z-a', 'fa-arrow-down-a-z')
+        }
+        sortClick = false
+    }
+    $.each(listitems, function(index, item) {
+        mylist.append(item);
+    });
+}
