@@ -2,6 +2,19 @@ body {
   font-family: "Noto Sans Mende Kikakui", sans-serif;
   background: var(--w);
 }
+body.do-a-barrel-roll {
+  animation: dabr 2s;
+}
+@keyframes dabr {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@media screen and (max-width: 750px) {
+  body {
+    --height-topbar: 20vh!important;
+  }
+}
 body .c-1 {
   color: #000;
 }
@@ -234,43 +247,6 @@ body main .sidebar-menu aside .background-fixed {
   height: 100%;
   z-index: -1;
 }
-body main .wrapper aside .line-more,
-body main .sidebar-menu aside .line-more {
-  margin-top: 1em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  width: 100%;
-}
-body main .wrapper aside .line-more .sort,
-body main .sidebar-menu aside .line-more .sort {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  gap: 1em;
-  width: 100%;
-  justify-content: flex-end;
-}
-body main .wrapper aside .line-more .sort button,
-body main .sidebar-menu aside .line-more .sort button {
-  width: fit-content;
-}
-body main .wrapper aside .line-more .sort .row-no-filter,
-body main .sidebar-menu aside .line-more .sort .row-no-filter {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  justify-content: flex-start;
-  gap: 1em;
-  background: var(--background-op);
-  color: var(--b);
-  border-radius: 5px;
-  padding: 1em;
-  width: 100%;
-}
 body main .wrapper aside .selected-player,
 body main .sidebar-menu aside .selected-player {
   --borderR: 5px;
@@ -462,6 +438,55 @@ body main .sidebar-menu aside .collapsible-body hr {
   background: var(--background-op);
   border: 1px solid var(--background-op);
   border-radius: var(--max-br);
+}
+body main .wrapper aside .collapsible-body .sort,
+body main .sidebar-menu aside .collapsible-body .sort {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  gap: 1em;
+  width: 100%;
+  justify-content: flex-end;
+}
+body main .wrapper aside .collapsible-body .sort .row-no-filter,
+body main .sidebar-menu aside .collapsible-body .sort .row-no-filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  justify-content: flex-start;
+  gap: 1em;
+  background: var(--background-op);
+  color: var(--b);
+  border-radius: 5px;
+  padding: 1em;
+  width: 100%;
+}
+body main .wrapper aside .square-infos,
+body main .sidebar-menu aside .square-infos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 0.5em;
+  width: 100%;
+  height: 20vh;
+  margin-top: 1em;
+}
+body main .wrapper aside .square-infos .cell,
+body main .sidebar-menu aside .square-infos .cell {
+  background: var(--background-op);
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  opacity: 1;
+  transition: opacity 0.2s;
+  padding: 1em;
+}
+body main .wrapper aside .square-infos .cell.on,
+body main .sidebar-menu aside .square-infos .cell.on {
+  opacity: 1;
 }
 body main .wrapper aside .fa-copy,
 body main .sidebar-menu aside .fa-copy {
@@ -1770,20 +1795,6 @@ body main .sidebar-menu .content-main.compare .cont {
   background: var(--background);
   border-radius: 5px;
   color: var(--b);
-  position: relative;
-}
-body main .wrapper .content-main.compare .cont .banner,
-body main .sidebar-menu .content-main.compare .cont .banner {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  border-radius: 5px;
-}
-body main .wrapper .content-main.compare .cont .banner img,
-body main .sidebar-menu .content-main.compare .cont .banner img {
-  width: 100%;
 }
 body main .wrapper .content-main.compare .cont .top-skin,
 body main .sidebar-menu .content-main.compare .cont .top-skin {
@@ -1791,17 +1802,83 @@ body main .sidebar-menu .content-main.compare .cont .top-skin {
   grid-template-columns: var(--grid);
   justify-items: center;
   align-items: center;
+  overflow: hidden;
   z-index: 1;
   margin-bottom: 1em;
   position: relative;
+  border-radius: 5px;
+  background: linear-gradient(90deg, var(--grad1_op), var(--grad2_op));
 }
-body main .wrapper .content-main.compare .cont .top-skin img:first-child,
-body main .sidebar-menu .content-main.compare .cont .top-skin img:first-child {
-  grid-column: 1;
+body main .wrapper .content-main.compare .cont .top-skin .col,
+body main .sidebar-menu .content-main.compare .cont .top-skin .col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 1em;
+  position: relative;
+  transition: transform 1s;
 }
-body main .wrapper .content-main.compare .cont .top-skin img:last-child,
-body main .sidebar-menu .content-main.compare .cont .top-skin img:last-child {
-  grid-column: 3;
+body main .wrapper .content-main.compare .cont .top-skin .col .vs,
+body main .sidebar-menu .content-main.compare .cont .top-skin .col .vs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  aspect-ratio: 1;
+  width: 100%;
+  z-index: 9996;
+  position: relative;
+  background: var(--background-op);
+  border-radius: 1000px;
+  animation: rotation 1s linear infinite;
+  border: 5px solid var(--w);
+  border-bottom-color: var(--active-color);
+  inset: 2px;
+  box-shadow: inset 0 0 50px #fff, inset 20px 0 80px #f0f, inset -20px 0 80px #0ff, inset 20px 0 300px #f0f, inset -20px 0 300px #0ff, 0 0 50px #fff, -10px 0 80px #f0f, 10px 0 80px #0ff;
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+body main .wrapper .content-main.compare .cont .top-skin .col .label-vs,
+body main .sidebar-menu .content-main.compare .cont .top-skin .col .label-vs {
+  position: absolute;
+  font-size: 6vh;
+  line-height: 0;
+  z-index: 9997;
+  color: var(--w);
+}
+body main .wrapper .content-main.compare .cont .top-skin .col:first-child,
+body main .sidebar-menu .content-main.compare .cont .top-skin .col:first-child {
+  transform: translateX(-500%);
+}
+body main .wrapper .content-main.compare .cont .top-skin .col:last-child,
+body main .sidebar-menu .content-main.compare .cont .top-skin .col:last-child {
+  transform: translateX(500%);
+}
+body main .wrapper .content-main.compare .cont .top-skin .col.show,
+body main .sidebar-menu .content-main.compare .cont .top-skin .col.show {
+  transform: translateX(0);
+}
+@media screen and (min-width: 1800px) {
+  body main .wrapper .content-main.compare .cont .top-skin .col.show img,
+body main .sidebar-menu .content-main.compare .cont .top-skin .col.show img {
+    height: 75%;
+  }
+}
+@media screen and (max-width: 700px) {
+  body main .wrapper .content-main.compare .cont .top-skin,
+body main .sidebar-menu .content-main.compare .cont .top-skin {
+    display: none;
+  }
 }
 body main .wrapper .content-main.compare .cont .header-compare,
 body main .sidebar-menu .content-main.compare .cont .header-compare {
@@ -1859,6 +1936,29 @@ body main .wrapper .content-main.compare .cont .header-compare .line-top .cont-v
 body main .sidebar-menu .content-main.compare .cont .header-compare .line-top .cont-vs .vs-compare {
   font-weight: bold;
 }
+@media screen and (max-width: 600px) {
+  body main .wrapper .content-main.compare .cont .header-compare .line-top,
+body main .sidebar-menu .content-main.compare .cont .header-compare .line-top {
+    grid-template-columns: 1fr;
+  }
+  body main .wrapper .content-main.compare .cont .header-compare .line-top .cont-vs,
+body main .sidebar-menu .content-main.compare .cont .header-compare .line-top .cont-vs {
+    padding: 0 1em;
+  }
+  body main .wrapper .content-main.compare .cont .header-compare .line-top label,
+body main .sidebar-menu .content-main.compare .cont .header-compare .line-top label {
+    display: flex;
+    width: 50%;
+  }
+  body main .wrapper .content-main.compare .cont .header-compare .line-top label:first-child,
+body main .sidebar-menu .content-main.compare .cont .header-compare .line-top label:first-child {
+    margin-right: auto;
+  }
+  body main .wrapper .content-main.compare .cont .header-compare .line-top label:last-child,
+body main .sidebar-menu .content-main.compare .cont .header-compare .line-top label:last-child {
+    margin-left: auto;
+  }
+}
 body main .wrapper .content-main.compare .cont .table-compare,
 body main .sidebar-menu .content-main.compare .cont .table-compare {
   margin-top: 2em;
@@ -1868,82 +1968,13 @@ body main .sidebar-menu .content-main.compare .cont .table-compare {
 }
 body main .wrapper .content-main.compare .cont .table-compare .row-compare,
 body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare {
-  display: grid;
-  grid-template-columns: var(--grid);
-  justify-items: center;
-  align-items: center;
-  align-items: stretch;
-  opacity: 0;
-  transition: 0.5s all;
-}
-body main .wrapper .content-main.compare .cont .table-compare .row-compare .label-value,
-body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .label-value {
   display: flex;
   justify-content: center;
   align-items: center;
   align-content: center;
+  flex-direction: column;
+  opacity: 0;
   width: 100%;
-  padding: 1em;
-  position: relative;
-  overflow: hidden;
-}
-body main .wrapper .content-main.compare .cont .table-compare .row-compare .label-value p,
-body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .label-value p {
-  position: relative;
-  z-index: 1;
-  background: var(--btn-main-bg);
-  border-radius: 5px;
-}
-body main .wrapper .content-main.compare .cont .table-compare .row-compare .label-value:first-child,
-body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .label-value:first-child {
-  justify-content: flex-end;
-}
-body main .wrapper .content-main.compare .cont .table-compare .row-compare .label-value:first-child .label-bg,
-body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .label-value:first-child .label-bg {
-  background: var(--grad1);
-}
-body main .wrapper .content-main.compare .cont .table-compare .row-compare .label-value:first-child .label-bg,
-body main .wrapper .content-main.compare .cont .table-compare .row-compare .label-value:first-child .label-bg-max,
-body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .label-value:first-child .label-bg,
-body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .label-value:first-child .label-bg-max {
-  right: 0;
-  border-radius: 5px 0 0 5px;
-}
-body main .wrapper .content-main.compare .cont .table-compare .row-compare .label-value:last-child,
-body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .label-value:last-child {
-  justify-content: flex-start;
-}
-body main .wrapper .content-main.compare .cont .table-compare .row-compare .label-value:last-child .label-bg,
-body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .label-value:last-child .label-bg {
-  background: var(--grad2);
-}
-body main .wrapper .content-main.compare .cont .table-compare .row-compare .label-value:last-child .label-bg,
-body main .wrapper .content-main.compare .cont .table-compare .row-compare .label-value:last-child .label-bg-max,
-body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .label-value:last-child .label-bg,
-body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .label-value:last-child .label-bg-max {
-  left: 0;
-  border-radius: 0 5px 5px 0;
-}
-body main .wrapper .content-main.compare .cont .table-compare .row-compare .label-value .label-bg,
-body main .wrapper .content-main.compare .cont .table-compare .row-compare .label-value .label-bg-max,
-body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .label-value .label-bg,
-body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .label-value .label-bg-max {
-  position: absolute;
-  width: 0;
-  height: 95%;
-  background: var(--background);
-  z-index: 0;
-  transition: 0.5s all;
-}
-body main .wrapper .content-main.compare .cont .table-compare .row-compare .label-value .label-bg,
-body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .label-value .label-bg {
-  top: 0;
-}
-body main .wrapper .content-main.compare .cont .table-compare .row-compare .label-value .label-bg-max,
-body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .label-value .label-bg-max {
-  bottom: 0;
-  height: 5%;
-  background: var(--active-color);
 }
 body main .wrapper .content-main.compare .cont .table-compare .row-compare .label-c,
 body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .label-c {
@@ -1954,7 +1985,7 @@ body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare 
   justify-content: space-between;
   background: var(--background-op);
   width: 100%;
-  padding: 1em;
+  padding: 0.6em 1em;
 }
 body main .wrapper .content-main.compare .cont .table-compare .row-compare .label-c p,
 body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .label-c p {
@@ -1965,6 +1996,166 @@ body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare 
   padding: 0.2em 0.5em;
   background: var(--btn-main-bg);
   border-radius: 5px;
+}
+body main .wrapper .content-main.compare .cont .table-compare .row-compare .label-c.min-screen,
+body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .label-c.min-screen {
+  border-radius: 5px;
+  display: none;
+}
+@media all and (max-width: 1000px) {
+  body main .wrapper .content-main.compare .cont .table-compare .row-compare .label-c.min-screen,
+body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .label-c.min-screen {
+    display: flex;
+  }
+}
+@media all and (max-width: 420px) {
+  body main .wrapper .content-main.compare .cont .table-compare .row-compare .label-c.min-screen,
+body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .label-c.min-screen {
+    padding: 0.6em;
+  }
+}
+body main .wrapper .content-main.compare .cont .table-compare .row-compare .line-1,
+body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .line-1 {
+  display: grid;
+  grid-template-columns: var(--grid);
+  justify-items: center;
+  align-items: center;
+  width: 100%;
+  align-items: stretch;
+  transition: 0.5s all;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 6vh;
+}
+body main .wrapper .content-main.compare .cont .table-compare .row-compare .line-1 .label-value,
+body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .line-1 .label-value {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+  padding: 1em;
+  position: relative;
+  overflow: hidden;
+}
+body main .wrapper .content-main.compare .cont .table-compare .row-compare .line-1 .label-value p,
+body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .line-1 .label-value p {
+  position: relative;
+  z-index: 1;
+  background: var(--btn-main-bg);
+  border-radius: 5px;
+}
+body main .wrapper .content-main.compare .cont .table-compare .row-compare .line-1 .label-value:first-child,
+body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .line-1 .label-value:first-child {
+  justify-content: flex-end;
+}
+body main .wrapper .content-main.compare .cont .table-compare .row-compare .line-1 .label-value:first-child .label-bg,
+body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .line-1 .label-value:first-child .label-bg {
+  background: var(--grad1);
+}
+body main .wrapper .content-main.compare .cont .table-compare .row-compare .line-1 .label-value:first-child .label-bg,
+body main .wrapper .content-main.compare .cont .table-compare .row-compare .line-1 .label-value:first-child .label-bg-max,
+body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .line-1 .label-value:first-child .label-bg,
+body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .line-1 .label-value:first-child .label-bg-max {
+  right: 0;
+  border-radius: 5px 0 0 5px;
+}
+body main .wrapper .content-main.compare .cont .table-compare .row-compare .line-1 .label-value:first-child .label-infos,
+body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .line-1 .label-value:first-child .label-infos {
+  right: 0;
+  transform: translate(-1em, -50%);
+}
+body main .wrapper .content-main.compare .cont .table-compare .row-compare .line-1 .label-value:last-child,
+body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .line-1 .label-value:last-child {
+  justify-content: flex-start;
+}
+body main .wrapper .content-main.compare .cont .table-compare .row-compare .line-1 .label-value:last-child .label-bg,
+body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .line-1 .label-value:last-child .label-bg {
+  background: var(--grad2);
+}
+body main .wrapper .content-main.compare .cont .table-compare .row-compare .line-1 .label-value:last-child .label-bg,
+body main .wrapper .content-main.compare .cont .table-compare .row-compare .line-1 .label-value:last-child .label-bg-max,
+body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .line-1 .label-value:last-child .label-bg,
+body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .line-1 .label-value:last-child .label-bg-max {
+  left: 0;
+  border-radius: 0 5px 5px 0;
+}
+body main .wrapper .content-main.compare .cont .table-compare .row-compare .line-1 .label-value:last-child .label-infos,
+body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .line-1 .label-value:last-child .label-infos {
+  left: 0;
+  transform: translate(1em, -50%);
+}
+body main .wrapper .content-main.compare .cont .table-compare .row-compare .line-1 .label-value .label-bg,
+body main .wrapper .content-main.compare .cont .table-compare .row-compare .line-1 .label-value .label-bg-max,
+body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .line-1 .label-value .label-bg,
+body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .line-1 .label-value .label-bg-max {
+  position: absolute;
+  width: 0;
+  height: 95%;
+  background: var(--background);
+  z-index: 0;
+  transition: 0.5s all;
+}
+body main .wrapper .content-main.compare .cont .table-compare .row-compare .line-1 .label-value .label-bg,
+body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .line-1 .label-value .label-bg {
+  top: 0;
+}
+body main .wrapper .content-main.compare .cont .table-compare .row-compare .line-1 .label-value .label-bg-max,
+body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .line-1 .label-value .label-bg-max {
+  bottom: 0;
+  height: 5%;
+  background: var(--active-color);
+}
+body main .wrapper .content-main.compare .cont .table-compare .row-compare .line-1 .label-value .label-infos,
+body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .line-1 .label-value .label-infos {
+  position: absolute;
+  top: 50%;
+  padding: 0.2em 0.5em;
+  background: var(--background);
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+body main .wrapper .content-main.compare .cont .table-compare .row-compare .line-1:hover .label-infos,
+body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .line-1:hover .label-infos {
+  opacity: 1;
+}
+@media all and (max-width: 1000px) {
+  body main .wrapper .content-main.compare .cont .table-compare .row-compare .line-1,
+body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .line-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: auto;
+  }
+  body main .wrapper .content-main.compare .cont .table-compare .row-compare .line-1 .label-c,
+body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .line-1 .label-c {
+    display: none;
+  }
+}
+body main .wrapper .content-main.compare .cont .table-compare .row-compare .line-2,
+body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .line-2 {
+  width: 100%;
+  height: 10vh;
+  background: var(--background-op);
+  margin-top: 1em;
+  border-radius: 5px;
+  display: none;
+}
+body main .wrapper .content-main.compare .cont .table-compare .row-compare .line-2.show,
+body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .line-2.show {
+  display: flex !important;
+}
+body main .wrapper .content-main.compare .chart-container,
+body main .sidebar-menu .content-main.compare .chart-container {
+  padding: 1em;
+  background: var(--background);
+  border-radius: 5px;
+  color: var(--b);
+  height: 60vh;
+  margin-top: 1em;
 }
 @media screen and (max-width: 1000px) {
   body main .wrapper,
@@ -2304,6 +2495,11 @@ body main .sidebar-menu .collapsible-body .overlay-stats {
 .collapsible:not(.content) .collapsible-body .buttons-to-section input,
 .selected-player .collapsible-body .buttons-to-section input {
   display: none;
+}
+.collapsible:not(.content) .collapsible-body .buttons-to-section input:checked + label,
+.selected-player .collapsible-body .buttons-to-section input:checked + label {
+  background: var(--active-color);
+  color: var(--w);
 }
 .collapsible:not(.content) .collapsible-body .buttons-to-section .btn-main,
 .selected-player .collapsible-body .buttons-to-section .btn-main {

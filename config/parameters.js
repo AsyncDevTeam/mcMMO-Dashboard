@@ -76,6 +76,7 @@ const translation = {
                     'sc-h-1': "Server information's",
                     'sc-h-1-s': "Server offline",
                     'sc-h-2': 'Shortcuts',
+                    'sc-h-2-a': 'Sorting method',
                 },
                 'index': {
                     'sc-b-1': 'Leaderboard',
@@ -98,7 +99,9 @@ const translation = {
             },
             'buttons': {
                 'clear_player_avt': 'Clear',
-                'sort_avt': 'Sort'
+                'sort_avt': 'Sort',
+                'sort_a':'Alphabetical sorting',
+                'sort_n':'Numerical sorting',
             },
             'select': {
                 'select-before': 'Show',
@@ -126,9 +129,11 @@ const translation = {
                     'subtitle': 'Search for a player to access their user page',
                     'button': 'Search',
                 },
-                'contact': {
-                    'title': 'Contact',
-                    'subtitle': 'To contact us please email _EMAIL_',
+                'comparison': {
+                    'explanation': {
+                        'intro': '',
+                        'in_chart': '_PERCENT_% of max _MAX_ reached'
+                    }
                 }
             },
             'quickView':{
@@ -325,6 +330,7 @@ const translation = {
                     'sc-h-1': "Informations sur le serveur",
                     'sc-h-1-s': "Serveur hors ligne",
                     'sc-h-2': 'Raccourcis',
+                    'sc-h-2-a': 'Méthode de tri',
                 },
                 'index': {
                     'sc-b-1': 'Classement',
@@ -347,7 +353,9 @@ const translation = {
             },
             'buttons': {
                 'clear_player_avt': 'Supprimer',
-                'sort_avt': 'Trier'
+                'sort_avt': 'Trier',
+                'sort_a':'Tri alphabétique',
+                'sort_n':'Tri numérique',
             },
             'select': {
                 'select-before': 'Afficher',
@@ -375,9 +383,11 @@ const translation = {
                     'subtitle': 'Rechercher un joueur pour accéder à sa page utilisateur',
                     'button': 'Rechercher',
                 },
-                'contact': {
-                    'title': 'Contact',
-                    'subtitle': 'Pour nous contacter, envoyez un e-mail à _EMAIL_',
+                'comparison': {
+                    'explanation': {
+                        'intro': '',
+                        'in_chart': '_PERCENT_% du max _MAX_ atteint'
+                    }
                 }
             },
             'quickView':{
@@ -574,6 +584,7 @@ const translation = {
                     'sc-h-1': "Server Informationen",
                     'sc-h-1-s': "Server Offline",
                     'sc-h-2': 'Schnellauswahl',
+                    'sc-h-2-a': 'Sortiermethode',
                 },
                 'index': {
                     'sc-b-1': 'Alle Spieler',
@@ -596,7 +607,9 @@ const translation = {
             },
             'buttons': {
                 'clear_player_avt': 'Leeren',
-                'sort_avt': 'Sortieren'
+                'sort_avt': 'Sortieren',
+                'sort_a':'Alphabetische Sortierung',
+                'sort_n':'Numerische Sortierung',
             },
             'select': {
                 'select-before': 'Zeige',
@@ -624,9 +637,11 @@ const translation = {
                     'subtitle': 'Suche nach einem Spieler, um auf seine Benutzerseite zuzugreifen',
                     'button': 'Suchen',
                 },
-                'contact': {
-                    'title': 'Kontakt',
-                    'subtitle': 'Kontaktiere uns über folgende E-Mail _EMAIL_',
+                'comparison': {
+                    'explanation': {
+                        'intro': '',
+                        'in_chart': '_PERCENT_% von max _MAX_ erreicht'
+                    }
                 }
             },
             'quickView':{
@@ -775,8 +790,19 @@ const settings = {
     'colors': {
         'page': {
             'gradient': {
-                'gradient_1': 'rgb(38,105,46)',
-                'gradient_2': 'rgb(32,96,115)'
+                /**
+                 * -------------
+                 * Old method
+                 * 'gradient_1': 'rgb(38,105,46)',
+                 * 'gradient_2': 'rgb(32,96,115)'
+                 * -------------
+                 * New method
+                 * 'gradient_1': '38 105 46',
+                 * 'gradient_2': '32 96 115'
+                 * -------------
+                 */
+                'gradient_1': '38 105 46',
+                'gradient_2': '32 96 115'
             }
         },
         'chart': {

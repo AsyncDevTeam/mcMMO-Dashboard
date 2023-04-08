@@ -33,7 +33,7 @@ session_start();
             <ul class="collapsible">
                 <li class="active">
                     <div class="collapsible-header">
-                        <p class="sc-h-1">Server information's</p>
+                        <p class="sc-h-1"></p>
                         <i class="fa-solid fa-chevron-right rotate"></i>
                     </div>
                     <div class="collapsible-body stats-server">
@@ -58,7 +58,7 @@ session_start();
                 </li>
                 <li class="active">
                     <div class="collapsible-header">
-                        <p class="sc-h-2">Shortcuts</p>
+                        <p class="sc-h-2"></p>
                         <i class="fa-solid fa-chevron-right rotate"></i>
                     </div>
                     <div class="collapsible-body">
@@ -114,7 +114,7 @@ session_start();
             <div class="user-infos avt-glass-effect" id="user-info">
                 <div class="title-container">
                     <h1 class="title-section"></h1>
-                    <p class="last-connection-user">Last connection at 00h00</p>
+                    <p class="last-connection-user"></p>
                 </div>
                 <div class="wrapper-content">
                     <div class="user-skin">
@@ -150,17 +150,17 @@ session_start();
                 <li class="active avt-glass-effect user-page" id="all_card" data-section="section-ld-main">
                     <div class="collapsible-header">
                         <h1 class="title-section">
-                            <span id="section-1">Skills level</span>
+                            <span id="section-1"></span>
                             <i class="fa-solid fa-chevron-right rotate"></i></h1>
                     </div>
                     <div class="collapsible-body">
                         <div class="right-align">
                             <button class="btn-main hidden" onclick="sortNumber()">
-                                <span class="sort_avt">Sort</span>
+                                <span class="sort_avt"></span>
                                 <i class="fa-solid fa-arrow-down-1-9"></i>
                             </button>
                             <button class="btn-main" onclick="sortAlphabetical()">
-                                <span class="sort_avt">Sort</span>
+                                <span class="sort_avt"></span>
                                 <i class="fa-solid sort_A fa-arrow-down-a-z"></i>
                             </button>
                             <label for="ab_research" class="searchBarWrapper">
@@ -192,7 +192,7 @@ session_start();
                             </div>
                             <div class="no-element-found hidden">
                                 <i class="fa-solid fa-circle-xmark"></i>
-                                <p>No results found - try your search again</p>
+                                <p></p>
                             </div>
                             <div class="card-infos shiny hidden">
                                 <div class="header-title">
@@ -214,7 +214,7 @@ session_start();
                 <li class="active avt-glass-effect user-page" id="abi-lvl-chart" data-section="section-ld-main">
                     <div class="collapsible-header">
                         <h1 class="title-section">
-                            <span id="section-2">All abilities</span>
+                            <span id="section-2"></span>
                             <i class="fa-solid fa-chevron-right rotate"></i></h1>
                     </div>
                     <div class="collapsible-body">
@@ -228,11 +228,11 @@ session_start();
                 <li class="active avt-glass-effect user-page" id="abi-lvl-chart-compare" data-section="section-ld-main">
                     <div class="collapsible-header">
                         <h1 class="title-section">
-                            <span id="section-3">Capacity Comparison</span>
+                            <span id="section-3"></span>
                             <i class="fa-solid fa-chevron-right rotate"></i></h1>
                     </div>
                     <div class="collapsible-body">
-                        <span id="section-3-bis">The comparison is made between the best player of the server and the selected player</span>
+                        <span id="section-3-bis"></span>
                         <div class="chart-container">
                             <canvas id="chart_user_compare"></canvas>
                         </div>

@@ -6,6 +6,8 @@ session_start();
 <head>
     <!-- header base -->
     <?php require "resources/php/includes/head.php" ?>
+    <!-- chartjs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
     <!-- script of the project -->
     <script src="resources/js/comparison.js" defer></script>
 </head>
@@ -26,12 +28,17 @@ session_start();
         ?>
         <div class="content-main compare">
             <div class="cont">
-                <div class="banner">
-                    <img src="resources/others/img/banner.png" alt="">
-                </div>
                 <div class="top-skin">
-                    <img src="https://mc-heads.net/body/mhd_steve" alt="skin player 1" class="img-compare">
-                    <img src="https://mc-heads.net/body/mhd_steve/left" alt="skin player 2" class="img-compare">
+                    <div class="col fp">
+                        <img src="https://mc-heads.net/body/mhd_steve" alt="skin player 1" class="img-compare">
+                    </div>
+                    <div class="col fp">
+                        <div class="vs"></div>
+                        <p class="label-vs">VS</p>
+                    </div>
+                    <div class="col lp">
+                        <img src="https://mc-heads.net/body/mhd_steve/left" alt="skin player 2" class="img-compare">
+                    </div>
                 </div>
                 <div class="header-compare">
                     <div class="line-top">
@@ -49,6 +56,9 @@ session_start();
                     </div>
                 </div>
                 <div class="table-compare"></div>
+            </div>
+            <div class="chart-container">
+                <canvas id="chart_comparison"></canvas>
             </div>
         </div>
     </div>

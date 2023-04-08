@@ -408,6 +408,7 @@ function chartAbilitiesMinMax(player){
 function databaseLoad(player){
 
     let name
+    let all_username = []
     for (let i = 0; i < player.players.length; i++) {
         const user = player.players[i]
         for (let j = 0; j < bp_name.length; j++) {
@@ -418,6 +419,8 @@ function databaseLoad(player){
                 name = user.name
             }
         }
+        all_username.push(user.name)
+
         user.name_img = `<img class="img" src="https://mineskin.eu/helm/${user.name}/300.png" alt="player_heads">`
             + name
     }
@@ -428,7 +431,6 @@ function databaseLoad(player){
         lengthChangeAllow = false
         pagingAllow = false
     }
-
 
     let username
     let leaderboard_table = $('#leaderboard_table').DataTable({
@@ -451,6 +453,13 @@ function databaseLoad(player){
             { data: 'fishing' },
             { data: 'alchemy' },
         ],
+        drawCallback: function() {
+            // for (let i = 0; i < player.players.length; i++) {
+            //     this.api().column(0).nodes().each(function(cell, u) {
+            //         $(cell).attr('data-sort', all_username[u]);
+            //     });
+            // }
+        },
         "paging": pagingAllow,
         "lengthChange": lengthChangeAllow,
         "searching": true,

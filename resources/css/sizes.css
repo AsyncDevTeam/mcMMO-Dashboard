@@ -3,7 +3,7 @@ body {
 }
 @media screen and (min-width: 1800px) {
   body .tabs_header {
-    padding: 0 calc((var(--width-window) - var(--sum)) / 2);
+    padding: 0 calc((var(--width-window) - var(--sum) - 1em) / 2);
   }
 }
 @media screen and (min-width: 1800px) {

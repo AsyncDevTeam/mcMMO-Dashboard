@@ -61,6 +61,11 @@
       input{display: none}
       overflow-x: auto;
 
+      input:checked + label{
+        background: var(--active-color);
+        color: var(--w);
+      }
+
       .btn-main{
         white-space: pre-wrap;
       }

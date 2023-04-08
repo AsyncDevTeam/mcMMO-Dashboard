@@ -215,8 +215,10 @@ function changeLanguage(value){
 
 (function setGradient(){
     const r = document.querySelector(':root');
-    r.style.setProperty('--grad1', settings.colors.page.gradient.gradient_1);
-    r.style.setProperty('--grad2', settings.colors.page.gradient.gradient_2);
+    r.style.setProperty('--grad1', `rgba(${settings.colors.page.gradient.gradient_1} / 100%)`)
+    r.style.setProperty('--grad1_op', `rgba(${settings.colors.page.gradient.gradient_1} / 50%)`);
+    r.style.setProperty('--grad2', `rgba(${settings.colors.page.gradient.gradient_2} / 100%)`);
+    r.style.setProperty('--grad2_op', `rgba(${settings.colors.page.gradient.gradient_2} / 50%)`);
 }());
 
 (function setTitle(){

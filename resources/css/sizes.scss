@@ -1,7 +1,7 @@
 body{
   --sum : calc(var(--size-aside-wide-screen) + var(--size-content-wide-screen));
   .tabs_header{
-    @media screen and (min-width: 1800px) {padding: 0 calc((var(--width-window) - var(--sum))/2)}
+    @media screen and (min-width: 1800px) {padding: 0 calc((var(--width-window) - var(--sum) - 1em)/2)}
   }
   header .main{
     @media screen and (min-width: 1800px) {

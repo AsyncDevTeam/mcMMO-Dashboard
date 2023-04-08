@@ -26,7 +26,9 @@
     --x:0;
     --y:0;
     --grad1: rgb(36, 41, 46);
+    --grad1_op: rgba(36 41 46 / 50%);
     --grad2:rgb(15, 3, 3);
+    --grad2_op:rgba(15 3 3 / 50%);
     --max-br:1000px;
     --height-topbar:16vh;
     --height-footerbar:10vh;
