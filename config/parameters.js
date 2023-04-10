@@ -81,6 +81,10 @@ const translation = {
                     'section-2': 'All abilities',
                     'section-3': 'Capacity Comparison',
                     'section-3-bis': 'The comparison is made between the best player of the server and the selected player.'
+                },
+                'comparison': {
+                    'section-1': 'Skills comparison',
+                    'section-2': 'Comparison chart',
                 }
             },
             'aside': {
@@ -100,6 +104,10 @@ const translation = {
                     'sc-b-2': 'Abilities Level',
                     'sc-b-3': 'Abilities',
                     'sc-b-4': 'Comparison chart',
+                },
+                'comparison': {
+                    'sc-b-1': 'Skills comparison',
+                    'sc-b-2': 'Comparison chart',
                 }
             },
             'search': {
@@ -608,6 +616,11 @@ const translation = {
                     'section-3': 'Kapazitätsvergleich',
                     'section-3-bis': 'Der Vergleich erfolgt zwischen dem besten Spieler des Servers und dem ausgewählten Spieler.'
                 }
+                ,
+                'comparison': {
+                    'section-1': 'Kompetenzvergleich',
+                    'section-2': 'Vergleichstabelle',
+                }
             },
             'aside': {
                 'header': {
@@ -626,6 +639,10 @@ const translation = {
                     'sc-b-2': 'Fähigkeitsstufe',
                     'sc-b-3': 'Fähigkeiten',
                     'sc-b-4': 'Vergleichstabelle',
+                },
+                'comparison': {
+                    'sc-b-1': 'Kompetenzvergleich',
+                    'sc-b-2': 'Vergleichstabelle',
                 }
             },
             'search': {
