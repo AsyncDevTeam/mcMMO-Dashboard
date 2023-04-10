@@ -4,7 +4,9 @@ const vs = document.querySelector('.vs');
 (function (){
     const fp = document.querySelector('.fp')
     const lp = document.querySelector('.lp')
-    fp.classList.add('show')
+    setTimeout(() => {
+        fp.classList.add('show')
+    }, 50)
     setTimeout(() => {
         lp.classList.add('show')
     }, 250)
@@ -96,7 +98,7 @@ function setSelect(data){
 }
 
 function setSkinCompare(len, a = null){
-    vs.style.borderBottomColor = 'var(--grad2)'
+    vs.style.borderBottomColor = 'var(--active-color)'
     let target
     if(a !== null) target = a.target
     const { select_1, select_2, value_1, value_2 } = values();
@@ -145,7 +147,7 @@ function setSkinCompare(len, a = null){
 }
 
 function setTable(data){
-    vs.style.borderBottomColor = 'var(--grad2)'
+    vs.style.borderBottomColor = 'var(--active-color)'
     const { value_1, value_2 } = values();
     let data_player_1,
         data_player_2

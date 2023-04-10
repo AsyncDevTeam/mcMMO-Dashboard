@@ -1,5 +1,6 @@
-@import 'style';
-
+.wrapper.in .collapsible.content{
+  padding-bottom: 1em;
+}
 .collapsible:not(.content),
 .selected-player{
   list-style: none;

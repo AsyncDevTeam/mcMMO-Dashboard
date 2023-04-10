@@ -1,31 +1,16 @@
 <div class="sidebar-menu">
     <aside class="sm">
         <ul class="collapsible">
-            <li class="active">
-                <div class="collapsible-header" data-c="aside">
-                    <p class="sc-h-1"></p>
-                    <i class="fa-solid fa-chevron-right rotate"></i>
-                </div>
-                <div class="collapsible-body stats-server">
-                    <p class="info-details copyToClipboardAction">
-                        <i class="fa-solid fa-server"></i>
-                        <span class="server-ip"></span>
-                        <i class="fa-regular fa-copy"></i>
-                    </p>
-                    <p class="info-details nb_players">
-                        <i class="fa-solid fa-user-group"></i>
-                        <span class="server-player"></span>/<span class="max_players"></span>
-                    </p>
-                    <p class="info-details">
-                        <i class="fa-solid fa-code-branch"></i>
-                        <span class="version"></span>
-                    </p>
-                    <span class="overlay-stats hidden">
-                            <i class="fa-solid fa-bolt"></i>
-                            <p class="sc-h-1-s"></p>
-                        </span>
-                </div>
-            </li>
+            <?php require "server_infos.php" ?>
+            <?php
+            $s = array(
+                'id_1' => 'section_1_radio',
+                'id_2' => 'section_2_radio',
+            );
+            if (isset($comparison) & $comparison) {
+                require "shortcut_comparison.php" ;
+            }
+            ?>
             <li class="active">
                 <div class="collapsible-header" data-c="aside">
                     <p class="sc-h-2-a"></p>
@@ -47,6 +32,5 @@
                 </div>
             </li>
         </ul>
-<!--        --><?php //require "square-infos.php" ?>
     </aside>
 </div>

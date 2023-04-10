@@ -1,7 +1,7 @@
 body{
   --sum : calc(var(--size-aside-wide-screen) + var(--size-content-wide-screen));
   .tabs_header{
-    @media screen and (min-width: 1800px) {padding: 0 calc((var(--width-window) - var(--sum) - 1em)/2)}
+    @media screen and (min-width: 1800px) {padding: 0 calc((var(--width-window) - var(--sum))/2)}
   }
   header .main{
     @media screen and (min-width: 1800px) {
@@ -28,15 +28,18 @@ body{
       }
     }
     .content{
-      @media screen and (min-width: 1800px) {width: var(--size-content-wide-screen) !important}
+      @media screen and (min-width: 1800px) {width: 100% !important}
       &.index-page{
-        width: calc(var(--width-window) - var(--width-aside));
         li:not(.paginate_button){margin: 1em!important;}
-        @media screen and (max-width: 1300px) {width: 100% !important;}
-        @media screen and (max-width: 1000px) {
-          width: 100%!important;
-          margin: 0!important;
-        }
+        //width: calc(var(--width-window) - var(--width-aside) - 1em);
+        @media screen and (min-width: 1800px) {width: var(--size-content-wide-screen)!important}
+        //@media screen and (min-width: 1300px) {width: calc(var(--width-window) - var(--width-aside))}
+        @media all and (max-width: 1800px) {width: calc(var(--width-window) - var(--width-aside) - 1em)}
+        @media screen and (max-width: 1300px) {width: 100%}
+        //@media screen and (max-width: 1000px) {
+        //  width: 100%!important;
+        //  margin: 0!important;
+        //}
 
         .wrapper-pie{
           @media screen and (min-width: 1800px){
@@ -56,9 +59,6 @@ body{
             }
           }
         }
-      }
-      @media screen and (max-width: 1000px) {
-        width: calc(100% - 2em) !important;
       }
     }
     .content-main{
@@ -95,10 +95,7 @@ body{
     }
     .sp{
       @media screen and (min-width: 1800px) {
-        .search_p{
-          width: 100%!important;
-          margin: 1em 0!important;
-        }
+        .search_p{width: 100%!important}
         //padding: 0 calc((var(--width-window) - var(--sum))/2 + 1em) !important
       }
       @media screen and (max-width: 750px){

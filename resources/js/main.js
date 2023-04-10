@@ -7,14 +7,11 @@ select_radio_section.forEach(e => {
 })
 
 function changeSection(element) {
-    if (element.dataset.section_click === "backToTop")
-        window.scroll(0, 0)
-
     const section_active = document.querySelector(`#${element.dataset.section_click}`)
     section_active.classList.replace('section-inactive', 'section-active')
-
+    const icon = document.querySelector('.icon-hamburger')
     const infos = getBrowserInfos()
-    window.scroll(0, section_active.offsetTop - infos.height / 8)
+    window.scroll(0, section_active.offsetTop - infos.height / 6)
 
     const sidebar = document.querySelector('.sidebar-menu')
     const main = document.querySelector('main')
@@ -22,6 +19,13 @@ function changeSection(element) {
     sidebar.classList.remove('open')
     main.classList.remove('sidebar-open')
     wrapper.classList.remove('sidebar-open-effect')
+
+    if(wrapper.classList.contains('sidebar-open-effect')){
+        icon.classList.replace('fa-bars', 'fa-times')
+        // element.style.width = width
+    }else{
+        icon.classList.replace('fa-times', 'fa-bars')
+    }
 }
 
 function getHM(TS = null) {
@@ -71,18 +75,6 @@ function getBrowserInfos() {
         'online': online
     }
 
-}
-
-window.onscroll = function () {
-    if (window.scrollY > 100) {
-        backToTop.forEach(e => {
-            e.classList.add('showElement')
-        })
-    } else {
-        backToTop.forEach(e => {
-            e.classList.remove('showElement')
-        })
-    }
 }
 
 let TEST_MODE = false

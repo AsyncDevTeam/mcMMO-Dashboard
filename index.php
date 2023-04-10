@@ -27,7 +27,7 @@ session_start();
     <label for="no-display-input">
         <input type="text" class="copyToClipboard hidden" value="" id="no-display-input">
     </label>
-    <div class="wrapper">
+    <div class="wrapper in">
         <aside>
             <div class="right-align bs">
                 <label for="player_research" class="searchBarWrapper">
@@ -40,34 +40,10 @@ session_start();
                 </label>
             </div>
             <ul class="collapsible">
+                <?php require "resources/php/includes/server_infos.php" ?>
                 <li class="active">
                     <div class="collapsible-header" data-c="aside">
-                        <p class="sc-h-1">Server information's</p>
-                        <i class="fa-solid fa-chevron-right rotate"></i>
-                    </div>
-                    <div class="collapsible-body stats-server">
-                        <p class="info-details copyToClipboardAction">
-                            <i class="fa-solid fa-server"></i>
-                            <span class="server-ip"></span>
-                            <i class="fa-regular fa-copy"></i>
-                        </p>
-                        <p class="info-details nb_players">
-                            <i class="fa-solid fa-user-group size"></i>
-                            <span class="server-player"></span>/<span class="max_players"></span>
-                        </p>
-                        <p class="info-details">
-                            <i class="fa-solid fa-code-branch size"></i>
-                            <span class="version"></span>
-                        </p>
-                        <span class="overlay-stats hidden">
-                            <i class="fa-solid fa-bolt"></i>
-                            <p class="sc-h-1-s"></p>
-                        </span>
-                    </div>
-                </li>
-                <li class="active">
-                    <div class="collapsible-header" data-c="aside">
-                        <p class="sc-h-2">Shortcuts</p>
+                        <p class="sc-h-2"></p>
                         <i class="fa-solid fa-chevron-right rotate"></i>
                     </div>
                     <div class="collapsible-body">
@@ -96,42 +72,11 @@ session_start();
                                 <i class="fa-solid fa-chart-pie"></i>
                                 <span class="sc-b-3"></span>
                             </label>
-                            <hr class="backToTop">
-                            <input class="select-radio-section backToTop_ham"
-                                   type="radio"
-                                   id="backToTop"
-                                   name="filter_section" data-section_click="backToTop">
-                            <label class="radio-label btn-main backToTop" for="backToTop">
-                                <i class="fa-solid fa-arrow-up"></i>
-                                <span class="sc-b-999"></span>
-                            </label>
                         </div>
                     </div>
                 </li>
             </ul>
-            <div class="selected-player">
-                <div class="collapsible-header qv">
-                    <p>QuickView</p>
-                    <div class="icon">
-                        <i class="fa-solid fa-eye"></i>
-                    </div>
-                </div>
-                <div class="collapsible-body show">
-                    <div class="row-n">
-                        <p class="qv-tag"></p>
-                        <span class="selected-player-name"></span>
-                    </div>
-                    <div class="row-n">
-                        <p class="qv-g-rank"></p>
-                        <span class="sel_rank_user"></span>
-                    </div>
-                    <div class="row-n">
-                        <p class="qv-rank"></p>
-                        <span class="sel_current_rank"></span>
-                    </div>
-                    <button class="btn-main seeSkill qv-seeSkills"></button>
-                </div>
-            </div>
+            <?php require "resources/php/includes/quickview.php" ?>
             <div class="background-fixed"></div>
         </aside>
         <div class="right-align hidden">
@@ -139,7 +84,7 @@ session_start();
                 <input id="player_research_ham" class="btn-main player_research search_player_avt" type="text"
                        placeholder="Search a player">
                 <button class="btn-main" onclick="clearInput()">
-                    <span class="clear_player_avt">Clear</span>
+                    <span class="clear_player_avt"></span>
                     <i class="fa-solid fa-times"></i>
                 </button>
             </label>
@@ -148,9 +93,9 @@ session_start();
             <li class="active avt-glass-effect" id="best-player" data-section="section-bp">
                 <div class="collapsible-header">
                     <h1 class="title-section">
-                        <span id="section-1">Best players of server</span>
+                        <span id="section-1"></span>
                     </h1>
-                    <p id="last_refresh_bp">Refreshed at 00h00</p>
+                    <p id="last_refresh_bp"></p>
                 </div>
                 <div class="collapsible-body">
                     <div class="content_bp"></div>
@@ -159,7 +104,7 @@ session_start();
             <li class="active avt-glass-effect" id="ld-main" data-section="section-ld-main">
                 <div class="collapsible-header">
                     <h1 class="title-section">
-                        <span id="section-2">Leaderboard</span>
+                        <span id="section-2"></span>
                         <i class="fa-solid fa-chevron-right rotate"></i></h1>
                 </div>
                 <div class="collapsible-body">
@@ -178,12 +123,12 @@ session_start();
             <li class="active avt-glass-effect" id="abi" data-section="section-abi">
                 <div class="collapsible-header">
                     <h1 class="title-section">
-                        <span id="section-3">By abilities</span>
+                        <span id="section-3"></span>
                         <i class="fa-solid fa-chevron-right rotate"></i></h1>
                 </div>
                 <div class="collapsible-body">
                     <label for="chart_select" class="chart_select">
-                        <span class="select-before">Show</span>
+                        <span class="select-before"></span>
                         <select name="chart_select"
                                 id="chart_select"
                                 class="custom-select custom-select-sm">
@@ -193,7 +138,7 @@ session_start();
                             <option value="25">100</option>
                             <option value="500" selected="selected">max</option>
                         </select>
-                        <span class="select-after">entries</span>
+                        <span class="select-after"></span>
                     </label>
                     <div class="chart-container">
                         <canvas id="myChart"></canvas>
@@ -203,7 +148,7 @@ session_start();
             <li class="active avt-glass-effect hidden" id="abi-minmax" data-section="section-abi-minmax">
                 <div class="collapsible-header">
                     <h1 class="title-section">
-                        <span id="section-4">By abilities (min max)</span>
+                        <span id="section-4"></span>
                         <i class="fa-solid fa-chevron-right rotate"></i></h1>
                 </div>
                 <div class="collapsible-body">
@@ -215,7 +160,7 @@ session_start();
             <li class="active avt-glass-effect" id="abi-pie" data-section="section-abi-pie">
                 <div class="collapsible-header">
                     <h1 class="title-section">
-                        <span id="section-5">Best abilities of server</span>
+                        <span id="section-5"></span>
                         <i class="fa-solid fa-chevron-right rotate"></i></h1>
                 </div>
                 <div class="collapsible-body">
@@ -227,6 +172,7 @@ session_start();
                     </div>
                 </div>
             </li>
+            <?php require "resources/php/includes/back_to_top.php" ?>
         </ul>
     </div>
     <?php require "resources/php/includes/footer.php" ?>
@@ -237,37 +183,13 @@ session_start();
                     <input id="player_research_si" class="btn-main player_research search_player_avt" type="text"
                            placeholder="Search a player">
                     <button class="btn-main" onclick="clearInput()">
-                        <span class="clear_player_avt">Clear</span>
+                        <span class="clear_player_avt"></span>
                         <i class="fa-solid fa-times"></i>
                     </button>
                 </label>
             </div>
             <ul class="collapsible">
-                <li class="active">
-                    <div class="collapsible-header" data-c="aside">
-                        <p class="sc-h-1"></p>
-                        <i class="fa-solid fa-chevron-right rotate"></i>
-                    </div>
-                    <div class="collapsible-body stats-server">
-                        <p class="info-details copyToClipboardAction">
-                            <i class="fa-solid fa-server"></i>
-                            <span class="server-ip"></span>
-                            <i class="fa-regular fa-copy"></i>
-                        </p>
-                        <p class="info-details nb_players">
-                            <i class="fa-solid fa-user-group"></i>
-                            <span class="server-player"></span>/<span class="max_players"></span>
-                        </p>
-                        <p class="info-details">
-                            <i class="fa-solid fa-code-branch"></i>
-                            <span class="version"></span>
-                        </p>
-                        <span class="overlay-stats hidden">
-                            <i class="fa-solid fa-bolt"></i>
-                            <p class="sc-h-1-s"></p>
-                        </span>
-                    </div>
-                </li>
+                <?php require "resources/php/includes/server_infos.php" ?>
                 <li class="active">
                     <div class="collapsible-header" data-c="aside">
                         <p class="sc-h-2"></p>
@@ -299,42 +221,11 @@ session_start();
                                 <i class="fa-solid fa-chart-pie"></i>
                                 <span class="sc-b-3"></span>
                             </label>
-                            <hr class="backToTop">
-                            <input class="select-radio-section"
-                                   type="radio"
-                                   id="backToTop_ham"
-                                   name="filter_section" data-section_click="backToTop">
-                            <label class="radio-label btn-main backToTop" for="backToTop_ham">
-                                <i class="fa-solid fa-arrow-up"></i>
-                                <span class="sc-b-999"></span>
-                            </label>
                         </div>
                     </div>
                 </li>
             </ul>
-            <div class="selected-player">
-                <div class="collapsible-header qv">
-                    <p>QuickView</p>
-                    <div class="icon">
-                        <i class="fa-solid fa-eye"></i>
-                    </div>
-                </div>
-                <div class="collapsible-body show">
-                    <div class="row-n">
-                        <p class="qv-tag"></p>
-                        <span class="selected-player-name"></span>
-                    </div>
-                    <div class="row-n">
-                        <p class="qv-g-rank"></p>
-                        <span class="sel_rank_user"></span>
-                    </div>
-                    <div class="row-n">
-                        <p class="qv-rank"></p>
-                        <span class="sel_current_rank"></span>
-                    </div>
-                    <button class="btn-main seeSkill qv-seeSkills"></button>
-                </div>
-            </div>
+            <?php require "resources/php/includes/quickview.php" ?>
         </aside>
     </div>
 </main>

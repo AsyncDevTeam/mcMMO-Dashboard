@@ -11,7 +11,6 @@ const version = document.querySelectorAll('.version')
 const server_logo = document.querySelector('#server-logo')
 const select_radio_section = document.querySelectorAll('.select-radio-section')
 const chart_select = document.querySelector('#chart_select')
-const backToTop = document.querySelectorAll('.backToTop')
 const tog_dm_icon = document.querySelectorAll('.fa-circle-half-stroke')
 const main = document.querySelector('main')
 const darkM = document.querySelector("#darkMode-input")
@@ -111,6 +110,11 @@ function setServerStats(infos) {
         max_players_a.forEach(e => {
             e.innerHTML = max_players
         })
+        server_player.forEach(e => {
+            setTimeout(() => {
+                e.closest('p').classList.add('show')
+            });
+        })
     } else {
         server_player.forEach(e => {
             e.innerHTML = "0"
@@ -118,14 +122,16 @@ function setServerStats(infos) {
         max_players_a.forEach(e => {
             e.innerHTML = "0"
         })
+        server_player.forEach(e => {
+            setTimeout(() => {
+                e.closest('p').classList.add('show')
+            });
+        })
     }
-
-    server_ip.forEach(e => {
-        e.innerHTML = hostname
-    })
     version.forEach(e => {
         const regex = /§(\d)([^§]+)/g;
         e.innerHTML = minecraft_version.replace(regex, '<span class="c-$1">$2</span>')
+        displayElement(e, minecraft_version.replace(regex, '<span class="c-$1">$2</span>'))
     })
     server_logo.src = icon
     let link = document.querySelector("link[rel~='icon']");
@@ -135,6 +141,10 @@ function setServerStats(infos) {
         document.head.appendChild(link);
     }
     link.href = icon
+    server_ip.forEach(e => {
+        e.innerHTML = hostname
+        displayElement(e, hostname)
+    })
     copyToClipboard.value = hostname
 }
 
@@ -369,7 +379,6 @@ function classModifier(element, class_, type){
     }
 }
 
-
 let sortClick = true
 function sort(list, ico, element){
     var mylist = $(list)
@@ -407,3 +416,13 @@ function sort(list, ico, element){
         mylist.append(item);
     });
 }
+
+function displayElement(element, data){
+    setTimeout(() => {
+        if (element.innerText === data) {
+            element.closest('p').classList.add('show')
+        }
+    });
+}
+
+function backToTop(){window.scroll(0, 0)}

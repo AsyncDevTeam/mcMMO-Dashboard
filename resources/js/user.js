@@ -1,5 +1,8 @@
 const query = window.location.search.split("?q=")[1]
 const title_section = document.querySelector('.title-section')
+const input = document.querySelector('#filter_group')
+const no_element_found = document.querySelector(".no-element-found")
+const filter_group = document.getElementById("filter-group")
 let label_player = {}
 if(!isBrowserOnline){stylePageOffline()}
 
@@ -130,6 +133,7 @@ fLoadUser().then(r => {
     if(!isBrowserOnline) return
     setBestAbilities(r)
     setAllAbilities(r)
+    setFilterFamilyCard()
     userData(r)
     setChart(r)
 });
@@ -427,6 +431,7 @@ function setAllAbilities(player){
         const clone = node.cloneNode(true);
         clone.setAttribute('data-clone', 'o')
         clone.classList.add('shiny')
+        clone.style.display = 'block'
 
         const ab_title = clone.querySelector('.ab-title')
         ab_title.innerHTML = translation[languageSelect].ab[e]
@@ -508,6 +513,17 @@ function setAllAbilities(player){
                 clone.classList.add('best-card-in-stack')
             }
         })
+
+        clone.setAttribute('data-total', lvl)
+        const family_label = clone.querySelector('.family-label')
+        for (const [index, family] of Object.keys(families).entries()) {
+            if (families[family].includes(e.charAt(0).toUpperCase() + e.slice(1))) {
+                clone.setAttribute('data-family', family)
+                family_label.setAttribute('data-family', `var(--f${index})`)
+                family_label.innerHTML = family
+                break;
+            }
+        }
 
         const ab_ar_label = clone.querySelector('.ab-bar-label')
         const ab_ar_label_max = clone.querySelector('.ab-bar-label-max')
@@ -684,40 +700,53 @@ function totalAbilities(){
 }
 
 const searchAbility = document.querySelector('.searchAbility')
+searchAbility.addEventListener('click', () => {
+    filter_group.classList.remove("show")
+    input.checked = false
+})
+
 searchAbility.addEventListener('keyup', () => {
-    const ab_card = document.querySelectorAll(".ab-card[data-clone='o']")
-    const no_element_found = document.querySelector(".no-element-found")
+    const list = changeFilterGroup()
+    const card_infos = document.querySelector('.card-infos')
+    const cards = document.querySelectorAll('.ab-card')
     let inputValue = searchAbility.value
     let filter = inputValue.toUpperCase();
     let counterStyle = 0
 
-    for (let i = 0; i < ab_card.length; i++) {
-        let object = ab_card[i].querySelector('.ab-title')
+    for (let i = 0; i < list.length; i++) {
+        let object = list[i].querySelector('.ab-title')
         let a = object.innerHTML;
         if (a.toUpperCase().indexOf(filter) > -1) {
-            ab_card[i].style.display = 'block'
+            list[i].style.display = 'block'
             counterStyle = 0
         } else {
-            ab_card[i].style.display = 'none'
+            list[i].style.display = 'none'
             counterStyle++
         }
     }
 
-    if(counterStyle === abilities.length){
+    if(counterStyle === list.length){
+        //No element found
         no_element_found.classList.remove('hidden')
     }else{
         no_element_found.classList.add('hidden')
     }
+
+    card_infos.classList.add('hidden')
+    cards.forEach(e => {
+        if(e.classList.contains('selected')){
+            e.classList.remove('selected')
+        }
+    })
 })
 
 function clearInputUser(){
-    const ab_card = document.querySelectorAll(".ab-card[data-clone='o']")
-    const no_element_found = document.querySelector(".no-element-found")
-
+    const list = changeFilterGroup()
     const res = document.querySelector('#ab_research')
     res.value = ""
-    for (let i = 0; i < ab_card.length; i++) {
-        ab_card[i].style.display = 'block'
+
+    for (let i = 0; i < list.length; i++) {
+        list[i].style.display = 'block'
     }
     no_element_found.classList.add('hidden')
 }
@@ -758,73 +787,6 @@ function setChart(player){
     chartAbilitiesGraphUser = new Chart(chart_user_all_abilities, config);
 }
 
-let sortClickA = false
-function sortAlphabetical(){
-    const card_infos = document.querySelector('.card-infos')
-    card_infos.classList.add('hidden')
-    const ab_card = document.querySelectorAll(".ab-card[data-clone='o']")
-    ab_card.forEach(e => {e.classList.remove('selected')})
-
-    var mylist = $('.card-abilities')
-    const icon = $('.sort_A')[0]
-    var listitems = mylist.children('div').get()
-
-    if(!sortClickA){
-        listitems.sort(function(a, b) {
-            return $(a).text().toUpperCase().localeCompare($(b).text().toUpperCase());
-        });
-        sortClickA = true
-        icon.classList.replace('fa-arrow-down-a-z', 'fa-arrow-down-z-a')
-    }else{
-        listitems.sort(function(b, a) {
-            return $(a).text().toUpperCase().localeCompare($(b).text().toUpperCase());
-        });
-        sortClickA = false
-        icon.classList.replace('fa-arrow-down-z-a', 'fa-arrow-down-a-z')
-    }
-    $.each(listitems, function(index, item) {
-        mylist.append(item);
-    });
-}
-let sortClickN = false
-function sortNumber(){
-    const card_infos = document.querySelector('.card-infos')
-    card_infos.classList.add('hidden')
-    const ab_card = document.querySelectorAll(".ab-card[data-clone='o']")
-    ab_card.forEach(e => {e.classList.remove('selected')})
-
-    var mylist = $('.card-abilities')
-    var listitems = mylist.children('div').get()
-
-
-    const d = document.querySelector(".card-abilities")
-    sortByPoints(d)
-    function sortByPoints(element) {
-        Array.from(element.querySelectorAll(".ab-card")).sort((a, b) => {
-            // console.log(a.querySelector(".ab-bar-level"))
-            // console.log(b.querySelector(".ab-bar-level"))
-            // return parseInt(a.querySelector(".ab-bar-level").textContent) - parseInt(b.querySelector(".points").textContent)
-        }).forEach(item => {
-            element.appendChild(item)
-        })
-    }
-
-    // if(sortClickN){
-    //     listitems.sort(function(a, b) {
-    //         return $(a).find('.ab-bar-level').text().toUpperCase().localeCompare($(b).find('.ab-bar-level').text().toUpperCase());
-    //     });
-    //     sortClickN = false
-    // }else{
-    //     listitems.sort(function(b, a) {
-    //         return $(a).find('.ab-bar-level').text().toUpperCase().localeCompare($(b).find('.ab-bar-level').text().toUpperCase());
-    //     });
-    //     sortClickN = true
-    // }
-    // $.each(listitems, function(index, item) {
-    //     mylist.append(item);
-    // });
-}
-
 const shinyElements = document.querySelectorAll('.shiny')
 shinyElements.forEach(a => {
     a.addEventListener("mousemove", (e) => {
@@ -833,3 +795,70 @@ shinyElements.forEach(a => {
         a.style.setProperty("--y", e.clientY - y);
     });
 })
+
+function setFilterFamilyCard(){
+    for (const [index, family] of Object.keys(families).entries()) {
+        const element = document.createElement('div')
+        const label = document.createElement('label')
+        const span = document.createElement('span')
+        const input = document.createElement('input')
+        input.setAttribute("type", "checkbox");
+        input.id = `select-${index}`
+        input.checked = true
+        label.setAttribute("for", `select-${index}`);
+
+        element.classList.add('filter')
+        span.setAttribute('data-family', `var(--f${index})`)
+        element.setAttribute('data-family', `var(--f${index})`)
+        span.innerHTML = family
+
+        label.appendChild(span)
+        element.appendChild(input)
+        element.appendChild(label)
+        // label.onclick = changeFilterGroup
+        input.onchange = function (){changeFilterGroup();searchAbility.value = ""}
+        filter_group.appendChild(element)
+    }
+}
+
+function dropdownGroup(){
+    if(input.checked){
+        filter_group.classList.remove("show")
+    }else{
+        filter_group.classList.add("show")
+    }
+}
+
+function changeFilterGroup(){
+    const card = document.querySelectorAll('.ab-card[data-clone="o"]')
+    const filter = document.querySelectorAll('.filter')
+    let fam = []
+    filter.forEach(e => {
+        const input = e.querySelector('input')
+        if(input.checked){
+            const span = e.querySelector('span')
+            fam.push(span.innerHTML)
+        }
+    })
+
+    let ar = []
+    let counterStyle = 0
+    card.forEach(a => {
+        if(fam.includes(a.dataset.family)){
+            a.style.display = 'block'
+            ar.push(a)
+            counterStyle = 0
+        }else{
+            a.style.display = 'none'
+            counterStyle++
+        }
+    })
+    if(counterStyle === abilities.length){
+        //No element found
+        no_element_found.classList.remove('hidden')
+    }else{
+        no_element_found.classList.add('hidden')
+    }
+
+    return ar
+}

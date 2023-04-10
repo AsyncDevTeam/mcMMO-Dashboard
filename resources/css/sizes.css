@@ -3,7 +3,7 @@ body {
 }
 @media screen and (min-width: 1800px) {
   body .tabs_header {
-    padding: 0 calc((var(--width-window) - var(--sum) - 1em) / 2);
+    padding: 0 calc((var(--width-window) - var(--sum)) / 2);
   }
 }
 @media screen and (min-width: 1800px) {
@@ -40,24 +40,25 @@ body .wrapper aside .background-fixed {
 }
 @media screen and (min-width: 1800px) {
   body .wrapper .content {
-    width: var(--size-content-wide-screen) !important;
+    width: 100% !important;
   }
-}
-body .wrapper .content.index-page {
-  width: calc(var(--width-window) - var(--width-aside));
 }
 body .wrapper .content.index-page li:not(.paginate_button) {
   margin: 1em !important;
 }
-@media screen and (max-width: 1300px) {
+@media screen and (min-width: 1800px) {
   body .wrapper .content.index-page {
-    width: 100% !important;
+    width: var(--size-content-wide-screen) !important;
   }
 }
-@media screen and (max-width: 1000px) {
+@media all and (max-width: 1800px) {
   body .wrapper .content.index-page {
-    width: 100% !important;
-    margin: 0 !important;
+    width: calc(var(--width-window) - var(--width-aside) - 1em);
+  }
+}
+@media screen and (max-width: 1300px) {
+  body .wrapper .content.index-page {
+    width: 100%;
   }
 }
 @media screen and (min-width: 1800px) {
@@ -78,11 +79,6 @@ body .wrapper .content.index-page li:not(.paginate_button) {
   body .wrapper .content.index-page .wrapper-pie .chart-container,
 body .wrapper .content.index-page .wrapper-pie .array-infos-ba {
     width: 100% !important;
-  }
-}
-@media screen and (max-width: 1000px) {
-  body .wrapper .content {
-    width: calc(100% - 2em) !important;
   }
 }
 @media screen and (min-width: 1800px) {
@@ -137,7 +133,6 @@ body .wrapper .content-main:not(.sp) .content li:last-child {
 @media screen and (min-width: 1800px) {
   body .wrapper .sp .search_p {
     width: 100% !important;
-    margin: 1em 0 !important;
   }
 }
 @media screen and (max-width: 750px) {

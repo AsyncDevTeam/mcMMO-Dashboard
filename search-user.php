@@ -29,11 +29,12 @@ session_start();
     </label>
     <div class="wrapper pages">
         <?php
-            $params = array(
-                'list' => '.result-search',
-                'element' => 'a.user-find',
-            );
-            require "resources/php/includes/aside_min.php"
+        $comparison = false;
+        $params = array(
+            'list' => '.result-search',
+            'element' => 'a.user-find',
+        );
+        require "resources/php/includes/aside_min.php"
         ?>
         <div class="content-main align-center sp">
             <div class="search_p">
@@ -59,15 +60,17 @@ session_start();
                     </div>
                 </div>
             </div>
+            <?php require "resources/php/includes/back_to_top.php" ?>
         </div>
     </div>
     <?php require "resources/php/includes/footer.php" ?>
     <?php
-        $params = array(
-            'list' => '.result-search',
-            'element' => 'a.user-find',
-        );
-        require "resources/php/includes/aside_min_wide.php"
+    $comparison = false;
+    $params = array(
+        'list' => '.result-search',
+        'element' => 'a.user-find',
+    );
+    require "resources/php/includes/aside_min_wide.php"
     ?>
 </main>
 </body>

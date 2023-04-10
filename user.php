@@ -31,31 +31,7 @@ session_start();
     <div class="wrapper">
         <aside>
             <ul class="collapsible">
-                <li class="active">
-                    <div class="collapsible-header">
-                        <p class="sc-h-1"></p>
-                        <i class="fa-solid fa-chevron-right rotate"></i>
-                    </div>
-                    <div class="collapsible-body stats-server">
-                        <p class="info-details copyToClipboardAction">
-                            <i class="fa-solid fa-server"></i>
-                            <span class="server-ip"></span>
-                            <i class="fa-regular fa-copy"></i>
-                        </p>
-                        <p class="info-details nb_players">
-                            <i class="fa-solid fa-user-group size"></i>
-                            <span class="server-player"></span>/<span class="max_players"></span>
-                        </p>
-                        <p class="info-details">
-                            <i class="fa-solid fa-code-branch size"></i>
-                            <span class="version"></span>
-                        </p>
-                        <span class="overlay-stats hidden">
-                <i class="fa-solid fa-bolt"></i>
-                <p class="sc-h-1-s"></p>
-            </span>
-                    </div>
-                </li>
+                <?php require "resources/php/includes/server_infos.php" ?>
                 <li class="active">
                     <div class="collapsible-header">
                         <p class="sc-h-2"></p>
@@ -94,15 +70,6 @@ session_start();
                             <label class="radio-label btn-main" for="abilities_level_chart_com">
                                 <i class="fa-solid fa-chart-line"></i>
                                 <span class="sc-b-4"></span>
-                            </label>
-                            <hr class="backToTop">
-                            <input class="select-radio-section"
-                                   type="radio"
-                                   id="backToTop"
-                                   name="filter_section" data-section_click="backToTop">
-                            <label class="radio-label btn-main backToTop" for="backToTop">
-                                <i class="fa-solid fa-arrow-up"></i>
-                                <span class="sc-b-999"></span>
                             </label>
                         </div>
                     </div>
@@ -155,11 +122,18 @@ session_start();
                     </div>
                     <div class="collapsible-body">
                         <div class="right-align">
-                            <button class="btn-main hidden" onclick="sortNumber()">
+                            <div class="dropdown">
+                                <input type="checkbox" name="filter_group" id="filter_group">
+                                <label for="filter_group" class="dropdown-btn btn-main" onclick="dropdownGroup()">
+                                    <i class="fa-solid fa-layer-group"></i>
+                                </label>
+                                <div id="filter-group" class="dropdown-content"></div>
+                            </div>
+                            <button class="btn-main" onclick="sort('.card-abilities', '.sort_N', '.ab-card')">
                                 <span class="sort_avt"></span>
-                                <i class="fa-solid fa-arrow-down-1-9"></i>
+                                <i class="fa-solid sort_N fa-arrow-down-1-9"></i>
                             </button>
-                            <button class="btn-main" onclick="sortAlphabetical()">
+                            <button class="btn-main" onclick="sort('.card-abilities', '.sort_A', '.ab-card')">
                                 <span class="sort_avt"></span>
                                 <i class="fa-solid sort_A fa-arrow-down-a-z"></i>
                             </button>
@@ -179,6 +153,9 @@ session_start();
                                     <i class="fa-solid"></i>
                                     <span class="mdi"></span>
                                 </div>
+                                <div class="family-ab">
+                                    <span class="family-label"></span>
+                                </div>
                                 <div class="ab-row">
                                     <p class="ab-bar-level"></p>
                                     <p><span class="ab-bar-label"></span>/<span class="ab-bar-label-max"></span> exp</p>
@@ -192,9 +169,9 @@ session_start();
                             </div>
                             <div class="no-element-found hidden">
                                 <i class="fa-solid fa-circle-xmark"></i>
-                                <p></p>
+                                <p class="no_result"></p>
                             </div>
-                            <div class="card-infos shiny hidden">
+                            <div class="card-infos hidden">
                                 <div class="header-title">
                                     <i class="fa-solid fa-circle-info"></i>
                                     <h2 class="ab_sel"></h2>
@@ -239,40 +216,17 @@ session_start();
                     </div>
                 </li>
             </ul>
+            <?php require "resources/php/includes/back_to_top.php" ?>
         </div>
     </div>
     <?php require "resources/php/includes/footer.php" ?>
     <div class="sidebar-menu">
         <aside>
             <ul class="collapsible">
+                <?php require "resources/php/includes/server_infos.php" ?>
                 <li class="active">
                     <div class="collapsible-header" data-c="aside">
-                        <p class="sc-h-1">Server information's</p>
-                        <i class="fa-solid fa-chevron-right rotate"></i>
-                    </div>
-                    <div class="collapsible-body stats-server">
-                        <p class="info-details copyToClipboardAction">
-                            <i class="fa-solid fa-server"></i>
-                            <span class="server-ip"></span>
-                            <i class="fa-regular fa-copy"></i>
-                        </p>
-                        <p class="info-details nb_players">
-                            <i class="fa-solid fa-user-group size"></i>
-                            <span class="server-player"></span>/<span class="max_players"></span>
-                        </p>
-                        <p class="info-details">
-                            <i class="fa-solid fa-code-branch size"></i>
-                            <span class="version"></span>
-                        </p>
-                        <span class="overlay-stats hidden">
-                <i class="fa-solid fa-bolt"></i>
-                <p class="sc-h-1-s"></p>
-            </span>
-                    </div>
-                </li>
-                <li class="active">
-                    <div class="collapsible-header" data-c="aside">
-                        <p class="sc-h-2">Shortcuts</p>
+                        <p class="sc-h-2"></p>
                         <i class="fa-solid fa-chevron-right rotate"></i>
                     </div>
                     <div class="collapsible-body">
@@ -309,33 +263,10 @@ session_start();
                                 <i class="fa-solid fa-chart-line"></i>
                                 <span class="sc-b-4"></span>
                             </label>
-                            <hr class="backToTop">
-                            <input class="select-radio-section"
-                                   type="radio"
-                                   id="backToTop_ham"
-                                   name="filter_section" data-section_click="backToTop">
-                            <label class="radio-label btn-main backToTop" for="backToTop_ham">
-                                <i class="fa-solid fa-arrow-up"></i>
-                                <span class="sc-b-999"></span>
-                            </label>
                         </div>
                     </div>
                 </li>
             </ul>
-            <div class="selected-player">
-                <div class="collapsible-header qv">
-                    <p>QuickView</p>
-                    <div class="icon">
-                        <i class="fa-solid fa-eye"></i>
-                    </div>
-                </div>
-                <div class="collapsible-body show">
-                    <p>Player : <span class="selected-player-name">und</span></p>
-                    <p>General <span class="sel_rank_user">0/0</span></p>
-                    <p>Current rank <span class="sel_current_rank">000</span></p>
-                    <button class="btn-main seeSkill">See skill levels</button>
-                </div>
-            </div>
         </aside>
     </div>
 </main>

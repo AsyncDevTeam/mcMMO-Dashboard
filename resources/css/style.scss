@@ -46,6 +46,26 @@ body{
       white-space: nowrap;
     }
   }
+  *[data-family='var(--f0)']{
+    background: #ffa2a2;
+    border: 1px solid #ff0000;
+    color: #640000;
+  }
+  *[data-family='var(--f1)']{
+    background: #a2a2ff;
+    border: 1px solid #0000ff;
+    color: #000064;
+  }
+  *[data-family='var(--f2)']{
+    background: #a2ffa2;
+    border: 1px solid #00ff00;
+    color: #006400;
+  }
+  *[data-family='var(--f3)']{
+    background: #fca2ff;
+    border: 1px solid #f700ff;
+    color: #432b43;
+  }
 
   .swal2-container{z-index: 99999}
   .right-align{
@@ -72,7 +92,54 @@ body{
       }
       input::placeholder{color: var(--b)}
     }
-
+    .dropdown{
+      position: relative;
+      .dropdown-btn{height: 100%}
+      input{display: none}
+      input:checked + label{
+        background: var(--active-color);
+        color: var(--w);
+      }
+      .dropdown-content{
+        display: none;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 99;
+        white-space: nowrap;
+        margin-top: 0.5em;
+        flex-direction: column;
+        box-shadow: rgb(67 67 125 / 48%) 0 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        &.show{@include centerFlex}
+        .filter{
+          //&.clicked{background: var(--active-color)}
+          //&:hover{background: var(--active-color)}
+          width: 100%;
+          background-color: var(--btn-main-bg);
+          border: 1px solid rgba(var(--rgb_border_nc) / 15%);
+          box-shadow: rgba(var(--rgb_border_nc) / 4%) 0 1px 0, rgba(var(--rgb_nc) / 25%) 0 1px 0 inset;
+          border-bottom: 0;
+          overflow: hidden;
+          &:first-child{border-radius: 6px 6px 0 0}
+          &:last-child{
+            border-radius: 0 0 6px 6px;
+            border-bottom: 1px;
+          }
+          label{
+            padding: .5em;
+            border-bottom: 0;
+            width: 100%;
+            cursor: pointer;
+            display: flex;
+            span{
+              padding: 0.2em 0.5em;
+              width: fit-content;
+              border-radius: 100px;
+            }
+          }
+        }
+      }
+    }
     button{width: fit-content}
   }
 
@@ -309,7 +376,12 @@ body{
           }
           .nb_players{margin: 1em 0}
 
-          p{ i{width: 2em} }
+          p{
+            opacity: 0;
+            transition: opacity 1s;
+            &.show{opacity: 1}
+            i{width: 2em}
+          }
 
           input:disabled + label[for=abilities_level_chart_com]{
             opacity: .2;
@@ -526,6 +598,7 @@ body{
             color: var(--b);
             .chart-container{
               background: none;
+              padding: 0;
             }
             &.no-opener{display: none!important;}
           }
@@ -597,13 +670,14 @@ body{
 
         &.align-center{
           @include centerFlex;
+          flex-direction: column!important;
+          padding: 1em;
           .legal-content,
           .search_p{
             @include colFlex;
             width: 100%;
             align-items: flex-start;
             gap: 1em;
-            margin: 1em!important;
             border-radius: 5px;
             text-align: justify;
             background: var(--background);
@@ -726,6 +800,15 @@ body{
               &:last-child{padding: 0 1em 1em!important;}
               .ab-bar-label{
                 font-size: 4em;
+              }
+            }
+            .family-ab{
+              .family-label{
+                padding: 0.2em 0.5em;
+                //background: #9ca3ff;
+                margin-left: 1em;
+                border-radius: 100px;
+                //border: 1px solid #0012ff;
               }
             }
           }
@@ -1011,7 +1094,6 @@ body{
           }
         }
 
-
         &.compare{
 
           --grid: 1fr 25% 1fr;
@@ -1021,11 +1103,14 @@ body{
             justify-items: center;
             align-items: center;
           }
+
+          .collapsible{
+            li{
+              &:last-child{margin-top: 1em}
+            }
+          }
+
           .cont{
-            padding:1em;
-            background: var(--background);
-            border-radius: 5px;
-            color: var(--b);
             .top-skin{
               @include element;
               overflow: hidden;
@@ -1135,6 +1220,10 @@ body{
                     &:last-child{margin-left: auto}
                   }
                 }
+              }
+              @media all and (max-width: 600px) {
+                position: relative;
+                top: 0;
               }
             }
             .table-compare{
@@ -1284,6 +1373,8 @@ body{
 
     .wrapper{
       min-height: calc(var(--height-window) - var(--height-topbar));
+      display: flex;
+      //flex-direction: column!important;
       aside{
         .bs{
           width: 100%;
@@ -1295,25 +1386,36 @@ body{
             .collapsible-body{
               border: 1px solid rgba(27, 31, 35, 0.15);
               border-top: 0;
-              border-bottom-right-radius: 5px;
-              border-bottom-left-radius: 5px;
+              border-bottom: 0;
+              border-radius: 0;
               .overlay-stats{
                 @include rowFlex;
                 justify-content: flex-start;
                 gap: 1em;
               }
             }
-            &:not(:last-child){
-              .collapsible-body{
-                border-bottom: 0;
-                border-bottom-right-radius: 0;
-                border-bottom-left-radius: 0;
-              }
+            &:nth-child(2n){
               .collapsible-header{
-                border-top-right-radius: 5px;
-                border-top-left-radius: 5px;
+                border-bottom: 0;
               }
             }
+            &:last-child{
+              .collapsible-body{
+                border-bottom-right-radius: 5px;
+                border-bottom-left-radius: 5px;
+              }
+            }
+            //&:not(:nth-child(2)):not(:last-child){
+            //  .collapsible-body{
+            //    border-bottom: 0;
+            //    border-bottom-right-radius: 0;
+            //    border-bottom-left-radius: 0;
+            //  }
+            //  .collapsible-header{
+            //    border-top-right-radius: 5px;
+            //    border-top-left-radius: 5px;
+            //  }
+            //}
           }
         }
       }
@@ -1386,9 +1488,7 @@ body{
                 width: 2em;
                 aspect-ratio: 1;
               }
-              .rank{
-
-              }
+              .rank{margin-left: auto}
             }
             .no-element-found{
               background: var(--background-op);
@@ -1406,6 +1506,12 @@ body{
             margin: 0!important;
           }
         }
+      }
+      .back-to-top-container{
+        @include centerFlex;
+        width: 100%;
+        margin-top: 1em;
+        span.text{width: fit-content}
       }
     }
     footer{

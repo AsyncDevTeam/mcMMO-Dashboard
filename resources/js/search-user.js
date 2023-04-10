@@ -1,6 +1,7 @@
 const s = document.querySelector('.result-search')
 let nb_player = 0
 
+
 fLoadServerInfos().then(async infos => {
     if(infos !== false){
         if('error' in infos && infos.error !== -1) {
@@ -15,14 +16,6 @@ fLoadServerInfos().then(async infos => {
             //Online
             setServerStats(infos);
             error_internal_server = false;
-            let link = document.querySelector("link[rel~='icon']");
-            if (!link) {
-                link = document.createElement('link');
-                link.rel = 'icon';
-                document.head.appendChild(link);
-            }
-            server_logo.src = infos.icon
-            link.href = infos.icon
 
             const fLoadLeaderboard_ =  await fLoadLeaderboard()
             const fLoadTopLeaderboard_ =  await fLoadTopLeaderboard()
@@ -64,7 +57,6 @@ function setCard(players){
         const img = clone.querySelector('img')
         const total = clone.querySelector('.total')
         const player = users[i].name
-        console.log(users[i])
         total.innerText = `${users[i].total} exp`
         img.src = `https://mc-heads.net/head/${player}`
         name.innerHTML = player

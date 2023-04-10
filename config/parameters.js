@@ -2,6 +2,12 @@
 
 //Used as template
 const abilities = ['taming', 'mining', 'woodcutting', 'repair', 'unarmed', 'herbalism', 'excavation', 'archery', 'swords', 'axes', 'acrobatics', 'fishing', 'alchemy']
+const families = {
+    'Gathering': ['Mining', 'Woodcutting', 'Herbalism', 'Fishing'],
+    'Crafting': ['Repair', 'Alchemy', 'Taming', 'Excavation'],
+    'Combat': ['Unarmed', 'Swords', 'Axes', 'Archery'],
+    'Adventuring': ['Acrobatics']
+}
 //If you have changed the default provided by mcMMO, change them here to
 const abilities_cap = {
     'swords': 1250,
@@ -45,6 +51,12 @@ const translation = {
             'mining': 'mining',
             'acrobatics': 'acrobatics'
         },
+        'family': {
+            'Gathering': 'Gathering',
+            'Crafting': 'Crafting',
+            'Combat': 'Combat',
+            'Adventuring': 'Adventuring'
+        },
         'ab_labels': {
             'sum': 'Exp',
             'ab': 'Abilities'
@@ -82,14 +94,12 @@ const translation = {
                     'sc-b-1': 'Leaderboard',
                     'sc-b-2': 'Chart by abilities',
                     'sc-b-3': 'Best cumulative abilities',
-                    'sc-b-999': 'Back to top'
                 },
                 'user' : {
                     'sc-b-1': 'Player infos',
                     'sc-b-2': 'Abilities Level',
                     'sc-b-3': 'Abilities',
                     'sc-b-4': 'Comparison chart',
-                    'sc-b-999': 'Back to top',
                 }
             },
             'search': {
@@ -102,6 +112,7 @@ const translation = {
                 'sort_avt': 'Sort',
                 'sort_a':'Alphabetical sorting',
                 'sort_n':'Numerical sorting',
+                'back_to_top': 'Back to top'
             },
             'select': {
                 'select-before': 'Show',
@@ -299,6 +310,12 @@ const translation = {
             'fishing': 'pêche',
             'alchemy': 'potions',
         },
+        'family': {
+            'Gathering': 'Collecte',
+            'Crafting': 'Artisanat',
+            'Combat': 'Combat',
+            'Adventuring': 'Aventure'
+        },
         'ab_labels': {
             'sum': 'Exp',
             'ab': 'Capacités'
@@ -323,6 +340,10 @@ const translation = {
                     'section-2': 'Toutes les capacités',
                     'section-3': 'Comparaison des capacités',
                     'section-3-bis': 'La comparaison est effectuée entre le meilleur joueur du serveur et le joueur sélectionné.'
+                },
+                'comparison': {
+                    'section-1': 'Comparaison des compétences',
+                    'section-2': 'Graphique de comparaison',
                 }
             },
             'aside':{
@@ -336,14 +357,16 @@ const translation = {
                     'sc-b-1': 'Classement',
                     'sc-b-2': 'Par capacités',
                     'sc-b-3': 'Meilleures capacités cumulées',
-                    'sc-b-999': 'Retour en haut'
                 },
                 'user' : {
-                    'sc-b-1': 'Informations du joueurs',
+                    'sc-b-1': 'Informations du joueur',
                     'sc-b-2': 'Niveau de capacités',
                     'sc-b-3': 'Capacités',
                     'sc-b-4': 'Graphique de comparaison',
-                    'sc-b-999': 'Retour en haut',
+                },
+                'comparison': {
+                    'sc-b-1': 'Comparaison des compétences',
+                    'sc-b-2': 'Graphique de comparaison',
                 }
             },
             'search': {
@@ -356,6 +379,7 @@ const translation = {
                 'sort_avt': 'Trier',
                 'sort_a':'Tri alphabétique',
                 'sort_n':'Tri numérique',
+                'back_to_top': 'Retour en haut'
             },
             'select': {
                 'select-before': 'Afficher',
@@ -553,6 +577,12 @@ const translation = {
             'mining': 'Bergbau',
             'acrobatics': 'Akrobatik'
         },
+        'family': {
+            'Gathering': 'Sammeln',
+            'Crafting': 'Basteln',
+            'Combat': 'Kampf',
+            'Adventuring': 'Abenteuer'
+        },
         'ab_labels': {
             'sum': 'Erfahrung',
             'ab': 'Fähigkeiten'
@@ -590,14 +620,12 @@ const translation = {
                     'sc-b-1': 'Alle Spieler',
                     'sc-b-2': 'Diagramm nach Fähigkeiten',
                     'sc-b-3': 'Beste kumulative Fähigkeiten',
-                    'sc-b-999': 'Zurück nach oben'
                 },
                 'user' : {
                     'sc-b-1': 'Spieler Info',
                     'sc-b-2': 'Fähigkeitsstufe',
                     'sc-b-3': 'Fähigkeiten',
                     'sc-b-4': 'Vergleichstabelle',
-                    'sc-b-999': 'Zurück nach oben',
                 }
             },
             'search': {
@@ -610,6 +638,7 @@ const translation = {
                 'sort_avt': 'Sortieren',
                 'sort_a':'Alphabetische Sortierung',
                 'sort_n':'Numerische Sortierung',
+                'back_to_top': 'Zurück nach oben'
             },
             'select': {
                 'select-before': 'Zeige',

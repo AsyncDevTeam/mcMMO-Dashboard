@@ -1,4 +1,18 @@
-@import 'style';
+@mixin centerFlex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+@mixin rowFlex{
+  @include centerFlex;
+  flex-direction: row;
+}
+
+@mixin colFlex{
+  @include centerFlex;
+  flex-direction: column;
+}
 
 body{
   header{
