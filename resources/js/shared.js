@@ -4,6 +4,7 @@ const requestServerStats = "resources/php/scripts/get_server_stats.php"
 const requestUserStats = "resources/php/scripts/get_user_stats.php"
 const server_ip = document.querySelectorAll('.server-ip')
 const copyToClipboardAction = document.querySelectorAll('.copyToClipboardAction')
+const button_back = document.querySelector('.back-to-top-container')
 const copyToClipboard = document.querySelector('.copyToClipboard')
 const server_player = document.querySelectorAll('.server-player')
 const max_players_a = document.querySelectorAll('.max_players')
@@ -90,9 +91,11 @@ function openSidebar(element) {
 
     if(wrapper.classList.contains('sidebar-open-effect')){
         icon.classList.replace('fa-bars', 'fa-times')
+        button_back.classList.add('sidebar-open')
         element.style.width = width
     }else{
         icon.classList.replace('fa-times', 'fa-bars')
+        button_back.classList.remove('sidebar-open')
     }
 }
 

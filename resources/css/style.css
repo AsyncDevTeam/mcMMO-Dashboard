@@ -950,6 +950,10 @@ body main .wrapper .content-main,
 body main .sidebar-menu .content-main {
   width: 100%;
 }
+body main .wrapper .content-main .back-to-top-container.sidebar-open,
+body main .sidebar-menu .content-main .back-to-top-container.sidebar-open {
+  padding-left: 0;
+}
 body main .wrapper .content-main.align-center,
 body main .sidebar-menu .content-main.align-center {
   display: flex;
@@ -2434,6 +2438,10 @@ body main .wrapper .back-to-top-container {
 }
 body main .wrapper .back-to-top-container span.text {
   width: fit-content;
+}
+body main .wrapper .back-to-top-container.sidebar-open {
+  justify-content: flex-start;
+  padding-left: 1em;
 }
 body main footer {
   background: var(--w);

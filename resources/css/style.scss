@@ -668,6 +668,10 @@ body{
       .content-main{
         width: 100%;
 
+        .back-to-top-container{
+          &.sidebar-open{padding-left: 0}
+        }
+
         &.align-center{
           @include centerFlex;
           flex-direction: column!important;
@@ -863,6 +867,7 @@ body{
                   transition: .5s all;
                 }
                 margin: 1em;
+                //noinspection CssInvalidPropertyValue
                 width: -webkit-fill-available;
               }
             }
@@ -1512,6 +1517,10 @@ body{
         width: 100%;
         margin-top: 1em;
         span.text{width: fit-content}
+        &.sidebar-open{
+          justify-content: flex-start;
+          padding-left: 1em;
+        }
       }
     }
     footer{
