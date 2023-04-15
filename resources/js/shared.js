@@ -1,4 +1,5 @@
 const requestLeaderboard = "resources/php/scripts/get_all_leaderboard.php"
+const requestAbilities = "resources/php/scripts/get_all_abilities.php"
 const requestTopLeaderboard = "resources/php/scripts/get_top_leaderboard.php"
 const requestServerStats = "resources/php/scripts/get_server_stats.php"
 const requestUserStats = "resources/php/scripts/get_user_stats.php"
@@ -305,6 +306,31 @@ const fLoadTopLeaderboard = async() => {
             status: 'failed',
             data: null,
             from: 'fLoadTopLeaderboard'
+        };
+    }
+}
+
+const fLoadAbilities = async() => {
+    try {
+        const response = await fetch(requestAbilities, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: new URLSearchParams({csrf_token: csrfToken}),
+        });
+        const leaderboard = await response.json()
+        return {
+            status: 'success',
+            data: leaderboard,
+            from: 'fLoadAbilities'
+        };
+    } catch (error) {
+        console.error(error)
+        return {
+            status: 'failed',
+            data: null,
+            from: 'fLoadAbilities'
         };
     }
 }

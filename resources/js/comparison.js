@@ -211,6 +211,13 @@ function setTable(data){
 
         label_player_1_text.innerHTML = value_1
         label_player_2_text.innerHTML = value_2
+
+        if (value_1 > value_2) {
+            label_player_1_text.classList.add('max')
+        } else if (value_2 > value_1) {
+            label_player_2_text.classList.add('max')
+        }
+
         label_c_text.innerHTML = abilities[i]
         label_player_1_infos.innerHTML = translation[languageSelect].content_page.pages.comparison.explanation.in_chart
             .replace('_PERCENT_', v_1_m.toFixed(1))
@@ -218,7 +225,6 @@ function setTable(data){
         label_player_2_infos.innerHTML = translation[languageSelect].content_page.pages.comparison.explanation.in_chart
             .replace('_PERCENT_', v_2_m.toFixed(1))
             .replace('_MAX_', max_cap)
-
 
         label_player_1.appendChild(label_player_1_bg)
         label_player_1.appendChild(label_player_1_infos)

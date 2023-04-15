@@ -1249,10 +1249,16 @@ body{
                   padding: .6em 1em;
                   p{
                     text-transform: capitalize;
+                    padding: 0.2em 0.5em;
                     &:nth-child(2){
                       padding: 0.2em 0.5em;
                       background: var(--btn-main-bg);
                       border-radius: 5px;
+                    }
+                    &.max{
+                      background: var(--active-color);
+                      color: var(--w);
+                      border-radius: 1000px;
                     }
                   }
                   &.min-screen{

@@ -2104,12 +2104,19 @@ body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare 
 body main .wrapper .content-main.compare .cont .table-compare .row-compare .label-c p,
 body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .label-c p {
   text-transform: capitalize;
+  padding: 0.2em 0.5em;
 }
 body main .wrapper .content-main.compare .cont .table-compare .row-compare .label-c p:nth-child(2),
 body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .label-c p:nth-child(2) {
   padding: 0.2em 0.5em;
   background: var(--btn-main-bg);
   border-radius: 5px;
+}
+body main .wrapper .content-main.compare .cont .table-compare .row-compare .label-c p.max,
+body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .label-c p.max {
+  background: var(--active-color);
+  color: var(--w);
+  border-radius: 1000px;
 }
 body main .wrapper .content-main.compare .cont .table-compare .row-compare .label-c.min-screen,
 body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .label-c.min-screen {

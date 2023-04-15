@@ -21,6 +21,9 @@ fLoadServerInfos().then(async infos => {
 
             const fLoadTopLeaderboard_ =  await fLoadTopLeaderboard()
             const fLoadLeaderboard_ =  await fLoadLeaderboard()
+            const fLoadLoadAbilities_ =  await fLoadAbilities()
+
+            console.log(fLoadLoadAbilities_)
 
             if(fLoadTopLeaderboard_.status === 'success'){
                 const data = fLoadTopLeaderboard_.data
