@@ -139,6 +139,7 @@ function sortFunction(a, b) {
 }
 
 function clearInput() {
+    console.log("ok")
     const player_research = document.querySelectorAll('.player_research')
     player_research.forEach(e => {
         e.value = ""

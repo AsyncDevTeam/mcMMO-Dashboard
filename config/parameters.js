@@ -152,6 +152,9 @@ const translation = {
                     'explanation': {
                         'intro': '',
                         'in_chart': '_PERCENT_% of max _MAX_ reached'
+                    },
+                    'link': {
+                        'see_profile': 'See profile'
                     }
                 }
             },
@@ -419,6 +422,9 @@ const translation = {
                     'explanation': {
                         'intro': '',
                         'in_chart': '_PERCENT_% du max _MAX_ atteint'
+                    },
+                    'link': {
+                        'see_profile': 'Voir le profil'
                     }
                 }
             },
@@ -687,6 +693,9 @@ const translation = {
                     'explanation': {
                         'intro': '',
                         'in_chart': '_PERCENT_% von max _MAX_ erreicht'
+                    },
+                    'link': {
+                        'see_profile': 'Siehe Profil'
                     }
                 }
             },

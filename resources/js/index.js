@@ -21,9 +21,9 @@ fLoadServerInfos().then(async infos => {
 
             const fLoadTopLeaderboard_ =  await fLoadTopLeaderboard()
             const fLoadLeaderboard_ =  await fLoadLeaderboard()
-            const fLoadLoadAbilities_ =  await fLoadAbilities()
+            // const fLoadLoadAbilities_ =  await fLoadAbilities()
 
-            console.log(fLoadLoadAbilities_)
+            // console.log(fLoadLoadAbilities_)
 
             if(fLoadTopLeaderboard_.status === 'success'){
                 const data = fLoadTopLeaderboard_.data
@@ -179,11 +179,9 @@ function updateGraph(value){
 }
 
 const ctx = document.getElementById('myChart');
-const ctx_minmax = document.getElementById('myChart-abi-minmax');
 const ctx_pi = document.getElementById('myChart-abi-pie');
 
 let chartAbilitiesGraph,
-    chartAbilitiesMinMaxGraph,
     chartBestAbilitiesGraph
 
 function chartAbilities(){
@@ -226,6 +224,7 @@ function chartAbilities(){
 
     chartAbilitiesGraph = new Chart(ctx, config);
 }
+
 function done(){
     const image = chartAbilitiesGraph.toBase64Image()
     // console.log(image);
@@ -353,59 +352,6 @@ function createTableBestAbilities(data){
         }
         container.appendChild(tr)
     }
-}
-
-function chartAbilitiesMinMax(player){
-    const user = player.players
-    let users = []
-    for (let i = 0; i < user.length; i++) {
-        let array_minmax_label = []
-        abilities.forEach(e => {
-            array_minmax_label.push([e, user[i][e]])
-        })
-        const playerInfos = {
-            'name': user[i].name,
-            'stats': array_minmax_label
-        }
-        array_minmax_label.sort(sortFunction)
-        users.push(playerInfos)
-    }
-
-    let data_minmax = [],
-        label_minmax = []
-    for (let i = 0; i < users.length; i++) {
-        label_minmax.push(users[i].name)
-        data_minmax.push([users[i].name, [users[i].stats[0], users[i].stats[users[i].stats.length - 1]]])
-    }
-
-    let min_max_players_all = []
-    for (let i = 0; i < data_minmax.length; i++) {
-        let min_max_players_temp = []
-        min_max_players_temp.push(data_minmax[i][1][1][1])
-        min_max_players_all.push({
-            'label': data_minmax[i][0],
-            'data' : min_max_players_temp
-        })
-    }
-
-    const data = {
-        labels: label_minmax,
-        datasets: min_max_players_all
-    };
-
-    const config = {
-        type: 'bar',
-        data: data,
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        },
-    };
-
-    // chartAbilitiesMinMaxGraph = new Chart(ctx_minmax, config);
 }
 
 function databaseLoad(player){
@@ -594,18 +540,7 @@ function searchInChart(inputValue) {
             object.borderWidth = 1
         }
     }
-    // for (let i = 0; i < chartAbilitiesMinMaxGraph.data.datasets.length; i++) {
-    //     let object_min_max = chartAbilitiesMinMaxGraph.data.datasets[i]
-    //     let a = object_min_max.label;
-    //     console.log(object_min_max)
-    //     if (a.toUpperCase().indexOf(filter) > -1) {
-    //         object_min_max.backgroundColor = settings.colors.chart.background
-    //     } else {
-    //         object_min_max.backgroundColor = settings.colors.chart.background_opacity
-    //     }
-    // }
     chartAbilitiesGraph.update()
-    // chartAbilitiesMinMaxGraph.update()
 }
 
 let scrollable_leaderboard = setInterval(() => {

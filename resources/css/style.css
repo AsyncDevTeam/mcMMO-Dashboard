@@ -1981,6 +1981,13 @@ body main .sidebar-menu .content-main.compare .cont .top-skin .col.show img {
     height: 75%;
   }
 }
+body main .wrapper .content-main.compare .cont .top-skin .col a,
+body main .sidebar-menu .content-main.compare .cont .top-skin .col a {
+  margin-top: 1em;
+  color: var(--active-color);
+  text-decoration: none;
+  width: fit-content;
+}
 @media screen and (max-width: 700px) {
   body main .wrapper .content-main.compare .cont .top-skin,
 body main .sidebar-menu .content-main.compare .cont .top-skin {

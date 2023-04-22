@@ -130,13 +130,20 @@ function setSkinCompare(len, a = null){
             }
         }
     }
+
     const img = document.querySelectorAll('.img-compare')
+    const a_href = document.querySelectorAll('.a-compare')
     const img_h = document.querySelectorAll('.img-compare-head')
     img.forEach((e, i) => {
         const { value_1, value_2 } = values();
-        e.value = (i === 0) ?
-            e.src = `https://mc-heads.net/body/${value_1}` :
+        a_href[i].querySelector('span').innerHTML = translation[languageSelect].content_page.pages.comparison.link.see_profile
+        if(i === 0){
+            e.src = `https://mc-heads.net/body/${value_1}`
+            a_href[i].href = `user.php?q=${value_1}`
+        }else{
             e.src = `https://mc-heads.net/body/${value_2}/left`
+            a_href[i].href = `user.php?q=${value_2}`
+        }
     })
     img_h.forEach((e, i) => {
         const { value_1, value_2 } = values();
@@ -192,29 +199,29 @@ function setTable(data){
         const label_c_text = document.createElement('p')
         label_c.classList.add('label-c')
 
-        const value_1 = data_player_1.skills[i]
-        const value_2 = data_player_2.skills[i]
+        const value_1_exp = data_player_1.skills[i]
+        const value_2_exp = data_player_2.skills[i]
         const max = Math.max(...data_player_1.skills, ...data_player_2.skills)
         const max_cap = abilities_cap[abilities[i]]
         row.setAttribute('data-total',
             Math.max(data_player_1.skills[i], data_player_2.skills[i]).toString()
         )
 
-        const v_1 = value_1/max*100
-        const v_1_m = value_1/max_cap*100
-        const v_2 = value_2/max*100
-        const v_2_m = value_2/max_cap*100
+        const v_1 = value_1_exp/max*100
+        const v_1_m = value_1_exp/max_cap*100
+        const v_2 = value_2_exp/max*100
+        const v_2_m = value_2_exp/max_cap*100
         label_player_1_bg.style.width = v_1 + '%'
         label_player_1_bg_max.style.width = v_1_m + '%'
         label_player_2_bg.style.width = v_2 + '%'
         label_player_2_bg_max.style.width = v_2_m + '%'
 
-        label_player_1_text.innerHTML = value_1
-        label_player_2_text.innerHTML = value_2
+        label_player_1_text.innerHTML = value_1_exp
+        label_player_2_text.innerHTML = value_2_exp
 
-        if (value_1 > value_2) {
+        if (value_1_exp > value_2_exp) {
             label_player_1_text.classList.add('max')
-        } else if (value_2 > value_1) {
+        } else if (value_2_exp > value_1_exp) {
             label_player_2_text.classList.add('max')
         }
 
@@ -240,8 +247,8 @@ function setTable(data){
         label_player_2.appendChild(label_player_2_infos)
         label_player_2.appendChild(label_player_2_bg_max)
         const min_screen = label_c.cloneNode(true)
-        min_screen.querySelector('.text_1').innerHTML = `${value_1} (${v_1_m.toFixed(1)}%)`
-        min_screen.querySelector('.text_2').innerHTML = `${value_2} (${v_2_m.toFixed(1)}%)`
+        min_screen.querySelector('.text_1').innerHTML = `${value_1_exp} (${v_1_m.toFixed(1)}%)`
+        min_screen.querySelector('.text_2').innerHTML = `${value_2_exp} (${v_2_m.toFixed(1)}%)`
         min_screen.classList.add('min-screen')
         row.appendChild(min_screen)
         row.appendChild(line_1)

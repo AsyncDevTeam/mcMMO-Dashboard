@@ -1173,6 +1173,12 @@ body{
                     img{height: 75%}
                   }
                 }
+                a{
+                  margin-top: 1em;
+                  color: var(--active-color);
+                  text-decoration: none;
+                  width: fit-content;
+                }
               }
               @media screen and (max-width: 700px) {
                 display: none;

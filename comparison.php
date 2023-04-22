@@ -41,6 +41,10 @@ session_start();
                             <div class="top-skin">
                                 <div class="col fp">
                                     <img src="https://mc-heads.net/body/mhd_steve" alt="skin player 1" class="img-compare">
+                                    <a class="a-compare btn-main">
+                                        <span class="see_profile"></span>
+                                        <i class="fa-solid">↗</i>
+                                    </a>
                                 </div>
                                 <div class="col fp">
                                     <div class="vs"></div>
@@ -48,6 +52,10 @@ session_start();
                                 </div>
                                 <div class="col lp">
                                     <img src="https://mc-heads.net/body/mhd_steve/left" alt="skin player 2" class="img-compare">
+                                    <a class="a-compare btn-main">
+                                        <span class="see_profile"></span>
+                                        <i class="fa-solid">↗</i>
+                                    </a>
                                 </div>
                             </div>
                             <div class="header-compare">
