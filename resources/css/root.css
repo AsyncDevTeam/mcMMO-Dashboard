@@ -23,6 +23,13 @@
     --border-color: rgba(var(--rgb_border) / 15%);
     --btn-main-bg: rgba(var(--rgb) / 100%);
     --btn-main-bg-hover: rgba(var(--rgb) / 100%);
+    --tint1: var(--tint1_);
+    --tint2: var(--tint2_);
+    --tint3: var(--tint3_);
+    --tint4: var(--tint4_);
+    --tint5: var(--tint5_);
+    --tint6: var(--tint6_);
+    --tint7: var(--tint7_);
     --x:0;
     --y:0;
     --grad1: rgb(36, 41, 46);

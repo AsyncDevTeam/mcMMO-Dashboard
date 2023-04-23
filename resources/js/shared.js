@@ -455,3 +455,18 @@ function displayElement(element, data){
 }
 
 function backToTop(){window.scroll(0, 0)}
+
+function generateColors(numColors, value = 0) {
+    let colors = [];
+    if(value !== 0){
+        colors.push(getComputedStyle(document.documentElement).getPropertyValue('--tint' + value % 7));
+        return colors;
+    }else{
+        for (let i = 0; i < numColors; i++) {
+            const index = i % 7;
+            colors.push(getComputedStyle(document.documentElement).getPropertyValue('--tint' + (index + 1)));
+        }
+        return colors;
+    }
+
+}

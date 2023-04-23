@@ -142,7 +142,8 @@ fLoadUser().then(r => {
 const ctx_compare = document.getElementById('chart_user_compare');
 let chartCompareGraph
 function chartCompare(best_player, current_player){
-
+    const tint1 = getComputedStyle(document.documentElement).getPropertyValue('--tint1')
+    const tint5 = getComputedStyle(document.documentElement).getPropertyValue('--tint5')
     let tp = []
     tp.push(current_player, best_player)
     let datasets = []
@@ -152,7 +153,9 @@ function chartCompare(best_player, current_player){
                 label : tp[i].name,
                 data : function (){
                     return tp[i].skills
-                }()
+                }(),
+                borderColor: [tint1, tint5],
+                backgroundColor: generateColors(7, i)
             }
         )
     }
@@ -199,6 +202,7 @@ function setLabel(player){
         }
     }
 }
+
 function getKeyByValue(object, value) {
     return Object.keys(object).filter(key => object[key] === value);
 }
@@ -232,10 +236,6 @@ function createLabel(array){
 
         stackParent.appendChild(clone)
     }
-}
-
-function styleUserPageOffline(){
-    console.log('Browser is offline')
 }
 
 function userData(player){
@@ -765,6 +765,7 @@ function setChart(player){
             label : 'All Abilities (exp)',
             data : skill_array,
             hidden: false,
+            backgroundColor: generateColors(7)
         }
     )
     let data_chart_default = {

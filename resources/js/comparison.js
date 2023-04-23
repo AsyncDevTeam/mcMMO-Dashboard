@@ -340,7 +340,8 @@ function chartComparison(data){
                 label : tp[i].name,
                 data : function (){
                     return tp[i].skills
-                }()
+                }(),
+                backgroundColor: generateColors(7, i)
             }
         )
     }

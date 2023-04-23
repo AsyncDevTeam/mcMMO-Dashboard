@@ -11,6 +11,15 @@
     --border-of-elements-light-color: 27 31 35;
     --border-of-elements-dark-color: 255 255 255;
 
+    /*Tint for chartJS*/
+    --tint1_: #57A0E5;
+    --tint2_: #ED6D85;
+    --tint3_: #6DBEBF;
+    --tint4_: #F2A354;
+    --tint5_: #9268F6;
+    --tint6_: #F7CF6B;
+    --tint7_: #C9CBCF;
+
     /*Adapt the size of the website for wide screen*/
     /*!important is required at the end of the property to override the initial one*/
     --size-aside-wide-screen:400px!important;

@@ -93,6 +93,8 @@ function loadDatasetChartAbilities(player){
                         return user[i].skills
                     }(),
                     hidden: false,
+                    borderColor: generateColors(7),
+                    backgroundColor: generateColors(7, i)
                 }
             )
         }
@@ -163,17 +165,14 @@ chart_select.addEventListener('change', function (){
 function updateGraph(value){
     let duplicate = []
     let current
-
     if(datasetChartAbilities[0].length < value){
         current = datasetChartAbilities[0].length
     }else{
         current = value
     }
-
     for (let i = 0; i < current; i++) {
         duplicate[i] = datasetChartAbilities[0][i]
     }
-
     chartAbilitiesGraph.data.datasets = duplicate
     chartAbilitiesGraph.update()
 }
@@ -185,7 +184,6 @@ let chartAbilitiesGraph,
     chartBestAbilitiesGraph
 
 function chartAbilities(){
-
     let data_chart_default = {
         labels: Object.values(translation[languageSelect].ab),
         datasets: datasetChartAbilities[0],
@@ -287,6 +285,7 @@ function chartBestAbilities(player){
             {
                 label: 'EXP',
                 data: sumA,
+                backgroundColor: generateColors(7)
             }
         ]
     }
