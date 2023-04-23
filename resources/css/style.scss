@@ -112,8 +112,6 @@ body{
         box-shadow: rgb(67 67 125 / 48%) 0 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
         &.show{@include centerFlex}
         .filter{
-          //&.clicked{background: var(--active-color)}
-          //&:hover{background: var(--active-color)}
           width: 100%;
           background-color: var(--btn-main-bg);
           border: 1px solid rgba(var(--rgb_border_nc) / 15%);
@@ -288,9 +286,7 @@ body{
               justify-content: space-between;
             }
             .icon{
-              //background: var(--active-color);
               border-radius: var(--max-br);
-              //padding: 0.2em;
               width: 2em;
               aspect-ratio: 1;
               display: flex;
@@ -302,8 +298,6 @@ body{
 
           .collapsible-body{
             border-radius: 0 0 var(--borderR) var(--borderR);
-            //border: 3px solid var(--active-color);
-            //border-top: 0;
             background: none;
             border: 0;
             box-shadow: none;
@@ -342,8 +336,6 @@ body{
           .copyToClipboardAction {
             cursor: pointer;
             position: relative;
-            //margin-left: var(--margin-left);
-            //padding: 0.2em var(--padding-left);
             width: fit-content;
 
             .anim-circle {
@@ -809,10 +801,8 @@ body{
             .family-ab{
               .family-label{
                 padding: 0.2em 0.5em;
-                //background: #9ca3ff;
                 margin-left: 1em;
                 border-radius: 100px;
-                //border: 1px solid #0012ff;
               }
             }
           }
@@ -1016,11 +1006,9 @@ body{
                     .container_table,
                     .container_table_info{
                       @include colFlex;
-                      --margin-progress-bar : 0; // 6vw
-                      //margin: 1em auto 0 var(--margin-progress-bar);
+                      --margin-progress-bar : 0;
                       border-radius: 5px;
                       border: 1px solid var(--border-color);
-                      //align-items: flex-start;
                       position: relative;
                       width: 50%;
                       align-items: flex-start;
@@ -1214,7 +1202,6 @@ body{
                   justify-content: space-between;
                   position: relative;
                   width: 100%;
-                  //padding: 1em;
                   img{
                     width: 2em;
                     border-radius: 5px;
@@ -1296,10 +1283,8 @@ body{
                     p{
                       position: relative;
                       z-index: 1;
-                      //padding:.5em .2em;
                       background: var(--btn-main-bg);
                       border-radius: 5px;
-                      //width: 100px;
                     }
                     &:first-child{
                       justify-content: flex-end;
@@ -1391,7 +1376,6 @@ body{
     .wrapper{
       min-height: calc(var(--height-window) - var(--height-topbar));
       display: flex;
-      //flex-direction: column!important;
       aside{
         .bs{
           width: 100%;
@@ -1422,17 +1406,6 @@ body{
                 border-bottom-left-radius: 5px;
               }
             }
-            //&:not(:nth-child(2)):not(:last-child){
-            //  .collapsible-body{
-            //    border-bottom: 0;
-            //    border-bottom-right-radius: 0;
-            //    border-bottom-left-radius: 0;
-            //  }
-            //  .collapsible-header{
-            //    border-top-right-radius: 5px;
-            //    border-top-left-radius: 5px;
-            //  }
-            //}
           }
         }
       }
@@ -1451,9 +1424,6 @@ body{
       &.pages{
         .content,
         .content-main{
-          //width: 100% !important;
-          //margin-top: 10vh;
-
           .searchBar_user{
             width: 100%;
             @include rowFlex;
@@ -1538,7 +1508,6 @@ body{
     footer{
       background: var(--w);
       width: 100%;
-      //height: var(--height-footerbar);
       height: fit-content!important;
       @include centerFlex;
       padding: 1em;

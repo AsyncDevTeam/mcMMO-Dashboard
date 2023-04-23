@@ -26,6 +26,8 @@
 <link rel="stylesheet" href="resources/css/collapsible.css">
 <link rel="stylesheet" href="resources/css/media.css">
 <link rel="stylesheet" href="resources/css/sizes.css">
+<!-- Upload Design -->
+<link rel="stylesheet" href="upload/upload.css">
 <!-- page title -->
 <title>mcMMO Stats</title>
 <!-- csrf token -->

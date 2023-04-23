@@ -22,7 +22,6 @@ function changeSection(element) {
 
     if(wrapper.classList.contains('sidebar-open-effect')){
         icon.classList.replace('fa-bars', 'fa-times')
-        // element.style.width = width
     }else{
         icon.classList.replace('fa-times', 'fa-bars')
     }
@@ -139,7 +138,6 @@ function sortFunction(a, b) {
 }
 
 function clearInput() {
-    console.log("ok")
     const player_research = document.querySelectorAll('.player_research')
     player_research.forEach(e => {
         e.value = ""
