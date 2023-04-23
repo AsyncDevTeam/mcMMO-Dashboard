@@ -116,8 +116,9 @@ fabric.properties
 
 .idea
 
+TEST_ONLY
+
 config/config.test.php
 
-TEST_ONLY/new-feature.md
 
 # End of https://www.toptal.com/developers/gitignore/api/phpstorm
