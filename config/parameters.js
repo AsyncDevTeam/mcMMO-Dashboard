@@ -29,6 +29,7 @@ const abilities_cap = {
 const translation = {
     'active': 'FR',
     'EN': {
+        'title_header': 'mcMMO Stats',
         'pages_name':{
             'index': 'mcMMO Stats | Home',
             'user': 'mcMMO Stats | _USER_',
@@ -129,6 +130,8 @@ const translation = {
             'general': {
                 'best_ab': 'Best ability',
                 'label_ab': 'Best player for ability _AB_',
+                'table_player_label':'Player',
+                'table_total_label':'Total'
             },
             'toast': {
                 'IP_success' : 'IP sucessfully copied',
@@ -299,6 +302,7 @@ const translation = {
         }
     },
     'FR': {
+        'title_header': 'mcMMO Stats',
         'pages_name':{
             'index': 'mcMMO Stats | Accueil',
             'user': 'mcMMO Stats | _USER_',
@@ -398,7 +402,9 @@ const translation = {
             },
             'general': {
                 'best_ab': 'Meilleure capacité',
-                'label_ab': 'Meilleur joueur pour la capacité _AB_'
+                'label_ab': 'Meilleur joueur pour la capacité _AB_',
+                'table_player_label':'Joueur',
+                'table_total_label':'Total'
             },
             'toast': {
                 'IP_success' : 'Adresse IP copiée',
@@ -569,6 +575,7 @@ const translation = {
         }
     },
     'DE': {
+        'title_header': 'mcMMO Stats',
         'pages_name':{
             'index': 'mcMMO Stats | Willkommen',
             'user': 'mcMMO Stats | _USER_',
@@ -670,6 +677,8 @@ const translation = {
             'general': {
                 'best_ab': 'Beste Fähigkeit',
                 'label_ab': 'Bester Spieler für Fähigkeiten _AB_',
+                'table_player_label':'Spieler',
+                'table_total_label':'Gesamt'
             },
             'toast': {
                 'IP_success' : 'IP erfolgreich kopiert',
@@ -842,6 +851,8 @@ const translation = {
 }
 //Change colors
 const settings = {
+    //Set force_darkMode to true to enable dark mode by default
+    'force_darkMode': false,
     'colors': {
         'page': {
             'gradient': {
@@ -859,10 +870,6 @@ const settings = {
                 'gradient_1': '38 105 46',
                 'gradient_2': '32 96 115'
             }
-        },
-        'chart': {
-            'background': 'rgba(54, 162, 235, 0.5)',
-            'background_opacity': 'rgba(54, 162, 235, 0.25)'
         }
     }
 }

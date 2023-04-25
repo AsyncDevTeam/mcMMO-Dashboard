@@ -4,7 +4,7 @@
             <i class="fa-solid fa-bars icon-hamburger"></i>
             <div class="icon hidden"><i class="fa-solid fa-eye"></i></div>
         </button>
-        <a id="website-title" href="index.php">mcMMO Stats</a>
+        <a id="website-title" href="index.php"></a>
         <a href="index.php">
             <img src="resources/others/textures/defaultLogo/def.webp" alt="Logo of server running the website"
                  id="server-logo">

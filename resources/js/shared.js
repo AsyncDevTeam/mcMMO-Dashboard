@@ -4,6 +4,7 @@ const requestTopLeaderboard = "resources/php/scripts/get_top_leaderboard.php"
 const requestServerStats = "resources/php/scripts/get_server_stats.php"
 const requestUserStats = "resources/php/scripts/get_user_stats.php"
 const server_ip = document.querySelectorAll('.server-ip')
+const website_title = document.querySelector('#website-title')
 const copyToClipboardAction = document.querySelectorAll('.copyToClipboardAction')
 const button_back = document.querySelector('.back-to-top-container')
 const copyToClipboard = document.querySelector('.copyToClipboard')
@@ -25,6 +26,7 @@ let exact_type = window.location.pathname.split("/").at(-1).split('.')[0]
 exact_type.length === 0 ? exact_type = 'index' : exact_type
 const loading_bar = document.querySelector('.loading-bar')
 let error_internal_server = false
+
 window.onload = function (){
     const elems = document.querySelectorAll('.collapsible');
     M.Collapsible.init(elems, options_collapsible);
@@ -155,6 +157,8 @@ function setServerStats(infos) {
 languageSelect = translation.active
 changeLanguage(translation.active)
 
+website_title.innerHTML = translation[languageSelect].title_header
+
 darkM.addEventListener('change', (e) => {
     if(e.target.checked){
         document.documentElement.classList.add('toggle_dark_mode');
@@ -169,7 +173,7 @@ darkM.addEventListener('change', (e) => {
 })
 
 const ss_dm = sessionStorage.getItem(label__darkMode)
-if(ss_dm === 'true'){
+if(ss_dm === 'true' || settings.force_darkMode){
     document.documentElement.classList.add('toggle_dark_mode')
     darkM.checked = true
 }
@@ -214,8 +218,8 @@ function changeLanguage(value){
         row_table_def.forEach(e => {
             const player = document.createElement('th')
             const total = document.createElement('th')
-            player.innerHTML = 'player'
-            total.innerHTML = 'Total'
+            player.innerHTML = translation[value].content_page.general.table_player_label
+            total.innerHTML = translation[value].content_page.general.table_total_label
             e.appendChild(player)
             e.appendChild(total)
             Object.values(ab).forEach(a => {

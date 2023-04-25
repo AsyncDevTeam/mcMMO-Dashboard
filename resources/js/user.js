@@ -309,7 +309,7 @@ function setBestAbilities(player){
     clone.setAttribute('data-clone', 'total')
     clone.classList.add('shiny')
     const ab_title = clone.querySelector('.ab-title')
-    ab_title.innerHTML = "Total"
+    ab_title.innerHTML = translation[translation.active].content_page.general.table_total_label
     const ab_ar_label = clone.querySelector('.ab-bar-label')
 
     const totalValue = totalAbilities()
@@ -518,9 +518,9 @@ function setAllAbilities(player){
         const family_label = clone.querySelector('.family-label')
         for (const [index, family] of Object.keys(families).entries()) {
             if (families[family].includes(e.charAt(0).toUpperCase() + e.slice(1))) {
-                clone.setAttribute('data-family', family)
+                clone.setAttribute('data-family', translation[translation.active].family[family])
                 family_label.setAttribute('data-family', `var(--f${index})`)
-                family_label.innerHTML = family
+                family_label.innerHTML = translation[translation.active].family[family]
                 break;
             }
         }
@@ -811,7 +811,7 @@ function setFilterFamilyCard(){
         element.classList.add('filter')
         span.setAttribute('data-family', `var(--f${index})`)
         element.setAttribute('data-family', `var(--f${index})`)
-        span.innerHTML = family
+        span.innerHTML = translation[translation.active].family[family]
 
         label.appendChild(span)
         element.appendChild(input)
