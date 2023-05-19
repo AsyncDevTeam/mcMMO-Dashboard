@@ -144,6 +144,7 @@ const CalcFamilies = function (data){
     for (const family in families) {
         const skills = families[family];
         let expSum = 0;
+
         for (let i = 0; i < skills.length; i++) {
             const skill = skills[i].toLowerCase();
             if (skill in data) {
