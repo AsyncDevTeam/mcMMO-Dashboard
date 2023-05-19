@@ -135,9 +135,27 @@ fLoadUser().then(r => {
     setAllAbilities(r)
     setFilterFamilyCard()
     userData(r)
+    CalcFamilies(r)
     setChart(r)
 });
 
+const CalcFamilies = function (data){
+    const familyExpSums = {};
+    for (const family in families) {
+        const skills = families[family];
+        let expSum = 0;
+        for (let i = 0; i < skills.length; i++) {
+            const skill = skills[i].toLowerCase();
+            if (skill in data) {
+                const exp = data[skill].exp;
+                expSum += exp;
+            }
+        }
+        familyExpSums[family] = expSum;
+    }
+
+    console.log(familyExpSums);
+}
 
 const ctx_compare = document.getElementById('chart_user_compare');
 let chartCompareGraph
@@ -239,6 +257,7 @@ function createLabel(array){
 }
 
 function userData(player){
+    console.log(player)
     const last_connection_user = document.querySelector('.last-connection-user')
     const last_connection = player.last_connection
     const date = getHM(last_connection)
