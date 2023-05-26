@@ -9,15 +9,6 @@
     flex-direction: column !important;
     align-items: flex-start !important;
   }
-  .title-container,
-.ab-card-best {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-  }
-  .title-container .container-title,
-.ab-card-best .container-title {
-    padding: 1em 1em 0 !important;
-  }
   .searchBarWrapper {
     flex-basis: 100%;
   }

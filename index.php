@@ -16,7 +16,7 @@ session_start();
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.dataTables.min.css">
     <!-- script used to correctly display data tables -->
     <script src="https://code.jquery.com/jquery-3.5.1.js" defer></script>
-    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js" defer></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js" defer></script>
     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js" defer></script>
     <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js" defer></script>
 </head>

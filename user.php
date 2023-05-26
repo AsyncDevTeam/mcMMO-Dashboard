@@ -88,6 +88,7 @@ session_start();
                         <img id="img-skin-user" src="" alt="Skin généré par Minecraft-api.com"/>
                     </div>
                     <div class="wrapper-element-bp">
+                        <div class="scroll-indicator-f-best-ab"></div>
                         <div class="f-best-ab">
                             <div class="ab-card-best avt-glass-effect" data-clone="init">
                                 <div class="container-title">

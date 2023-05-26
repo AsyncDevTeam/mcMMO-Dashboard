@@ -32,14 +32,6 @@
     @include colRAlign;
   }
 
-  .title-container,
-
-  .ab-card-best{
-    @include colRAlign;
-
-    .container-title{padding: 1em 1em 0!important}
-  }
-
   .searchBarWrapper{
     flex-basis: 100%;
   }

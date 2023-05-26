@@ -408,6 +408,7 @@ function databaseLoad(player){
             //     });
             // }
         },
+        scrollX: "300px",
         "paging": pagingAllow,
         "lengthChange": lengthChangeAllow,
         "searching": true,
