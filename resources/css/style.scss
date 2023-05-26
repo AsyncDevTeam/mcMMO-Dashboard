@@ -834,6 +834,12 @@ body{
             justify-content: space-between;
             width: 100%;
             background: var(--background-op);
+            gap: 1em;
+            @media all and (max-width: 600px) {
+              flex-direction: column!important;
+              align-items: flex-start!important;
+              .container-title{padding: 1em 1em 0!important}
+            }
           }
           .wrapper-content{
             @include rowFlex;
@@ -855,10 +861,42 @@ body{
                 .ab-card-best{
                   opacity: 0;
                   transition: .5s all;
+                  scroll-snap-align: center;
                 }
+
                 margin: 1em;
                 //noinspection CssInvalidPropertyValue
                 width: -webkit-fill-available;
+                @media all and (max-width: 600px) {
+                  overflow-x: auto;
+                  display: flex;
+                  flex-wrap: nowrap;
+                  padding: 0 0 0.5em;
+                  scroll-snap-type: x mandatory;
+                  .ab-card-best{
+                    width: 100%;
+                    white-space: nowrap;
+                    flex: 0 0 auto;
+                  }
+                  &::-webkit-scrollbar{display: none}
+                }
+              }
+              @media all and (max-width: 600px) {
+                .scroll-indicator-f-best-ab{
+                  @include centerFlex;
+                  gap: 1em;
+                  margin-bottom: 1em;
+                  .dot{
+                    width: 10px;
+                    cursor: pointer;
+                    aspect-ratio: 1;
+                    border-radius: 100px;
+                    background: var(--background-op);
+                    &.active{
+                      background: var(--w);
+                    }
+                  }
+                }
               }
             }
             .user-skin{
@@ -898,6 +936,13 @@ body{
             }
             .title-lu-meaning{
               background: var(--btn-main-bg-hover);
+            }
+            @media all and (max-width: 600px) {
+              flex-direction: column;
+              border-radius: 10px;
+              width: fit-content;
+              .title-lu,
+              .title-lu-meaning{width: 100%}
             }
           }
         }

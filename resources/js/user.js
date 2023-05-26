@@ -6,6 +6,57 @@ const filter_group = document.getElementById("filter-group")
 let label_player = {}
 if(!isBrowserOnline){stylePageOffline()}
 
+const container_best_ab = document.querySelector('.f-best-ab')
+container_best_ab.onscroll = function (){
+    const children = Array.from(container_best_ab.children)
+    const filteredElements = children.filter(element => element.classList.contains('shiny'))
+    const tolerance = 20; // Tolerance value in pixels
+    function getVisibleChildElements() {
+        const containerRect = container_best_ab.getBoundingClientRect();
+        const children = Array.from(container_best_ab.children);
+
+        return children.filter(child => {
+            const childRect = child.getBoundingClientRect();
+            return childRect.left >= containerRect.left - tolerance &&
+                childRect.right <= containerRect.right + tolerance;
+        });
+    }
+    const index = filteredElements.indexOf(
+        getVisibleChildElements()[0]
+    );
+    if(index !== -1){setScrollIndicators(index)}
+}
+
+const setScrollIndicators = function (index){
+    const container = document.querySelector('.scroll-indicator-f-best-ab')
+    const children = Array.from(container.children)
+    children.forEach(e => {e.classList.remove('active')})
+    children[index].classList.add('active')
+}
+const createScrollIndicators = function (len){
+    const container = document.querySelector('.scroll-indicator-f-best-ab')
+    for (let i = 0; i < len; i++) {
+        const node = document.createElement('div')
+        node.classList.add('dot')
+        if(i === 0)
+            node.classList.add('active')
+        node.setAttribute('data-index', i.toString())
+        node.onclick = function (){goToScrollElement(this)}
+        container.appendChild(node)
+    }
+}
+
+const goToScrollElement = function(e){
+    const index = e.dataset.index
+    const children = Array.from(container_best_ab.children);
+    const s = children[index].getBoundingClientRect()
+    const offset_left = children[0].getBoundingClientRect().left
+    container_best_ab.scrollTo({
+        left: (s.width*index) + offset_left,
+        behavior: 'smooth'
+    })
+}
+
 if(query !== undefined && isBrowserOnline){
     setSkin(query.toString())
     document.title = translation[languageSelect].pages_name[exact_type].replace(
@@ -438,6 +489,7 @@ function setBestAbilities(player){
             clone.style.setProperty("--y", e.clientY - y);
         });
     })
+    createScrollIndicators(b.best4Ab.length)
 }
 
 function setAllAbilities(player){
@@ -880,6 +932,15 @@ function changeFilterGroup(){
     }else{
         no_element_found.classList.add('hidden')
     }
+
+    const card_infos = document.querySelector('.card-infos')
+    card_infos.classList.add('hidden')
+    const cards = document.querySelectorAll('.ab-card')
+    cards.forEach(e => {
+        if(e.classList.contains('selected')){
+            e.classList.remove('selected')
+        }
+    })
 
     return ar
 }
