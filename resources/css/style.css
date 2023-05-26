@@ -1478,12 +1478,24 @@ body main .sidebar-menu .content-main .user-infos .wrapper-content {
 body main .wrapper .content-main .labels,
 body main .sidebar-menu .content-main .labels {
   display: flex;
-  flex-wrap: wrap;
   gap: 1em;
   color: var(--b);
+  flex-wrap: wrap;
+}
+@media all and (max-width: 600px) {
+  body main .wrapper .content-main .labels,
+body main .sidebar-menu .content-main .labels {
+    width: 100%;
+    overflow-x: auto;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding-bottom: 0.5em;
+  }
 }
 body main .wrapper .content-main .labels .label-user,
 body main .sidebar-menu .content-main .labels .label-user {
+  white-space: nowrap;
+  flex: 0 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;

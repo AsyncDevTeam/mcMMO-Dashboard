@@ -918,11 +918,24 @@ body{
 
         .labels{
           display: flex;
-          flex-wrap: wrap;
+          //flex-wrap: wrap;
           gap: 1em;
           color:var(--b);
 
+          flex-wrap: wrap;
+
+          @media all and (max-width: 600px) {
+            width: 100%;
+            overflow-x: auto;
+            align-items: center;
+            flex-wrap: nowrap;
+            padding-bottom: .5em;
+          }
+
           .label-user{
+            white-space: nowrap;
+            flex: 0 0 auto;
+
             @include rowFlex;
             gap: .2em;
             background: var(--background-op);
