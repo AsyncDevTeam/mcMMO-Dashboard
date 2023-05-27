@@ -19,7 +19,6 @@ You must provide :
 | server_name          | Your minecraft server name                                     | Hypixel     |
 | server_ip            | Your minecraft server IP address                               | 192.168.1.1 |
 | server_port          | Your minecraft server IP address's port                        | 25565       |
-| server_allow_bedrock | Is your minecraft server allowing bedrock players to connect ? | 0           |
 | db_ip                | mcMMO database's IP address                                    | 192.168.1.2 |
 | db_port              | mcMMO database's port                                          | 3306        |
 | db_name              | mcMMO database's name                                          | mcmmo_data  |

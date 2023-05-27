@@ -9,7 +9,6 @@ session_start();
     <!-- chartjs -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
     <!-- script of the project -->
-    <script src="resources/js/common.js" defer></script>
     <script src="resources/js/main.js" defer></script>
     <script src="resources/js/index.js" defer></script>
     <!-- css style used to correctly display data tables -->

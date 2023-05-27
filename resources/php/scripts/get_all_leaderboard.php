@@ -2,9 +2,6 @@
 
 require "../includes/secure.php";
 
-require "../includes/bedrock.php";
-/** @var ARRAY $allow_bedrock */
-
 require "../includes/db_connect.php";
 /** @var OBJECT $dbh */
 
@@ -25,7 +22,7 @@ while ($row = $sth->fetch()) {
         "rank" => $rank,
         "name" => $row['user'],
         "uuid" => $row['uuid'],
-        "bedrock" => $allow_bedrock,
+        "bedrock" => str_starts_with($row['uuid'], '00000000') ? 1 : 0,
         "total" => $row['total'],
         "last_connection" => $row['lastlogin']
     );

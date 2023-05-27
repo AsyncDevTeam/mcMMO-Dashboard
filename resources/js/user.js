@@ -309,7 +309,6 @@ function createLabel(array){
 }
 
 function userData(player){
-    console.log(player)
     const last_connection_user = document.querySelector('.last-connection-user')
     const last_connection = player.last_connection
     const date = getHM(last_connection)

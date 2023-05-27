@@ -11,9 +11,6 @@ if (!isset($_GET['top']) || $_GET['top'] < 1) {
 require "../includes/db_connect.php";
 /** @var OBJECT $dbh */
 
-require "../includes/bedrock.php";
-/** @var ARRAY $allow_bedrock */
-
 require_once "../../../config/config.php";
 /** @var ARRAY $config **/
 
@@ -28,7 +25,7 @@ while ($row = $sth->fetch()) {
     $tmp_array = array(
         "name" => $row['user'],
         "uuid" => $row['uuid'],
-        "bedrock" => $allow_bedrock,
+        "bedrock" => str_starts_with($row['uuid'], '00000000') ? 1 : 0,
         "total" => $row['total']
     );
 

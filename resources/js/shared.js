@@ -483,3 +483,24 @@ function generateColors(numColors, value = 0) {
     }
 
 }
+
+
+function getSkinURL(player, type) {
+    let types = {
+        'BODY':             'player',
+        'BODY_3D':          'body',
+        'BODY_3D_REVERSE':  'body',
+        'HEAD':             'avatar',
+        'HEAD_3D':          'head'
+    };
+    if (!types[type]) {
+        throw new Error(`Invalid type "${type}". Type must be one of ${Object.keys(types).join(', ')}.`);
+    }
+    if (player.bedrock === 0) {
+        // Not a bedrock player, so we can directly use mc-heads API
+        return 'https://mc-heads.net/' + types[type] + '/' + player.name + (type === 'BODY_3D_REVERSE' ? '/left' : '');
+    } else {
+        // Bedrock player, so we should use Tydium API with uuid
+        return 'https://api.tydiumcraft.net/v1/players/skin?uuid=' + player.uuid + '&type=' + types[type] + (type === 'BODY_3D_REVERSE' ? '&direction=left' : '');
+    }
+}

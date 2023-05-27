@@ -7,7 +7,6 @@ session_start();
     <!-- header base -->
     <?php require "resources/php/includes/head.php" ?>
     <!-- script of the page -->
-    <script src="resources/js/common.js" defer></script>
     <script src="resources/js/search-user.js" defer></script>
     <!-- custom script -->
     <script defer>

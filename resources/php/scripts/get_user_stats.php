@@ -10,9 +10,6 @@ if (!isset($_GET['name'])) {
     $player_name = $_GET['name'];
 }
 
-require "../includes/bedrock.php";
-/** @var ARRAY $allow_bedrock */
-
 require "../includes/db_connect.php";
 /** @var OBJECT $dbh */
 
@@ -41,7 +38,7 @@ $result["total"] = $row_lvl['total'];
 $result["last_connection"] = $row_lvl['lastlogin'];
 $result["name"] = $player_name;
 $result["uuid"] = $row_lvl['uuid'];
-$result["bedrock"] = $allow_bedrock;
+$result["bedrock"] = str_starts_with($row_lvl['uuid'], '00000000') ? 1 : 0;
 
 foreach ($skills as $skill) {
     $curr_lvl = $row_lvl[$skill];

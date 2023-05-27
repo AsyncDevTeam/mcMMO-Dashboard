@@ -481,18 +481,31 @@ function chartEachAbilities(player){
 }
 
 function addBP(player){
-    const content_bp = document.querySelector('.content_bp')
-    const col1 = createElement('div', 'col')
-    for (let i = 0; i < 2; i++) {
-        const el = createCard(player.players[i], i + 1)
-        col1.appendChild(el)
-        content_bp.appendChild(col1)
-    }
-    const col2 = createElement('div', 'col')
-    for (let i = 2; i < 4; i++) {
-        const el = createCard(player.players[i], i + 1)
-        col2.appendChild(el)
-        content_bp.appendChild(col2)
+    const content_bp = document.querySelector('.content_bp');
+
+    const createColAndCards = (start, end, container) => {
+        const col = document.createElement('div');
+        col.className = 'col';
+        for (let i = start; i < end; i++) {
+            if (player.players[i]) {
+                const el = createCard(player.players[i], i + 1);
+                col.appendChild(el);
+            }
+        }
+        container.appendChild(col);
+    };
+
+    const playerCount = player.players.length;
+
+    if (playerCount >= 2) {
+        createColAndCards(0, 2, content_bp);
+        if (playerCount >= 4) {
+            createColAndCards(2, 4, content_bp);
+        } else {
+            createColAndCards(2, playerCount, content_bp);
+        }
+    } else {
+        createColAndCards(0, playerCount, content_bp);
     }
 
     function createCard(player, rank = null){
