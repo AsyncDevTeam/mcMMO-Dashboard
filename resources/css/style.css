@@ -1532,6 +1532,14 @@ body main .sidebar-menu .content-main .labels .label-user .title-lu-meaning {
     width: 100%;
   }
 }
+body main .wrapper .content-main .recommendations,
+body main .sidebar-menu .content-main .recommendations {
+  padding: 1em;
+  border-radius: 5px;
+  background: red;
+  background: linear-gradient(white, white) padding-box, linear-gradient(to right, #9867f0, #ed4e50) border-box;
+  border: 2px solid transparent;
+}
 body main .wrapper .content-main .collapsible-body,
 body main .sidebar-menu .content-main .collapsible-body {
   overflow: hidden;
