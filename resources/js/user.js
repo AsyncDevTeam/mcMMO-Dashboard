@@ -186,7 +186,7 @@ fLoadUser().then(r => {
     setAllAbilities(r)
     setFilterFamilyCard()
     userData(r)
-    CalcFamilies(r)
+    // CalcFamilies(r)
     setChart(r)
 });
 
@@ -205,8 +205,6 @@ const CalcFamilies = function (data){
         }
         familyExpSums[family] = expSum;
     }
-
-    console.log(familyExpSums);
 }
 
 const ctx_compare = document.getElementById('chart_user_compare');
@@ -312,11 +310,10 @@ function userData(player){
     const last_connection_user = document.querySelector('.last-connection-user')
     const last_connection = player.last_connection
     const date = getHM(last_connection)
-    // last_connection_user.innerHTML = `Last connection at ${date.h}h${date.m}, ${date.date}`
     last_connection_user.innerHTML = translation[languageSelect].refresh.user
         .replace('_HOUR_', date.h)
         .replace('_MIN_', date.m)
-        .replace('_DATE_', date.date)
+        .replace('_DATE_', date.date);
 }
 
 function setSkin(player) {
