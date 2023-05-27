@@ -11,10 +11,13 @@ if (!isset($_GET['top']) || $_GET['top'] < 1) {
 require "../includes/db_connect.php";
 /** @var OBJECT $dbh */
 
+require "../includes/bedrock.php";
+/** @var ARRAY $allow_bedrock */
+
 require_once "../../../config/config.php";
 /** @var ARRAY $config **/
 
-$sth = $dbh->prepare('SELECT user, total FROM mcmmo_users INNER JOIN mcmmo_skills ON mcmmo_users.id = mcmmo_skills.user_id ORDER BY mcmmo_skills.total DESC LIMIT :top');
+$sth = $dbh->prepare('SELECT user, total, uuid FROM mcmmo_users INNER JOIN mcmmo_skills ON mcmmo_users.id = mcmmo_skills.user_id ORDER BY mcmmo_skills.total DESC LIMIT :top');
 $sth->bindParam(':top', $top, PDO::PARAM_INT);
 $sth->execute();
 
@@ -24,6 +27,8 @@ while ($row = $sth->fetch()) {
 
     $tmp_array = array(
         "name" => $row['user'],
+        "uuid" => $row['uuid'],
+        "bedrock" => $allow_bedrock,
         "total" => $row['total']
     );
 

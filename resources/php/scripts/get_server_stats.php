@@ -1,7 +1,7 @@
 <?php
 
 require "../includes/secure.php";
-require_once "../../../config/config.php";
+require "../../../config/config.php";
 /** @var ARRAY $config * */
 
 require '../libraries/php-minecraft-query/MinecraftPing.php';
@@ -41,7 +41,7 @@ if ($config['server_port'] != "25565") {
 $result['online_players'] = $error ? -1 : $status['players']['online'];
 $result['max_players'] = $error ? -1 : $status['players']['max'];
 $result['minecraft_version'] = $error ? "none" : $status['version']['name'];
-$result['icon'] = $error ? "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAANSURBVBhXY6APYGAAAABpAAEwm5GQAAAAAElFTkSuQmCC" : $status['favicon'];
+$result['icon'] = $error || !array_key_exists('favicon', $status) ? "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAANSURBVBhXY6APYGAAAABpAAEwm5GQAAAAAElFTkSuQmCC" : $status['favicon'];
 
 $json_result = json_encode($result, JSON_PRETTY_PRINT);
 header('Content-Type: application/json');

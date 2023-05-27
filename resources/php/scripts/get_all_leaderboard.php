@@ -2,13 +2,16 @@
 
 require "../includes/secure.php";
 
+require "../includes/bedrock.php";
+/** @var ARRAY $allow_bedrock */
+
 require "../includes/db_connect.php";
 /** @var OBJECT $dbh */
 
 $skills = array("taming", "mining", "woodcutting", "repair", "unarmed", "herbalism", "excavation", "archery", "swords", "axes", "acrobatics", "fishing", "alchemy");
 $skills_str = implode(", ", $skills);
 
-$sth = $dbh->prepare('SELECT id, user, lastlogin, total, '.$skills_str.' FROM mcmmo_users INNER JOIN mcmmo_skills ON mcmmo_users.id = mcmmo_skills.user_id ORDER BY total DESC');
+$sth = $dbh->prepare('SELECT id, user, lastlogin, total, uuid, '.$skills_str.' FROM mcmmo_users INNER JOIN mcmmo_skills ON mcmmo_users.id = mcmmo_skills.user_id ORDER BY total DESC');
 $sth->execute();
 
 $result = array();
@@ -21,6 +24,8 @@ while ($row = $sth->fetch()) {
         "id" => $row['id'],
         "rank" => $rank,
         "name" => $row['user'],
+        "uuid" => $row['uuid'],
+        "bedrock" => $allow_bedrock,
         "total" => $row['total'],
         "last_connection" => $row['lastlogin']
     );

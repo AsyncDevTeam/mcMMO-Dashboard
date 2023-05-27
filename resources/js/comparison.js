@@ -77,7 +77,7 @@ function setSelect(data){
     const len = data.players.length
     select.forEach((e, j) => {
         e.onchange = async function (a){
-            setSkinCompare(len, a)
+            setSkinCompare(data.players, len, a)
             setTable(data)
             chartComparison(data)
             await Promise.all([
@@ -94,10 +94,10 @@ function setSelect(data){
         }
         e.value = (j === 0) ? data.players[0].name : data.players[1].name;
     });
-    setSkinCompare(len)
+    setSkinCompare(data.players, len)
 }
 
-function setSkinCompare(len, a = null){
+function setSkinCompare(players, len, a = null){
     vs.style.borderBottomColor = 'var(--active-color)'
     let target
     if(a !== null) target = a.target
@@ -131,6 +131,17 @@ function setSkinCompare(len, a = null){
         }
     }
 
+    // Retrieve full player data
+    let playerdata_1, playerdata_2
+    for (let i = 0; i < players.length; i++) {
+        if (players[i].name === value_1) {
+            playerdata_1 = players[i]
+        }
+        if (players[i].name === value_2) {
+            playerdata_2 = players[i]
+        }
+    }
+
     const img = document.querySelectorAll('.img-compare')
     const a_href = document.querySelectorAll('.a-compare')
     const img_h = document.querySelectorAll('.img-compare-head')
@@ -138,18 +149,18 @@ function setSkinCompare(len, a = null){
         const { value_1, value_2 } = values();
         a_href[i].querySelector('span').innerHTML = translation[languageSelect].content_page.pages.comparison.link.see_profile
         if(i === 0){
-            e.src = `https://mc-heads.net/body/${value_1}`
+            e.src = getSkinURL(playerdata_1, 'BODY_3D')
             a_href[i].href = `user.php?q=${value_1}`
         }else{
-            e.src = `https://mc-heads.net/body/${value_2}/left`
+            e.src = getSkinURL(playerdata_2, 'BODY_3D_REVERSE')
             a_href[i].href = `user.php?q=${value_2}`
         }
     })
     img_h.forEach((e, i) => {
         const { value_1, value_2 } = values();
         e.value = (i === 0) ?
-            e.src = `https://mc-heads.net/avatar/${value_1}` :
-            e.src = `https://mc-heads.net/avatar/${value_2}/left`
+            e.src = getSkinURL(playerdata_1, 'HEAD') :
+            e.src = getSkinURL(playerdata_2, 'HEAD')
     })
 }
 

@@ -58,7 +58,6 @@ const goToScrollElement = function(e){
 }
 
 if(query !== undefined && isBrowserOnline){
-    setSkin(query.toString())
     document.title = translation[languageSelect].pages_name[exact_type].replace(
         '_USER_', query.toString()
     )
@@ -182,6 +181,7 @@ function errorCompareChart(){
 
 fLoadUser().then(r => {
     if(!isBrowserOnline) return
+    setSkin(r)
     setBestAbilities(r)
     setAllAbilities(r)
     setFilterFamilyCard()
@@ -320,36 +320,10 @@ function userData(player){
         .replace('_DATE_', date.date)
 }
 
-function setSkin(skin){
+function setSkin(player) {
     const img = document.querySelector('#img-skin-user')
-    img.src = `https://mc-heads.net/body/${skin}`
-    // img.src = `https://mineskin.eu/armor/body/${skin}/300.png`
+    img.src = getSkinURL(player, 'BODY_3D')
 }
-
-const elems = document.querySelectorAll('.collapsible');
-elems.forEach(e => {
-    const co_header = e.querySelectorAll('.collapsible-header');
-    co_header.forEach(a => {
-        const co_body = a.closest('li').querySelector('.collapsible-body');
-        a.addEventListener('click', function (){
-            const img = a.querySelector('.img-header')
-            const dataset_col = a.dataset.skin
-            if(dataset_col !== undefined){
-                img.src = `https://mineskin.eu/helm/${query.toString()}/300.png`
-                changeSkin(co_body, img)
-            }
-        })
-    })
-    function changeSkin(element, img){
-        if(window.getComputedStyle(element).display === 'none'){
-            //access 2
-            img.classList.replace('visible', 'hidden')
-        }else{
-            //access 1
-            img.classList.replace('hidden', 'visible')
-        }
-    }
-})
 
 function getBestAbility(player){
     let skill_array = []

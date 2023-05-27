@@ -17,7 +17,11 @@ try {
 
 } catch (PDOException $e) {
     header('Content-Type: application/json');
-    echo "{\"error\":\"".$e->getMessage()."\"}";
+    if (strpos($e->getMessage(), 'could not find driver') !== false) {
+        echo "{\"error\":\"Could not find php ".$config['db_driver']." driver\"}";
+    } else {
+        echo "{\"error\":\"".$e->getMessage()."\"}";
+    }
     die();
 
 }

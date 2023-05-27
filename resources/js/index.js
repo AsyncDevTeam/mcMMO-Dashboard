@@ -112,6 +112,8 @@ function quickViewSetup(player){
         rank.push({
             'total' : e.total,
             'name'  : e.name,
+            'uuid'  : e.uuid,
+            'bedrock'  : e.bedrock,
             'rank'  : order.indexOf(e.total) + 1,
         })
         if(e.total === max_total){}
@@ -137,18 +139,26 @@ function setQuickViewPlayer(username){
             })
         }
     })
-    let name
+    let name, skinurl
     for (let i = 0; i < bp_name.length; i++) {
         if(bp_name[i].name === username){
             name =`<span class='label-${i+1}'>#${i+1} ${bp_name[i].name}</span>`
+            skinurl = getSkinURL(bp_name[i], 'HEAD')
             break
-        }else{
+        } else {
+            let user
+            for (let j = 0; j < array.length; j++) {
+                if (array[j].name === username) {
+                    user = array[j]
+                }
+            }
             name = username
+            skinurl = getSkinURL(user, 'HEAD')
         }
     }
 
     selected_player.forEach(e => {
-        e.innerHTML = `<img class="img" src="https://mineskin.eu/helm/${username}/300.png" alt="player_heads">` + name
+        e.innerHTML = `<img class="img" src="${skinurl}" alt="player_heads">` + name
     })
 
     seeSkill.forEach(e => {
@@ -355,22 +365,21 @@ function createTableBestAbilities(data){
 
 function databaseLoad(player){
 
-    let name
-    let all_username = []
+    let name, skinurl
     for (let i = 0; i < player.players.length; i++) {
         const user = player.players[i]
         for (let j = 0; j < bp_name.length; j++) {
             if(bp_name[j].name === user.name){
                 name = `<span class='label-${j+1}'>#${j+1} ${user.name}</span>`
+                skinurl = getSkinURL(bp_name[j], 'HEAD_3D')
                 break
-            }else{
+            } else {
                 name = user.name
+                skinurl = getSkinURL(user, 'HEAD_3D')
             }
         }
-        all_username.push(user.name)
 
-        user.name_img = `<img class="img" src="https://mineskin.eu/helm/${user.name}/300.png" alt="player_heads">`
-            + name
+        user.name_img = `<img class="img" src="${skinurl}" alt="player_heads">` + name
     }
 
     let lengthChangeAllow = true
@@ -475,18 +484,21 @@ function addBP(player){
     const content_bp = document.querySelector('.content_bp')
     const col1 = createElement('div', 'col')
     for (let i = 0; i < 2; i++) {
-        const el = createCard(player.players[i].name, player.players[i].total, i + 1)
+        const el = createCard(player.players[i], i + 1)
         col1.appendChild(el)
         content_bp.appendChild(col1)
     }
     const col2 = createElement('div', 'col')
     for (let i = 2; i < 4; i++) {
-        const el = createCard(player.players[i].name, player.players[i].total, i + 1)
+        const el = createCard(player.players[i], i + 1)
         col2.appendChild(el)
         content_bp.appendChild(col2)
     }
 
-    function createCard(string, total, rank = null){
+    function createCard(player, rank = null){
+        const string = player.name
+        const total = player.total
+
         const container = createElement('a', 'btn-main')
         container.classList.add(`rank-${rank}`)
         const img = createElement('img', 'img')
@@ -498,7 +510,7 @@ function addBP(player){
         const total_v = createElement('span', 'tot')
 
         if(rank !== null){
-            img.src = `https://mineskin.eu/helm/${string}/300.png`
+            img.src = getSkinURL(player, 'HEAD')
             label.innerText = '#' + rank + ' ' + string
             total_v.innerText = 'Lvl : ' + total
             container.href = `user.php?q=${string}`
