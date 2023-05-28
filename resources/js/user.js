@@ -11,6 +11,8 @@ if(query !== undefined && isBrowserOnline){
     document.title = translation[languageSelect].pages_name[exact_type].replace(
         '_USER_', query.toString()
     )
+}else{
+    setToast('error', "No player found", 0)
 }
 
 let best_player = ""
@@ -25,6 +27,7 @@ fLoadServerInfos().then(async infos => {
         if(infos.max_players === -1){
             //Offline
             error_internal_server = true;
+            setToast('error', 'Server offline', 0)
         }else{
             //Online
             setServerStats(infos);
@@ -55,6 +58,8 @@ fLoadServerInfos().then(async infos => {
                         errorCompareChart()
                     }
                 }
+            }else{
+                setToast('error', "Error loading top leaderboard", 0)
             }
 
             await Promise.all([fLoadLeaderboard_, fLoadTopLeaderboard_]).then((r) => {
@@ -66,12 +71,15 @@ fLoadServerInfos().then(async infos => {
                             let result_cp = data.players.find(item => item.name === query.toString());
                             labelGet(data)
                             chartCompare(result_bp, result_cp)
+                        }else{
+                            setToast('error', "Error loading top leaderboard", 0)
                         }
                     }
                 }
                 loading_bar.classList.add('hidden')
             }).catch((error) => {
                 console.error('error : ', error);
+                setToast('error', error.message, 0)
             });
         }
     }

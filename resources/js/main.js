@@ -120,7 +120,7 @@ const fLoadUser = async () => {
     })
         .then((response) => response.json())
         .then((json) => {return json})
-        .catch(error => {console.warn(error.message)})
+        .catch(error => {setToast('error', error.message, 0)})
 }
 
 function createElement(type, classAdd) {
