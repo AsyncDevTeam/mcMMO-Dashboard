@@ -148,7 +148,7 @@ function setQuickViewPlayer(username){
     for (let i = 0; i < bp_name.length; i++) {
         if(bp_name[i].name === username){
             name =`<span class='label-${i+1}'>#${i+1} ${bp_name[i].name}</span>`
-            skinurl = getSkinURL(bp_name[i], 'HEAD')
+            skinurl = getSkin(bp_name[i], 'HEAD').url
             break
         } else {
             let user
@@ -158,7 +158,7 @@ function setQuickViewPlayer(username){
                 }
             }
             name = username
-            skinurl = getSkinURL(user, 'HEAD')
+            skinurl = getSkin(user, 'HEAD').url
         }
     }
 
@@ -376,11 +376,11 @@ function databaseLoad(player){
         for (let j = 0; j < bp_name.length; j++) {
             if(bp_name[j].name === user.name){
                 name = `<span class='label-${j+1}'>#${j+1} ${user.name}</span>`
-                skinurl = getSkinURL(bp_name[j], 'HEAD_3D')
+                skinurl = getSkin(bp_name[j], 'HEAD_3D').url
                 break
             } else {
                 name = user.name
-                skinurl = getSkinURL(user, 'HEAD_3D')
+                skinurl = getSkin(user, 'HEAD_3D').url
             }
         }
 
@@ -528,7 +528,7 @@ function addBP(player){
         const total_v = createElement('span', 'tot')
 
         if(rank !== null){
-            img.src = getSkinURL(player, 'HEAD')
+            img.src = getSkin(player, 'HEAD').url
             label.innerText = '#' + rank + ' ' + string
             total_v.innerText = 'Lvl : ' + total
             container.href = `user.php?q=${string}`

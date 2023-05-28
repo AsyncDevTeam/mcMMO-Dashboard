@@ -64,7 +64,7 @@ function setCard(players){
         const total = clone.querySelector('.total')
         const player = users[i].name
         total.innerText = `${users[i].total} exp`
-        img.src = getSkinURL(users[i], 'HEAD_3D')
+        img.src = getSkin(users[i], 'HEAD_3D').url
         name.innerHTML = player
         clone.href = `user.php?q=${player}`
         clone.setAttribute('data-total', users[i].total)

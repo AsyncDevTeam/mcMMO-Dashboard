@@ -144,19 +144,54 @@ function setServerStats(infos) {
         e.innerHTML = minecraft_version.replace(regex, '<span class="c-$1">$2</span>')
         displayElement(e, minecraft_version.replace(regex, '<span class="c-$1">$2</span>'))
     })
-    server_logo.src = icon
+
     let link = document.querySelector("link[rel~='icon']");
     if (!link) {
         link = document.createElement('link');
         link.rel = 'icon';
         document.head.appendChild(link);
     }
-    link.href = icon
+    isImageEmpty(icon).then(isEmpty => {
+        if (isEmpty) {
+            server_logo.src = "resources/others/textures/defaultLogo/def.ico"
+            link.href = server_logo.src
+        } else {
+            server_logo.src = icon
+            link.href = icon
+        }
+    });
+
     server_ip.forEach(e => {
         e.innerHTML = hostname
         displayElement(e, hostname)
     })
     copyToClipboard.value = hostname
+}
+
+function isImageEmpty(imageDataURL) {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = function() {
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            canvas.width = img.width;
+            canvas.height = img.height;
+            context.drawImage(img, 0, 0);
+            const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+            const data = imageData.data;
+            for (let i = 0; i < data.length; i += 4) {
+                if (data[i + 3] !== 0) {
+                    resolve(false);
+                    return;
+                }
+            }
+            resolve(true);
+        };
+        img.onerror = function() {
+            resolve(false);
+        };
+        img.src = imageDataURL;
+    });
 }
 
 languageSelect = translation.active
@@ -505,7 +540,7 @@ function generateColors(numColors, value = 0) {
 
 }
 
-function getSkinURL(player, type) {
+function getSkin(player, type) {
     let types = {
         'BODY': 'player',
         'BODY_3D': 'body',
@@ -519,14 +554,16 @@ function getSkinURL(player, type) {
         throw new Error(`Invalid type "${type}". Type must be one of ${Object.keys(types).join(', ')}.`);
     }
 
+    var output = {
+        url: null
+    };
     if (player.bedrock === 0) {
         // Not a bedrock player, so we can directly use the name with mc-heads API
-        return `https://mc-heads.net/${types[type]}/${player.name}${type === 'BODY_3D_REVERSE' ? '/left' : ''}`;
+        output.url = `https://mc-heads.net/${types[type]}/${player.name}${type === 'BODY_3D_REVERSE' ? '/left' : ''}`;
     } else {
         // Bedrock player, so we should get the texture ID thanks to geyser API
         const xuidHex = player.uuid.split('-').join('').toUpperCase();
         const xuidDec = parseInt(xuidHex, 16);
-        var skinURL = null;
         $.ajax({
             url: `https://api.geysermc.org/v2/skin/${xuidDec}`,
             timeout: 5000,
@@ -534,15 +571,15 @@ function getSkinURL(player, type) {
             async: false,
             success: function(data) {
                 if (data.texture_id) {
-                    skinURL = `https://mc-heads.net/${types[type]}/${data.texture_id}${type === 'BODY_3D_REVERSE' ? '/left' : ''}`;
+                    output.url = `https://mc-heads.net/${types[type]}/${data.texture_id}${type === 'BODY_3D_REVERSE' ? '/left' : ''}`;
+                    output.last_update = data.last_update;
                 }
             }
         });
-        if (skinURL !== null) {
-            return skinURL
-        } else {
+        if (output.url === null) {
             setToast('info', 'Bedrock player\'s skin can\'t be displayed for now.\nTry again later.', 5000);
-            return `resources/others/textures/defaultSkin/bedrock-${types[type]}${type === 'BODY_3D_REVERSE' ? '-reverse' : ''}.png`;
+            output.url = `resources/others/textures/defaultSkin/bedrock-${types[type]}${type === 'BODY_3D_REVERSE' ? '-reverse' : ''}.png`;
         }
     }
+    return output;
 }

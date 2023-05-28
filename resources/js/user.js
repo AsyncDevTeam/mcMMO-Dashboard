@@ -332,7 +332,7 @@ function setSkin(player) {
             canvas: document.getElementById("img-skin-user-3d"),
             width: 300,
             height: 400,
-            skin: getSkinURL(player, 'SKIN'),
+            skin: getSkin(player, 'SKIN').url,
         });
 
         skinViewer.zoom = 0.8;
@@ -358,7 +358,7 @@ function setSkin(player) {
         document.getElementById("img-skin-user-3d").style.display = "none";
 
         const img = document.querySelector('#img-skin-user')
-        img.src = getSkinURL(player, 'BODY_3D')
+        img.src = getSkin(player, 'BODY_3D').url
     }
 }
 

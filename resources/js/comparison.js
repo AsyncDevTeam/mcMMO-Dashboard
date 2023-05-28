@@ -157,18 +157,18 @@ function setSkinCompare(players, len, a = null){
         const { value_1, value_2 } = values();
         a_href[i].querySelector('span').innerHTML = translation[languageSelect].content_page.pages.comparison.link.see_profile
         if(i === 0){
-            e.src = getSkinURL(playerdata_1, 'BODY_3D')
+            e.src = getSkin(playerdata_1, 'BODY_3D').url
             a_href[i].href = `user.php?q=${value_1}`
         }else{
-            e.src = getSkinURL(playerdata_2, 'BODY_3D_REVERSE')
+            e.src = getSkin(playerdata_2, 'BODY_3D_REVERSE').url
             a_href[i].href = `user.php?q=${value_2}`
         }
     })
     img_h.forEach((e, i) => {
         const { value_1, value_2 } = values();
         e.value = (i === 0) ?
-            e.src = getSkinURL(playerdata_1, 'HEAD') :
-            e.src = getSkinURL(playerdata_2, 'HEAD')
+            e.src = getSkin(playerdata_1, 'HEAD').url :
+            e.src = getSkin(playerdata_2, 'HEAD').url
     })
 }
 
