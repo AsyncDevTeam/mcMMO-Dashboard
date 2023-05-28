@@ -14,17 +14,18 @@ This project allows you to have an interactive, good looking and effective dashb
 
 You must provide :
 
-| Key         | Description                             | Example           |
-|-------------|-----------------------------------------|-------------------|
-| server_name | Your minecraft server name              | Hypixel           |
-| server_ip   | Your minecraft server IP address        | 192.168.1.1       |
-| server_port | Your minecraft server IP address's port | 25565             |
-| db_ip       | mcMMO database's IP address             | 192.168.1.2       |
-| db_port     | mcMMO database's port                   | 3306              |
-| db_name     | mcMMO database's name                   | mcmmo_data        |
-| db_login    | Login to connect to the database        | admin             |
-| db_pass     | Password to connect to the database     | 1234              |
-| db_driver   | Driver used for your database           | mysql             |
+| Key                  | Description                                                    | Example     |
+|----------------------|----------------------------------------------------------------|-------------|
+| server_name          | Your minecraft server name                                     | Hypixel     |
+| server_ip            | Your minecraft server IP address                               | 192.168.1.1 |
+| server_port          | Your minecraft server IP address's port                        | 25565       |
+| db_ip                | mcMMO database's IP address                                    | 192.168.1.2 |
+| db_port              | mcMMO database's port                                          | 3306        |
+| db_name              | mcMMO database's name                                          | mcmmo_data  |
+| db_login             | Login to connect to the database                               | admin       |
+| db_pass              | Password to connect to the database                            | 1234        |
+| db_driver            | Driver used for your database                                  | mysql       |
+
 
 3. Browse to your website host IP address, enjoy & share to your community!
 
@@ -40,7 +41,7 @@ You must provide :
 
 Your hosting machine must have a web server installed (ex: Apache or Nginx) with PHP enabled.
 
-Moreover, you have to make sure that the PHP module of the mcMMO database driver is activated.
+**Moreover, you have to make sure that the PHP driver of the mcMMO database you are using is activated.**
 
 ## 📸 Screenshots
 

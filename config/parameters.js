@@ -29,7 +29,7 @@ const abilities_cap = {
 const translation = {
     'active': 'FR',
     'EN': {
-        'title_header': 'mcMMO Stats',
+        'title_header': 'mcMMO Dashboard',
         'pages_name':{
             'index': 'mcMMO Stats | Home',
             'user': 'mcMMO Stats | _USER_',
@@ -302,7 +302,7 @@ const translation = {
         }
     },
     'FR': {
-        'title_header': 'mcMMO Stats',
+        'title_header': 'mcMMO Dashboard',
         'pages_name':{
             'index': 'mcMMO Stats | Accueil',
             'user': 'mcMMO Stats | _USER_',
@@ -575,7 +575,7 @@ const translation = {
         }
     },
     'DE': {
-        'title_header': 'mcMMO Stats',
+        'title_header': 'mcMMO Dashboard',
         'pages_name':{
             'index': 'mcMMO Stats | Willkommen',
             'user': 'mcMMO Stats | _USER_',

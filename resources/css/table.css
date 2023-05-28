@@ -1,6 +1,8 @@
 .dataTables_wrapper {
   display: flex;
   flex-direction: column;
+  overflow-x: auto;
+  width: 100%;
 }
 @media screen and (max-width: 1000px) {
   .dataTables_wrapper {

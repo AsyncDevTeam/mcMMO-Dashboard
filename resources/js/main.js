@@ -37,7 +37,7 @@ function getHM(TS = null) {
         let month = d.getMonth() + 1
         let year = d.getFullYear()
 
-        let date = `${day}/${month}/${year}`
+        let date = `${day < 10 ? '0' + day : day}/${month < 10 ? '0' + month : month}/${year}`
 
         if (h < 10) {
             h = "0" + h

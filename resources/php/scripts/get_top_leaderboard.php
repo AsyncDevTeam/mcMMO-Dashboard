@@ -14,7 +14,7 @@ require "../includes/db_connect.php";
 require_once "../../../config/config.php";
 /** @var ARRAY $config **/
 
-$sth = $dbh->prepare('SELECT user, total FROM mcmmo_users INNER JOIN mcmmo_skills ON mcmmo_users.id = mcmmo_skills.user_id ORDER BY mcmmo_skills.total DESC LIMIT :top');
+$sth = $dbh->prepare('SELECT user, total, uuid FROM mcmmo_users INNER JOIN mcmmo_skills ON mcmmo_users.id = mcmmo_skills.user_id ORDER BY mcmmo_skills.total DESC LIMIT :top');
 $sth->bindParam(':top', $top, PDO::PARAM_INT);
 $sth->execute();
 
@@ -24,6 +24,8 @@ while ($row = $sth->fetch()) {
 
     $tmp_array = array(
         "name" => $row['user'],
+        "uuid" => $row['uuid'],
+        "bedrock" => str_starts_with($row['uuid'], '00000000') ? 1 : 0,
         "total" => $row['total']
     );
 

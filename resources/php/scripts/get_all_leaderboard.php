@@ -8,7 +8,7 @@ require "../includes/db_connect.php";
 $skills = array("taming", "mining", "woodcutting", "repair", "unarmed", "herbalism", "excavation", "archery", "swords", "axes", "acrobatics", "fishing", "alchemy");
 $skills_str = implode(", ", $skills);
 
-$sth = $dbh->prepare('SELECT id, user, lastlogin, total, '.$skills_str.' FROM mcmmo_users INNER JOIN mcmmo_skills ON mcmmo_users.id = mcmmo_skills.user_id ORDER BY total DESC');
+$sth = $dbh->prepare('SELECT id, user, lastlogin, total, uuid, '.$skills_str.' FROM mcmmo_users INNER JOIN mcmmo_skills ON mcmmo_users.id = mcmmo_skills.user_id ORDER BY total DESC');
 $sth->execute();
 
 $result = array();
@@ -21,6 +21,8 @@ while ($row = $sth->fetch()) {
         "id" => $row['id'],
         "rank" => $rank,
         "name" => $row['user'],
+        "uuid" => $row['uuid'],
+        "bedrock" => str_starts_with($row['uuid'], '00000000') ? 1 : 0,
         "total" => $row['total'],
         "last_connection" => $row['lastlogin']
     );

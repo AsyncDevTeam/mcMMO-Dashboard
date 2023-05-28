@@ -16,7 +16,7 @@ require "../includes/db_connect.php";
 $skills = array("taming", "mining", "woodcutting", "repair", "unarmed", "herbalism", "excavation", "archery", "swords", "axes", "acrobatics", "fishing", "alchemy");
 $skills_str = implode(", ", $skills);
 
-$sth_lvl = $dbh->prepare('SELECT lastlogin, total, '.$skills_str.' FROM mcmmo_users INNER JOIN mcmmo_skills ON mcmmo_users.id = mcmmo_skills.user_id WHERE mcmmo_users.user = :player');
+$sth_lvl = $dbh->prepare('SELECT lastlogin, total, uuid, '.$skills_str.' FROM mcmmo_users INNER JOIN mcmmo_skills ON mcmmo_users.id = mcmmo_skills.user_id WHERE mcmmo_users.user = :player');
 $sth_lvl->bindParam(':player', $player_name);
 $sth_lvl->execute();
 
@@ -36,6 +36,9 @@ $result = array();
 
 $result["total"] = $row_lvl['total'];
 $result["last_connection"] = $row_lvl['lastlogin'];
+$result["name"] = $player_name;
+$result["uuid"] = $row_lvl['uuid'];
+$result["bedrock"] = str_starts_with($row_lvl['uuid'], '00000000') ? 1 : 0;
 
 foreach ($skills as $skill) {
     $curr_lvl = $row_lvl[$skill];

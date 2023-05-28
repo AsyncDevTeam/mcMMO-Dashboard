@@ -6,8 +6,58 @@ const filter_group = document.getElementById("filter-group")
 let label_player = {}
 if(!isBrowserOnline){stylePageOffline()}
 
+const container_best_ab = document.querySelector('.f-best-ab')
+container_best_ab.onscroll = function (){
+    const children = Array.from(container_best_ab.children)
+    const filteredElements = children.filter(element => element.classList.contains('shiny'))
+    const tolerance = 20; // Tolerance value in pixels
+    function getVisibleChildElements() {
+        const containerRect = container_best_ab.getBoundingClientRect();
+        const children = Array.from(container_best_ab.children);
+
+        return children.filter(child => {
+            const childRect = child.getBoundingClientRect();
+            return childRect.left >= containerRect.left - tolerance &&
+                childRect.right <= containerRect.right + tolerance;
+        });
+    }
+    const index = filteredElements.indexOf(
+        getVisibleChildElements()[0]
+    );
+    if(index !== -1){setScrollIndicators(index)}
+}
+
+const setScrollIndicators = function (index){
+    const container = document.querySelector('.scroll-indicator-f-best-ab')
+    const children = Array.from(container.children)
+    children.forEach(e => {e.classList.remove('active')})
+    children[index].classList.add('active')
+}
+const createScrollIndicators = function (len){
+    const container = document.querySelector('.scroll-indicator-f-best-ab')
+    for (let i = 0; i < len; i++) {
+        const node = document.createElement('div')
+        node.classList.add('dot')
+        if(i === 0)
+            node.classList.add('active')
+        node.setAttribute('data-index', i.toString())
+        node.onclick = function (){goToScrollElement(this)}
+        container.appendChild(node)
+    }
+}
+
+const goToScrollElement = function(e){
+    const index = e.dataset.index
+    const children = Array.from(container_best_ab.children);
+    const s = children[index].getBoundingClientRect()
+    const offset_left = children[0].getBoundingClientRect().left
+    container_best_ab.scrollTo({
+        left: (s.width*index) + offset_left,
+        behavior: 'smooth'
+    })
+}
+
 if(query !== undefined && isBrowserOnline){
-    setSkin(query.toString())
     document.title = translation[languageSelect].pages_name[exact_type].replace(
         '_USER_', query.toString()
     )
@@ -139,13 +189,31 @@ function errorCompareChart(){
 
 fLoadUser().then(r => {
     if(!isBrowserOnline) return
+    setSkin(r)
     setBestAbilities(r)
     setAllAbilities(r)
     setFilterFamilyCard()
     userData(r)
+    // CalcFamilies(r)
     setChart(r)
 });
 
+const CalcFamilies = function (data){
+    const familyExpSums = {};
+    for (const family in families) {
+        const skills = families[family];
+        let expSum = 0;
+
+        for (let i = 0; i < skills.length; i++) {
+            const skill = skills[i].toLowerCase();
+            if (skill in data) {
+                const exp = data[skill].exp;
+                expSum += exp;
+            }
+        }
+        familyExpSums[family] = expSum;
+    }
+}
 
 const ctx_compare = document.getElementById('chart_user_compare');
 let chartCompareGraph
@@ -250,43 +318,16 @@ function userData(player){
     const last_connection_user = document.querySelector('.last-connection-user')
     const last_connection = player.last_connection
     const date = getHM(last_connection)
-    // last_connection_user.innerHTML = `Last connection at ${date.h}h${date.m}, ${date.date}`
     last_connection_user.innerHTML = translation[languageSelect].refresh.user
         .replace('_HOUR_', date.h)
         .replace('_MIN_', date.m)
-        .replace('_DATE_', date.date)
+        .replace('_DATE_', date.date);
 }
 
-function setSkin(skin){
+function setSkin(player) {
     const img = document.querySelector('#img-skin-user')
-    img.src = `https://mc-heads.net/body/${skin}`
-    // img.src = `https://mineskin.eu/armor/body/${skin}/300.png`
+    img.src = getSkinURL(player, 'BODY_3D')
 }
-
-const elems = document.querySelectorAll('.collapsible');
-elems.forEach(e => {
-    const co_header = e.querySelectorAll('.collapsible-header');
-    co_header.forEach(a => {
-        const co_body = a.closest('li').querySelector('.collapsible-body');
-        a.addEventListener('click', function (){
-            const img = a.querySelector('.img-header')
-            const dataset_col = a.dataset.skin
-            if(dataset_col !== undefined){
-                img.src = `https://mineskin.eu/helm/${query.toString()}/300.png`
-                changeSkin(co_body, img)
-            }
-        })
-    })
-    function changeSkin(element, img){
-        if(window.getComputedStyle(element).display === 'none'){
-            //access 2
-            img.classList.replace('visible', 'hidden')
-        }else{
-            //access 1
-            img.classList.replace('hidden', 'visible')
-        }
-    }
-})
 
 function getBestAbility(player){
     let skill_array = []
@@ -426,6 +467,7 @@ function setBestAbilities(player){
             clone.style.setProperty("--y", e.clientY - y);
         });
     })
+    createScrollIndicators(b.best4Ab.length)
 }
 
 function setAllAbilities(player){
@@ -868,6 +910,15 @@ function changeFilterGroup(){
     }else{
         no_element_found.classList.add('hidden')
     }
+
+    const card_infos = document.querySelector('.card-infos')
+    card_infos.classList.add('hidden')
+    const cards = document.querySelectorAll('.ab-card')
+    cards.forEach(e => {
+        if(e.classList.contains('selected')){
+            e.classList.remove('selected')
+        }
+    })
 
     return ar
 }
