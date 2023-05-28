@@ -113,15 +113,25 @@ function stylePageOffline() {
 }
 
 const fLoadUser = async () => {
-    return await fetch(requestUserStats + `?name=${encodeURIComponent(query)}`, {
-        method: "POST",
-        headers: {"Content-Type": "application/x-www-form-urlencoded",},
-        body: new URLSearchParams({name: query, csrf_token: csrfToken}),
-    })
-        .then((response) => response.json())
-        .then((json) => {return json})
-        .catch(error => {setToast('error', error.message, 0)})
-}
+    try {
+        const response = await fetch(requestUserStats + `?prout=${encodeURIComponent(query)}`, {
+            method: "POST",
+            headers: {"Content-Type": "application/x-www-form-urlencoded"},
+            body: new URLSearchParams({name: query, csrf_token: csrfToken})
+        });
+
+        const json = await response.json();
+
+        if (json.error) {
+            setToast('error', json.error, 0);
+        } else {
+            return json;
+        }
+    } catch (error) {
+        setToast('error', error.message, 0);
+    }
+};
+
 
 function createElement(type, classAdd) {
     const el = document.createElement(type)

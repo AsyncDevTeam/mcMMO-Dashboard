@@ -52,7 +52,7 @@ copyToClipboardAction.forEach(e => {
 })
 
 function setToast(type, text, timer){
-    let options_toast
+    let options_toast, toast_text
     if(timer !== 0){
         options_toast = {
             toast: true,
@@ -60,7 +60,7 @@ function setToast(type, text, timer){
             showConfirmButton: false,
             timer: timer,
             timerProgressBar: true,
-            showCloseButton:true,
+            showCloseButton: true,
             didOpen: (toast) => {
                 toast.addEventListener('mouseenter', Swal.stopTimer)
                 toast.addEventListener('mouseleave', Swal.resumeTimer)
@@ -71,13 +71,18 @@ function setToast(type, text, timer){
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
-            showCloseButton:true,
+            showCloseButton: false,
         }
+    }
+    if (type !== "error") {
+        toast_text = text
+    } else {
+        toast_text = 'An error occured : ' + text + '\n\nIf you don\'t understand it, please contact the developers.'
     }
     const Toast = Swal.mixin(options_toast)
     Toast.fire({
         icon: type,
-        title: text,
+        title: toast_text,
     })
 }
 
@@ -276,16 +281,19 @@ function changeLanguageElement(entry, selector, s = null){
 
 const fLoadServerInfos = async() => {
     try {
-        return await fetch(requestServerStats, {
+        const response = await fetch(requestServerStats, {
             method: "POST",
             headers: {"Content-Type": "application/x-www-form-urlencoded",},
             body: new URLSearchParams({ csrf_token: csrfToken }),
-        })
-            .then((response) => response.json())
-            .then((json) => {return json})
+        });
+        const json = await response.json();
+        if (json.error) {
+            setToast('error', json.error, 0);
+        } else {
+            return json;
+        }
     } catch (error) {
-        setToast('error', error.message, 0)
-        return false
+        setToast('error', error.message, 0);
     }
 }
 
@@ -299,11 +307,15 @@ const fLoadTopLeaderboard = async() => {
             body: new URLSearchParams({csrf_token: csrfToken}),
         });
         const leaderboard = await response.json()
-        return {
-            status: 'success',
-            data: leaderboard,
-            from: 'fLoadTopLeaderboard'
-        };
+        if (leaderboard.error) {
+            setToast('error', leaderboard.error, 0);
+        } else {
+            return {
+                status: 'success',
+                data: leaderboard,
+                from: 'fLoadTopLeaderboard'
+            };
+        }
     } catch (error) {
         setToast('error', error.message, 0)
         return {
@@ -324,11 +336,15 @@ const fLoadAbilities = async() => {
             body: new URLSearchParams({csrf_token: csrfToken}),
         });
         const leaderboard = await response.json()
-        return {
-            status: 'success',
-            data: leaderboard,
-            from: 'fLoadAbilities'
-        };
+        if (leaderboard.error) {
+            setToast('error', leaderboard.error, 0);
+        } else {
+            return {
+                status: 'success',
+                data: leaderboard,
+                from: 'fLoadAbilities'
+            };
+        }
     } catch (error) {
         setToast('error', error.message, 0)
         return {
@@ -349,19 +365,24 @@ const fLoadLeaderboard = async() => {
             body: new URLSearchParams({ csrf_token: csrfToken }),
         });
         const leaderboard = await response.json()
-        return {
-            status: 'success',
-            data: leaderboard,
-            from: 'fLoadLeaderboard'
-        };
+        if (leaderboard.error) {
+            setToast('error', leaderboard.error, 0)
+        } else {
+            return {
+                status: 'success',
+                data: leaderboard,
+                from: 'fLoadLeaderboard'
+            };
+        }
     } catch (error) {
         setToast('error', error.message, 0)
-        return {
-            status: 'failed',
-            data: null,
-            from: 'fLoadLeaderboard'
-        };
     }
+    // If we did not return something until here, it means that we got an error
+    return {
+        status: 'failed',
+        data: null,
+        from: 'fLoadLeaderboard'
+    };
 }
 
 function iconModifier(elems, uni){
@@ -484,23 +505,36 @@ function generateColors(numColors, value = 0) {
 
 }
 
-
 function getSkinURL(player, type) {
     let types = {
-        'BODY':             'player',
-        'BODY_3D':          'body',
-        'BODY_3D_REVERSE':  'body',
-        'HEAD':             'avatar',
-        'HEAD_3D':          'head'
+        'BODY': 'player',
+        'BODY_3D': 'body',
+        'BODY_3D_REVERSE': 'body',
+        'HEAD': 'avatar',
+        'HEAD_3D': 'head'
     };
+
     if (!types[type]) {
         throw new Error(`Invalid type "${type}". Type must be one of ${Object.keys(types).join(', ')}.`);
     }
+
     if (player.bedrock === 0) {
-        // Not a bedrock player, so we can directly use mc-heads API
-        return 'https://mc-heads.net/' + types[type] + '/' + player.name + (type === 'BODY_3D_REVERSE' ? '/left' : '');
+        // Not a bedrock player, so we can directly use the name with mc-heads API
+        return `https://mc-heads.net/${types[type]}/${player.name}${type === 'BODY_3D_REVERSE' ? '/left' : ''}`;
     } else {
-        // Bedrock player, so we should use Tydium API with uuid
-        return 'https://api.tydiumcraft.net/v1/players/skin?uuid=' + player.uuid + '&type=' + types[type] + (type === 'BODY_3D_REVERSE' ? '&direction=left' : '');
+        // Bedrock player, so we should get the texture ID thanks to geyser API
+        const xuidHex = player.uuid.split('-').join('').substring(24).toUpperCase();
+        const xuidDec = parseInt(xuidHex, 16);
+        try {
+            const data = $.ajax({
+                url: `https://api.geysermc.org/v2/skin/${xuidDec}`,
+                timeout: 5000, // Set timeout to 10 seconds
+                dataType: 'json'
+            });
+            const textureId = data.texture_id;
+            return `https://mc-heads.net/${types[type]}/${textureId}${type === 'BODY_3D_REVERSE' ? '/left' : ''}`;
+        } catch (error) {
+            return `resources/others/textures/defaultSkin/bedrock-${types[type]}${type === 'BODY_3D_REVERSE' ? '-reverse' : ''}.png`;
+        }
     }
 }
