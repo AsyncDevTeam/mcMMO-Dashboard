@@ -332,13 +332,16 @@ function setSkin(player) {
             canvas: document.getElementById("img-skin-user-3d"),
             width: 300,
             height: 400,
-            skin: getSkin(player, 'SKIN').url,
+        });
+        skinViewer.loadSkin(getSkin(player, 'SKIN').url, {
+            model: "auto-detect",
+            ears: false
         });
 
         skinViewer.zoom = 0.8;
-        skinViewer.controls.enableZoom = false
+        skinViewer.controls.enableZoom = false;
         skinViewer.autoRotate = true;
-        skinViewer.autoRotateSpeed = 0.1
+        skinViewer.autoRotateSpeed = 0.1;
 
         let animType = Math.floor(Math.random() * 3);
         switch (animType) {
