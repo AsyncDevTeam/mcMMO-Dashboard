@@ -135,6 +135,8 @@ function setSkinCompare(players, len, a = null){
                 value = no_select[index].value
             }
         }
+        setSkinCompare(players, len, a)
+        return;
     }
 
     // Retrieve full player data
