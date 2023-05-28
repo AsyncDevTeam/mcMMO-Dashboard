@@ -14,6 +14,7 @@ fLoadServerInfos().then(async infos => {
         if (infos.max_players === -1) {
             error_internal_server = true
             dataBaseError()
+            setToast('error', 'Server offline', 0)
         } else {
             console.log('Online')
             error_internal_server = false;
@@ -33,10 +34,11 @@ fLoadServerInfos().then(async infos => {
                     bp_name = data.players.filter((element, index) => {
                         return index < 4;
                     })
-                    //     .map((element) => {
-                    //     return element.name;
-                    // });
-                }else{console.log("No Leaderboard")}
+                }else{
+                    setToast('error', 'No top Leaderboard', 0)
+                }
+            }else{
+                setToast('error', "Error loading top leaderboard", 0)
             }
 
             await Promise.all([fLoadLeaderboard_, fLoadTopLeaderboard_]).then((r) => {
@@ -51,12 +53,15 @@ fLoadServerInfos().then(async infos => {
                             // chartAbilitiesMinMax(data)
                             chartEachAbilities(data)
                             chartBestAbilities(data)
-                        }else{console.log("No Leaderboard")}
+                        }else{
+                            setToast('error', 'No Leaderboard', 0)
+                        }
                     }
                 }
                 loading_bar.classList.add('hidden')
             }).catch((error) => {
                 console.error('error : ', error);
+                setToast('error', error.message, 0)
             });
         }
     }

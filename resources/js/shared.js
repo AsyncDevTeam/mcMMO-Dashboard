@@ -284,7 +284,7 @@ const fLoadServerInfos = async() => {
             .then((response) => response.json())
             .then((json) => {return json})
     } catch (error) {
-        console.log(error, error.message)
+        setToast('error', error.message, 0)
         return false
     }
 }
@@ -305,7 +305,7 @@ const fLoadTopLeaderboard = async() => {
             from: 'fLoadTopLeaderboard'
         };
     } catch (error) {
-        console.error(error)
+        setToast('error', error.message, 0)
         return {
             status: 'failed',
             data: null,
@@ -330,7 +330,7 @@ const fLoadAbilities = async() => {
             from: 'fLoadAbilities'
         };
     } catch (error) {
-        console.error(error)
+        setToast('error', error.message, 0)
         return {
             status: 'failed',
             data: null,
@@ -355,7 +355,7 @@ const fLoadLeaderboard = async() => {
             from: 'fLoadLeaderboard'
         };
     } catch (error) {
-        console.error(error)
+        setToast('error', error.message, 0)
         return {
             status: 'failed',
             data: null,

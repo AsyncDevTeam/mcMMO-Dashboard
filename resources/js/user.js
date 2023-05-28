@@ -61,6 +61,8 @@ if(query !== undefined && isBrowserOnline){
     document.title = translation[languageSelect].pages_name[exact_type].replace(
         '_USER_', query.toString()
     )
+}else{
+    setToast('error', "No player found", 0)
 }
 
 let best_player = ""
@@ -75,6 +77,7 @@ fLoadServerInfos().then(async infos => {
         if(infos.max_players === -1){
             //Offline
             error_internal_server = true;
+            setToast('error', 'Server offline', 0)
         }else{
             //Online
             setServerStats(infos);
@@ -105,6 +108,8 @@ fLoadServerInfos().then(async infos => {
                         errorCompareChart()
                     }
                 }
+            }else{
+                setToast('error', "Error loading top leaderboard", 0)
             }
 
             await Promise.all([fLoadLeaderboard_, fLoadTopLeaderboard_]).then((r) => {
@@ -116,12 +121,15 @@ fLoadServerInfos().then(async infos => {
                             let result_cp = data.players.find(item => item.name === query.toString());
                             labelGet(data)
                             chartCompare(result_bp, result_cp)
+                        }else{
+                            setToast('error', "Error loading top leaderboard", 0)
                         }
                     }
                 }
                 loading_bar.classList.add('hidden')
             }).catch((error) => {
                 console.error('error : ', error);
+                setToast('error', error.message, 0)
             });
         }
     }
@@ -186,7 +194,7 @@ fLoadUser().then(r => {
     setAllAbilities(r)
     setFilterFamilyCard()
     userData(r)
-    CalcFamilies(r)
+    // CalcFamilies(r)
     setChart(r)
 });
 
@@ -205,8 +213,6 @@ const CalcFamilies = function (data){
         }
         familyExpSums[family] = expSum;
     }
-
-    console.log(familyExpSums);
 }
 
 const ctx_compare = document.getElementById('chart_user_compare');
@@ -312,11 +318,10 @@ function userData(player){
     const last_connection_user = document.querySelector('.last-connection-user')
     const last_connection = player.last_connection
     const date = getHM(last_connection)
-    // last_connection_user.innerHTML = `Last connection at ${date.h}h${date.m}, ${date.date}`
     last_connection_user.innerHTML = translation[languageSelect].refresh.user
         .replace('_HOUR_', date.h)
         .replace('_MIN_', date.m)
-        .replace('_DATE_', date.date)
+        .replace('_DATE_', date.date);
 }
 
 function setSkin(player) {

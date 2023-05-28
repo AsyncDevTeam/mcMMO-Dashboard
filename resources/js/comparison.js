@@ -21,6 +21,7 @@ fLoadServerInfos().then(async infos => {
         }
         if (infos.max_players === -1) {
             error_internal_server = true
+            setToast('error', 'Server offline', 0)
         } else {
             console.log('Online')
             error_internal_server = false;
@@ -41,18 +42,23 @@ fLoadServerInfos().then(async infos => {
                     ]);
                     setBest2Players()
                 }
+            }else{
+                setToast('error', "Error loading leaderboard", 0)
             }
             if(fLoadTopLeaderboard_.status === 'success'){
                 const data = fLoadTopLeaderboard_.data
                 if(data !== null){
                     // console.log(data)
                 }
+            }else{
+                setToast('error', "Error loading top leaderboard", 0)
             }
 
             await Promise.all([fLoadLeaderboard_, fLoadTopLeaderboard_]).then(() => {
                 loading_bar.classList.add('hidden')
             }).catch((error) => {
                 console.error('error : ', error);
+                setToast('error', error.message, 0)
             });
 
         }
