@@ -27,7 +27,7 @@ const abilities_cap = {
 //Change the translation here, by default English is used, set your own language in translation.user and set translation.user.active to true
 //New translation mode
 const translation = {
-    'active': 'FR',
+    'active': 'EN',
     'EN': {
         'title_header': 'mcMMO Dashboard',
         'pages_name':{
