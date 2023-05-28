@@ -10,6 +10,7 @@ session_start();
     <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
     <!-- script of the page -->
     <script src="resources/js/main.js" defer></script>
+    <script src="resources/js/skinview3d/skinview3d.bundle.js" defer></script>
     <script src="resources/js/user.js" defer></script>
     <!-- css style used to correctly display data tables -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
@@ -85,7 +86,8 @@ session_start();
                 </div>
                 <div class="wrapper-content">
                     <div class="user-skin">
-                        <img id="img-skin-user" src="" alt="Skin généré par Minecraft-api.com"/>
+                        <canvas id="img-skin-user-3d" alt="skin image in 3D"></canvas>
+                        <img id="img-skin-user" src="" alt="skin image"/>
                     </div>
                     <div class="wrapper-element-bp">
                         <div class="scroll-indicator-f-best-ab"></div>

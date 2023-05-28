@@ -511,7 +511,8 @@ function getSkinURL(player, type) {
         'BODY_3D': 'body',
         'BODY_3D_REVERSE': 'body',
         'HEAD': 'avatar',
-        'HEAD_3D': 'head'
+        'HEAD_3D': 'head',
+        'SKIN': 'skin'
     };
 
     if (!types[type]) {
@@ -528,12 +529,16 @@ function getSkinURL(player, type) {
         try {
             const data = $.ajax({
                 url: `https://api.geysermc.org/v2/skin/${xuidDec}`,
-                timeout: 5000, // Set timeout to 10 seconds
+                timeout: 5000, // Set timeout to 5 seconds
                 dataType: 'json'
             });
-            const textureId = data.texture_id;
-            return `https://mc-heads.net/${types[type]}/${textureId}${type === 'BODY_3D_REVERSE' ? '/left' : ''}`;
+            if (data.texture_id) {
+                return `https://mc-heads.net/${types[type]}/${data.texture_id}${type === 'BODY_3D_REVERSE' ? '/left' : ''}`;
+            } else {
+                throw new Error('Geyser API not working');
+            }
         } catch (error) {
+            setToast('info', 'Bedrock player\'s skin can\'t be displayed for now.\nTry again later.', 5000)
             return `resources/others/textures/defaultSkin/bedrock-${types[type]}${type === 'BODY_3D_REVERSE' ? '-reverse' : ''}.png`;
         }
     }

@@ -325,8 +325,41 @@ function userData(player){
 }
 
 function setSkin(player) {
-    const img = document.querySelector('#img-skin-user')
-    img.src = getSkinURL(player, 'BODY_3D')
+    if (settings.animated_skins) {
+        document.getElementById("img-skin-user").style.display = "none";
+
+        let skinViewer = new skinview3d.SkinViewer({
+            canvas: document.getElementById("img-skin-user-3d"),
+            width: 300,
+            height: 400,
+            skin: getSkinURL(player, 'SKIN'),
+        });
+
+        skinViewer.zoom = 0.8;
+        skinViewer.controls.enableZoom = false
+        skinViewer.autoRotate = true;
+        skinViewer.autoRotateSpeed = 0.1
+
+        let animType = Math.floor(Math.random() * 3);
+        switch (animType) {
+            case 0:
+                skinViewer.animation = new skinview3d.WalkingAnimation();
+                skinViewer.animation.speed = Math.random() * 0.4 + 0.4;
+                break;
+            case 1:
+                skinViewer.animation = new skinview3d.RunningAnimation();
+                skinViewer.animation.speed = Math.random() * 0.4 + 0.4;
+                break;
+            default:
+                skinViewer.animation = new skinview3d.IdleAnimation();
+                skinViewer.animation.speed = 2;
+        }
+    } else {
+        document.getElementById("img-skin-user-3d").style.display = "none";
+
+        const img = document.querySelector('#img-skin-user')
+        img.src = getSkinURL(player, 'BODY_3D')
+    }
 }
 
 function getBestAbility(player){

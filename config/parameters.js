@@ -853,6 +853,7 @@ const translation = {
 const settings = {
     //Set force_darkMode to true to enable dark mode by default
     'force_darkMode': false,
+    'animated_skins': true,
     'colors': {
         'page': {
             'gradient': {
