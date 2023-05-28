@@ -114,7 +114,7 @@ function stylePageOffline() {
 
 const fLoadUser = async () => {
     try {
-        const response = await fetch(requestUserStats + `?prout=${encodeURIComponent(query)}`, {
+        const response = await fetch(requestUserStats + `?name=${encodeURIComponent(query)}`, {
             method: "POST",
             headers: {"Content-Type": "application/x-www-form-urlencoded"},
             body: new URLSearchParams({name: query, csrf_token: csrfToken})
