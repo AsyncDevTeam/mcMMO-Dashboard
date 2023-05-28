@@ -524,21 +524,24 @@ function getSkinURL(player, type) {
         return `https://mc-heads.net/${types[type]}/${player.name}${type === 'BODY_3D_REVERSE' ? '/left' : ''}`;
     } else {
         // Bedrock player, so we should get the texture ID thanks to geyser API
-        const xuidHex = player.uuid.split('-').join('').substring(24).toUpperCase();
+        const xuidHex = player.uuid.split('-').join('').toUpperCase();
         const xuidDec = parseInt(xuidHex, 16);
-        try {
-            const data = $.ajax({
-                url: `https://api.geysermc.org/v2/skin/${xuidDec}`,
-                timeout: 5000, // Set timeout to 5 seconds
-                dataType: 'json'
-            });
-            if (data.texture_id) {
-                return `https://mc-heads.net/${types[type]}/${data.texture_id}${type === 'BODY_3D_REVERSE' ? '/left' : ''}`;
-            } else {
-                throw new Error('Geyser API not working');
+        var skinURL = null;
+        $.ajax({
+            url: `https://api.geysermc.org/v2/skin/${xuidDec}`,
+            timeout: 5000,
+            dataType: 'json',
+            async: false,
+            success: function(data) {
+                if (data.texture_id) {
+                    skinURL = `https://mc-heads.net/${types[type]}/${data.texture_id}${type === 'BODY_3D_REVERSE' ? '/left' : ''}`;
+                }
             }
-        } catch (error) {
-            setToast('info', 'Bedrock player\'s skin can\'t be displayed for now.\nTry again later.', 5000)
+        });
+        if (skinURL !== null) {
+            return skinURL
+        } else {
+            setToast('info', 'Bedrock player\'s skin can\'t be displayed for now.\nTry again later.', 5000);
             return `resources/others/textures/defaultSkin/bedrock-${types[type]}${type === 'BODY_3D_REVERSE' ? '-reverse' : ''}.png`;
         }
     }
