@@ -31,8 +31,15 @@ window.onload = function (){
     const elems = document.querySelectorAll('.collapsible');
     M.Collapsible.init(elems, options_collapsible);
     iconModifier(elems)
+    setColorsToRoot()
 }
-
+function setColorsToRoot(){
+    for (let i = 1; i <= 7; i++) {
+        document.documentElement.style.setProperty(`--tint${i}_50`, hexToRGBA(
+            getComputedStyle(document.documentElement).getPropertyValue(`--tint${i}_`)
+        ));
+    }
+}
 copyToClipboardAction.forEach(e => {
     e.addEventListener('click', function () {
         e.classList.add('clicked')
@@ -545,7 +552,6 @@ function hexToRGBA(hex) {
     let r = parseInt(hex.substring(0, 2), 16);
     let g = parseInt(hex.substring(2, 4), 16);
     let b = parseInt(hex.substring(4, 6), 16);
-    let a = 1;
     return `rgba(${r},${g},${b},${.5})`
 }
 

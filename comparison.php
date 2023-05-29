@@ -64,10 +64,22 @@ session_start();
                                         <select name="player-1" id="s-player-1"></select>
                                     </label>
                                     <div class="cont-vs">
-                                        <img src="https://mc-heads.net/avatar/mhd_steve" alt="head player 1" class="img-compare-head">
+                                        <div class="player">
+                                            <img src="https://mc-heads.net/avatar/mhd_steve" alt="head player 1" class="img-compare-head">
+                                            <a class="a-compare btn-main">
+                                                <span class="see_profile"></span>
+                                                <i class="fa-solid">↗</i>
+                                            </a>
+                                        </div>
                                         <div class="vs-compare">VS</div>
-                                        <img src="https://mc-heads.net/avatar/mhd_steve" alt="head player 2" class="img-compare-head">
-                                    </div>
+                                        <div class="player sec">
+                                            <img src="https://mc-heads.net/avatar/mhd_steve" alt="head player 2" class="img-compare-head">
+                                            <a class="a-compare btn-main">
+                                                <span class="see_profile"></span>
+                                                <i class="fa-solid">↗</i>
+                                            </a>
+                                        </div>
+                                        </div>
                                     <label for="player-2">
                                         <select name="player-2" id="s-player-2"></select>
                                     </label>

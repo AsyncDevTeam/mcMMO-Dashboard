@@ -960,6 +960,14 @@ body{
           }
         }
 
+        .recommendations{
+          padding: 1em;
+          border-radius: 5px;
+          background: red;
+          background: linear-gradient(white, white) padding-box, linear-gradient(to right, #9867f0, #ed4e50) border-box;
+          border: 2px solid transparent;
+        }
+
         .collapsible-body{
           overflow: hidden;
           .right-align{
@@ -1243,6 +1251,29 @@ body{
               .line-top{
                 @include element;
                 width: 100%;
+                .player{
+                  display: flex;
+                  align-items: center;
+                  width: 100%;
+                  padding: 1em;
+                  gap: 1em;
+                  a{
+                    display: none;
+                    width: fit-content;
+                    color: var(--active-color);
+                    text-decoration: none;
+                    line-height: inherit;
+                    @media screen and (max-width: 700px){
+                      display: flex!important;
+                    }
+                    @media screen and (max-width: 550px){
+                      .see_profile{display: none}
+                    }
+                  }
+                  &.sec{
+                    flex-direction: row-reverse;
+                  }
+                }
                 label{
                   width: 100%;
                   padding: 1em;
@@ -1266,18 +1297,18 @@ body{
                   }
                   .vs-compare{font-weight: bold}
                 }
-                @media screen and (max-width: 600px){
+                @media screen and (max-width: 700px){
                   grid-template-columns:1fr;
-                  .cont-vs{padding: 0 1em}
+                  //.cont-vs{padding: 0 1em}
                   label{
                     display: flex;
-                    width: 50%;
+                    #s-player-2{text-align: end}
                     &:first-child{margin-right: auto}
                     &:last-child{margin-left: auto}
                   }
                 }
               }
-              @media all and (max-width: 600px) {
+              @media all and (max-width: 700px) {
                 position: relative;
                 top: 0;
               }
@@ -1298,6 +1329,7 @@ body{
                   background: var(--background-op);
                   width: 100%;
                   padding: .6em 1em;
+                  white-space: nowrap;
                   p{
                     text-transform: capitalize;
                     padding: 0.2em 0.5em;
@@ -1320,6 +1352,17 @@ body{
                     }
                     @media all and (max-width: 420px) {
                       padding: .6em;
+                    }
+                  }
+                  @media all and (max-width: 500px) {
+                    flex-wrap: wrap;
+                    gap: 0.5em;
+                    p{
+                      &:nth-child(2){
+                        flex-basis: 100%;
+                        order: -1;
+                        text-align: center;
+                      }
                     }
                   }
                 }
@@ -1346,7 +1389,10 @@ body{
                     }
                     &:first-child{
                       justify-content: flex-end;
-                      .label-bg{background: var(--grad1);}
+                      .label-bg{
+                        border: 1px solid var(--tint1_);
+                        background: var(--tint1_50);
+                      }
                       .label-bg,
                       .label-bg-max{
                         right: 0;
@@ -1359,7 +1405,10 @@ body{
                     }
                     &:last-child{
                       justify-content: flex-start;
-                      .label-bg{background: var(--grad2);}
+                      .label-bg{
+                        border: 1px solid var(--tint2_);
+                        background: var(--tint2_50);
+                      }
                       .label-bg,
                       .label-bg-max{
                         left: 0;

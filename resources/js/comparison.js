@@ -153,19 +153,22 @@ function setSkinCompare(players, len, a = null){
     const img = document.querySelectorAll('.img-compare')
     const a_href = document.querySelectorAll('.a-compare')
     const img_h = document.querySelectorAll('.img-compare-head')
+    console.log(a_href)
     img.forEach((e, i) => {
         const { value_1, value_2 } = values();
         a_href[i].querySelector('span').innerHTML = translation[languageSelect].content_page.pages.comparison.link.see_profile
+        a_href[i+2].querySelector('span').innerHTML = translation[languageSelect].content_page.pages.comparison.link.see_profile
         if(i === 0){
             e.src = getSkin(playerdata_1, 'BODY_3D').url
             a_href[i].href = `user.php?q=${value_1}`
+            a_href[i+2].href = `user.php?q=${value_1}`
         }else{
             e.src = getSkin(playerdata_2, 'BODY_3D_REVERSE').url
             a_href[i].href = `user.php?q=${value_2}`
+            a_href[i+2].href = `user.php?q=${value_2}`
         }
     })
     img_h.forEach((e, i) => {
-        const { value_1, value_2 } = values();
         e.value = (i === 0) ?
             e.src = getSkin(playerdata_1, 'HEAD').url :
             e.src = getSkin(playerdata_2, 'HEAD').url
@@ -365,6 +368,13 @@ function chartComparison(data){
             }
         )
     }
+
+    datasets.sort((a, b) => {
+        const sumA = a.data.reduce((acc, curr) => acc + curr, 0);
+        const sumB = b.data.reduce((acc, curr) => acc + curr, 0);
+        return sumA - sumB;
+    });
+
     let data_conf = {
         labels: Object.values(translation[languageSelect].ab),
         datasets: datasets,

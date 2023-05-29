@@ -218,8 +218,6 @@ const CalcFamilies = function (data){
 const ctx_compare = document.getElementById('chart_user_compare');
 let chartCompareGraph
 function chartCompare(best_player, current_player){
-    const tint1 = getComputedStyle(document.documentElement).getPropertyValue('--tint1')
-    const tint5 = getComputedStyle(document.documentElement).getPropertyValue('--tint5')
     let tp = []
     tp.push(current_player, best_player)
     let datasets = []
@@ -230,8 +228,8 @@ function chartCompare(best_player, current_player){
                 data : function (){
                     return tp[i].skills
                 }(),
-                borderColor: [tint1, tint5],
-                backgroundColor: generateColors(7, i)
+                borderColor : generateColors(0, i+1)[0],
+                backgroundColor : hexToRGBA(generateColors(0, i+1)[0])
             }
         )
     }
@@ -867,7 +865,10 @@ function setChart(player){
                     beginAtZero: true
                 }
             },
-            maintainAspectRatio: false
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {display: false}
+            }
         }
     };
 

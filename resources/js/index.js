@@ -88,9 +88,12 @@ function dataBaseError(){
 function loadDatasetChartAbilities(player){
     const user = player.players
     let dataset = []
-
+    let color
     for (let i = 0; i < user.length; i++) {
         if(user[i] !== undefined){
+            color = generateColors(0, i+1)[0]
+            if(color === '')
+                color = generateColors(0, i)[0]
             dataset.push(
                 {
                     label : user[i].name,
@@ -98,8 +101,8 @@ function loadDatasetChartAbilities(player){
                         return user[i].skills
                     }(),
                     hidden: false,
-                    borderColor: generateColors(7),
-                    backgroundColor: generateColors(7, i)
+                    backgroundColor: hexToRGBA(color),
+                    borderColor: color
                 }
             )
         }

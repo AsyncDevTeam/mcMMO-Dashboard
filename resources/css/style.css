@@ -2107,6 +2107,38 @@ body main .sidebar-menu .content-main.compare .cont .header-compare .line-top {
   align-items: center;
   width: 100%;
 }
+body main .wrapper .content-main.compare .cont .header-compare .line-top .player,
+body main .sidebar-menu .content-main.compare .cont .header-compare .line-top .player {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1em;
+  gap: 1em;
+}
+body main .wrapper .content-main.compare .cont .header-compare .line-top .player a,
+body main .sidebar-menu .content-main.compare .cont .header-compare .line-top .player a {
+  display: none;
+  width: fit-content;
+  color: var(--active-color);
+  text-decoration: none;
+  line-height: inherit;
+}
+@media screen and (max-width: 700px) {
+  body main .wrapper .content-main.compare .cont .header-compare .line-top .player a,
+body main .sidebar-menu .content-main.compare .cont .header-compare .line-top .player a {
+    display: flex !important;
+  }
+}
+@media screen and (max-width: 550px) {
+  body main .wrapper .content-main.compare .cont .header-compare .line-top .player a .see_profile,
+body main .sidebar-menu .content-main.compare .cont .header-compare .line-top .player a .see_profile {
+    display: none;
+  }
+}
+body main .wrapper .content-main.compare .cont .header-compare .line-top .player.sec,
+body main .sidebar-menu .content-main.compare .cont .header-compare .line-top .player.sec {
+  flex-direction: row-reverse;
+}
 body main .wrapper .content-main.compare .cont .header-compare .line-top label,
 body main .sidebar-menu .content-main.compare .cont .header-compare .line-top label {
   width: 100%;
@@ -2140,19 +2172,18 @@ body main .wrapper .content-main.compare .cont .header-compare .line-top .cont-v
 body main .sidebar-menu .content-main.compare .cont .header-compare .line-top .cont-vs .vs-compare {
   font-weight: bold;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   body main .wrapper .content-main.compare .cont .header-compare .line-top,
 body main .sidebar-menu .content-main.compare .cont .header-compare .line-top {
     grid-template-columns: 1fr;
   }
-  body main .wrapper .content-main.compare .cont .header-compare .line-top .cont-vs,
-body main .sidebar-menu .content-main.compare .cont .header-compare .line-top .cont-vs {
-    padding: 0 1em;
-  }
   body main .wrapper .content-main.compare .cont .header-compare .line-top label,
 body main .sidebar-menu .content-main.compare .cont .header-compare .line-top label {
     display: flex;
-    width: 50%;
+  }
+  body main .wrapper .content-main.compare .cont .header-compare .line-top label #s-player-2,
+body main .sidebar-menu .content-main.compare .cont .header-compare .line-top label #s-player-2 {
+    text-align: end;
   }
   body main .wrapper .content-main.compare .cont .header-compare .line-top label:first-child,
 body main .sidebar-menu .content-main.compare .cont .header-compare .line-top label:first-child {
@@ -2163,7 +2194,7 @@ body main .sidebar-menu .content-main.compare .cont .header-compare .line-top la
     margin-left: auto;
   }
 }
-@media all and (max-width: 600px) {
+@media all and (max-width: 700px) {
   body main .wrapper .content-main.compare .cont .header-compare,
 body main .sidebar-menu .content-main.compare .cont .header-compare {
     position: relative;
@@ -2197,6 +2228,7 @@ body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare 
   background: var(--background-op);
   width: 100%;
   padding: 0.6em 1em;
+  white-space: nowrap;
 }
 body main .wrapper .content-main.compare .cont .table-compare .row-compare .label-c p,
 body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .label-c p {
@@ -2230,6 +2262,19 @@ body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare 
   body main .wrapper .content-main.compare .cont .table-compare .row-compare .label-c.min-screen,
 body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .label-c.min-screen {
     padding: 0.6em;
+  }
+}
+@media all and (max-width: 500px) {
+  body main .wrapper .content-main.compare .cont .table-compare .row-compare .label-c,
+body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .label-c {
+    flex-wrap: wrap;
+    gap: 0.5em;
+  }
+  body main .wrapper .content-main.compare .cont .table-compare .row-compare .label-c p:nth-child(2),
+body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .label-c p:nth-child(2) {
+    flex-basis: 100%;
+    order: -1;
+    text-align: center;
   }
 }
 body main .wrapper .content-main.compare .cont .table-compare .row-compare .line-1,
@@ -2270,7 +2315,8 @@ body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare 
 }
 body main .wrapper .content-main.compare .cont .table-compare .row-compare .line-1 .label-value:first-child .label-bg,
 body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .line-1 .label-value:first-child .label-bg {
-  background: var(--grad1);
+  border: 1px solid var(--tint1_);
+  background: var(--tint1_50);
 }
 body main .wrapper .content-main.compare .cont .table-compare .row-compare .line-1 .label-value:first-child .label-bg,
 body main .wrapper .content-main.compare .cont .table-compare .row-compare .line-1 .label-value:first-child .label-bg-max,
@@ -2290,7 +2336,8 @@ body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare 
 }
 body main .wrapper .content-main.compare .cont .table-compare .row-compare .line-1 .label-value:last-child .label-bg,
 body main .sidebar-menu .content-main.compare .cont .table-compare .row-compare .line-1 .label-value:last-child .label-bg {
-  background: var(--grad2);
+  border: 1px solid var(--tint2_);
+  background: var(--tint2_50);
 }
 body main .wrapper .content-main.compare .cont .table-compare .row-compare .line-1 .label-value:last-child .label-bg,
 body main .wrapper .content-main.compare .cont .table-compare .row-compare .line-1 .label-value:last-child .label-bg-max,
