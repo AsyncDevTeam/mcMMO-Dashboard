@@ -360,7 +360,8 @@ function chartComparison(data){
                 data : function (){
                     return tp[i].skills
                 }(),
-                backgroundColor: generateColors(7, i)
+                backgroundColor: hexToRGBA(generateColors(0, i+1)[0]),
+                borderColor: generateColors(0, i+1)[0]
             }
         )
     }
@@ -386,7 +387,7 @@ function chartComparison(data){
             },
             elements: {
                 line: {
-                    borderWidth: 3
+                    borderWidth: 2
                 }
             },
             maintainAspectRatio: false
