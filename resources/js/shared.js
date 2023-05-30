@@ -481,14 +481,16 @@ function sort(list, ico, element){
     const icon = $(ico)[0]
     var listitems = mylist.children(element).get()
 
-    const card_infos = document.querySelector('.card-infos')
-    card_infos.classList.add('hidden')
-    const cards = document.querySelectorAll('.ab-card')
-    cards.forEach(e => {
-        if(e.classList.contains('selected')){
-            e.classList.remove('selected')
-        }
-    })
+    if(exact_type === 'user'){
+        const card_infos = document.querySelector('.card-infos')
+        card_infos.classList.add('hidden')
+        const cards = document.querySelectorAll('.ab-card')
+        cards.forEach(e => {
+            if(e.classList.contains('selected')){
+                e.classList.remove('selected')
+            }
+        })
+    }
 
     if(!sortClick){
         if(ico === '.sort_N'){

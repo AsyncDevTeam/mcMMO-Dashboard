@@ -23,12 +23,14 @@
   }
   #abi-lvl-chart .collapsible-body,
 #abi .collapsible-body,
-#abi-lvl-chart-compare .collapsible-body {
+#abi-lvl-chart-compare .collapsible-body,
+#section_2 .collapsible-body {
     overflow-x: auto !important;
   }
   #abi-lvl-chart .collapsible-body .chart-container,
 #abi .collapsible-body .chart-container,
-#abi-lvl-chart-compare .collapsible-body .chart-container {
+#abi-lvl-chart-compare .collapsible-body .chart-container,
+#section_2 .collapsible-body .chart-container {
     width: 300% !important;
     max-width: 200% !important;
   }
