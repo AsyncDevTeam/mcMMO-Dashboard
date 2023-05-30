@@ -314,12 +314,40 @@ function createLabel(array){
 
 function userData(player){
     const last_connection_user = document.querySelector('.last-connection-user')
+    const skin_update = document.querySelector('.skin-update')
     const last_connection = player.last_connection
-    const date = getHM(last_connection)
+    let date = getHM(last_connection)
     last_connection_user.innerHTML = translation[languageSelect].refresh.user
         .replace('_HOUR_', date.h)
         .replace('_MIN_', date.m)
         .replace('_DATE_', date.date);
+    function formatTimestamp(timestamp) {
+        const d = new Date(timestamp);
+        let day = d.getDate();
+        let month = d.getMonth() + 1;
+        let year = d.getFullYear();
+        let hour = d.getHours();
+        let minute = d.getMinutes();
+
+        day = (day < 10 ? '0' : '') + day;
+        month = (month < 10 ? '0' : '') + month;
+        year = (year < 10 ? '0' : '') + year;
+        hour = (hour < 10 ? '0' : '') + hour;
+        minute = (minute < 10 ? '0' : '') + minute;
+        let date = day + '/' + month + '/' + year
+
+        return {hour, minute, date}
+    }
+
+    const {type, last_update} = getSkin(player, 'SKIN')
+    if(type === 'bedrock'){
+        const {hour, minute, date} = formatTimestamp(last_update)
+        skin_update.innerHTML = translation[languageSelect].refresh.skin
+            .replace('_HOUR_', hour)
+            .replace('_MIN_', minute)
+            .replace('_DATE_', date);
+    }
+
 }
 
 function setSkin(player) {

@@ -834,11 +834,14 @@ body{
             justify-content: space-between;
             width: 100%;
             background: var(--background-op);
-            gap: 1em;
+            gap: .5em;
+            overflow-x: auto;
+            flex-wrap: wrap;
             @media all and (max-width: 600px) {
               flex-direction: column!important;
               align-items: flex-start!important;
               .container-title{padding: 1em 1em 0!important}
+              flex-wrap: nowrap;
             }
           }
           .wrapper-content{
@@ -1578,6 +1581,7 @@ body{
               z-index: 0;
               opacity: 0;
               transition: .5s all;
+              flex-wrap: wrap;
               img{
                 width: 2em;
                 aspect-ratio: 1;

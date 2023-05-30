@@ -83,6 +83,7 @@ session_start();
                 <div class="title-container">
                     <h1 class="title-section"></h1>
                     <p class="last-connection-user"></p>
+                    <p class="skin-update"></p>
                 </div>
                 <div class="wrapper-content">
                     <div class="user-skin">

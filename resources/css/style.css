@@ -1059,13 +1059,16 @@ body main .sidebar-menu .content-main .user-infos .title-container {
   justify-content: space-between;
   width: 100%;
   background: var(--background-op);
-  gap: 1em;
+  gap: 0.5em;
+  overflow-x: auto;
+  flex-wrap: wrap;
 }
 @media all and (max-width: 600px) {
   body main .wrapper .content-main .user-infos .title-container,
 body main .sidebar-menu .content-main .user-infos .title-container {
     flex-direction: column !important;
     align-items: flex-start !important;
+    flex-wrap: nowrap;
   }
   body main .wrapper .content-main .user-infos .title-container .container-title,
 body main .sidebar-menu .content-main .user-infos .title-container .container-title {
@@ -2548,6 +2551,7 @@ body main .wrapper.pages .content-main .result-search .user-find {
   z-index: 0;
   opacity: 0;
   transition: 0.5s all;
+  flex-wrap: wrap;
 }
 body main .wrapper.pages .content .result-search .user-find img,
 body main .wrapper.pages .content-main .result-search .user-find img {

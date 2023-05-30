@@ -576,6 +576,7 @@ function getSkin(player, type) {
     if (player.bedrock === 0) {
         // Not a bedrock player, so we can directly use the name with mc-heads API
         output.url = `https://mc-heads.net/${types[type]}/${player.name}${type === 'BODY_3D_REVERSE' ? '/left' : ''}`;
+        output.type = 'java'
     } else {
         // Bedrock player, so we should get the texture ID thanks to geyser API
         const xuidHex = player.uuid.split('-').join('').toUpperCase();
@@ -596,6 +597,7 @@ function getSkin(player, type) {
             setToast('info', 'Bedrock player\'s skin can\'t be displayed for now.\nTry again later.', 5000);
             output.url = `resources/others/textures/defaultSkin/bedrock-${types[type]}${type === 'BODY_3D_REVERSE' ? '-reverse' : ''}.png`;
         }
+        output.type = 'bedrock'
     }
     return output;
 }

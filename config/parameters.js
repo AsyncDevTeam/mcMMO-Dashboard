@@ -185,7 +185,8 @@ const translation = {
         },
         'refresh' : {
             'index': 'Refreshed at _HOUR_',
-            'user': 'Last connection at _HOUR_h_MIN_, _DATE_'
+            'user': 'Last connection at _HOUR_h_MIN_, _DATE_',
+            'skin': 'Last skin update at _HOUR_h_MIN_, _DATE_'
         },
         'card': {
             'best_card_label_avt': 'Current level : _CURRENT_LVL_/_MAX_LEVEL_',
@@ -458,7 +459,8 @@ const translation = {
         },
         'refresh' : {
             'index': 'Mise à jour à _HOUR_',
-            'user': 'Dernière connexion à _HOUR_h_MIN_ le _DATE_'
+            'user': 'Dernière connexion à _HOUR_h_MIN_ le _DATE_',
+            'skin': 'Dernière mise à jour du skin à _HOUR_h_MIN_, _DATE_'
         },
         'card': {
             'best_card_label_avt': 'Niveau actuel : _CURRENT_LVL_/_MAX_LEVEL_',
@@ -732,7 +734,8 @@ const translation = {
         },
         'refresh' : {
             'index': 'Aktualisiert um _HOUR_',
-            'user': 'Zuletzt online am _DATE_ _HOUR_:_MIN_'
+            'user': 'Zuletzt online am _DATE_ _HOUR_:_MIN_',
+            'skin': 'Letztes Skin-Update um _HOUR_h_MIN_, _DATE_'
         },
         'card': {
             'best_card_label_avt': 'Aktuelles Level: _CURRENT_LVL_/_MAX_LEVEL_',
