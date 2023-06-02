@@ -103,8 +103,8 @@ const translation = {
                 },
                 'index': {
                     'sc-b-1': 'Leaderboard',
-                    'sc-b-2': 'Chart by abilities',
-                    'sc-b-3': 'Best cumulative abilities',
+                    'sc-b-2': 'Player distribution by level',
+                    'sc-b-3': 'Skill distribution',
                 },
                 'user' : {
                     'sc-b-1': 'Player infos',
@@ -392,8 +392,8 @@ const translation = {
                 },
                 'index': {
                     'sc-b-1': 'Classement',
-                    'sc-b-2': 'Par capacités',
-                    'sc-b-3': 'Meilleures capacités cumulées',
+                    'sc-b-2': 'Distribution des joueurs par niveau',
+                    'sc-b-3': 'Distribution des compétences',
                 },
                 'user' : {
                     'sc-b-1': 'Informations du joueur',
@@ -682,8 +682,8 @@ const translation = {
                 },
                 'index': {
                     'sc-b-1': 'Alle Spieler',
-                    'sc-b-2': 'Diagramm nach Fähigkeiten',
-                    'sc-b-3': 'Beste kumulative Fähigkeiten',
+                    'sc-b-2': 'Durch Fähigkeiten',
+                    'sc-b-3': 'Beste Fähigkeiten des Servers',
                 },
                 'user' : {
                     'sc-b-1': 'Spieler Info',
