@@ -230,6 +230,14 @@ body{
           li:only-child {
             border-radius: 5px!important;
           }
+          li {
+            &:last-child {
+              border-radius: 0 0 5px 5px;
+            }
+          }
+        }
+        .b-cp-c{
+          margin-top: 1em;
         }
 
         .background-fixed{

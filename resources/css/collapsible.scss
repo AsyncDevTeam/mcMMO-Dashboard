@@ -6,9 +6,9 @@
   list-style: none;
   width: 100%;
 
-  &:only-child {
-    li{border-radius: 5px!important;}
-  }
+  //&:only-child {
+  //  li{border-radius: 5px!important;}
+  //}
 
   li{
     overflow: hidden;
@@ -19,7 +19,7 @@
       }
     }
     &.al{border-radius: 5px!important}
-    &:last-child{border-radius: 0 0 5px 5px}
+    &:last-child{border-radius: 0 0 5px 5px!important;}
   }
   .collapsible-header{
     width: 100%;

@@ -121,7 +121,8 @@ const translation = {
                 'sort_avt': 'Sort',
                 'sort_a':'Alphabetical sorting',
                 'sort_n':'Numerical sorting',
-                'back_to_top': 'Back to top'
+                'back_to_top': 'Back to top',
+                'cp-c': 'Share link'
             },
             'select': {
                 'select-before': 'Show',
@@ -137,7 +138,9 @@ const translation = {
                 'IP_success' : 'IP sucessfully copied',
                 'IP_error' : "Error copying IP address",
                 'best_player': 'No comparison can be made with the best player on the server',
-                'error_db': 'Data loading error'
+                'error_db': 'Data loading error',
+                'URL_success' : 'URL sucessfully copied',
+                'URL_error' : "Error copying URL",
             },
             'tabs': {
                 'tabs-1': 'Home',
@@ -397,7 +400,8 @@ const translation = {
                 'sort_avt': 'Trier',
                 'sort_a':'Tri alphabétique',
                 'sort_n':'Tri numérique',
-                'back_to_top': 'Retour en haut'
+                'back_to_top': 'Retour en haut',
+                'cp-c': 'Lien de partage'
             },
             'select': {
                 'select-before': 'Afficher',
@@ -413,7 +417,9 @@ const translation = {
                 'IP_success' : 'Adresse IP copiée',
                 'IP_error' : "Erreur lors de la copie de l'adresse IP",
                 'best_player': 'Aucune comparaison ne peut être effectuée avec le meilleur joueur du serveur - Graphique désactivé',
-                'error_db': 'Erreur de chargement des données'
+                'error_db': 'Erreur de chargement des données',
+                'URL_success' : 'URL copié',
+                'URL_error' : "Erreur lors de la copie de l'URL",
             },
             'tabs': {
                 'tabs-1': 'Accueil',
@@ -674,7 +680,8 @@ const translation = {
                 'sort_avt': 'Sortieren',
                 'sort_a':'Alphabetische Sortierung',
                 'sort_n':'Numerische Sortierung',
-                'back_to_top': 'Zurück nach oben'
+                'back_to_top': 'Zurück nach oben',
+                'cp-c': 'Einen Link teilen'
             },
             'select': {
                 'select-before': 'Zeige',
@@ -690,7 +697,9 @@ const translation = {
                 'IP_success' : 'IP erfolgreich kopiert',
                 'IP_error' : "Fehler beim Kopieren der IP-Adresse",
                 'best_player': 'Es kann kein Vergleich mit dem besten Spieler auf dem Server angezeigt werden',
-                'error_db': 'Fehler beim Laden der Daten'
+                'error_db': 'Fehler beim Laden der Daten',
+                'URL_success': 'URL erfolgreich kopiert',
+                'URL_error': 'Fehler beim Kopieren der URL'
             },
             'tabs': {
                 'tabs-1': 'Startseite',

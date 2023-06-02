@@ -19,5 +19,10 @@
             }
             ?>
         </ul>
+        <?php
+        if (isset($comparison) & $comparison) {
+            require "comparison_link.php" ;
+        }
+        ?>
     </aside>
 </div>

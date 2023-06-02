@@ -319,6 +319,14 @@ body main .wrapper aside .collapsible li:only-child,
 body main .sidebar-menu aside .collapsible li:only-child {
   border-radius: 5px !important;
 }
+body main .wrapper aside .collapsible li:last-child,
+body main .sidebar-menu aside .collapsible li:last-child {
+  border-radius: 0 0 5px 5px;
+}
+body main .wrapper aside .b-cp-c,
+body main .sidebar-menu aside .b-cp-c {
+  margin-top: 1em;
+}
 body main .wrapper aside .background-fixed,
 body main .sidebar-menu aside .background-fixed {
   position: fixed;

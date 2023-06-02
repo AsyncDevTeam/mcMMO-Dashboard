@@ -7,10 +7,6 @@
   list-style: none;
   width: 100%;
 }
-.collapsible:not(.content):only-child li,
-.selected-player:only-child li {
-  border-radius: 5px !important;
-}
 .collapsible:not(.content) li,
 .selected-player li {
   overflow: hidden;
@@ -29,7 +25,7 @@
 }
 .collapsible:not(.content) li:last-child,
 .selected-player li:last-child {
-  border-radius: 0 0 5px 5px;
+  border-radius: 0 0 5px 5px !important;
 }
 .collapsible:not(.content) .collapsible-header,
 .selected-player .collapsible-header {

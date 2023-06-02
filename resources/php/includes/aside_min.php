@@ -17,7 +17,11 @@
             echo "<li class='active'><div class='collapsible-header' data-c='aside'><p class='sc-h-2-a'></p><i class='fa-solid fa-chevron-right rotate'></i></div><div class='collapsible-body stats-server'><div class='sort'>".$b1.$b2."</div></div></li>";
         }
         ?>
-
     </ul>
+    <?php
+    if (isset($comparison) & $comparison) {
+        require "comparison_link.php" ;
+    }
+    ?>
     <div class="background-fixed"></div>
 </aside>

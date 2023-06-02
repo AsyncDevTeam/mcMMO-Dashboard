@@ -150,6 +150,27 @@ function setColorsToRoot(){
         ));
     }
 }
+const copyURL = function (){
+    const select_1 = document.querySelector('#s-player-1')
+    const select_2 = document.querySelector('#s-player-2')
+    let value_1 = select_1.value
+    let value_2 = select_2.value
+    let base_url
+    if(window.location.href.includes('player_1')){
+        base_url = window.location.href.split('?')[0]
+    }else{
+        base_url = window.location.href
+    }
+    let cp_link = `${base_url}?player_1=${value_1}&player_2=${value_2}`
+    navigator.clipboard.writeText(cp_link).then(
+        () => {
+            setToast('success', translation[languageSelect].content_page.toast.URL_success, 5000)
+        },
+        () => {
+            setToast('error', translation[languageSelect].content_page.toast.URL_error, 5000)
+        }
+    )
+}
 copyToClipboardAction.forEach(e => {
     e.addEventListener('click', function () {
         e.classList.add('clicked')
@@ -158,10 +179,9 @@ copyToClipboardAction.forEach(e => {
                 setToast('success', translation[languageSelect].content_page.toast.IP_success, 5000)
             },
             () => {
-                setToast('success', translation[languageSelect].content_page.toast.IP_error, 5000)
+                setToast('error', translation[languageSelect].content_page.toast.IP_error, 5000)
             }
         )
-
         setTimeout(function () {
             e.classList.remove('clicked')
         }, 1000)
