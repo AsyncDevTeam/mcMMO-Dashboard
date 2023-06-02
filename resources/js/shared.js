@@ -332,7 +332,7 @@ function changeLanguage(value){
     changeLanguageElement(quickView, class_)
     changeLanguageElement(buttons, class_)
 
-    if(!['user', 'comparison'].includes(type)){setTable(ab, type)}
+    if(!['user', 'comparison'].includes(type)){setTable(ab, exact_type)}
 
     function setTable(ab, type){
         const row_table_def = document.querySelectorAll('.row_table_def')
