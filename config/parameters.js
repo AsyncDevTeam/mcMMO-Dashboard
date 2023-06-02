@@ -73,20 +73,26 @@ const translation = {
                 'index': {
                     'section-1': 'Best players of server',
                     'section-2': 'Leaderboard',
-                    'section-3': 'By abilities',
-                    'section-4': 'By abilities (min max)',
-                    'section-5': 'Best abilities of server',
+                    'section-3': 'Player Distribution by Level',
+                    'section-4': 'Skill Distribution',
                 },
                 'user' : {
                     'section-1': 'Skills level',
                     'section-2': 'All abilities',
                     'section-3': 'Capacity Comparison',
-                    'section-3-bis': 'The comparison is made between the best player of the server and the selected player.'
                 },
                 'comparison': {
                     'section-1': 'Skills comparison',
                     'section-2': 'Comparison chart',
                 }
+            },
+            'section_descriptions': {
+                'index': {
+                    'section-3-desc': 'This line graph illustrates the distribution of players based on their mcMMO level on the Minecraft server, showing the number of players for each interval. This allows you to get an overview and to situate yourself in relation to the average level of other players.',
+                },
+                'user' : {
+                    'section-3-desc': 'The comparison is made between the best player of the server and the selected player.',
+                },
             },
             'aside': {
                 'header': {
@@ -131,8 +137,12 @@ const translation = {
             'general': {
                 'best_ab': 'Best ability',
                 'label_ab': 'Best player for ability _AB_',
-                'table_player_label':'Player',
-                'table_total_label':'Total'
+                'table_player_label': 'Player',
+                'table_total_label': 'Total',
+                'chart_players_title': 'players level distribution',
+                'chart_players_count_y': 'number of players',
+                'chart_players_level_x': 'level',
+                'chart_point_desc': '_PLAYERS_ player(s)',
             },
             'toast': {
                 'IP_success' : 'IP sucessfully copied',
@@ -352,20 +362,26 @@ const translation = {
                 'index': {
                     'section-1': 'Meilleurs joueurs du serveur',
                     'section-2': 'Classement',
-                    'section-3': 'Par capacités',
-                    'section-4': 'Par capacités (min max)',
-                    'section-5': 'Meilleurs capacités du serveur',
+                    'section-3': 'Distribution des joueurs par niveau',
+                    'section-4': 'Distribution des compétences',
                 },
                 'user' : {
                     'section-1': 'Niveau de compétence',
                     'section-2': 'Toutes les capacités',
                     'section-3': 'Comparaison des capacités',
-                    'section-3-bis': 'La comparaison est effectuée entre le meilleur joueur du serveur et le joueur sélectionné.'
                 },
                 'comparison': {
                     'section-1': 'Comparaison des compétences',
                     'section-2': 'Graphique de comparaison',
                 }
+            },
+            'section_descriptions': {
+                'index': {
+                    'section-3-desc': 'Ce graphique illustre la distribution des joueurs selon leur niveau mcMMO sur le serveur, en affichant le nombre de joueurs pour chaque intervalle. Cela vous permet d\'avoir une vue d\'ensemble et de vous situer vis à vis du niveau moyen des autres joueurs.'
+                },
+                'user' : {
+                    'section-3-desc': 'La comparaison est effectuée entre le meilleur joueur du serveur et le joueur sélectionné.',
+                },
             },
             'aside':{
                 'header': {
@@ -411,7 +427,11 @@ const translation = {
                 'best_ab': 'Meilleure capacité',
                 'label_ab': 'Meilleur joueur pour la capacité _AB_',
                 'table_player_label':'Joueur',
-                'table_total_label':'Total'
+                'table_total_label':'Total',
+                'chart_players_title': 'Répartition des niveaux des joueurs',
+                'chart_players_count_y': 'nombre de joueurs',
+                'chart_players_level_x': 'niveau',
+                'chart_point_desc': '_PLAYERS_ joueur(s)'
             },
             'toast': {
                 'IP_success' : 'Adresse IP copiée',
@@ -632,20 +652,26 @@ const translation = {
                     'section-1': 'Beste Spieler des Servers',
                     'section-2': 'Alle Spieler',
                     'section-3': 'Durch Fähigkeiten',
-                    'section-4': 'Nach Fähigkeiten (min max)',
-                    'section-5': 'Beste Fähigkeiten des Servers',
+                    'section-4': 'Beste Fähigkeiten des Servers',
                 },
                 'user' : {
                     'section-1': 'Fähigkeitsniveau',
                     'section-2': 'Alle Fähigkeiten',
                     'section-3': 'Kapazitätsvergleich',
-                    'section-3-bis': 'Der Vergleich erfolgt zwischen dem besten Spieler des Servers und dem ausgewählten Spieler.'
                 }
                 ,
                 'comparison': {
                     'section-1': 'Kompetenzvergleich',
                     'section-2': 'Vergleichstabelle',
                 }
+            },
+            'section_descriptions': {
+                'index': {
+                    'section-3-desc': 'Dieses Liniendiagramm veranschaulicht die Verteilung der Spieler basierend auf ihrem mcMMO-Level auf dem Minecraft-Server, indem es die Anzahl der Spieler für jedes Intervall zeigt. Dies ermöglicht es Ihnen, einen Überblick zu bekommen und sich im Vergleich zum durchschnittlichen Level der anderen Spieler zu positionieren.'
+                },
+                'user' : {
+                    'section-3-desc': 'Der Vergleich erfolgt zwischen dem besten Spieler des Servers und dem ausgewählten Spieler.',
+                },
             },
             'aside': {
                 'header': {
@@ -691,7 +717,11 @@ const translation = {
                 'best_ab': 'Beste Fähigkeit',
                 'label_ab': 'Bester Spieler für Fähigkeiten _AB_',
                 'table_player_label':'Spieler',
-                'table_total_label':'Gesamt'
+                'table_total_label':'Gesamt',
+                'chart_players_title': 'Verteilung der Spielerlevel',
+                'chart_players_count_y': 'Anzahl der Spieler',
+                'chart_players_level_x': 'Level',
+                'chart_point_desc': '_PLAYERS_ Spieler'
             },
             'toast': {
                 'IP_success' : 'IP erfolgreich kopiert',

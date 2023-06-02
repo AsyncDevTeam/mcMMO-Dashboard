@@ -219,7 +219,7 @@ session_start();
                             <i class="fa-solid fa-chevron-right rotate"></i></h1>
                     </div>
                     <div class="collapsible-body">
-                        <span id="section-3-bis"></span>
+                        <span id="section-3-desc"></span>
                         <div class="chart-container">
                             <canvas id="chart_user_compare"></canvas>
                         </div>

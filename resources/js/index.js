@@ -47,7 +47,7 @@ fLoadServerInfos().then(async infos => {
                         if(data !== null){
                             quickViewSetup(data)
                             databaseLoad(data)
-                            loadDatasetChartAbilities(data)
+                            //loadDatasetChartAbilities(data)
                             chartAbilities(data)
                             // chartAbilitiesMinMax(data)
                             // chartEachAbilities(data)
@@ -173,11 +173,13 @@ function setQuickViewPlayer(username){
     })
 }
 
+/*
 let chart_select_filter
 chart_select.addEventListener('change', function (){
     chart_select_filter = chart_select.value
     updateGraph(chart_select_filter)
 })
+*/
 
 function updateGraph(value){
     let duplicate = []
@@ -200,44 +202,88 @@ const ctx_pi = document.getElementById('myChart-abi-pie');
 let chartAbilitiesGraph,
     chartBestAbilitiesGraph
 
-function chartAbilities(){
-    const packets = [];
-    for (let i = 0; i < datasetChartAbilities[0].length; i += chart_select.value) {
-        packets.push(datasetChartAbilities[0].slice(i, i + chart_select.value));
+function chartAbilities(data){
+
+    const maxLevel = Math.max(...data.players.map(player => player.total));
+    const intervalSize = maxLevel < 100 ? 1 : Math.ceil(maxLevel / 100);
+    const numIntervals = Math.ceil(maxLevel / intervalSize);
+    const playerCounts = new Array(numIntervals).fill(0);
+
+    data.players.forEach(player => {
+        const intervalIndex = Math.min(Math.floor(player.total / intervalSize), numIntervals - 1);
+        playerCounts[intervalIndex]++;
+    });
+
+    const labels = Array.from({length: numIntervals}, (_, i) => i * intervalSize);
+    const filteredPlayerCounts = [];
+    const filteredLabels = [];
+
+    for (let i = 0; i < playerCounts.length; i++) {
+        if (playerCounts[i] !== 0) {
+            filteredPlayerCounts.push(playerCounts[i]);
+            filteredLabels.push(labels[i]);
+        }
     }
-    let data_chart_default = {
-        labels: Object.values(translation[languageSelect].ab),
-        datasets: packets[0],
-        borderWidth: 2,
-    };
-    let config = {
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+    chartAbilitiesGraph = new Chart(ctx, {
         type: 'line',
-        data: data_chart_default,
+        data: {
+            labels: filteredLabels,
+            datasets: [{
+                label: translation[languageSelect].content_page.general.chart_players_title,
+                data: filteredPlayerCounts,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 3,
+                tension: 0.5,
+                fill: false,
+                pointRadius: 1,
+                pointHitRadius: 100,
+                pointLabels: { display: true }
+            }]
+        },
         options: {
-            responsive: true,
-            interaction: {
-                mode: 'index',
-                intersect: false,
-            },
-            stacked: false,
             plugins: {
-                title: {
-                    display: false
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return translation[languageSelect].content_page.general.chart_point_desc.replace('_PLAYERS_', context.parsed.y);
+                        },
+                        title: function(context) {
+                            const labelIndex = filteredLabels.indexOf(parseInt(context[0].label));
+                            if (filteredLabels[labelIndex + 1] !== undefined) {
+                                return filteredLabels[labelIndex] + "-" + filteredLabels[labelIndex + 1];
+                            } else {
+                                return filteredLabels[labelIndex];
+                            }
+                        }
+                    }
                 }
+            },
+            legend: {
+                display: false
             },
             scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: translation[languageSelect].content_page.general.chart_players_level_x
+                    }
+                },
                 y: {
-                    type: 'linear',
-                    display: true,
-                    position: 'left',
-                    min : 0
+                    ticks: {
+                        stepSize: 1
+                    },
+                    title: {
+                        display: true,
+                        text: translation[languageSelect].content_page.general.chart_players_count_y
+                    },
+                    beginAtZero: true
                 }
             },
-            maintainAspectRatio: false,
-            animation: false
-        },
-    };
-    chartAbilitiesGraph = new Chart(ctx, config);
+        }
+    });
 }
 
 function done(){

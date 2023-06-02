@@ -306,8 +306,10 @@ function changeLanguage(value){
     )
 
     const sections = translation[value].content_page.section_names[exact_type]
+    const sections_desc = translation[value].content_page.section_descriptions[exact_type]
     const sc_name_b = translation[value].content_page.aside[exact_type]
     changeLanguageElement(sections, id_)
+    changeLanguageElement(sections_desc, id_)
     changeLanguageElement(sc_name_b, class_)
 
     const sc_name_h = translation[value].content_page.aside.header

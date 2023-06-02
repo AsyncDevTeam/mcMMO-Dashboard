@@ -128,7 +128,7 @@ session_start();
                         <i class="fa-solid fa-chevron-right rotate"></i></h1>
                 </div>
                 <div class="collapsible-body">
-                    <label for="chart_select" class="chart_select">
+                    <!--<label for="chart_select" class="chart_select">
                         <span class="select-before"></span>
                         <select name="chart_select"
                                 id="chart_select"
@@ -140,13 +140,14 @@ session_start();
                             <option value="500">max</option>
                         </select>
                         <span class="select-after"></span>
-                    </label>
+                    </label>-->
+                    <span id="section-3-desc"></span>
                     <div class="chart-container">
                         <canvas id="myChart"></canvas>
                     </div>
                 </div>
             </li>
-            <li class="active avt-glass-effect hidden" id="abi-minmax" data-section="section-abi-minmax">
+            <!--<li class="active avt-glass-effect hidden" id="abi-minmax" data-section="section-abi-minmax">
                 <div class="collapsible-header">
                     <h1 class="title-section">
                         <span id="section-4"></span>
@@ -157,11 +158,11 @@ session_start();
                         <canvas id="myChart-abi-minmax"></canvas>
                     </div>
                 </div>
-            </li>
+            </li>-->
             <li class="active avt-glass-effect" id="abi-pie" data-section="section-abi-pie">
                 <div class="collapsible-header">
                     <h1 class="title-section">
-                        <span id="section-5"></span>
+                        <span id="section-4"></span>
                         <i class="fa-solid fa-chevron-right rotate"></i></h1>
                 </div>
                 <div class="collapsible-body">
