@@ -5,7 +5,8 @@ session_start();
 <html lang="en">
 <head>
     <!-- header base -->
-    <?php require "resources/php/includes/head.php" ?>
+    <?php require "resources/php/includes/head_all.php" ?>
+    <?php require "resources/php/includes/head_pages.php" ?>
     <!-- chartjs -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
     <!-- script of the project -->
@@ -15,6 +16,15 @@ session_start();
 <body>
 <!-- header include-->
 <?php require "resources/php/includes/header.php" ?>
+<?php
+$player_1 = $_GET["player_1"];
+$player_2 = $_GET["player_2"];
+if(isset($player_1) || isset($player_2)){
+    echo "<script>let from_url = true; let player_1_from_url = ".json_encode($player_1).";let player_2_from_url = ".json_encode($player_2)."</script>";
+}else{
+    echo "<script>let from_url = false;</script>";
+}
+?>
 <main>
     <label for="no-display-input">
         <input type="text" class="copyToClipboard hidden" value="" id="no-display-input">

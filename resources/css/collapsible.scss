@@ -6,6 +6,10 @@
   list-style: none;
   width: 100%;
 
+  &:only-child {
+    li{border-radius: 5px!important;}
+  }
+
   li{
     overflow: hidden;
     &:first-child{
@@ -46,7 +50,6 @@
       &.rotate{rotate: 90deg!important;}
     }
   }
-
   .collapsible-body{
     &:not(.show){
       display: none;

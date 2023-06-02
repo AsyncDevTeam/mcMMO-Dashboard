@@ -226,6 +226,12 @@ body{
         height: calc(100vh - var(--height-topbar));
         overflow-y: auto;
 
+        .collapsible{
+          li:only-child {
+            border-radius: 5px!important;
+          }
+        }
+
         .background-fixed{
           position: fixed;
           background: var(--background-op);
@@ -489,7 +495,7 @@ body{
           .chart-container{
             @include centerFlex;
             position: relative;
-            height:60vh;
+            min-height:60vh;
             width:100%;
             background: var(--background-op);
             padding: 1em;
@@ -673,7 +679,7 @@ body{
             @include colFlex;
             width: 100%;
             align-items: flex-start;
-            gap: 1em;
+            gap: .5em;
             border-radius: 5px;
             text-align: justify;
             background: var(--background);
@@ -1534,28 +1540,21 @@ body{
       &.pages{
         .content,
         .content-main{
+          .show_more_btn{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
           .searchBar_user{
             width: 100%;
-            @include rowFlex;
+            @include colFlex;
             align-items: stretch;
             gap: 1em;
             label{
               width: 100%;
-              input{
-                width: 100%;
-                border-radius: 1000px;
-                padding: 0.8em 1em;
-                border: 1px solid var(--border-color);
-                background: var(--w);
-                color: var(--b);
-              }
+              input{}
             }
-            button{
-              width: fit-content;
-              &.sb{
-                display: none!important;
-              }
-            }
+            .nb_player_sp{margin-left: auto;}
           }
           .sort{
             @include rowFlex;

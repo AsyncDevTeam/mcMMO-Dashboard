@@ -1,10 +1,11 @@
 const requestLeaderboard = "resources/php/scripts/get_all_leaderboard.php"
 const requestAbilities = "resources/php/scripts/get_all_abilities.php"
 const requestTopLeaderboard = "resources/php/scripts/get_top_leaderboard.php"
-const requestServerStats = "resources/php/scripts/get_server_stats.php"
 const requestUserStats = "resources/php/scripts/get_user_stats.php"
+const requestServerStats = "resources/php/scripts/get_server_stats.php"
+const website_title = document.querySelector('#website-title');
+const darkM = document.querySelector("#darkMode-input")
 const server_ip = document.querySelectorAll('.server-ip')
-const website_title = document.querySelector('#website-title')
 const copyToClipboardAction = document.querySelectorAll('.copyToClipboardAction')
 const button_back = document.querySelector('.back-to-top-container')
 const copyToClipboard = document.querySelector('.copyToClipboard')
@@ -16,48 +17,98 @@ const select_radio_section = document.querySelectorAll('.select-radio-section')
 const chart_select = document.querySelector('#chart_select')
 const tog_dm_icon = document.querySelectorAll('.fa-circle-half-stroke')
 const main = document.querySelector('main')
-const darkM = document.querySelector("#darkMode-input")
 const csrfToken = document.getElementById("csrf_token").value;
 let languageSelect
-let isBrowserOnline = true
 let label__darkMode = 'dark-mode-mcMMO'
+let isBrowserOnline = true
 let options_collapsible = {accordion: false}
-let exact_type = window.location.pathname.split("/").at(-1).split('.')[0]
-exact_type.length === 0 ? exact_type = 'index' : exact_type
 const loading_bar = document.querySelector('.loading-bar')
 let error_internal_server = false
-
+let exact_type = window.location.pathname.split("/").at(-1).split('.')[0]
+exact_type.length === 0 ? exact_type = 'index' : exact_type;
+languageSelect = translation.active
+website_title.innerHTML = translation[languageSelect].title_header
 window.onload = function (){
     const elems = document.querySelectorAll('.collapsible');
     M.Collapsible.init(elems, options_collapsible);
     iconModifier(elems)
     setColorsToRoot()
 }
-function setColorsToRoot(){
-    for (let i = 1; i <= 7; i++) {
-        document.documentElement.style.setProperty(`--tint${i}_50`, hexToRGBA(
-            getComputedStyle(document.documentElement).getPropertyValue(`--tint${i}_`)
-        ));
+darkM.addEventListener('change', (e) => {
+    if(e.target.checked){
+        document.documentElement.classList.add('toggle_dark_mode');
+        sessionStorage.setItem(label__darkMode, 'true')
+    }else{
+        document.documentElement.classList.remove('toggle_dark_mode');
+        sessionStorage.setItem(label__darkMode, 'false')
     }
-}
-copyToClipboardAction.forEach(e => {
-    e.addEventListener('click', function () {
-        e.classList.add('clicked')
-        navigator.clipboard.writeText(copyToClipboard.value).then(
-            () => {
-                setToast('success', translation[languageSelect].content_page.toast.IP_success, 5000)
-            },
-            () => {
-                setToast('success', translation[languageSelect].content_page.toast.IP_error, 5000)
-            }
-        )
-
-        setTimeout(function () {
-            e.classList.remove('clicked')
-        }, 1000)
+    tog_dm_icon.forEach(e => {
+        e.classList.toggle('rotate180')
     })
 })
 
+const ss_dm = sessionStorage.getItem(label__darkMode)
+if(ss_dm === 'true' || settings.force_darkMode){
+    document.documentElement.classList.add('toggle_dark_mode')
+    darkM.checked = true
+}
+(function setGradient(){
+    const r = document.querySelector(':root');
+    r.style.setProperty('--grad1', `rgba(${settings.colors.page.gradient.gradient_1} / 100%)`)
+    r.style.setProperty('--grad1_op', `rgba(${settings.colors.page.gradient.gradient_1} / 50%)`);
+    r.style.setProperty('--grad2', `rgba(${settings.colors.page.gradient.gradient_2} / 100%)`);
+    r.style.setProperty('--grad2_op', `rgba(${settings.colors.page.gradient.gradient_2} / 50%)`);
+}());
+(function setTitle(){
+    document.title = translation[languageSelect].pages_name[exact_type]
+}());
+
+(function (){
+    const class_ = '.'
+    const tabs = translation[languageSelect].content_page.tabs
+    changeLanguageElement(tabs, class_)
+}());
+function changeLanguageElement(entry, selector, s = null){
+
+    if(entry !== undefined){
+        if(s){
+            Object.entries(entry).forEach(e => {
+                const el = document.querySelectorAll(selector + e[0])
+                if(el.length !== 0){
+                    el.forEach(u => {
+                        u.placeholder = e[1].toString()
+                    })
+                }
+            })
+        }else{
+            Object.entries(entry).forEach(e => {
+                const el = document.querySelectorAll(selector + e[0])
+                if(el.length !== 0){
+                    el.forEach(u => {
+                        u.innerHTML = e[1].toString()
+                    })
+                }
+            })
+        }
+    }
+}
+const fLoadServerInfos = async() => {
+    try {
+        const response = await fetch(requestServerStats, {
+            method: "POST",
+            headers: {"Content-Type": "application/x-www-form-urlencoded",},
+            body: new URLSearchParams({ csrf_token: csrfToken }),
+        });
+        const json = await response.json();
+        if (json.error) {
+            setToast('error', json.error, 0);
+        } else {
+            return json;
+        }
+    } catch (error) {
+        setToast('error', error.message, 0);
+    }
+}
 function setToast(type, text, timer){
     let options_toast, toast_text
     if(timer !== 0){
@@ -92,6 +143,30 @@ function setToast(type, text, timer){
         title: toast_text,
     })
 }
+function setColorsToRoot(){
+    for (let i = 1; i <= 7; i++) {
+        document.documentElement.style.setProperty(`--tint${i}_50`, hexToRGBA(
+            getComputedStyle(document.documentElement).getPropertyValue(`--tint${i}_`)
+        ));
+    }
+}
+copyToClipboardAction.forEach(e => {
+    e.addEventListener('click', function () {
+        e.classList.add('clicked')
+        navigator.clipboard.writeText(copyToClipboard.value).then(
+            () => {
+                setToast('success', translation[languageSelect].content_page.toast.IP_success, 5000)
+            },
+            () => {
+                setToast('success', translation[languageSelect].content_page.toast.IP_error, 5000)
+            }
+        )
+
+        setTimeout(function () {
+            e.classList.remove('clicked')
+        }, 1000)
+    })
+})
 
 function openSidebar(element) {
     if (!isBrowserOnline) return
@@ -201,30 +276,7 @@ function isImageEmpty(imageDataURL) {
     });
 }
 
-languageSelect = translation.active
 changeLanguage(translation.active)
-
-website_title.innerHTML = translation[languageSelect].title_header
-
-darkM.addEventListener('change', (e) => {
-    if(e.target.checked){
-        document.documentElement.classList.add('toggle_dark_mode');
-        sessionStorage.setItem(label__darkMode, 'true')
-    }else{
-        document.documentElement.classList.remove('toggle_dark_mode');
-        sessionStorage.setItem(label__darkMode, 'false')
-    }
-    tog_dm_icon.forEach(e => {
-        e.classList.toggle('rotate180')
-    })
-})
-
-const ss_dm = sessionStorage.getItem(label__darkMode)
-if(ss_dm === 'true' || settings.force_darkMode){
-    document.documentElement.classList.add('toggle_dark_mode')
-    darkM.checked = true
-}
-
 function changeLanguage(value){
     const id_ = '#'
     const class_ = '.'
@@ -258,9 +310,9 @@ function changeLanguage(value){
     changeLanguageElement(quickView, class_)
     changeLanguageElement(buttons, class_)
 
-    if(!['user', 'search-user', 'comparison'].includes(type)){setTable(ab)}
+    if(!['user', 'comparison'].includes(type)){setTable(ab, type)}
 
-    function setTable(ab){
+    function setTable(ab, type){
         const row_table_def = document.querySelectorAll('.row_table_def')
         row_table_def.forEach(e => {
             const player = document.createElement('th')
@@ -269,76 +321,16 @@ function changeLanguage(value){
             total.innerHTML = translation[value].content_page.general.table_total_label
             e.appendChild(player)
             e.appendChild(total)
-            Object.values(ab).forEach(a => {
-                const th = document.createElement('th')
-                th.innerHTML = a.toString()
-                e.appendChild(th)
-            })
+            if(type !== 'search-user'){
+                Object.values(ab).forEach(a => {
+                    const th = document.createElement('th')
+                    th.innerHTML = a.toString()
+                    e.appendChild(th)
+                })
+            }
         })
     }
 }
-
-(function setGradient(){
-    const r = document.querySelector(':root');
-    r.style.setProperty('--grad1', `rgba(${settings.colors.page.gradient.gradient_1} / 100%)`)
-    r.style.setProperty('--grad1_op', `rgba(${settings.colors.page.gradient.gradient_1} / 50%)`);
-    r.style.setProperty('--grad2', `rgba(${settings.colors.page.gradient.gradient_2} / 100%)`);
-    r.style.setProperty('--grad2_op', `rgba(${settings.colors.page.gradient.gradient_2} / 50%)`);
-}());
-
-(function setTitle(){
-    document.title = translation[languageSelect].pages_name[exact_type]
-}());
-
-(function (){
-    const class_ = '.'
-    const tabs = translation[languageSelect].content_page.tabs
-    changeLanguageElement(tabs, class_)
-}());
-
-function changeLanguageElement(entry, selector, s = null){
-
-    if(entry !== undefined){
-        if(s){
-            Object.entries(entry).forEach(e => {
-                const el = document.querySelectorAll(selector + e[0])
-                if(el.length !== 0){
-                    el.forEach(u => {
-                        u.placeholder = e[1].toString()
-                    })
-                }
-            })
-        }else{
-            Object.entries(entry).forEach(e => {
-                const el = document.querySelectorAll(selector + e[0])
-                if(el.length !== 0){
-                    el.forEach(u => {
-                        u.innerHTML = e[1].toString()
-                    })
-                }
-            })
-        }
-    }
-}
-
-const fLoadServerInfos = async() => {
-    try {
-        const response = await fetch(requestServerStats, {
-            method: "POST",
-            headers: {"Content-Type": "application/x-www-form-urlencoded",},
-            body: new URLSearchParams({ csrf_token: csrfToken }),
-        });
-        const json = await response.json();
-        if (json.error) {
-            setToast('error', json.error, 0);
-        } else {
-            return json;
-        }
-    } catch (error) {
-        setToast('error', error.message, 0);
-    }
-}
-
 const fLoadTopLeaderboard = async() => {
     try {
         const response = await fetch(requestTopLeaderboard, {
@@ -602,4 +594,16 @@ function getSkin(player, type) {
         output.type = 'bedrock'
     }
     return output;
+}
+function changeImageTable(players, table){
+    table.querySelectorAll('img').forEach( async a => {
+        if(a.dataset.type !== 'default') return
+        const filteredPlayers = players.filter(player => player.name === a.dataset.user);
+        const uniquePlayer = filteredPlayers.find(player => player.name === a.dataset.user);
+        const url = await getSkin(uniquePlayer, 'HEAD_3D').url
+        if(url !== null){
+            a.src = url
+            a.dataset.type = 'user'
+        }
+    })
 }

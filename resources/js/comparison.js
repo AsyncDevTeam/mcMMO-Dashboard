@@ -23,7 +23,6 @@ fLoadServerInfos().then(async infos => {
             error_internal_server = true
             setToast('error', 'Server offline', 0)
         } else {
-            console.log('Online')
             error_internal_server = false;
             setServerStats(infos);
 
@@ -98,7 +97,29 @@ function setSelect(data){
             option.innerHTML = data.players[i].name
             e.appendChild(option)
         }
+        // e.value = (j === 0) ? data.players[0].name : data.players[1].name;
         e.value = (j === 0) ? data.players[0].name : data.players[1].name;
+
+        if(from_url){
+            const player_1_in_db = data.players.find(user => user.name === player_1_from_url);
+            const player_2_in_db = data.players.find(user => user.name === player_2_from_url);
+
+            if(j === 0){
+                if(player_1_in_db !== undefined){
+                    e.value = player_1_from_url
+                }else{
+                    e.value = data.players[0].name
+                }
+            }else{
+                if(player_2_in_db !== undefined){
+                    e.value = player_2_from_url
+                }else{
+                    data.players[1].name
+                }
+            }
+        }else{
+            e.value = (j === 0) ? data.players[0].name : data.players[1].name;
+        }
     });
     setSkinCompare(data.players, len)
 }
@@ -149,7 +170,6 @@ function setSkinCompare(players, len, a = null){
             playerdata_2 = players[i]
         }
     }
-
     const img = document.querySelectorAll('.img-compare')
     const a_href = document.querySelectorAll('.a-compare')
     const img_h = document.querySelectorAll('.img-compare-head')
@@ -158,19 +178,49 @@ function setSkinCompare(players, len, a = null){
         a_href[i].querySelector('span').innerHTML = translation[languageSelect].content_page.pages.comparison.link.see_profile
         a_href[i+2].querySelector('span').innerHTML = translation[languageSelect].content_page.pages.comparison.link.see_profile
         if(i === 0){
-            e.src = getSkin(playerdata_1, 'BODY_3D').url
+            const ss1 = sessionStorage.getItem(`${value_1}`)
+            if(ss1 !== null){
+                e.src = ss1
+            }else{
+                const skin_1 = getSkin(playerdata_1, 'BODY_3D').url
+                e.src = skin_1
+                sessionStorage.setItem(`${value_1}`, skin_1)
+            }
             a_href[i].href = `user.php?q=${value_1}`
             a_href[i+2].href = `user.php?q=${value_1}`
         }else{
-            e.src = getSkin(playerdata_2, 'BODY_3D_REVERSE').url
+            const ss2 = sessionStorage.getItem(`${value_2}_REVERSE`)
+            if(ss2 !== null){
+                e.src = ss2
+            }else{
+                const skin_2 = getSkin(playerdata_2, 'BODY_3D_REVERSE').url
+                e.src = skin_2
+                sessionStorage.setItem(`${value_2}_REVERSE`, skin_2)
+            }
             a_href[i].href = `user.php?q=${value_2}`
             a_href[i+2].href = `user.php?q=${value_2}`
         }
     })
     img_h.forEach((e, i) => {
-        e.value = (i === 0) ?
-            e.src = getSkin(playerdata_1, 'HEAD').url :
-            e.src = getSkin(playerdata_2, 'HEAD').url
+        if (i === 0) {
+            const ss1_h = sessionStorage.getItem(`HEAD_${value_1}`)
+            if(ss1_h !== null){
+                e.src = ss1_h
+            }else{
+                const skin_1 = getSkin(playerdata_1, 'HEAD').url;
+                e.src = skin_1
+                sessionStorage.setItem(`HEAD_${value_1}`, skin_1)
+            }
+        } else {
+            const ss2_h = sessionStorage.getItem(`HEAD_${value_2}`)
+            if(ss2_h !== null){
+                e.src = ss2_h
+            }else{
+                const skin_2 = getSkin(playerdata_2, 'HEAD').url;
+                e.src = skin_2
+                sessionStorage.setItem(`HEAD_${value_2}`, skin_2)
+            }
+        }
     })
 }
 

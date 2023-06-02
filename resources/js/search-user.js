@@ -1,7 +1,5 @@
-const s = document.querySelector('.result-search')
-let nb_player = 0
-
-
+const container = document.querySelector('.result-search')
+let bp_name = []
 fLoadServerInfos().then(async infos => {
     if(infos !== false){
         if('error' in infos && infos.error !== -1) {
@@ -21,28 +19,26 @@ fLoadServerInfos().then(async infos => {
             const fLoadLeaderboard_ =  await fLoadLeaderboard()
             const fLoadTopLeaderboard_ =  await fLoadTopLeaderboard()
 
-            if(fLoadLeaderboard_.status === 'success'){
-                const data = fLoadLeaderboard_.data
-                if(data !== null){
-                    setCard(data)
-                }
-            }else{
-                setToast('error', 'No Leaderboard', 0)
-            }
             if(fLoadTopLeaderboard_.status === 'success'){
                 const data = fLoadTopLeaderboard_.data
                 if(data !== null){
-                    setCardBP(
-                        data.players.filter((element, index) => {
-                            return index < 4;
-                        })
-                    )
+                    bp_name = data.players.filter((element, index) => {
+                        return index < 4;
+                    })
                 }
             }else{
                 setToast('error', 'No top Leaderboard', 0)
             }
 
-            await Promise.all([fLoadLeaderboard_, fLoadTopLeaderboard_]).then(() => {
+            await Promise.all([fLoadLeaderboard_, fLoadTopLeaderboard_]).then((r) => {
+                for (let i = 0; i < r.length; i++) {
+                    if (r[i].from === 'fLoadLeaderboard' && r[i].status === 'success') {
+                        const data = r[i].data
+                        if (data !== null) {
+                            tableLoad(data)
+                        }
+                    }
+                }
                 loading_bar.classList.add('hidden')
             }).catch((error) => {
                 console.error('error : ', error);
@@ -51,70 +47,59 @@ fLoadServerInfos().then(async infos => {
         }
     }
 });
-
-function setCard(players){
-    const users = players.players
-    const card = s.querySelector('.user-find')
-    nb_player = users.length
-    for (let i = 0; i < nb_player; i++) {
-        const clone = card.cloneNode(true);
-        clone.setAttribute('data-clone', 'o')
-        const name = clone.querySelector('.name')
-        const img = clone.querySelector('img')
-        const total = clone.querySelector('.total')
-        const player = users[i].name
-        total.innerText = `${users[i].total} exp`
-        img.src = getSkin(users[i], 'HEAD_3D').url
-        name.innerHTML = player
-        clone.href = `user.php?q=${player}`
-        clone.setAttribute('data-total', users[i].total)
-        s.appendChild(clone)
-        setTimeout(function() {
-            clone.classList.add('fade-in')
-        }, i*100);
-    }
-}
-
-function setCardBP(users){
-    for (let i = 0; i < s.childElementCount; i++) {
-        if(s.children[i].classList.contains('user-find')){
-            const name = s.children[i].querySelector('.name').innerHTML
-            for (let j = 0; j < users.length; j++) {
-                const label_name = s.children[i].querySelector('.name')
-                const name_player = label_name.innerHTML
-                if(name === users[j].name){
-                    label_name.classList.add(`label-${j+1}`)
-                    label_name.innerHTML = `#${j+1} ${name_player}`
-                    s.children[i].setAttribute('data-rank', (j+1).toString())
-                    // s.children[i].querySelector('.rank').classList.remove('hidden')
-                    // s.children[i].querySelector('.medal').innerHTML = (j+1).toString()
-                }
-            }
-        }
-    }
-}
-
-const input = document.querySelector('#sb-u')
-const no_element_found = document.querySelector(".no-element-found")
-input.addEventListener('keyup', function (){
-    let filter = input.value.toUpperCase();
-    let counterStyle = 0
-    for (let i = 0; i < s.childElementCount; i++) {
-        if(s.children[i].classList.contains('user-find')){
-            let object = s.children[i]
-            let a = object.querySelector('.name').innerHTML
-            if (a.toUpperCase().indexOf(filter) > -1) {
-                s.children[i].style.display = 'flex'
-                counterStyle = 0
+function tableLoad(player){
+    let name
+    for (let i = 0; i < player.players.length; i++) {
+        const user = player.players[i]
+        for (let j = 0; j < bp_name.length; j++) {
+            if(bp_name[j].name === user.name){
+                name = `<span class='label-${j+1}'>#${j+1} ${user.name}</span>`
+                break
             } else {
-                s.children[i].style.display = 'none'
-                counterStyle++
+                name = user.name
             }
         }
+        user.name_img = `<img class="img" data-user="${user.name}"  data-type="default" src="resources/others/textures/defaultSkin/bedrock-head.png" alt="player_heads">` + name
     }
-    if(counterStyle - 1 === nb_player){
-        no_element_found.classList.remove('hidden')
-    }else{
-        no_element_found.classList.add('hidden')
+    let lengthChangeAllow = true
+    let pagingAllow = true
+    if(player.players.length < 10){
+        lengthChangeAllow = false
+        pagingAllow = false
     }
-})
+    let sp_table = $('#sp-table').DataTable({
+        data: player.players,
+        columns: [
+            { data: 'name_img'},
+            { data: 'total' },
+        ],
+        lengthMenu: [
+            [10, 25, 50],
+            [10, 25, 50],
+        ],
+        scrollX: "300px",
+        "paging": pagingAllow,
+        "lengthChange": lengthChangeAllow,
+        "searching": true,
+        "ordering": true,
+        "info": pagingAllow,
+        "autoWidth": false,
+        "responsive": false,
+        "language": translation[languageSelect].dataTable,
+        "initComplete": function() {
+            changeImageTable(player.players, this[0].querySelector('tbody'))
+        }
+    });
+    $('#sp-table tbody tr').on('click', function () {
+        window.open(`user.php?q=${this.querySelector('img').dataset.user}`, '_self')
+    })
+    $('#sp-table_length').on('change', function (e){
+        changeImageTable(player.players, $('#sp-table').find('tbody')[0])
+    })
+    $('#sp-table_filter input').on('keyup', function (e){
+        changeImageTable(player.players, $('#sp-table').find('tbody')[0])
+    })
+    $('#sp-table_paginate').on('click', function (e){
+        changeImageTable(player.players, $('#sp-table').find('tbody')[0])
+    })
+}

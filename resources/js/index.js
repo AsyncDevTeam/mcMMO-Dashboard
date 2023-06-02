@@ -16,12 +16,11 @@ fLoadServerInfos().then(async infos => {
             dataBaseError()
             setToast('error', 'Server offline', 0)
         } else {
-            console.log('Online')
             error_internal_server = false;
             setServerStats(infos);
 
             const fLoadTopLeaderboard_ =  await fLoadTopLeaderboard()
-            const fLoadLeaderboard_ =  await fLoadLeaderboard()
+            const fLoadLeaderboard_ = await fLoadLeaderboard()
             // const fLoadLoadAbilities_ =  await fLoadAbilities()
 
             // console.log(fLoadLoadAbilities_)
@@ -51,7 +50,7 @@ fLoadServerInfos().then(async infos => {
                             loadDatasetChartAbilities(data)
                             chartAbilities(data)
                             // chartAbilitiesMinMax(data)
-                            chartEachAbilities(data)
+                            // chartEachAbilities(data)
                             chartBestAbilities(data)
                         }else{
                             setToast('error', 'No Leaderboard', 0)
@@ -202,9 +201,13 @@ let chartAbilitiesGraph,
     chartBestAbilitiesGraph
 
 function chartAbilities(){
+    const packets = [];
+    for (let i = 0; i < datasetChartAbilities[0].length; i += chart_select.value) {
+        packets.push(datasetChartAbilities[0].slice(i, i + chart_select.value));
+    }
     let data_chart_default = {
         labels: Object.values(translation[languageSelect].ab),
-        datasets: datasetChartAbilities[0],
+        datasets: packets[0],
         borderWidth: 2,
     };
     let config = {
@@ -231,13 +234,9 @@ function chartAbilities(){
                 }
             },
             maintainAspectRatio: false,
-            animation: {
-                onComplete: done
-            }
-            // onAnimationComplete: function(){done()}
+            animation: false
         },
     };
-
     chartAbilitiesGraph = new Chart(ctx, config);
 }
 
@@ -248,7 +247,6 @@ function done(){
 
 function chartBestAbilities(player){
     const user = player.players
-
     let a = []
     for (let i = 0; i < user.length; i++) {
         let u = []
@@ -372,22 +370,18 @@ function createTableBestAbilities(data){
 }
 
 function databaseLoad(player){
-
-    let name, skinurl
+    let name
     for (let i = 0; i < player.players.length; i++) {
         const user = player.players[i]
         for (let j = 0; j < bp_name.length; j++) {
             if(bp_name[j].name === user.name){
                 name = `<span class='label-${j+1}'>#${j+1} ${user.name}</span>`
-                skinurl = getSkin(bp_name[j], 'HEAD_3D').url
                 break
             } else {
                 name = user.name
-                skinurl = getSkin(user, 'HEAD_3D').url
             }
         }
-
-        user.name_img = `<img class="img" src="${skinurl}" alt="player_heads">` + name
+        user.name_img = `<img class="img" data-user="${user.name}"  data-type="default" src="resources/others/textures/defaultSkin/bedrock-head.png" alt="player_heads">` + name
     }
 
     let lengthChangeAllow = true
@@ -418,13 +412,10 @@ function databaseLoad(player){
             { data: 'fishing' },
             { data: 'alchemy' },
         ],
-        drawCallback: function() {
-            // for (let i = 0; i < player.players.length; i++) {
-            //     this.api().column(0).nodes().each(function(cell, u) {
-            //         $(cell).attr('data-sort', all_username[u]);
-            //     });
-            // }
-        },
+        lengthMenu: [
+            [10, 25, 50],
+            [10, 25, 50],
+        ],
         scrollX: "300px",
         "paging": pagingAllow,
         "lengthChange": lengthChangeAllow,
@@ -434,7 +425,10 @@ function databaseLoad(player){
         "autoWidth": false,
         "responsive": false,
         "language": translation[languageSelect].dataTable,
-        "initComplete": function() {initComplete_leaderboard = true}
+        "initComplete": function() {
+            initComplete_leaderboard = true
+            changeImageTable(player.players, this[0].querySelector('tbody'))
+        }
     });
 
     $('#leaderboard_table tbody').on('click', 'tr', function () {
@@ -475,8 +469,13 @@ function databaseLoad(player){
             searchInChart(this.value)
         }, 100)
     } );
+    $('#leaderboard_table_length').on('change', function (e){
+        changeImageTable(player.players, $('#leaderboard_table').find('tbody')[0])
+    })
+    $('#leaderboard_table_paginate').on('click', function (e){
+        changeImageTable(player.players, $('#leaderboard_table').find('tbody')[0])
+    })
 }
-
 function chartEachAbilities(player){
     let ab = []
     const players = player.players

@@ -3,6 +3,7 @@
   flex-direction: column;
   overflow-x: auto;
   width: 100%;
+  color: var(--b);
 }
 @media screen and (max-width: 1000px) {
   .dataTables_wrapper {
@@ -24,6 +25,7 @@ table tfoot {
 table thead .row_table_def,
 table tfoot .row_table_def {
   text-transform: capitalize;
+  width: 100%;
 }
 table thead th,
 table tfoot th {
@@ -118,23 +120,60 @@ table tbody .dataTables_empty {
   border-bottom-right-radius: 0.25rem;
 }
 
-.row {
+.dataTables_wrapper .row {
   overflow-x: auto;
 }
-.row:first-child {
+.dataTables_wrapper .row:first-child {
   margin: 0 0 1em auto;
 }
-.row:first-child .col-sm-12:last-child {
+.dataTables_wrapper .row:first-child .col-sm-12:last-child {
   display: none;
 }
-.row:last-child {
+.dataTables_wrapper .row:last-child {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
+  gap: 1em;
+  width: 100%;
 }
-.row:last-child .dataTables_info {
+.dataTables_wrapper .row:last-child .col-sm-12 {
+  white-space: nowrap;
+}
+.dataTables_wrapper .row:last-child .dataTables_info {
   padding: 0;
+}
+.dataTables_wrapper#sp-table_wrapper .row:first-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  gap: 1em;
+  width: 100%;
+}
+.dataTables_wrapper#sp-table_wrapper .row:first-child .col-sm-12 {
+  margin-left: auto;
+}
+.dataTables_wrapper#sp-table_wrapper .row:first-child .col-sm-12:last-child {
+  display: flex !important;
+  width: 100%;
+  order: -1;
+}
+.dataTables_wrapper#sp-table_wrapper .row:first-child .col-sm-12:last-child #sp-table_filter {
+  width: 100%;
+}
+.dataTables_wrapper#sp-table_wrapper .row:first-child .col-sm-12:last-child #sp-table_filter label {
+  width: 100%;
+}
+.dataTables_wrapper#sp-table_wrapper .row:first-child .col-sm-12:last-child #sp-table_filter label input {
+  width: 100%;
+  border-radius: 1000px;
+  padding: 0.8em 1em;
+  border: 1px solid var(--border-color);
+  background: var(--w);
+  color: var(--b);
+  margin: 0;
 }
 
 .custom-select {

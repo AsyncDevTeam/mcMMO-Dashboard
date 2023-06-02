@@ -5,7 +5,8 @@ session_start();
 <html lang="en">
 <head>
     <!-- header base -->
-    <?php require "resources/php/includes/head.php" ?>
+    <?php require "resources/php/includes/head_all.php" ?>
+    <?php require "resources/php/includes/head_pages.php" ?>
     <!-- chartjs -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
     <!-- script of the page -->
@@ -116,6 +117,11 @@ session_start();
                     <p class="title-lu-meaning hidden"></p>
                 </div>
             </div>
+
+<!--            <div class="recommendations">-->
+<!--                <svg viewBox="0 0 24 24" style="width:1.2000000000000002rem;height:1.2000000000000002rem" role="presentation"><path d="M19,1L17.74,3.75L15,5L17.74,6.26L19,9L20.25,6.26L23,5L20.25,3.75M9,4L6.5,9.5L1,12L6.5,14.5L9,20L11.5,14.5L17,12L11.5,9.5M19,15L17.74,17.74L15,19L17.74,20.25L19,23L20.25,20.25L23,19L20.25,17.74" style="fill:currentColor"></path></svg>-->
+<!--                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, hic.</p>-->
+<!--            </div>-->
 
             <ul class="collapsible content" id="abi-lvl">
                 <li class="active avt-glass-effect user-page" id="all_card" data-section="section-ld-main">

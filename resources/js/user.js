@@ -135,7 +135,6 @@ fLoadServerInfos().then(async infos => {
     }
 });
 
-
 function labelGet(r){
     const labels_stack = translation[languageSelect].labels_user
     const size = Object.keys(labels_stack).length
@@ -189,11 +188,12 @@ function errorCompareChart(){
 
 fLoadUser().then(r => {
     if(!isBrowserOnline) return
-    setSkin(r)
+    const {type, last_update, url} = getSkin(r, 'SKIN')
+    setSkin(r, url)
     setBestAbilities(r)
     setAllAbilities(r)
     setFilterFamilyCard()
-    userData(r)
+    userData(r, type, last_update)
     // CalcFamilies(r)
     setChart(r)
 });
@@ -312,7 +312,7 @@ function createLabel(array){
     }
 }
 
-function userData(player){
+function userData(player, type, last_update){
     const last_connection_user = document.querySelector('.last-connection-user')
     const skin_update = document.querySelector('.skin-update')
     const last_connection = player.last_connection
@@ -339,18 +339,19 @@ function userData(player){
         return {hour, minute, date}
     }
 
-    const {type, last_update} = getSkin(player, 'SKIN')
     if(type === 'bedrock'){
         const {hour, minute, date} = formatTimestamp(last_update)
         skin_update.innerHTML = translation[languageSelect].refresh.skin
             .replace('_HOUR_', hour)
             .replace('_MIN_', minute)
             .replace('_DATE_', date);
+    }else{
+        skin_update.classList.add('hidden')
     }
 
 }
 
-function setSkin(player) {
+function setSkin(player, url) {
     if (settings.animated_skins) {
         document.getElementById("img-skin-user").style.display = "none";
 
@@ -359,7 +360,7 @@ function setSkin(player) {
             width: 300,
             height: 400,
         });
-        skinViewer.loadSkin(getSkin(player, 'SKIN').url, {
+        skinViewer.loadSkin(url, {
             model: "auto-detect",
             ears: false
         });

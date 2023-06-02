@@ -7,6 +7,10 @@
   list-style: none;
   width: 100%;
 }
+.collapsible:not(.content):only-child li,
+.selected-player:only-child li {
+  border-radius: 5px !important;
+}
 .collapsible:not(.content) li,
 .selected-player li {
   overflow: hidden;

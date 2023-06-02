@@ -5,7 +5,8 @@ session_start();
 <html lang="en">
 <head>
     <!-- header base -->
-    <?php require "resources/php/includes/head.php" ?>
+    <?php require "resources/php/includes/head_all.php" ?>
+    <?php require "resources/php/includes/head_pages.php" ?>
     <!-- chartjs -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
     <!-- script of the project -->
@@ -134,9 +135,9 @@ session_start();
                                 class="custom-select custom-select-sm">
                             <option value="10">10</option>
                             <option value="25">25</option>
-                            <option value="25">50</option>
-                            <option value="25">100</option>
-                            <option value="500" selected="selected">max</option>
+                            <option value="50" selected="selected">50</option>
+                            <option value="100">100</option>
+                            <option value="500">max</option>
                         </select>
                         <span class="select-after"></span>
                     </label>

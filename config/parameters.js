@@ -176,6 +176,8 @@ const translation = {
             "sInfo":          "Showing _START_ to _END_ of _TOTAL_ entries",
             "sInfoEmpty":     "Showing 0 to 0 of 0 entries",
             "sInfoFiltered":  "(filtered from _MAX_ total entries)",
+            "sSearch": "",
+            "searchPlaceholder": "Search players by username",
             "oPaginate": {
                 "sFirst":    "First",
                 "sLast":    "Last",
@@ -450,6 +452,8 @@ const translation = {
             "sInfo":          "Affichage de _START_ à _END_ sur _TOTAL_ entrées",
             "sInfoEmpty":     "Affichage de 0 à 0 sur 0 entrées",
             "sInfoFiltered":  "(filtré à partir de _MAX_ entrées au total)",
+            "sSearch": "",
+            "searchPlaceholder": "Rechercher des joueurs",
             "oPaginate": {
                 "sFirst":    "Premier",
                 "sLast":    "Dernier",
@@ -725,6 +729,8 @@ const translation = {
             "sInfo":          "Zeige <b>_START_</b> bis <b>_END_</b> von <b>_TOTAL_</b> Einträgen",
             "sInfoEmpty":     "Zeige 0 bis 0 von 0 Einträgen",
             "sInfoFiltered":  "(filtere von _MAX_ insgesamten Einträgen)",
+            "sSearch": "",
+            "searchPlaceholder": "Suche nach Spielern",
             "oPaginate": {
                 "sFirst":    "Erste",
                 "sLast":    "Zuletzt",

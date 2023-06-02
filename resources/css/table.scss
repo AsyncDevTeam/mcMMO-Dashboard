@@ -1,9 +1,23 @@
+@mixin centerFlex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+@mixin rowFlex{
+  @include centerFlex;
+  flex-direction: row;
+}
+@mixin colFlex{
+  @include centerFlex;
+  flex-direction: column;
+}
 .dataTables_wrapper{
   display: flex;
   flex-direction: column;
-
   overflow-x: auto;
   width: 100%;
+  color: var(--b);
 
   @media screen and (max-width: 1000px) {
     max-width: var(--width-table-1000);
@@ -20,7 +34,10 @@ table{
   thead,
   tfoot{
     background: var(--background);
-    .row_table_def{text-transform: capitalize}
+    .row_table_def{
+      text-transform: capitalize;
+      width: 100%;
+    }
     th{
       padding: 1em;
       border-left: 1px solid var(--border-color) !important;
@@ -128,20 +145,54 @@ table{
   }
 }
 
-.row{
-  overflow-x: auto;
-  &:first-child{
-    margin:0 0 1em auto;
-    .col-sm-12:last-child{display: none}
+.dataTables_wrapper{
+  .row{
+    overflow-x: auto;
+    &:first-child{
+      margin:0 0 1em auto;
+      .col-sm-12:last-child{display: none}
+    }
+    &:last-child{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: row;
+      gap: 1em;
+      width: 100%;
+      .col-sm-12{white-space: nowrap}
+      .dataTables_info{
+        padding: 0;
+      }
+    }
   }
-  &:last-child{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
-
-    .dataTables_info{
-      padding: 0;
+  &#sp-table_wrapper{
+    .row{
+      &:first-child{
+        @include colFlex;
+        gap: 1em;
+        width: 100%;
+        .col-sm-12{margin-left: auto}
+        .col-sm-12:last-child{
+          display: flex!important;
+          width: 100%;
+          order: -1;
+          #sp-table_filter{
+            width: 100%;
+            label{
+              width: 100%;
+              input{
+                width: 100%;
+                border-radius: 1000px;
+                padding: 0.8em 1em;
+                border: 1px solid var(--border-color);
+                background: var(--w);
+                color: var(--b);
+                margin: 0;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

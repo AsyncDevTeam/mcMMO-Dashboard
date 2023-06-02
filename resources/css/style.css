@@ -315,6 +315,10 @@ body main .sidebar-menu aside {
   height: calc(100vh - var(--height-topbar));
   overflow-y: auto;
 }
+body main .wrapper aside .collapsible li:only-child,
+body main .sidebar-menu aside .collapsible li:only-child {
+  border-radius: 5px !important;
+}
 body main .wrapper aside .background-fixed,
 body main .sidebar-menu aside .background-fixed {
   position: fixed;
@@ -685,7 +689,7 @@ body main .sidebar-menu .content .collapsible-body .chart-container {
   align-items: center;
   align-content: center;
   position: relative;
-  height: 60vh;
+  min-height: 60vh;
   width: 100%;
   background: var(--background-op);
   padding: 1em;
@@ -974,7 +978,7 @@ body main .sidebar-menu .content-main.align-center .search_p {
   flex-direction: column;
   width: 100%;
   align-items: flex-start;
-  gap: 1em;
+  gap: 0.5em;
   border-radius: 5px;
   text-align: justify;
   background: var(--background);
@@ -2476,6 +2480,12 @@ body main .wrapper .content li .chart-container {
     max-width: var(--width-table-1000) !important;
   }
 }
+body main .wrapper.pages .content .show_more_btn,
+body main .wrapper.pages .content-main .show_more_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 body main .wrapper.pages .content .searchBar_user,
 body main .wrapper.pages .content-main .searchBar_user {
   width: 100%;
@@ -2483,7 +2493,7 @@ body main .wrapper.pages .content-main .searchBar_user {
   justify-content: center;
   align-items: center;
   align-content: center;
-  flex-direction: row;
+  flex-direction: column;
   align-items: stretch;
   gap: 1em;
 }
@@ -2491,22 +2501,9 @@ body main .wrapper.pages .content .searchBar_user label,
 body main .wrapper.pages .content-main .searchBar_user label {
   width: 100%;
 }
-body main .wrapper.pages .content .searchBar_user label input,
-body main .wrapper.pages .content-main .searchBar_user label input {
-  width: 100%;
-  border-radius: 1000px;
-  padding: 0.8em 1em;
-  border: 1px solid var(--border-color);
-  background: var(--w);
-  color: var(--b);
-}
-body main .wrapper.pages .content .searchBar_user button,
-body main .wrapper.pages .content-main .searchBar_user button {
-  width: fit-content;
-}
-body main .wrapper.pages .content .searchBar_user button.sb,
-body main .wrapper.pages .content-main .searchBar_user button.sb {
-  display: none !important;
+body main .wrapper.pages .content .searchBar_user .nb_player_sp,
+body main .wrapper.pages .content-main .searchBar_user .nb_player_sp {
+  margin-left: auto;
 }
 body main .wrapper.pages .content .sort,
 body main .wrapper.pages .content-main .sort {
