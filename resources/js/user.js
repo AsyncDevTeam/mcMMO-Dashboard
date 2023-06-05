@@ -70,22 +70,21 @@ let bp_name = []
 fLoadServerInfos().then(async infos => {
     if(infos !== false){
         if('error' in infos && infos.error !== -1) {
-            error_internal_server = true
             setToast('error', infos.error, 0)
             return
         }
         if(infos.max_players === -1){
-            //Offline
-            error_internal_server = true;
             setToast('error', 'Server offline', 0)
         }else{
-            //Online
             setServerStats(infos);
-            error_internal_server = false;
-
-            const fLoadTopLeaderboard_ =  await fLoadTopLeaderboard()
-            const fLoadLeaderboard_ =  await fLoadLeaderboard()
-
+            let fLoadTopLeaderboard_
+            const storageType_TopLdb = settings.localStorage ? localStorage : sessionStorage;
+            const fLoadTopLeaderboard_storage = JSON.parse(storageType_TopLdb.getItem('fLoadTopLeaderboard'));
+            if (fLoadTopLeaderboard_storage !== null && checkUnixTimestamp(fLoadTopLeaderboard_storage.time)) {
+                fLoadTopLeaderboard_ = await fLoadTopLeaderboard();
+            } else {
+                fLoadTopLeaderboard_ = fLoadTopLeaderboard_storage ?? await fLoadTopLeaderboard();
+            }
             if(fLoadTopLeaderboard_.status === 'success'){
                 const data = fLoadTopLeaderboard_.data
                 if(data !== null){
@@ -110,6 +109,15 @@ fLoadServerInfos().then(async infos => {
                 }
             }else{
                 setToast('error', "Error loading top leaderboard", 0)
+            }
+
+            let fLoadLeaderboard_
+            const storageType = settings.localStorage ? localStorage : sessionStorage;
+            const fLoadLeaderboard_storage = JSON.parse(storageType.getItem('fLoadLeaderboard'));
+            if (fLoadLeaderboard_storage !== null && checkUnixTimestamp(fLoadLeaderboard_storage.time)) {
+                fLoadLeaderboard_ = await fLoadLeaderboard();
+            } else {
+                fLoadLeaderboard_ = fLoadLeaderboard_storage ?? await fLoadLeaderboard();
             }
 
             await Promise.all([fLoadLeaderboard_, fLoadTopLeaderboard_]).then((r) => {
@@ -186,17 +194,31 @@ function errorCompareChart(){
     header_i.classList.remove('rotate')
 }
 
-fLoadUser().then(r => {
-    if(!isBrowserOnline) return
-    const {type, last_update, url} = getSkin(r, 'SKIN')
-    setSkin(r, url)
-    setBestAbilities(r)
-    setAllAbilities(r)
-    setFilterFamilyCard()
-    userData(r, type, last_update)
-    // CalcFamilies(r)
-    setChart(r)
-});
+(async function loadUser(){
+    let fLoadUser_
+    const storageType_user = settings.localStorage ? localStorage : sessionStorage;
+    const label_store = `fLoadUser_${query}`
+    const fLoadUser_storage = JSON.parse(storageType_user.getItem(label_store));
+    if (fLoadUser_storage !== null && checkUnixTimestamp(fLoadUser_storage.time)) {
+        fLoadUser_ = await fLoadUser();
+    } else {
+        fLoadUser_ = fLoadUser_storage ?? await fLoadUser();
+    }
+    if(fLoadUser_.status === 'success'){
+        const data = fLoadUser_.data
+        if(data !== null){
+            if(!isBrowserOnline) return
+            const {type, last_update, url} = getSkin(data, 'SKIN')
+            setSkin(data, url)
+            setBestAbilities(data)
+            setAllAbilities(data)
+            setFilterFamilyCard()
+            userData(data, type, last_update)
+            // CalcFamilies(r)
+            setChart(data)
+        }
+    }
+}());
 
 const CalcFamilies = function (data){
     const familyExpSums = {};
@@ -864,8 +886,6 @@ function clearInputUser(){
     no_element_found.classList.add('hidden')
 }
 
-let chartAbilitiesGraphUser
-const chart_user_all_abilities = document.getElementById('chart_user_all_abilities');
 function setChart(player){
     let dataset = []
     let skill_array = []
@@ -901,7 +921,8 @@ function setChart(player){
         }
     };
 
-    chartAbilitiesGraphUser = new Chart(chart_user_all_abilities, config);
+    const chart_user_all_abilities = document.getElementById('chart_user_all_abilities');
+    new Chart(chart_user_all_abilities, config);
 }
 
 const shinyElements = document.querySelectorAll('.shiny')

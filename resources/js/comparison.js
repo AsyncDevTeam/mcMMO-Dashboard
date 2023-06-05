@@ -15,19 +15,22 @@ const vs = document.querySelector('.vs');
 fLoadServerInfos().then(async infos => {
     if (infos !== false) {
         if ('error' in infos && infos.error !== -1) {
-            error_internal_server = true
             setToast('error', infos.error, 0)
             return
         }
         if (infos.max_players === -1) {
-            error_internal_server = true
             setToast('error', 'Server offline', 0)
         } else {
-            error_internal_server = false;
             setServerStats(infos);
 
-            const fLoadLeaderboard_ =  await fLoadLeaderboard()
-            const fLoadTopLeaderboard_ =  await fLoadTopLeaderboard()
+            let fLoadLeaderboard_
+            const storageType = settings.localStorage ? localStorage : sessionStorage;
+            const fLoadLeaderboard_storage = JSON.parse(storageType.getItem('fLoadLeaderboard'));
+            if (fLoadLeaderboard_storage !== null && checkUnixTimestamp(fLoadLeaderboard_storage.time)) {
+                fLoadLeaderboard_ = await fLoadLeaderboard();
+            } else {
+                fLoadLeaderboard_ = fLoadLeaderboard_storage ?? await fLoadLeaderboard();
+            }
 
             if(fLoadLeaderboard_.status === 'success'){
                 const data = fLoadLeaderboard_.data
@@ -44,6 +47,16 @@ fLoadServerInfos().then(async infos => {
             }else{
                 setToast('error', "Error loading leaderboard", 0)
             }
+
+            let fLoadTopLeaderboard_
+            const storageType_TopLdb = settings.localStorage ? localStorage : sessionStorage;
+            const fLoadTopLeaderboard_storage = JSON.parse(storageType_TopLdb.getItem('fLoadTopLeaderboard'));
+            if (fLoadTopLeaderboard_storage !== null && checkUnixTimestamp(fLoadTopLeaderboard_storage.time)) {
+                fLoadTopLeaderboard_ = await fLoadTopLeaderboard();
+            } else {
+                fLoadTopLeaderboard_ = fLoadTopLeaderboard_storage ?? await fLoadTopLeaderboard();
+            }
+
             if(fLoadTopLeaderboard_.status === 'success'){
                 const data = fLoadTopLeaderboard_.data
                 if(data !== null){

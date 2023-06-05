@@ -901,7 +901,15 @@ const translation = {
 const settings = {
     //Set force_darkMode to true to enable dark mode by default
     'force_darkMode': false,
+    //Set animated_skins to true to enable skin animation in user page
     'animated_skins': true,
+    //Set localStorage to true to enable data storage in your localStorage, false is sessionStorage
+    //See https://developer.mozilla.org/fr/docs/Web/API/Window/sessionStorage  and
+    // https://developer.mozilla.org/fr/docs/Web/API/Window/localStorage for more information
+    'localStorage': true,
+    //If localStorage is true, set refreshStorage for min time before refresh
+    //Supported value: h (hour), 6h (6 hours), 12h (12 hours) and d (day)
+    'refreshStorage': 'h',
     'colors': {
         'page': {
             'gradient': {

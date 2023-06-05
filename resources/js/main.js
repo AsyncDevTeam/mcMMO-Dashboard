@@ -113,6 +113,7 @@ function stylePageOffline() {
 }
 
 const fLoadUser = async () => {
+    const label_store = `fLoadUser_${query}`
     try {
         const response = await fetch(requestUserStats + `?name=${encodeURIComponent(query)}`, {
             method: "POST",
@@ -125,10 +126,38 @@ const fLoadUser = async () => {
         if (json.error) {
             setToast('error', json.error, 0);
         } else {
-            return json;
+            if(settings.localStorage){
+                localStorage.setItem(label_store,
+                    JSON.stringify({
+                        'time': checkUnixTimestamp(),
+                        status: 'success',
+                        data: json,
+                        from: label_store
+                    })
+                )
+            }else{
+                sessionStorage.setItem(label_store,
+                    JSON.stringify({
+                        time: checkUnixTimestamp(),
+                        status: 'success',
+                        data: json,
+                        from: label_store
+                    })
+                )
+            }
+            return {
+                status: 'success',
+                data: json,
+                from: label_store
+            };
         }
     } catch (error) {
         setToast('error', error.message, 0);
+        return {
+            status: 'failed',
+            data: null,
+            from: label_store
+        };
     }
 };
 

@@ -1,8 +1,10 @@
+//URL to fetch data
 const requestLeaderboard = "resources/php/scripts/get_all_leaderboard.php"
 const requestAbilities = "resources/php/scripts/get_all_abilities.php"
 const requestTopLeaderboard = "resources/php/scripts/get_top_leaderboard.php"
 const requestUserStats = "resources/php/scripts/get_user_stats.php"
 const requestServerStats = "resources/php/scripts/get_server_stats.php"
+//Some querySelector needed in file
 const website_title = document.querySelector('#website-title');
 const darkM = document.querySelector("#darkMode-input")
 const server_ip = document.querySelectorAll('.server-ip')
@@ -14,45 +16,69 @@ const max_players_a = document.querySelectorAll('.max_players')
 const version = document.querySelectorAll('.version')
 const server_logo = document.querySelector('#server-logo')
 const select_radio_section = document.querySelectorAll('.select-radio-section')
-const chart_select = document.querySelector('#chart_select')
 const tog_dm_icon = document.querySelectorAll('.fa-circle-half-stroke')
 const main = document.querySelector('main')
+const loading_bar = document.querySelector('.loading-bar')
+//Variable used in file
 const csrfToken = document.getElementById("csrf_token").value;
 let languageSelect
 let label__darkMode = 'dark-mode-mcMMO'
 let isBrowserOnline = true
 let options_collapsible = {accordion: false}
-const loading_bar = document.querySelector('.loading-bar')
-let error_internal_server = false
 let exact_type = window.location.pathname.split("/").at(-1).split('.')[0]
 exact_type.length === 0 ? exact_type = 'index' : exact_type;
 languageSelect = translation.active
 website_title.innerHTML = translation[languageSelect].title_header
+//When page is loaded. There's only one window.onload across all files
 window.onload = function (){
+    /**
+     * Function: window.onload
+     * Description: Call for generic function
+     * return: none
+     * */
+    //Init for all Collapsible elements
     const elems = document.querySelectorAll('.collapsible');
     M.Collapsible.init(elems, options_collapsible);
+    //Modification of chevron based on collapsible state (open/close)
     iconModifier(elems)
+    //tintX colors set to html DOM element
     setColorsToRoot()
 }
 darkM.addEventListener('change', (e) => {
+    /**
+     * Function: /
+     * Description: Modification of dark mode
+     * If button darkM is checked we add class 'toggle_dark_mode' to document.documentElement
+     * Then, we locally store state to manage cross page
+     * return: none
+     * */
     if(e.target.checked){
+        //Dark Mode
         document.documentElement.classList.add('toggle_dark_mode');
         sessionStorage.setItem(label__darkMode, 'true')
     }else{
+        //Light Mode
         document.documentElement.classList.remove('toggle_dark_mode');
         sessionStorage.setItem(label__darkMode, 'false')
     }
+    //rotation of dark mode icon
     tog_dm_icon.forEach(e => {
         e.classList.toggle('rotate180')
     })
 })
-
 const ss_dm = sessionStorage.getItem(label__darkMode)
 if(ss_dm === 'true' || settings.force_darkMode){
     document.documentElement.classList.add('toggle_dark_mode')
     darkM.checked = true
 }
+
 (function setGradient(){
+    /**
+     * Function: setGradient
+     * Description:
+     * Next call:
+     * return: none
+     * */
     const r = document.querySelector(':root');
     r.style.setProperty('--grad1', `rgba(${settings.colors.page.gradient.gradient_1} / 100%)`)
     r.style.setProperty('--grad1_op', `rgba(${settings.colors.page.gradient.gradient_1} / 50%)`);
@@ -62,7 +88,6 @@ if(ss_dm === 'true' || settings.force_darkMode){
 (function setTitle(){
     document.title = translation[languageSelect].pages_name[exact_type]
 }());
-
 (function (){
     const class_ = '.'
     const tabs = translation[languageSelect].content_page.tabs
@@ -354,6 +379,7 @@ function changeLanguage(value){
     }
 }
 const fLoadTopLeaderboard = async() => {
+    const label_store = 'fLoadTopLeaderboard'
     try {
         const response = await fetch(requestTopLeaderboard, {
             method: "POST",
@@ -366,10 +392,29 @@ const fLoadTopLeaderboard = async() => {
         if (leaderboard.error) {
             setToast('error', leaderboard.error, 0);
         } else {
+            if(settings.localStorage){
+                localStorage.setItem(label_store,
+                    JSON.stringify({
+                        'time': checkUnixTimestamp(),
+                        status: 'success',
+                        data: leaderboard,
+                        from: label_store
+                    })
+                )
+            }else{
+                sessionStorage.setItem(label_store,
+                    JSON.stringify({
+                        time: checkUnixTimestamp(),
+                        status: 'success',
+                        data: leaderboard,
+                        from: label_store
+                    })
+                )
+            }
             return {
                 status: 'success',
                 data: leaderboard,
-                from: 'fLoadTopLeaderboard'
+                from: label_store
             };
         }
     } catch (error) {
@@ -377,7 +422,7 @@ const fLoadTopLeaderboard = async() => {
         return {
             status: 'failed',
             data: null,
-            from: 'fLoadTopLeaderboard'
+            from: label_store
         };
     }
 }
@@ -412,6 +457,7 @@ const fLoadAbilities = async() => {
 }
 
 const fLoadLeaderboard = async() => {
+    const label_store = 'fLoadLeaderboard'
     try {
         const response = await fetch(requestLeaderboard, {
             method: "POST",
@@ -424,25 +470,73 @@ const fLoadLeaderboard = async() => {
         if (leaderboard.error) {
             setToast('error', leaderboard.error, 0)
         } else {
+            if(settings.localStorage){
+                localStorage.setItem(label_store,
+                    JSON.stringify({
+                        'time': checkUnixTimestamp(),
+                        status: 'success',
+                        data: leaderboard,
+                        from: label_store
+                    })
+                )
+            }else{
+                sessionStorage.setItem(label_store,
+                    JSON.stringify({
+                        time: checkUnixTimestamp(),
+                        status: 'success',
+                        data: leaderboard,
+                        from: label_store
+                    })
+                )
+            }
             return {
                 status: 'success',
                 data: leaderboard,
-                from: 'fLoadLeaderboard'
+                from: label_store
             };
         }
     } catch (error) {
         setToast('error', error.message, 0)
+        return {
+            status: 'failed',
+            data: null,
+            from: label_store
+        };
     }
-    // If we did not return something until here, it means that we got an error
-    return {
-        status: 'failed',
-        data: null,
-        from: 'fLoadLeaderboard'
-    };
+}
+function checkUnixTimestamp(input) {
+    let delay
+    if (settings.refreshStorage === 'h') {
+        delay = 60 * 60; // 1 hour
+    } else if (settings.refreshStorage === '6h') {
+        delay = 6 * 60 * 60; // 6 hours
+    } else if (settings.refreshStorage === '12h') {
+        delay = 12 * 60 * 60; // 12 hours
+    } else if (settings.refreshStorage === 'd') {
+        delay = 24 * 60 * 60; // 1 day
+    } else{
+        delay = 60
+    }
+    const currentUnixTimestamp = Math.floor(Date.now() / 1000);
+    const limit = input + delay;
+    if (input) {
+        return currentUnixTimestamp > limit;
+    } else {
+        return currentUnixTimestamp;
+    }
 }
 
 function iconModifier(elems, uni){
+    /**
+     * Function: iconModifier
+     * Description: Selection of elements to be process in changeIconCollapsible
+     * @elems (Main container) is used to select children
+     * @uni (boolean) to difference call from dataBaseError or window.onload
+     * Next call: changeIconCollapsible function
+     * return: none
+     * */
     if(uni){
+        //from dataBaseError
         const li = elems.querySelectorAll('li');
         li.forEach(e => {e.classList.remove('active')})
         const co_header = elems.querySelectorAll('.collapsible-header');
@@ -454,6 +548,7 @@ function iconModifier(elems, uni){
             }
         })
     }else{
+        //from window.onload
         elems.forEach(e => {
             const co_header = e.querySelectorAll('.collapsible-header');
             co_header.forEach(a => {
@@ -471,6 +566,7 @@ function iconModifier(elems, uni){
     function changeIconCollapsible(element, i){
         if(window.getComputedStyle(element).display === 'none'){
             //access 2
+            //Add 90deg rotation
             i.classList.add('rotate')
         }else{
             //access 1
@@ -618,11 +714,11 @@ function getSkin(player, type) {
     return output;
 }
 function changeImageTable(players, table){
-    table.querySelectorAll('img').forEach( async a => {
+    table.querySelectorAll('img').forEach( a => {
         if(a.dataset.type !== 'default') return
         const filteredPlayers = players.filter(player => player.name === a.dataset.user);
         const uniquePlayer = filteredPlayers.find(player => player.name === a.dataset.user);
-        const url = await getSkin(uniquePlayer, 'HEAD_3D').url
+        const url = getSkin(uniquePlayer, 'HEAD_3D').url
         if(url !== null){
             a.src = url
             a.dataset.type = 'user'
