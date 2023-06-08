@@ -8,8 +8,14 @@ require "../includes/db_connect.php";
 $skills = array("taming", "mining", "woodcutting", "repair", "unarmed", "herbalism", "excavation", "archery", "swords", "axes", "acrobatics", "fishing", "alchemy");
 $skills_str = implode(", ", $skills);
 
-$sth = $dbh->prepare('SELECT id, user, lastlogin, total, uuid, '.$skills_str.' FROM mcmmo_users INNER JOIN mcmmo_skills ON mcmmo_users.id = mcmmo_skills.user_id ORDER BY total DESC');
-$sth->execute();
+try {
+    $sth = $dbh->prepare('SELECT id, user, lastlogin, total, uuid, ' . $skills_str . ' FROM mcmmo_users INNER JOIN mcmmo_skills ON mcmmo_users.id = mcmmo_skills.user_id ORDER BY total DESC');
+    $sth->execute();
+} catch (PDOException $e) {
+    header('Content-Type: application/json');
+    echo "{\"error\":\"" . json_encode($e->getMessage(), JSON_PRETTY_PRINT) . "\"}";
+    exit;
+}
 
 $result = array();
 
