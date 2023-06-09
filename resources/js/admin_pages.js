@@ -70,3 +70,5 @@ const changeTabs = function (el){
 const radioInit = document.querySelector('input[data-select="mcd-settings"]')
 changeTabs(radioInit)
 initHeightPage()
+const sections = translation[translation.active].content_page.section_names['index']
+changeLanguageElement(sections, "#")

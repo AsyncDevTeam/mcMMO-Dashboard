@@ -20,25 +20,25 @@ session_start();
                  id="server-logo">
         </a>
     </div>
-    <div class="tabs_header">
-        <a href="index.php">
-            <i class="fa-solid fa-house"></i>
-            <span class="tabs-1"></span>
-        </a>
-        <a href="search-user.php">
-            <i class="fa-solid fa-user"></i>
-            <span class="tabs-2"></span>
-        </a>
-        <a href="comparison.php">
-            <i class="fa-solid fa-table-columns"></i>
-            <span class="tabs-3"></span>
-        </a>
-        <label for="darkMode-input">
-            <input type="checkbox" id="darkMode-input">
-            <i class="fa-solid fa-circle-half-stroke"></i>
-            <span class="tabs-dm"></span>
-        </label>
-    </div>
+<!--    <div class="tabs_header">-->
+<!--        <a href="index.php">-->
+<!--            <i class="fa-solid fa-house"></i>-->
+<!--            <span class="tabs-1"></span>-->
+<!--        </a>-->
+<!--        <a href="search-user.php">-->
+<!--            <i class="fa-solid fa-user"></i>-->
+<!--            <span class="tabs-2"></span>-->
+<!--        </a>-->
+<!--        <a href="comparison.php">-->
+<!--            <i class="fa-solid fa-table-columns"></i>-->
+<!--            <span class="tabs-3"></span>-->
+<!--        </a>-->
+<!--        <label for="darkMode-input">-->
+<!--            <input type="checkbox" id="darkMode-input">-->
+<!--            <i class="fa-solid fa-circle-half-stroke"></i>-->
+<!--            <span class="tabs-dm"></span>-->
+<!--        </label>-->
+<!--    </div>-->
     <div class="loading-bar">
         <div class="container">
             <span class="loader"></span>
@@ -85,7 +85,9 @@ session_start();
             <form action="store_data.php" method="post" class="setup-form">
                 <div class="page-settings" data-name="mcd-settings">
                     <div class="row">
-                        <h1>Dashboard title</h1>
+                        <h1>
+                            <i class="fa-solid fa-font"></i>
+                            Dashboard title</h1>
                         <label for="">Change dashboard title
                             <input type="text" placeholder="Title" name="db-title">
                         </label>
@@ -94,33 +96,129 @@ session_start();
                 </div>
                 <div class="page-design hidden" data-name="mcd-design">
                     <div class="row" data-section="colors">
-                        <h1>Colors</h1>
-                        <div class="sub-row" data-type="light">
-                            <label for="main-color">Main color
-                                <input type="color" id="main-color" name="db-main-color">
-                            </label>
-                            <label for="secondary-color">Secondary color
-                                <input type="color" id="secondary-color" name="db-secondary-color">
-                            </label>
-                            <label for="active-color">Active color
-                                <input type="color" id="active-color" name="db-active-color">
-                            </label>
+                        <h1>
+                            <i class="fa-solid fa-brush"></i>
+                            Colors</h1>
+                        <div class="sub-row">
+                            <div class="col">
+                                <div class="header-col">
+                                    <h4>Background gradient</h4>
+                                </div>
+                                <div class="data-col">
+                                    <div class="line">
+                                        <text>Start color</text>
+                                        <label for="main-color-text">
+                                            <input type="text" id="main-color-text"
+                                                   name="db-main-color-text"
+                                                   placeholder="#000123">
+                                        </label>
+                                        <label for="main-color">
+                                            <input type="color" id="main-color" name="db-main-color">
+                                        </label>
+                                    </div>
+                                    <div class="line">
+                                        <text>End color</text>
+                                        <label for="secondary-color-text">
+                                            <input type="text" id="secondary-color-text"
+                                                   name="db-main-color-text"
+                                                   placeholder="#000123">
+                                        </label>
+                                        <label for="secondary-color">
+                                            <input type="color" id="secondary-color" name="db-secondary-color">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="sub-row" data-type="dark">
-                            <label for="main-color-dark">Main color
-                                <input type="color" id="main-color-dark" name="db-main-d-color">
-                            </label>
-                            <label for="secondary-color-dark">Secondary color
-                                <input type="color" id="secondary-color-dark" name="db-secondary-d-color">
-                                <label for="active-color-dark">Active color
-                                    <input type="color" id="active-color-dark" name="db-active-d-color">
-                                </label>
+                        <div class="sub-row">
+                            <div class="col">
+                                <div class="header-col">
+                                    <h4>Light Color</h4>
+                                </div>
+                                <div class="data-col" data-type="light">
+                                    <div class="line">
+                                        <text>Main color</text>
+                                        <label for="main-color-text">
+                                            <input type="text" id="main-color-text"
+                                                   name="db-main-color-text"
+                                                   placeholder="#000123">
+                                        </label>
+                                        <label for="main-color">
+                                            <input type="color" id="main-color" name="db-main-color">
+                                        </label>
+                                    </div>
+                                    <div class="line">
+                                        <text>Secondary color</text>
+                                        <label for="secondary-color-text">
+                                            <input type="text" id="secondary-color-text"
+                                                   name="db-main-color-text"
+                                                   placeholder="#000123">
+                                        </label>
+                                        <label for="secondary-color">
+                                            <input type="color" id="secondary-color" name="db-secondary-color">
+                                        </label>
+                                    </div>
+                                    <div class="line">
+                                        <text>Active color</text>
+                                        <label for="active-color-text">
+                                            <input type="text" id="active-color-text"
+                                                   name="db-main-color-text"
+                                                   placeholder="#000123">
+                                        </label>
+                                        <label for="active-color">
+                                            <input type="color" id="active-color" name="db-active-color">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="header-col">
+                                    <h4>Dark Color</h4>
+                                </div>
+                                <div class="data-col" data-type="dark">
+                                    <div class="line">
+                                        <text>Main color</text>
+                                        <label for="main-color-text">
+                                            <input type="text" id="main-color-text"
+                                                   name="db-main-color-text"
+                                                   placeholder="#000123">
+                                        </label>
+                                        <label for="main-color">
+                                            <input type="color" id="main-color" name="db-main-color">
+                                        </label>
+                                    </div>
+                                    <div class="line">
+                                        <text>Secondary color</text>
+                                        <label for="secondary-color-text">
+                                            <input type="text" id="secondary-color-text"
+                                                   name="db-main-color-text"
+                                                   placeholder="#000123">
+                                        </label>
+                                        <label for="secondary-color">
+                                            <input type="color" id="secondary-color" name="db-secondary-color">
+                                        </label>
+                                    </div>
+                                    <div class="line">
+                                        <text>Active color</text>
+                                        <label for="active-color-text">
+                                            <input type="text" id="active-color-text"
+                                                   name="db-main-color-text"
+                                                   placeholder="#000123">
+                                        </label>
+                                        <label for="active-color">
+                                            <input type="color" id="active-color" name="db-active-color">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="page-language hidden" data-name="mcd-language">
                     <div class="row">
-                        <h1>Language</h1>
+                        <h1>
+                            <i class="fa-solid fa-language"></i>
+                            Language</h1>
                         <label for="setup-lang">Choose the language to use.
                             <select name="db-language" id="setup-lang">
                                 <option value="EN">EN</option>
@@ -131,6 +229,29 @@ session_start();
                     </div>
                 </div>
                 <div class="page-lorem hidden" data-name="mcd-lorem">
+                    <div class="row" data-section="sections">
+                        <h1>
+                            <i class="fa-solid fa-sort"></i>
+                            Sections</h1>
+                        <div class="sub-row">
+                            <label for="section-1-c">
+                                <input type="checkbox" id="section-1-c" name="db-section-1-show">
+                            </label>
+                            <label for="section-1-title">
+                                <input type="text" id="section-1-title" placeholder="Title" name="db-section-1-title">
+                            </label>
+                            <p>Current name is <span>section-1</span>.</p>
+                        </div>
+                        <div class="sub-row">
+                            <label for="section-2-c">
+                                <input type="checkbox" id="section-2-c" name="db-section-2-show">
+                            </label>
+                            <label for="section-2-title">
+                                <input type="text" id="section-2-title" placeholder="Title" name="db-section-2-title">
+                            </label>
+                            <p>Current name is <span>section-2</span>.</p>
+                        </div>
+                    </div>
                     <div class="row" data-section="sections">
                         <h1>Sections</h1>
                         <div class="sub-row">
@@ -155,7 +276,9 @@ session_start();
                 </div>
                 <div class="page-ipsum hidden" data-name="mcd-ipsum">
                     <div class="row" data-section="themes">
-                        <h1>Themes</h1>
+                        <h1>
+                            <i class="fa-solid fa-palette"></i>
+                            Themes</h1>
                         <p>
                             Add a theme for your dashboard.
                             Go on <a href="mcmmo.nicolasvaillant.net/themes">mcmmo.nicolasvaillant.net/themes</a>
@@ -253,7 +376,29 @@ session_start();
                             </li>
                         </ul>
                     </div>
-                    <div class="wrapper"></div>
+                    <div class="wrapper">
+                        <ul class="collapsible">
+                            <li class="active avt-glass-effect">
+                                <div class="collapsible-header">
+                                    <h1 class="title-section">
+                                        <span id="section-1"></span>
+                                    </h1>
+                                    <p>Refreshed at 10:00</p>
+                                </div>
+                                <div class="collapsible-body">
+                                    <div class="content_bp"></div>
+                                </div>
+                            </li>
+                            <li class="active avt-glass-effect">
+                                <div class="collapsible-header">
+                                    <h1 class="title-section">
+                                        <span id="section-2"></span>
+                                        <i class="fa-solid fa-chevron-right rotate"></i></h1>
+                                </div>
+                                <div class="collapsible-body"></div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

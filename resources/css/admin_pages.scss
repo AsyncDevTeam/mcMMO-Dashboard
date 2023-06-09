@@ -22,18 +22,20 @@
 body{
   font-family: 'Noto Sans Mende Kikakui', sans-serif;
   background: var(--w);
-
   --width-main:70%;
+  --height-topbar: 12vh!important;
+
+  header{height: auto!important}
   main{
     width: 100%;
     @include colFlex;
     justify-content: flex-start;
-    min-height: var(--height-window);
+    height: calc(var(--height-window) - var(--height-topbar));
     position: absolute;
-    top: 0;
+    top: var(--height-topbar);
     overflow-x: clip;
     box-shadow: none!important;
-    padding: var(--height-topbar) 1em 0;
+    padding:0 1em 1em;
     gap: 1em;
     .notify{
       background: var(--w);
@@ -42,13 +44,12 @@ body{
       display: none;
     }
     .setup-wrapper{
-      --height-form:40%;
+      --height-form:50%;
       --height-preview:calc(100% - var(--height-form));
       @include colFlex;
       background: var(--background);
       width: 80%;
-      height: calc(var(--height-window) - var(--height-topbar) - 2em);
-      margin: 1em 0;
+      height: 100%;
       overflow: hidden;
       border-radius: 10px;
       border: 1px solid var(--border-color);
@@ -96,17 +97,75 @@ body{
           [class^="page-"] {width: 100%}
           padding: 1em;
           overflow-y: auto;
-          .row{
-            h1{margin: 0 0 .5em 0}
-            .preview-container{
+          .row,
+          .sub-row{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1em;
+            h1{
+              display: flex;
+              align-items: baseline;
+              flex-direction: row;
+              gap: 0.5em;
+            }
+            label{
+              @include rowFlex;
+              justify-content: flex-start;
+              gap: 1em;
               width: 100%;
-              height: 20vh;
-              margin-top: 1em;
-              .preview{
+              white-space: nowrap;
+              input[type="text"]{
                 width: 100%;
-                height: 100%;
-                border-radius: 10px;
-                background: red;
+                background: var(--w);
+                border: 1px solid var(--border-color);
+                border-radius: 5px;
+                padding: 0.5em 1em;
+              }
+            }
+            p{
+              margin-top: .5em;
+              color: var(--grad1);
+            }
+          }
+          .sub-row{
+            width: 100%;
+            flex-direction: row;
+            gap: 1em;
+            .col{
+              width: 100%;
+              display: flex;
+              flex-direction: column;
+              border: 1px solid var(--border-color);
+              border-radius: 5px;
+              overflow: hidden;
+              .header-col{
+                background: var(--border-color);
+                padding: 1em;
+              }
+              .data-col{
+                display: flex;
+                flex-direction: column;
+                gap: .5em;
+                padding: 1em;
+                .line{
+                  @include rowFlex;
+                  align-items: center;
+                  gap: .5em;
+                  text{margin-right: auto}
+                  label{
+                    display: grid;
+                    grid-template-columns: 1fr auto;
+                    border-radius: 5px;
+                    width: fit-content;
+                    gap: 0;
+                    &:last-child{border: 1px solid var(--border-color)}
+                    input[type="color"]{
+                      border: none;
+                      background: none;
+                    }
+                  }
+                }
               }
             }
           }
@@ -114,7 +173,7 @@ body{
       }
       .preview-container{
         height: var(--height-preview);
-        background: rgba(139, 0, 0, 0.15);
+        background: linear-gradient(135deg, var(--grad1) 0%, var(--grad2) 100%) fixed !important;
         width: 100%;
         @include colFlex;
         justify-content: flex-end;
@@ -128,9 +187,12 @@ body{
           border-radius: 10px;
           border: 1px solid var(--border-color);
           font-size: 11px;
+          background: linear-gradient(135deg, var(--grad1) 0%, var(--grad2) 100%) !important;
+          //box-shadow: rgba(50, 50, 93, 0.25) 0px -50px 100px -20px, rgba(0, 0, 0, 0.3) 0px -30px 60px -30px;
+          box-shadow: rgb(50 50 93 / 12%) 0px -50px 100px -20px, rgb(116 116 116 / 37%) 0px -30px 60px -30px, rgb(54 54 54 / 65%) 100px 200px 100px 0;
+          @media all and (max-width: 900px) {width: 90%}
           .header{
             @extend header;
-            --height-topbar: 12vh!important;
             position: relative;
             border: none;
             img{width: 36px!important;}
@@ -143,6 +205,11 @@ body{
                 color: var(--b);
               }
             }
+            .main{
+              height: auto;
+              padding: 1em;
+            }
+            .tabs_header{height: 5vh!important;}
           }
           .content{
             --width-aside:30%;
@@ -153,7 +220,16 @@ body{
               width: var(--width-aside);
               padding: 1em;
               height: 100%;
+              background: var(--background-op);
+              @media all and (max-width: 800px) {display: none}
               .collapsible{
+                border-radius: 5px;
+                overflow: hidden;
+                border: 1px solid var(--border-color);
+                *{border: none}
+                li:last-child .collapsible-header{
+                  border-top: 1px solid var(--border-color)!important;
+                }
                 .collapsible-body{
                   .buttons-to-section{
                     label{font-size: 11px!important}
@@ -164,7 +240,34 @@ body{
             .wrapper{
               width: var(--width-wrapper);
               height: 100%;
-              background: orange;
+              padding: 1em;
+              @media all and (max-width: 800px) {width: 100%}
+              *{font-size: 11px}
+              ul{
+                display: flex;
+                flex-direction: column;
+                gap: 1em;
+                li{
+                  border-radius: 5px!important;
+                  border: 1px solid rgba(var(--rgb) / 18%);
+                  .collapsible-header{
+                    background: var(--background-op);
+                    color: var(--b);
+                    border: none;
+                    box-shadow: none;
+                    h1{
+                      width: 100%;
+                      display: flex;
+                      i{margin-left: auto}
+                    }
+                    p{white-space: nowrap}
+                  }
+                  .collapsible-body{
+                    background: var(--background);
+                    color: var(--b);
+                  }
+                }
+              }
             }
           }
         }
