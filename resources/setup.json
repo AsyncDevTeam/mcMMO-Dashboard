@@ -1,0 +1,105 @@
+{
+  "product": "mcMMO Dashboard",
+  "version": 1.25,
+  "releaseDate": "2023-07-01T00:00:00.000Z",
+  "css": {
+    "sizes": {
+      "wide_screen": {
+        "aside": "400px",
+        "content": "800px"
+      }
+    },
+    "colors": {
+      "topbar": {
+        "light": "237 237 237",
+        "dark": "48 55 64"
+      },
+      "main_colors": {
+        "light": "255 255 255",
+        "dark": "36 41 46"
+      },
+      "active_colors": {
+        "light": "0 123 255",
+        "dark": "111 123 255"
+      },
+      "borders": {
+        "light": "27 31 35",
+        "dark": "255 255 255"
+      },
+      "gradient": {
+        "start": "#000000",
+        "end": "#FFFFFF"
+      },
+      "chart": {
+        "tint1": "#57A0E5",
+        "tint2": "#ED6D85",
+        "tint3": "#6DBEBF",
+        "tint4": "#F2A354",
+        "tint5": "#9268F6",
+        "tint6": "#F7CF6B",
+        "tint7": "#C9CBCF"
+      }
+    }
+  },
+  "js": {
+    "settings": {
+      "force_darkMode": false,
+      "animated_skins": false,
+      "localStorage": true,
+      "refreshStorage": "h"
+    },
+    "abilities": [
+      "taming",
+      "mining",
+      "woodcutting",
+      "repair",
+      "unarmed",
+      "herbalism",
+      "excavation",
+      "archery",
+      "swords",
+      "axes",
+      "acrobatics",
+      "fishing",
+      "alchemy"
+    ],
+    "abilities_cap": {
+      "swords": 1250,
+      "axes": 1250,
+      "archery": 1000,
+      "unarmed": 1000,
+      "taming": 1500,
+      "woodcutting": 1500,
+      "excavation": 1500,
+      "repair": 1500,
+      "fishing": 1500,
+      "alchemy": 1500,
+      "herbalism": 1500,
+      "mining": 1500,
+      "acrobatics": 1500
+    },
+    "families": {
+      "Gathering": [
+        "Mining",
+        "Woodcutting",
+        "Herbalism",
+        "Fishing"
+      ],
+      "Crafting": [
+        "Repair",
+        "Alchemy",
+        "Taming",
+        "Excavation"
+      ],
+      "Combat": [
+        "Unarmed",
+        "Swords",
+        "Axes",
+        "Archery"
+      ],
+      "Adventuring": [
+        "Acrobatics"
+      ]
+    }
+  }
+}

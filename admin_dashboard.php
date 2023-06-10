@@ -62,23 +62,28 @@ session_start();
             <div class="header-settings">
                 <button class="btn-main">Save</button>
                 <label>
-                    <input type="radio" name="settings-tabs" value="settings" data-select="mcd-settings" checked>Settings
+                    <input type="radio" name="settings-tabs" value="settings" data-select="mcd-settings" checked>
+                    <text>Settings</text>
                     <span></span>
                 </label>
                 <label>
-                    <input type="radio" name="settings-tabs" value="design" data-select="mcd-design">Design
+                    <input type="radio" name="settings-tabs" value="design" data-select="mcd-design">
+                    <text>Design</text>
                     <span></span>
                 </label>
                 <label>
-                    <input type="radio" name="settings-tabs" value="language" data-select="mcd-language">Language
+                    <input type="radio" name="settings-tabs" value="language" data-select="mcd-language">
+                    <text>Language</text>
                     <span></span>
                 </label>
                 <label>
-                    <input type="radio" name="settings-tabs" value="lorem" data-select="mcd-lorem">lorem
+                    <input type="radio" name="settings-tabs" value="lorem" data-select="mcd-lorem">
+                    <text>lorem</text>
                     <span></span>
                 </label>
                 <label>
-                    <input type="radio" name="settings-tabs" value="ipsum" data-select="mcd-ipsum">ipsum
+                    <input type="radio" name="settings-tabs" value="ipsum" data-select="mcd-ipsum">
+                    <text>ipsum</text>
                     <span></span>
                 </label>
             </div>
@@ -96,9 +101,7 @@ session_start();
                 </div>
                 <div class="page-design hidden" data-name="mcd-design">
                     <div class="row" data-section="colors">
-                        <h1>
-                            <i class="fa-solid fa-brush"></i>
-                            Colors</h1>
+                        <h1><i class="fa-solid fa-brush"></i>Colors</h1>
                         <div class="sub-row">
                             <div class="col">
                                 <div class="header-col">
@@ -107,24 +110,24 @@ session_start();
                                 <div class="data-col">
                                     <div class="line">
                                         <text>Start color</text>
-                                        <label for="main-color-text">
-                                            <input type="text" id="main-color-text"
-                                                   name="db-main-color-text"
+                                        <label for="gradient-color-start-text">
+                                            <input type="text" id="gradient-color-start-text"
+                                                   name="db-gradient-color-start-text"
                                                    placeholder="#000123">
                                         </label>
-                                        <label for="main-color">
-                                            <input type="color" id="main-color" name="db-main-color">
+                                        <label for="gradient-color-start">
+                                            <input type="color" id="gradient-color-start" name="db-gradient-color-start">
                                         </label>
                                     </div>
                                     <div class="line">
                                         <text>End color</text>
-                                        <label for="secondary-color-text">
-                                            <input type="text" id="secondary-color-text"
-                                                   name="db-main-color-text"
+                                        <label for="gradient-color-end-text">
+                                            <input type="text" id="gradient-color-end-text"
+                                                   name="db-gradient-color-end-text"
                                                    placeholder="#000123">
                                         </label>
-                                        <label for="secondary-color">
-                                            <input type="color" id="secondary-color" name="db-secondary-color">
+                                        <label for="gradient-color-end">
+                                            <input type="color" id="gradient-color-end" name="db-gradient-color-end">
                                         </label>
                                     </div>
                                 </div>
@@ -207,6 +210,37 @@ session_start();
                                         </label>
                                         <label for="active-color">
                                             <input type="color" id="active-color" name="db-active-color">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub-row">
+                            <div class="col">
+                                <div class="header-col">
+                                    <h4>Tint colors (usage in charts)</h4>
+                                </div>
+                                <div class="data-col">
+                                    <div class="line">
+                                        <text>Start color</text>
+                                        <label for="gradient-color-start-text">
+                                            <input type="text" id="gradient-color-start-text"
+                                                   name="db-gradient-color-start-text"
+                                                   placeholder="#000123">
+                                        </label>
+                                        <label for="gradient-color-start">
+                                            <input type="color" id="gradient-color-start" name="db-gradient-color-start">
+                                        </label>
+                                    </div>
+                                    <div class="line">
+                                        <text>End color</text>
+                                        <label for="gradient-color-end-text">
+                                            <input type="text" id="gradient-color-end-text"
+                                                   name="db-gradient-color-end-text"
+                                                   placeholder="#000123">
+                                        </label>
+                                        <label for="gradient-color-end">
+                                            <input type="color" id="gradient-color-end" name="db-gradient-color-end">
                                         </label>
                                     </div>
                                 </div>

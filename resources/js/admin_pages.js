@@ -72,3 +72,36 @@ changeTabs(radioInit)
 initHeightPage()
 const sections = translation[translation.active].content_page.section_names['index']
 changeLanguageElement(sections, "#")
+
+// -----------------------------------------
+// All querySelector for preview element
+// -----------------------------------------
+const preview_container = document.querySelector('.preview-container')
+const view = document.querySelector('.view')
+// -----------------------------------------
+const input_color = document.querySelectorAll('input[type="color"]')
+const input_text = document.querySelectorAll('input[type="text"]')
+input_color.forEach(e => {
+    e.addEventListener('change', () => {
+        // console.log(e.id, e.value)
+        const r = document.querySelector(':root');
+        r.style.setProperty(`--${e.id}`, e.value)
+        switch (e.id) {
+            case "gradient-color-start":
+                r.style.setProperty(`--grad1`, e.value)
+                break
+            case "gradient-color-end":
+                r.style.setProperty(`--grad2`, e.value)
+                break
+        }
+    })
+});
+(() => {
+    setTimeout(() => {
+        const r = document.querySelector(':root');
+        for (let i = 1; i < 8; i++) {
+            console.log(r.style.getPropertyValue(`--tint${i}_50`))
+        }
+    }, 2000)
+})()
+

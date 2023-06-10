@@ -25,7 +25,11 @@ body{
   --width-main:70%;
   --height-topbar: 12vh!important;
 
-  header{height: auto!important}
+  header{
+    height: auto!important;
+    border: none;
+    border-bottom: 1px solid rgba(27, 31, 35, 0.15);
+  }
   main{
     width: 100%;
     @include colFlex;
@@ -82,7 +86,8 @@ body{
               z-index: -1;
             }
             input{display: none}
-            input:checked + span {background: var(--active-color)}
+            input:checked ~ span {background: var(--active-color)}
+            input:checked ~ text {color: var(--w)}
           }
 
           button{
@@ -180,16 +185,18 @@ body{
         position: relative;
         .view{
           position: absolute;
-          bottom: -30%;
+          bottom: -50%;
           width: 80%;
           height: 60vh;
           overflow: hidden;
           border-radius: 10px;
-          border: 1px solid var(--border-color);
+          border: 1px solid var(--btn-main-bg);
           font-size: 11px;
           background: linear-gradient(135deg, var(--grad1) 0%, var(--grad2) 100%) !important;
+          transition: bottom .5s;
           //box-shadow: rgba(50, 50, 93, 0.25) 0px -50px 100px -20px, rgba(0, 0, 0, 0.3) 0px -30px 60px -30px;
           box-shadow: rgb(50 50 93 / 12%) 0px -50px 100px -20px, rgb(116 116 116 / 37%) 0px -30px 60px -30px, rgb(54 54 54 / 65%) 100px 200px 100px 0;
+          &:hover{bottom: -30%}
           @media all and (max-width: 900px) {width: 90%}
           .header{
             @extend header;
