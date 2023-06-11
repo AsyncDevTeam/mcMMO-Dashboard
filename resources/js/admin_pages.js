@@ -81,11 +81,14 @@ const view = document.querySelector('.view')
 // -----------------------------------------
 const input_color = document.querySelectorAll('input[type="color"]')
 const input_text = document.querySelectorAll('input[type="text"]')
+//Todo: set id value to css variable to avoid switch case
 input_color.forEach(e => {
-    e.addEventListener('change', () => {
+    e.addEventListener('input', () => {
         // console.log(e.id, e.value)
         const r = document.querySelector(':root');
         r.style.setProperty(`--${e.id}`, e.value)
+        const parent = e.closest('.line')
+        parent.querySelector('input[type="text"]').setAttribute("value", e.value)
         switch (e.id) {
             case "gradient-color-start":
                 r.style.setProperty(`--grad1`, e.value)
@@ -99,8 +102,20 @@ input_color.forEach(e => {
 (() => {
     setTimeout(() => {
         const r = document.querySelector(':root');
+        const tint_ = document.querySelector('.tint_');
+        const container = document.querySelector('.tint_container');
         for (let i = 1; i < 8; i++) {
-            console.log(r.style.getPropertyValue(`--tint${i}_50`))
+            const clone = tint_.cloneNode(true)
+            const inp_color = clone.querySelector('input[type="color"]')
+            const inp_text = clone.querySelector('input[type="text"]')
+            clone.setAttribute('data-clone', 'in')
+            clone.querySelector('.tint_label').innerHTML = `Tint${i}`
+            inp_color.id = `tint_${i}`
+            inp_color.name = `db-tint_${i}`
+            inp_color.parentElement.setAttribute('for', `tint_${i}`)
+            inp_color.setAttribute("value", rgbaToHex(r.style.getPropertyValue(`--tint${i}_50`)))
+            inp_text.setAttribute("value", rgbaToHex(r.style.getPropertyValue(`--tint${i}_50`)))
+            container.appendChild(clone)
         }
     }, 2000)
 })()
