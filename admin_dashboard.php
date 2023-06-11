@@ -220,27 +220,16 @@ session_start();
                                 <div class="header-col">
                                     <h4>Tint colors (usage in charts)</h4>
                                 </div>
-                                <div class="data-col">
-                                    <div class="line">
-                                        <text>Start color</text>
-                                        <label for="gradient-color-start-text">
-                                            <input type="text" id="gradient-color-start-text"
-                                                   name="db-gradient-color-start-text"
+                                <div class="data-col tint_container">
+                                    <div class="line tint_" data-clone="init">
+                                        <text class="tint_label"></text>
+                                        <label for="tint_XX_-text">
+                                            <input type="text" id="tint_XX_-text"
+                                                   name="db-tint_XX_-text"
                                                    placeholder="#000123">
                                         </label>
-                                        <label for="gradient-color-start">
-                                            <input type="color" id="gradient-color-start" name="db-gradient-color-start">
-                                        </label>
-                                    </div>
-                                    <div class="line">
-                                        <text>End color</text>
-                                        <label for="gradient-color-end-text">
-                                            <input type="text" id="gradient-color-end-text"
-                                                   name="db-gradient-color-end-text"
-                                                   placeholder="#000123">
-                                        </label>
-                                        <label for="gradient-color-end">
-                                            <input type="color" id="gradient-color-end" name="db-gradient-color-end">
+                                        <label for="tint_XX">
+                                            <input type="color" id="tint_XX" name="db-tint_XX">
                                         </label>
                                     </div>
                                 </div>

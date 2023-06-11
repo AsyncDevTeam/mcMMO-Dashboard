@@ -667,6 +667,20 @@ function hexToRGBA(hex) {
     let b = parseInt(hex.substring(4, 6), 16);
     return `rgba(${r},${g},${b},${.5})`
 }
+function rgbaToHex(rgba, alpha = false) {
+    const match = rgba.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+),?\s*(\d*(?:\.\d+)?)?\)$/);
+    if (!match) {throw new Error('Invalid input: ' + rgba)}
+    const r = parseInt(match[1], 10);
+    const g = parseInt(match[2], 10);
+    const b = parseInt(match[3], 10);
+    const a = Math.max(0, Math.min(1, parseFloat(match[4] || '1')));
+    const hex = ((r << 16) | (g << 8) | b).toString(16).padStart(6, '0');
+    if (alpha) {
+        const alphaHex = Math.round(a * 255).toString(16).padStart(2, '0');
+        return `#${hex}${alphaHex}`;
+    }
+    return `#${hex}`;
+}
 
 
 function getSkin(player, type) {
