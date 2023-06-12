@@ -471,6 +471,7 @@ function databaseLoad(player){
             [10, 25, 50],
             [10, 25, 50],
         ],
+        order: [[1, 'desc']],
         scrollX: "300px",
         "paging": pagingAllow,
         "lengthChange": lengthChangeAllow,
@@ -517,17 +518,19 @@ function databaseLoad(player){
             setQuickViewPlayer(username.replace(/^#\d+\s/, ""))
         }
     });
-
     $('.player_research').on('keyup change keypress', function () {
         setTimeout(() => {
             leaderboard_table.search(this.value).draw()
             searchInChart(this.value)
         }, 100)
     } );
-    $('#leaderboard_table_length').on('change', function (e){
+    $('#leaderboard_table_length').on('change', function (){
         changeImageTable(player.players, $('#leaderboard_table').find('tbody')[0])
     })
-    $('#leaderboard_table_paginate').on('click', function (e){
+    $('#leaderboard_table_paginate').on('click', function (){
+        changeImageTable(player.players, $('#leaderboard_table').find('tbody')[0])
+    })
+    $('.row_table_def').on('click', function (){
         changeImageTable(player.players, $('#leaderboard_table').find('tbody')[0])
     })
 }

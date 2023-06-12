@@ -86,6 +86,7 @@ function tableLoad(player){
             [10, 25, 50],
             [10, 25, 50],
         ],
+        order: [[1, 'desc']],
         scrollX: "300px",
         "paging": pagingAllow,
         "lengthChange": lengthChangeAllow,
@@ -109,6 +110,9 @@ function tableLoad(player){
         changeImageTable(player.players, $('#sp-table').find('tbody')[0])
     })
     $('#sp-table_paginate').on('click', function (e){
+        changeImageTable(player.players, $('#sp-table').find('tbody')[0])
+    })
+    $('.row_table_def').on('click', function (){
         changeImageTable(player.players, $('#sp-table').find('tbody')[0])
     })
 }
