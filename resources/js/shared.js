@@ -660,12 +660,12 @@ function generateColors(numColors, value = 0) {
 
 }
 
-function hexToRGBA(hex) {
+function hexToRGBA(hex, formatted = true) {
     hex = hex.replace('#', '');
     let r = parseInt(hex.substring(0, 2), 16);
     let g = parseInt(hex.substring(2, 4), 16);
     let b = parseInt(hex.substring(4, 6), 16);
-    return `rgba(${r},${g},${b},${.5})`
+    return formatted ? `rgba(${r},${g},${b},${.5})` : `${r} ${g} ${b}`
 }
 function rgbaToHex(rgba, alpha = false) {
     const match = rgba.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+),?\s*(\d*(?:\.\d+)?)?\)$/);

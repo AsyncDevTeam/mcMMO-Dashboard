@@ -24,22 +24,21 @@ body{
   background: var(--w);
   --width-main:70%;
   --height-topbar: 12vh!important;
-
   header{
     height: auto!important;
     border: none;
     border-bottom: 1px solid rgba(27, 31, 35, 0.15);
   }
+  .swal2-top-end{top: 0!important;}
   main{
     width: 100%;
     @include colFlex;
     justify-content: flex-start;
-    height: calc(var(--height-window) - var(--height-topbar));
+    height: var(--height-window);
     position: absolute;
-    top: var(--height-topbar);
     overflow-x: clip;
     box-shadow: none!important;
-    padding:0 1em 1em;
+    padding:1em;
     gap: 1em;
     .notify{
       background: var(--w);
@@ -66,7 +65,7 @@ body{
         .header-settings{
           @include rowFlex;
           gap: 1em;
-          background: var(--btn-main-bg);
+          background: var(--w);
           padding: 1em;
           position: sticky;
           top: 0;
@@ -186,8 +185,8 @@ body{
         .view{
           position: absolute;
           bottom: -50%;
-          width: 80%;
-          height: 60vh;
+          width: 90%;
+          height: 70vh;
           overflow: hidden;
           border-radius: 10px;
           border: 1px solid var(--btn-main-bg);
@@ -202,7 +201,8 @@ body{
             @extend header;
             position: relative;
             border: none;
-            img{width: 36px!important;}
+            img{width: 36px!important}
+            background: var(--w)!important;
             a{
               cursor: pointer;
               display: flex;
@@ -279,16 +279,13 @@ body{
           }
         }
       }
-
-
-
-
-
       hr{
         width: 100%;
-        border:1px solid var(--w);
-        background: var(--w);
+        border: 1px solid var(--border-color);
+        background: var(--border-color);
         border-right: 1000px;
+        margin: 1em 0;
+        border-radius: 1000px;
       }
     }
   }

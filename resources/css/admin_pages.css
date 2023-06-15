@@ -188,6 +188,9 @@ body header, body main .setup-wrapper .preview-container .view .header {
   border: none;
   border-bottom: 1px solid rgba(27, 31, 35, 0.15);
 }
+body .swal2-top-end {
+  top: 0 !important;
+}
 body main {
   width: 100%;
   display: flex;
@@ -196,12 +199,11 @@ body main {
   align-content: center;
   flex-direction: column;
   justify-content: flex-start;
-  height: calc(var(--height-window) - var(--height-topbar));
+  height: var(--height-window);
   position: absolute;
-  top: var(--height-topbar);
   overflow-x: clip;
   box-shadow: none !important;
-  padding: 0 1em 1em;
+  padding: 1em;
   gap: 1em;
 }
 body main .notify {
@@ -241,7 +243,7 @@ body main .setup-wrapper .tabs-container-settings .header-settings {
   align-content: center;
   flex-direction: row;
   gap: 1em;
-  background: var(--btn-main-bg);
+  background: var(--w);
   padding: 1em;
   position: sticky;
   top: 0;
@@ -387,8 +389,8 @@ body main .setup-wrapper .preview-container {
 body main .setup-wrapper .preview-container .view {
   position: absolute;
   bottom: -50%;
-  width: 80%;
-  height: 60vh;
+  width: 90%;
+  height: 70vh;
   overflow: hidden;
   border-radius: 10px;
   border: 1px solid var(--btn-main-bg);
@@ -408,6 +410,7 @@ body main .setup-wrapper .preview-container .view:hover {
 body main .setup-wrapper .preview-container .view .header {
   position: relative;
   border: none;
+  background: var(--w) !important;
 }
 body main .setup-wrapper .preview-container .view .header img {
   width: 36px !important;
@@ -507,9 +510,11 @@ body main .setup-wrapper .preview-container .view .content .wrapper ul li .colla
 }
 body main .setup-wrapper hr {
   width: 100%;
-  border: 1px solid var(--w);
-  background: var(--w);
+  border: 1px solid var(--border-color);
+  background: var(--border-color);
   border-right: 1000px;
+  margin: 1em 0;
+  border-radius: 1000px;
 }
 
 /*# sourceMappingURL=admin_pages.css.map */

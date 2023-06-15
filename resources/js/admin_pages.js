@@ -78,45 +78,129 @@ changeLanguageElement(sections, "#")
 // -----------------------------------------
 const preview_container = document.querySelector('.preview-container')
 const view = document.querySelector('.view')
+const container_chart = document.querySelector('.tint_container');
+let chart_example
 // -----------------------------------------
 const input_color = document.querySelectorAll('input[type="color"]')
 const input_text = document.querySelectorAll('input[type="text"]')
-//Todo: set id value to css variable to avoid switch case
-input_color.forEach(e => {
-    e.addEventListener('input', () => {
-        // console.log(e.id, e.value)
-        const r = document.querySelector(':root');
-        r.style.setProperty(`--${e.id}`, e.value)
-        const parent = e.closest('.line')
-        parent.querySelector('input[type="text"]').setAttribute("value", e.value)
+const modifySetup = function(e) {
+    // console.log(e.id, e.value)
+    const r = document.querySelector(':root')
+    r.style.setProperty(e.id, e.value)
+
+    const parent = e.closest('.line')
+    parent.querySelector('input[type="text"]').setAttribute("value", e.value)
+
+    if(e.id.includes('--tint')) {
+        chart_example.data.datasets[0].backgroundColor = generateColors(7)
+        chart_example.update()
+    }else{
         switch (e.id) {
-            case "gradient-color-start":
-                r.style.setProperty(`--grad1`, e.value)
+            case "tint_gradient":
+                let inp_colors = container_chart.querySelectorAll('input[type="color"]')
+                const matchingColors = getMatchingColors(e.value); // Returns an array of 6 matching colors in the same tone as red
+                for (let i = 0; i < matchingColors.length; i++) {
+                    inp_colors[i].value = matchingColors[i]
+                    r.style.setProperty(`--tint${i}`, matchingColors[i])
+                }
+                chart_example.data.datasets[0].backgroundColor = generateColors(7)
+                chart_example.update()
                 break
-            case "gradient-color-end":
-                r.style.setProperty(`--grad2`, e.value)
+            case "main-color":
+                r.style.setProperty("--tinted-main-light-color", hexToRGBA(e.value, false))
+                break
+            case "main-color-dark":
+                r.style.setProperty("--tinted-main-dark-color", hexToRGBA(e.value, false))
+                break
+            case "secondary-color":
+                r.style.setProperty("--topbar-light-color", hexToRGBA(e.value, false))
                 break
         }
-    })
-});
+    }
+
+};
+//Todo: set id value to css variable to avoid switch case
+input_color.forEach(e => {e.addEventListener('input', function(){modifySetup(e)})});
 (() => {
     setTimeout(() => {
         const r = document.querySelector(':root');
         const tint_ = document.querySelector('.tint_');
-        const container = document.querySelector('.tint_container');
         for (let i = 1; i < 8; i++) {
             const clone = tint_.cloneNode(true)
             const inp_color = clone.querySelector('input[type="color"]')
             const inp_text = clone.querySelector('input[type="text"]')
             clone.setAttribute('data-clone', 'in')
             clone.querySelector('.tint_label').innerHTML = `Tint${i}`
-            inp_color.id = `tint_${i}`
+            inp_color.id = `--tint${i}`
             inp_color.name = `db-tint_${i}`
             inp_color.parentElement.setAttribute('for', `tint_${i}`)
             inp_color.setAttribute("value", rgbaToHex(r.style.getPropertyValue(`--tint${i}_50`)))
+            inp_color.addEventListener('input', function(){modifySetup(inp_color)})
             inp_text.setAttribute("value", rgbaToHex(r.style.getPropertyValue(`--tint${i}_50`)))
-            container.appendChild(clone)
+            container_chart.appendChild(clone)
         }
     }, 2000)
-})()
+})();
+(() => {
+    const chart = document.getElementById("chart_example").getContext("2d");
+    chart_example = new Chart(chart, {
+        type: 'bar',
+        data: {
+            labels: ["HTML", "CSS", "JAVASCRIPT", "CHART.JS", "JQUERY", "BOOTSTRP"],
+            datasets: [{
+                label : 'All Abilities (exp)',
+                data: [20, 40, 30, 35, 30, 20],
+                hidden: false,
+                backgroundColor: generateColors(7)
+            }],
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {display: false}
+            }
+        }
+    });
+})();
+function getMatchingColors(hexColor) {
+    // Convert hex color code to RGB values
+    const red = parseInt(hexColor.slice(1, 3), 16);
+    const green = parseInt(hexColor.slice(3, 5), 16);
+    const blue = parseInt(hexColor.slice(5, 7), 16);
+
+    // Calculate color step
+    const maxColorValue = Math.max(red, green, blue);
+    const minColorValue = Math.min(red, green, blue);
+    const range = maxColorValue - minColorValue;
+    const step = range === 0 ? 0 : Math.round(range / 5);
+
+    // Generate matching colors
+    const matchingColors = [];
+    for (let i = 0; i < 8; i++) {
+        const newRed = Math.min(red + (i * step), 255);
+        const newGreen = Math.min(green + (i * step), 255);
+        const newBlue = Math.min(blue + (i * step), 255);
+        const newColor = `#${newRed.toString(16)}${newGreen.toString(16)}${newBlue.toString(16)}`;
+        matchingColors.push(newColor);
+    }
+
+    return matchingColors;
+}
+
+const saveForm = document.querySelector('#saveForm')
+saveForm.onclick = function (){
+    const inputs = form.querySelectorAll('input');
+    const values = {};
+    inputs.forEach(input => {
+        values[input.name] = input.value;
+    });
+    console.log(values);
+
+}
+
 
