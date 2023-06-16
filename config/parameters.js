@@ -897,6 +897,7 @@ const translation = {
         }
     }
 }
+// console.log(JSON.stringify(translation))
 //Change colors
 const settings = {
     //Set force_darkMode to true to enable dark mode by default

@@ -325,6 +325,68 @@ body main .setup-wrapper .tabs-container-settings form .sub-row p {
   margin-top: 0.5em;
   color: var(--grad1);
 }
+body main .setup-wrapper .tabs-container-settings form .row .slider-themes,
+body main .setup-wrapper .tabs-container-settings form .sub-row .slider-themes {
+  padding: 1em 0.5em;
+  display: flex;
+  overflow-x: auto;
+  gap: 1em;
+}
+body main .setup-wrapper .tabs-container-settings form .row .slider-themes label,
+body main .setup-wrapper .tabs-container-settings form .sub-row .slider-themes label {
+  cursor: pointer;
+}
+body main .setup-wrapper .tabs-container-settings form .row .slider-themes label input,
+body main .setup-wrapper .tabs-container-settings form .sub-row .slider-themes label input {
+  display: none;
+}
+body main .setup-wrapper .tabs-container-settings form .row .slider-themes label input:checked ~ .card,
+body main .setup-wrapper .tabs-container-settings form .sub-row .slider-themes label input:checked ~ .card {
+  outline: 2px solid var(--active-color);
+  outline-offset: 4px;
+}
+body main .setup-wrapper .tabs-container-settings form .row .slider-themes .card,
+body main .setup-wrapper .tabs-container-settings form .sub-row .slider-themes .card {
+  overflow: hidden;
+  border: 1px solid #e2e2e2;
+  min-width: 200px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  border-radius: 10px;
+}
+body main .setup-wrapper .tabs-container-settings form .row .slider-themes .card .banner-top,
+body main .setup-wrapper .tabs-container-settings form .sub-row .slider-themes .card .banner-top {
+  height: 100%;
+  width: 100%;
+}
+body main .setup-wrapper .tabs-container-settings form .row .slider-themes .card .line,
+body main .setup-wrapper .tabs-container-settings form .sub-row .slider-themes .card .line {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 1em;
+  padding: 1em;
+}
+body main .setup-wrapper .tabs-container-settings form .row .slider-themes .card .line .raw,
+body main .setup-wrapper .tabs-container-settings form .sub-row .slider-themes .card .line .raw {
+  margin-left: auto;
+  width: fit-content;
+}
+body main .setup-wrapper .tabs-container-settings form .row .slider-themes .card.mc-blue .banner-top,
+body main .setup-wrapper .tabs-container-settings form .sub-row .slider-themes .card.mc-blue .banner-top {
+  background: linear-gradient(135deg, #4B86B4 0%, #2B3856 100%) fixed !important;
+}
+body main .setup-wrapper .tabs-container-settings form .row .slider-themes .card.mc-green .banner-top,
+body main .setup-wrapper .tabs-container-settings form .sub-row .slider-themes .card.mc-green .banner-top {
+  background: linear-gradient(135deg, #80BD94 0%, #4B6E56 100%) fixed !important;
+}
 body main .setup-wrapper .tabs-container-settings form .sub-row {
   width: 100%;
   flex-direction: row;
@@ -376,7 +438,7 @@ body main .setup-wrapper .tabs-container-settings form .sub-row .col .data-col .
 }
 body main .setup-wrapper .preview-container {
   height: var(--height-preview);
-  background: linear-gradient(135deg, var(--grad1) 0%, var(--grad2) 100%) fixed !important;
+  background: linear-gradient(135deg, var(--grad1_op) 0%, var(--grad2_op) 100%) fixed !important;
   width: 100%;
   display: flex;
   justify-content: center;

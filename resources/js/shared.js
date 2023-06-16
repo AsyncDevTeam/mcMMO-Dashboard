@@ -94,7 +94,6 @@ if(ss_dm === 'true' || settings.force_darkMode){
     changeLanguageElement(tabs, class_)
 }());
 function changeLanguageElement(entry, selector, s = null){
-
     if(entry !== undefined){
         if(s){
             Object.entries(entry).forEach(e => {
@@ -115,6 +114,29 @@ function changeLanguageElement(entry, selector, s = null){
                 }
             })
         }
+    }
+}
+const fLoadLanguage = async() => {
+    const label_store = 'fLoadLanguage'
+    try {
+        const response = await fetch('resources/language.json');
+        const data = await response.json()
+        if (data === null) {
+            setToast('error', 'Failed to fetch language.json', 0);
+        } else {
+            return {
+                status: 'success',
+                data: data,
+                from: label_store
+            };
+        }
+    } catch (error) {
+        setToast('error', 'Error while fetching language.json', 0)
+        return {
+            status: 'failed',
+            data: null,
+            from: label_store
+        };
     }
 }
 const fLoadServerInfos = async() => {
@@ -319,6 +341,22 @@ function isImageEmpty(imageDataURL) {
         };
         img.src = imageDataURL;
     });
+}
+
+fLoadLanguage().then(async infos => {
+    if (infos !== false) {
+        applyLanguage(infos)
+    }
+});
+
+const applyLanguage = function (data) {
+    //TODO: refactor function
+    const active = 'FR'
+    const json = data.data[active]
+    console.log(json)
+    Object.keys(json).forEach(e => {
+        // console.log(e)
+    })
 }
 
 changeLanguage(translation.active)

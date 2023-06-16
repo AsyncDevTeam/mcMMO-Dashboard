@@ -65,8 +65,8 @@ session_start();
                     <span></span>
                 </label>
                 <label>
-                    <input type="radio" name="settings-tabs" value="ipsum" data-select="mcd-ipsum">
-                    <text>ipsum</text>
+                    <input type="radio" name="settings-tabs" value="themes" data-select="mcd-themes">
+                    <text>Themes</text>
                     <span></span>
                 </label>
             </div>
@@ -231,7 +231,7 @@ session_start();
                             <select name="db-language" id="setup-lang">
                                 <option value="EN">EN</option>
                                 <option value="FR">FR</option>
-                                <option value="GE">GE</option>
+                                <option value="DE">DE</option>
                             </select>
                         </label>
                     </div>
@@ -282,7 +282,7 @@ session_start();
                         </div>
                     </div>
                 </div>
-                <div class="page-ipsum hidden" data-name="mcd-ipsum">
+                <div class="page-themes hidden" data-name="mcd-themes">
                     <div class="row" data-section="themes">
                         <h1>
                             <i class="fa-solid fa-palette"></i>
@@ -292,6 +292,46 @@ session_start();
                             Go on <a href="mcmmo.nicolasvaillant.net/themes">mcmmo.nicolasvaillant.net/themes</a>
                             to get your first theme!
                         </p>
+                        <div class="sub-row">
+                            <div class="slider-themes">
+                                <label for="theme-blue">
+                                    <input type="checkbox" name="themes-radio" class="themes-suggestion" id="theme-blue">
+                                    <div class="mc-blue card">
+                                        <img class="banner-top" src="https://mcmmo.nicolasvaillant.net/resources/themes/mc/blue/mc-blue.png" alt="theme-blue">
+                                        <span class="line">
+                                        <text>Bleu Céleste</text>
+                                    </span>
+                                    </div>
+                                </label>
+                                <label for="theme-green">
+                                    <input type="checkbox" name="themes-radio" class="themes-suggestion" id="theme-green">
+                                    <div class="mc-green card">
+                                        <img class="banner-top" src="https://mcmmo.nicolasvaillant.net/resources/themes/mc/green/mc-green.png" alt="theme-green">
+                                        <span class="line">
+                                        <text>Vert Printanier</text>
+                                    </span>
+                                    </div>
+                                </label>
+                                <label for="theme-red">
+                                    <input type="checkbox" name="themes-radio" class="themes-suggestion" id="theme-red">
+                                    <div class="mc-red card">
+                                        <img class="banner-top" src="https://mcmmo.nicolasvaillant.net/resources/themes/mc/red/mc-red.png" alt="theme-green">
+                                        <span class="line">
+                                        <text>Rouge Ardent</text>
+                                    </span>
+                                    </div>
+                                </label>
+                                <label for="theme-orange">
+                                    <input type="checkbox" name="themes-radio" class="themes-suggestion" id="theme-orange">
+                                    <div class="mc-orange card">
+                                        <img class="banner-top" src="https://mcmmo.nicolasvaillant.net/resources/themes/mc/orange/mc-orange.png" alt="theme-orange">
+                                        <span class="line">
+                                        <text>Orange Cuivré</text>
+                                    </span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
                         <label for=""> Add a theme
                             <input type="file" placeholder="Add a theme">
                         </label>

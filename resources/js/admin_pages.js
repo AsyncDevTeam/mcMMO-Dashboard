@@ -78,6 +78,7 @@ changeLanguageElement(sections, "#")
 // -----------------------------------------
 const preview_container = document.querySelector('.preview-container')
 const view = document.querySelector('.view')
+const setup_lang = document.querySelector('#setup-lang')
 const container_chart = document.querySelector('.tint_container');
 let chart_example
 // -----------------------------------------
@@ -96,6 +97,12 @@ const modifySetup = function(e) {
         chart_example.update()
     }else{
         switch (e.id) {
+            case "--grad1":
+                r.style.setProperty('--grad1_op', hexToRGBA(e.value))
+                break
+            case "--grad2":
+                r.style.setProperty('--grad2_op', hexToRGBA(e.value))
+                break
             case "tint_gradient":
                 let inp_colors = container_chart.querySelectorAll('input[type="color"]')
                 const matchingColors = getMatchingColors(e.value); // Returns an array of 6 matching colors in the same tone as red
@@ -121,6 +128,10 @@ const modifySetup = function(e) {
 };
 //Todo: set id value to css variable to avoid switch case
 input_color.forEach(e => {e.addEventListener('input', function(){modifySetup(e)})});
+setup_lang.addEventListener('change', () => {
+    console.log(setup_lang.value)
+    changeLanguage(setup_lang.value)
+});
 (() => {
     setTimeout(() => {
         const r = document.querySelector(':root');
@@ -192,6 +203,7 @@ function getMatchingColors(hexColor) {
     return matchingColors;
 }
 
+
 const saveForm = document.querySelector('#saveForm')
 saveForm.onclick = function (){
     const inputs = form.querySelectorAll('input');
@@ -200,7 +212,20 @@ saveForm.onclick = function (){
         values[input.name] = input.value;
     });
     console.log(values);
-
 }
 
-
+const themes_suggestion = document.querySelectorAll('.themes-suggestion')
+let ar = []
+themes_suggestion.forEach(a => {
+    ar.push(a)
+    a.addEventListener('click', (e) => {
+        ar.forEach(element => {
+            let element_id
+            if(element.checked)
+                element_id = element.id
+            if(element_id !==e.target.id){
+                element.checked = false
+            }
+        })
+    });
+});

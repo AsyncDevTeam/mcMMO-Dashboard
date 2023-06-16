@@ -131,6 +131,54 @@ body{
               margin-top: .5em;
               color: var(--grad1);
             }
+            .slider-themes{
+              padding: 1em .5em;
+              display: flex;
+              overflow-x: auto;
+              gap: 1em;
+              label{
+                cursor: pointer;
+                input{display: none}
+                input:checked ~ .card {
+                  outline: 2px solid var(--active-color);
+                  outline-offset: 4px;
+                }
+              }
+              .card{
+                overflow: hidden;
+                border: 1px solid #e2e2e2;
+                min-width: 200px;
+                width: 100%;
+                height: auto;
+                @include centerFlex;
+                flex-direction: column;
+                border-radius: 10px;
+                .banner-top{
+                  height: 100%;
+                  width: 100%;
+                }
+                .line{
+                  width: 100%;
+                  @include centerFlex;
+                  gap: 1em;
+                  padding: 1em;
+                  .raw{
+                    margin-left: auto;
+                    width: fit-content;
+                  }
+                }
+                &.mc-blue{
+                  .banner-top{
+                    background: linear-gradient(135deg, #4B86B4 0%, #2B3856 100%) fixed !important;
+                  }
+                }
+                &.mc-green{
+                  .banner-top{
+                    background: linear-gradient(135deg, #80BD94 0%, #4B6E56 100%) fixed !important;
+                  }
+                }
+              }
+            }
           }
           .sub-row{
             width: 100%;
@@ -177,7 +225,7 @@ body{
       }
       .preview-container{
         height: var(--height-preview);
-        background: linear-gradient(135deg, var(--grad1) 0%, var(--grad2) 100%) fixed !important;
+        background: linear-gradient(135deg, var(--grad1_op) 0%, var(--grad2_op) 100%) fixed !important;
         width: 100%;
         @include colFlex;
         justify-content: flex-end;
