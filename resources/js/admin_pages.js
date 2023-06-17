@@ -80,10 +80,19 @@ const preview_container = document.querySelector('.preview-container')
 const view = document.querySelector('.view')
 const setup_lang = document.querySelector('#setup-lang')
 const container_chart = document.querySelector('.tint_container');
+const pr_title = document.querySelector('.pr-title');
 let chart_example
 // -----------------------------------------
+const db_title = document.querySelector('input[name="db-title"]');
 const input_color = document.querySelectorAll('input[type="color"]')
 const input_text = document.querySelectorAll('input[type="text"]')
+db_title.addEventListener('keyup', (e) => {
+    if(db_title.value.length === 0){
+        pr_title.innerText = "mcMMO Dashboard"
+    }else{
+        pr_title.innerText = db_title.value
+    }
+})
 const modifySetup = function(e) {
     // console.log(e.id, e.value)
     const r = document.querySelector(':root')
@@ -157,10 +166,10 @@ setup_lang.addEventListener('change', () => {
     chart_example = new Chart(chart, {
         type: 'bar',
         data: {
-            labels: ["HTML", "CSS", "JAVASCRIPT", "CHART.JS", "JQUERY", "BOOTSTRP"],
+            labels: ["Player 1", "Player 2", "Player 3", "Player 4", "Player 5", "Player 6"],
             datasets: [{
                 label : 'All Abilities (exp)',
-                data: [20, 40, 30, 35, 30, 20],
+                data: [35, 40, 35, 35, 30, 45],
                 hidden: false,
                 backgroundColor: generateColors(7)
             }],
@@ -202,7 +211,6 @@ function getMatchingColors(hexColor) {
 
     return matchingColors;
 }
-
 
 const saveForm = document.querySelector('#saveForm')
 saveForm.onclick = function (){

@@ -29,7 +29,7 @@ body{
     border: none;
     border-bottom: 1px solid rgba(27, 31, 35, 0.15);
   }
-  .swal2-top-end{top: 0!important;}
+  .swal2-top-end{top: 0!important}
   main{
     width: 100%;
     @include colFlex;
@@ -60,8 +60,11 @@ body{
         width: 100%;
       }
       .tabs-container-settings{
+        font-family:sans-serif!important;
         width: 100%;
         height: var(--height-form);
+        h1,h2,h3,text{font-weight: 100!important;}
+        h4{font-weight: 500!important;}
         .header-settings{
           @include rowFlex;
           gap: 1em;
@@ -98,7 +101,11 @@ body{
           //@include colFlex;
           width: 100%;
           height: 100%;
-          [class^="page-"] {width: 100%}
+          [class^="page-"] {
+            display: flex;
+            flex-direction: column;
+            gap: 2em;
+          }
           padding: 1em;
           overflow-y: auto;
           .row,
@@ -106,12 +113,13 @@ body{
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            gap: 1em;
+            gap: .5em;
             h1{
               display: flex;
               align-items: baseline;
               flex-direction: row;
-              gap: 0.5em;
+              gap: .5em;
+              margin-bottom: .5em;
             }
             label{
               @include rowFlex;
@@ -125,6 +133,10 @@ body{
                 border: 1px solid var(--border-color);
                 border-radius: 5px;
                 padding: 0.5em 1em;
+              }
+              &:has(input[type="checkbox"]){
+                cursor: pointer;
+                width: fit-content;
               }
             }
             p{
@@ -220,10 +232,14 @@ body{
                 }
               }
             }
+            &.col{
+              flex-direction: column;
+            }
           }
         }
       }
       .preview-container{
+        font-family: 'Noto Sans Mende Kikakui', sans-serif!important;
         height: var(--height-preview);
         background: linear-gradient(135deg, var(--grad1_op) 0%, var(--grad2_op) 100%) fixed !important;
         width: 100%;
@@ -332,7 +348,7 @@ body{
         border: 1px solid var(--border-color);
         background: var(--border-color);
         border-right: 1000px;
-        margin: 1em 0;
+        margin: .5em 0;
         border-radius: 1000px;
       }
     }

@@ -60,8 +60,8 @@ session_start();
                     <span></span>
                 </label>
                 <label>
-                    <input type="radio" name="settings-tabs" value="lorem" data-select="mcd-lorem">
-                    <text>lorem</text>
+                    <input type="radio" name="settings-tabs" value="section" data-select="mcd-sections">
+                    <text>Sections</text>
                     <span></span>
                 </label>
                 <label>
@@ -80,6 +80,44 @@ session_start();
                             <input type="text" placeholder="Title" name="db-title">
                         </label>
                         <p>Current name is <span>mcMMO Dashboard</span>.</p>
+                    </div>
+                    <div class="row">
+                        <h1>
+                            <i class="fa-solid fa-person-rays"></i>
+                            Animated skin</h1>
+                        <label for="animated-skin">
+                            <input type="checkbox" name="db-animated-skin" id="animated-skin">
+                            Enable/disable animated skin.
+                        </label>
+                        <p>Enable or disable skin animation in user page. If enabled, user's skin will automatically loads with a random <animation class=""></animation></p>
+                    </div>
+                    <div class="row">
+                        <h1>
+                            <i class="fa-solid fa-circle-half-stroke"></i>
+                            Dark mode</h1>
+                        <label for="dark-mode">
+                            <input type="checkbox" name="db-dark-mode" id="dark-mode">
+                            Enable/disable default dark mode.
+                        </label>
+                        <p>Enable or disable default dark mode for all pages.</p>
+                    </div>
+                    <div class="row">
+                        <h1>
+                            <i class="fa-solid fa-box-archive"></i>
+                            Local Storage</h1>
+                        <label for="local-storage">
+                            <input type="checkbox" name="db-local-storage" id="local-storage">
+                            Enable/disable local storage.
+                        </label>
+                        <p>Enable data storage in your localStorage (persistent when browser closed), or in sessionStorage (volatile).</p>
+                        <label for="local-storage-refresh">Choose refresh interval.
+                            <select name="db-local-storage-refresh" id="local-storage-refresh">
+                                <option value="h">hourly</option>
+                                <option value="6h">six-hourly</option>
+                                <option value="12h">twelve-hourly</option>
+                                <option value="d">daily</option>
+                            </select>
+                        </label>
                     </div>
                 </div>
                 <div class="page-design hidden" data-name="mcd-design">
@@ -229,14 +267,14 @@ session_start();
                             Language</h1>
                         <label for="setup-lang">Choose the language to use.
                             <select name="db-language" id="setup-lang">
-                                <option value="EN">EN</option>
-                                <option value="FR">FR</option>
-                                <option value="DE">DE</option>
+                                <option value="EN">English</option>
+                                <option value="FR">French</option>
+                                <option value="DE">Deutsch</option>
                             </select>
                         </label>
                     </div>
                 </div>
-                <div class="page-lorem hidden" data-name="mcd-lorem">
+                <div class="page-sections hidden" data-name="mcd-sections">
                     <div class="row" data-section="sections">
                         <h1>
                             <i class="fa-solid fa-sort"></i>
