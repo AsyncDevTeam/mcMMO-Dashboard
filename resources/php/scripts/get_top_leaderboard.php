@@ -56,10 +56,7 @@ catch(MinecraftPingException $e)
 }
 finally
 {
-    if($query)
-    {
-        $query->Close();
-    }
+    $query?->Close();
 }
 
 $error = $error || ($status == null);
