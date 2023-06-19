@@ -22,9 +22,7 @@ try {
 } catch (MinecraftPingException $e) {
     $error = true;
 } finally {
-    if ($query) {
-        $query->Close();
-    }
+    $query?->Close();
 }
 
 $error = $error || ($status == null);

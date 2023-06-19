@@ -43,7 +43,7 @@ You must provide :
 
 ## ⚠️ Requirements
 
-Your hosting machine must have a web server installed (ex: Apache or Nginx) with PHP enabled.
+Your hosting machine must have a web server installed (ex: Apache or Nginx) with PHP version 8 enabled.
 
 **Moreover, you have to make sure that the PHP driver of the mcMMO database you are using is activated.**
 
