@@ -86,6 +86,7 @@ function tableLoad(player){
             [10, 25, 50],
             [10, 25, 50],
         ],
+        order: [[1, 'desc']],
         scrollX: "300px",
         "paging": pagingAllow,
         "lengthChange": lengthChangeAllow,
@@ -102,13 +103,16 @@ function tableLoad(player){
     $('#sp-table tbody tr').on('click', function () {
         window.open(`user.php?q=${this.querySelector('img').dataset.user}`, '_self')
     })
-    $('#sp-table_length').on('change', function (e){
+    $('#sp-table_length').on('change', function (){
         changeImageTable(player.players, $('#sp-table').find('tbody')[0])
     })
-    $('#sp-table_filter input').on('keyup', function (e){
+    $('#sp-table_filter input').on('keyup', function (){
         changeImageTable(player.players, $('#sp-table').find('tbody')[0])
     })
-    $('#sp-table_paginate').on('click', function (e){
+    $('#sp-table_paginate').on('click', function (){
+        changeImageTable(player.players, $('#sp-table').find('tbody')[0])
+    })
+    $('.row_table_def').on('click', function (){
         changeImageTable(player.players, $('#sp-table').find('tbody')[0])
     })
 }
