@@ -129,7 +129,8 @@ const fLoadUser = async () => {
             if(settings.localStorage){
                 localStorage.setItem(label_store,
                     JSON.stringify({
-                        'time': checkUnixTimestamp(),
+                        expiration: checkUnixTimestamp(),
+                        expiration_date: unixTimestampToDate(checkUnixTimestamp(Math.floor(Date.now() / 1000), true).toString()),
                         status: 'success',
                         data: json,
                         from: label_store
@@ -138,7 +139,8 @@ const fLoadUser = async () => {
             }else{
                 sessionStorage.setItem(label_store,
                     JSON.stringify({
-                        time: checkUnixTimestamp(),
+                        expiration: checkUnixTimestamp(),
+                        expiration_date: unixTimestampToDate(checkUnixTimestamp(Math.floor(Date.now() / 1000), true).toString()),
                         status: 'success',
                         data: json,
                         from: label_store

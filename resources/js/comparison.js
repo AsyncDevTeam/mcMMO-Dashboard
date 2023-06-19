@@ -26,7 +26,7 @@ fLoadServerInfos().then(async infos => {
             let fLoadLeaderboard_
             const storageType = settings.localStorage ? localStorage : sessionStorage;
             const fLoadLeaderboard_storage = JSON.parse(storageType.getItem('fLoadLeaderboard'));
-            if (fLoadLeaderboard_storage !== null && checkUnixTimestamp(fLoadLeaderboard_storage.time)) {
+            if (fLoadLeaderboard_storage !== null && checkUnixTimestamp(fLoadLeaderboard_storage.expiration)) {
                 fLoadLeaderboard_ = await fLoadLeaderboard();
             } else {
                 fLoadLeaderboard_ = fLoadLeaderboard_storage ?? await fLoadLeaderboard();
@@ -51,7 +51,7 @@ fLoadServerInfos().then(async infos => {
             let fLoadTopLeaderboard_
             const storageType_TopLdb = settings.localStorage ? localStorage : sessionStorage;
             const fLoadTopLeaderboard_storage = JSON.parse(storageType_TopLdb.getItem('fLoadTopLeaderboard'));
-            if (fLoadTopLeaderboard_storage !== null && checkUnixTimestamp(fLoadTopLeaderboard_storage.time)) {
+            if (fLoadTopLeaderboard_storage !== null && checkUnixTimestamp(fLoadTopLeaderboard_storage.expiration)) {
                 fLoadTopLeaderboard_ = await fLoadTopLeaderboard();
             } else {
                 fLoadTopLeaderboard_ = fLoadTopLeaderboard_storage ?? await fLoadTopLeaderboard();

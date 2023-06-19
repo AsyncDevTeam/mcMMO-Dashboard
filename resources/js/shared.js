@@ -29,6 +29,7 @@ let exact_type = window.location.pathname.split("/").at(-1).split('.')[0]
 exact_type.length === 0 ? exact_type = 'index' : exact_type;
 languageSelect = translation.active
 website_title.innerHTML = translation[languageSelect].title_header
+let sortClick = true
 //When page is loaded. There's only one window.onload across all files
 window.onload = function (){
     /**
@@ -395,7 +396,8 @@ const fLoadTopLeaderboard = async() => {
             if(settings.localStorage){
                 localStorage.setItem(label_store,
                     JSON.stringify({
-                        'time': checkUnixTimestamp(),
+                        expiration: checkUnixTimestamp(),
+                        expiration_date: unixTimestampToDate(checkUnixTimestamp(Math.floor(Date.now() / 1000), true).toString()),
                         status: 'success',
                         data: leaderboard,
                         from: label_store
@@ -404,7 +406,8 @@ const fLoadTopLeaderboard = async() => {
             }else{
                 sessionStorage.setItem(label_store,
                     JSON.stringify({
-                        time: checkUnixTimestamp(),
+                        expiration: checkUnixTimestamp(),
+                        expiration_date: unixTimestampToDate(checkUnixTimestamp(Math.floor(Date.now() / 1000), true).toString()),
                         status: 'success',
                         data: leaderboard,
                         from: label_store
@@ -455,8 +458,8 @@ const fLoadAbilities = async() => {
         };
     }
 }
-
 const fLoadLeaderboard = async() => {
+    //TODO: explanation from this function to top to write
     const label_store = 'fLoadLeaderboard'
     try {
         const response = await fetch(requestLeaderboard, {
@@ -473,7 +476,8 @@ const fLoadLeaderboard = async() => {
             if(settings.localStorage){
                 localStorage.setItem(label_store,
                     JSON.stringify({
-                        'time': checkUnixTimestamp(),
+                        expiration: checkUnixTimestamp(),
+                        expiration_date: unixTimestampToDate(checkUnixTimestamp(Math.floor(Date.now() / 1000), true).toString()),
                         status: 'success',
                         data: leaderboard,
                         from: label_store
@@ -482,7 +486,8 @@ const fLoadLeaderboard = async() => {
             }else{
                 sessionStorage.setItem(label_store,
                     JSON.stringify({
-                        time: checkUnixTimestamp(),
+                        expiration: checkUnixTimestamp(),
+                        expiration_date: unixTimestampToDate(checkUnixTimestamp(Math.floor(Date.now() / 1000), true).toString()),
                         status: 'success',
                         data: leaderboard,
                         from: label_store
@@ -504,7 +509,14 @@ const fLoadLeaderboard = async() => {
         };
     }
 }
-function checkUnixTimestamp(input) {
+function checkUnixTimestamp(input, return_date= false) {
+    /**
+     * Function: checkUnixTimestamp
+     * Description: This function check timestamp, to create date or verify if input date is over current date
+     * @input:
+     * Next call: none
+     * Return the current date in a Unix timestamp, or the result of a comparison of the current date and the provided one
+     * */
     let delay
     if (settings.refreshStorage === 'h') {
         delay = 60 * 60; // 1 hour
@@ -520,12 +532,29 @@ function checkUnixTimestamp(input) {
     const currentUnixTimestamp = Math.floor(Date.now() / 1000);
     const limit = input + delay;
     if (input) {
-        return currentUnixTimestamp > limit;
+        const date1 = new Date(currentUnixTimestamp * 1000)
+        const date2 = new Date(limit * 1000)
+        return (return_date) ? date2 : date1.getTime() > date2.getTime()
     } else {
         return currentUnixTimestamp;
     }
 }
-
+function unixTimestampToDate(timestamp) {
+    /**
+     * Function: unixTimestampToDate
+     * Description: Conversion of timestamp format to DD/MM/YY HH:mm
+     * @timestamp: Unix timestamp date input
+     * Next call: none
+     * return: none
+     * */
+    const date = new Date(timestamp);
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear().toString().substr(-2);
+    const hours = date.getHours().toString().padStart(2, '0');
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    return `${day}/${month}/${year}, ${hours}:${minutes}`;
+}
 function iconModifier(elems, uni){
     /**
      * Function: iconModifier
@@ -562,7 +591,6 @@ function iconModifier(elems, uni){
             })
         })
     }
-
     function changeIconCollapsible(element, i){
         if(window.getComputedStyle(element).display === 'none'){
             //access 2
@@ -574,8 +602,16 @@ function iconModifier(elems, uni){
         }
     }
 }
-
 function classModifier(element, class_, type){
+    /**
+     * Function: classModifier
+     * Description: This function is called from dataBaseError in case of error to disable page
+     * @element: Element to apply class
+     * @class_: Class to add
+     * @type: /
+     * Next call: none
+     * return: none
+     * */
     if(type === 'a'){
         element.forEach(e => {e.classList.add(class_)})
     }else if(type === 'r'){
@@ -584,13 +620,19 @@ function classModifier(element, class_, type){
         element.forEach(e => {e.classList.toggle(class_)})
     }
 }
-
-let sortClick = true
 function sort(list, ico, element){
+    /**
+     * Function: sort
+     * Description: This function is called to sort element in user and comparison pages
+     * @list: Container to sort
+     * @ico: Class of icon clicked (numerical or alphabetical)
+     * @element: Element to find in order to be sort
+     * Next call: none
+     * return: none
+     * */
     var mylist = $(list)
     const icon = $(ico)[0]
     var listitems = mylist.children(element).get()
-
     if(exact_type === 'user'){
         const card_infos = document.querySelector('.card-infos')
         card_infos.classList.add('hidden')
@@ -601,7 +643,6 @@ function sort(list, ico, element){
             }
         })
     }
-
     if(!sortClick){
         if(ico === '.sort_N'){
             listitems.sort(function(a, b) {
@@ -633,18 +674,40 @@ function sort(list, ico, element){
         mylist.append(item);
     });
 }
-
 function displayElement(element, data){
+    /**
+     * Function: displayElement
+     * Description: Used to display server information with a delay on load
+     * > If the content of the HTML tag is equal to the content that should be inside, the content is fully loaded
+     * @element: HTML element loaded
+     * @data: Content of HTML element that should be inside tag
+     * Next call: none
+     * return: none
+     * */
     setTimeout(() => {
         if (element.innerText === data) {
             element.closest('p').classList.add('show')
         }
     });
 }
-
-function backToTop(){window.scroll(0, 0)}
-
+function backToTop(){
+    /**
+     * Function: backToTop
+     * Description: This function is called to scroll to the top of the page
+     * Next call: none
+     * return: none
+     * */
+    window.scroll(0, 0)
+}
 function generateColors(numColors, value = 0) {
+    /**
+     * Function: generateColors
+     * Description: This function generate colors for charts
+     * @numColors: Number of needed colors
+     * @value: /
+     * Next call: none
+     * return: array of generated colors
+     * */
     let colors = [];
     if(value !== 0){
         colors.push(getComputedStyle(document.documentElement).getPropertyValue('--tint' + value % 7));
@@ -656,19 +719,31 @@ function generateColors(numColors, value = 0) {
         }
         return colors;
     }
-
 }
-
 function hexToRGBA(hex) {
+    /**
+     * Function: hexToRGBA
+     * Description: Convert hexadecimal value to rgba format
+     * @hex: Hexadecimal value
+     * Next call: none
+     * return: rgba conversion with .5 opacity
+     * */
     hex = hex.replace('#', '');
     let r = parseInt(hex.substring(0, 2), 16);
     let g = parseInt(hex.substring(2, 4), 16);
     let b = parseInt(hex.substring(4, 6), 16);
     return `rgba(${r},${g},${b},${.5})`
 }
-
-
 function getSkin(player, type) {
+    /**
+     * Function: getSkin
+     * Description: This function returns the skin URL of the player, considering the type needed and the game version (bedrock or java)
+     * Available type in variable 'types'
+     * @player: Object with name, total xp and uuid of the player
+     * @type: 'types' variable related
+     * Next call: none
+     * return: output variable, includes type and skin url
+     * */
     let types = {
         'BODY': 'player',
         'BODY_3D': 'body',
@@ -677,11 +752,9 @@ function getSkin(player, type) {
         'HEAD_3D': 'head',
         'SKIN': 'skin'
     };
-
     if (!types[type]) {
         throw new Error(`Invalid type "${type}". Type must be one of ${Object.keys(types).join(', ')}.`);
     }
-
     var output = {
         url: null
     };
@@ -714,11 +787,21 @@ function getSkin(player, type) {
     return output;
 }
 function changeImageTable(players, table){
+    /**
+     * Function: changeImageTable
+     * Description: This function gets all images from the selected table and loads the head skin
+     * @players: Array of all players in the table
+     * @table: Modification applies to this table
+     * Next call: getSkin function
+     * return: none
+     * */
     table.querySelectorAll('img').forEach( a => {
+        //Avoiding unnecessary calls
         if(a.dataset.type !== 'default') return
         const filteredPlayers = players.filter(player => player.name === a.dataset.user);
         const uniquePlayer = filteredPlayers.find(player => player.name === a.dataset.user);
         const url = getSkin(uniquePlayer, 'HEAD_3D').url
+        //If url = null, bedrock skin kept
         if(url !== null){
             a.src = url
             a.dataset.type = 'user'
