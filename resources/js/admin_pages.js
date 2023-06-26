@@ -166,10 +166,10 @@ setup_lang.addEventListener('change', () => {
     chart_example = new Chart(chart, {
         type: 'bar',
         data: {
-            labels: ["Player 1", "Player 2", "Player 3", "Player 4", "Player 5", "Player 6"],
+            labels: ["Player 1", "Player 2", "Player 3", "Player 4", "Player 5", "Player 6", "Player 7"],
             datasets: [{
                 label : 'All Abilities (exp)',
-                data: [35, 40, 35, 35, 30, 45],
+                data: [35, 40, 35, 35, 30, 45, 35],
                 hidden: false,
                 backgroundColor: generateColors(7)
             }],
