@@ -634,6 +634,8 @@ function setAllAbilities(player){
         const lvl = player[e].lvl
         const next_level = player[e].max
 
+        console.log(player)
+
         b.best4Ab.forEach(a => {
             if(lvl === a[1] && e === a[0]){
                 const i = document.createElement('i')
@@ -660,9 +662,13 @@ function setAllAbilities(player){
             }
         }
 
+        const exp_test = Math.floor(Math.random() * (3000 - 500 + 1)) + 500;
+
         const ab_ar_label = clone.querySelector('.ab-bar-label')
         const ab_ar_label_max = clone.querySelector('.ab-bar-label-max')
-        ab_ar_label.innerHTML = `${exp}`
+        // ab_ar_label.innerHTML = `${exp}`
+        ab_ar_label.innerHTML = `${exp_test}`
+        console.log(next_level)
         ab_ar_label_max.innerHTML = `${next_level}`
         const ab_ar_level = clone.querySelector('.ab-bar-level')
         ab_ar_level.innerHTML = translation[languageSelect].card.card_level_avt
@@ -670,11 +676,15 @@ function setAllAbilities(player){
 
         const ab_bar = clone.querySelector('.ab-bar')
         const ab_next_level = clone.querySelector('.ab-next-level')
-        const percent = Math.floor((exp/next_level)*100)
+        console.log(exp_test > next_level, exp_test, next_level)
+        let percent = (exp_test > next_level) ? 100 : Math.floor((100000/next_level)*100)
+        let exp_left = (exp_test > next_level) ? 0 : next_level - exp_test
+        console.log(percent)
         ab_bar.style.width = percent + "%"
         ab_next_level.innerHTML = translation[languageSelect].card.card_level_next_avt
             .replace('_EXP_PERCENT_', (100 - percent).toString())
-            .replace('_EXP_LEFT_', (next_level - exp).toString())
+            // .replace('_EXP_LEFT_', (next_level - exp).toString())
+            .replace('_EXP_LEFT_', (exp_left).toString())
 
         stack.appendChild(clone)
 

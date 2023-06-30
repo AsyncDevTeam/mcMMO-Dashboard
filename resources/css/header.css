@@ -49,6 +49,7 @@ body header .tabs_header a {
   padding: 0.5em 1em;
   border-radius: 5px;
   color: var(--b);
+  cursor: pointer;
 }
 body header .tabs_header a:hover {
   color: var(--active-color);
@@ -80,6 +81,76 @@ body header .tabs_header label input {
 }
 body header .tabs_header label i {
   transition: 0.5s;
+}
+body header .tabs_header #links-box-button {
+  --border-r: 6px;
+  border: 0;
+  background: none;
+  position: relative;
+}
+body header .tabs_header #links-box-button .links-box-box {
+  display: none;
+  border: 1px solid var(--border-color);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 300px;
+  background-color: var(--btn-main-bg);
+  box-shadow: rgba(50, 50, 93, 0.25) 0 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  text-align: center;
+  border-radius: var(--border-r);
+  position: absolute;
+  z-index: 1;
+  top: calc(100% + 1em);
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--b);
+}
+body header .tabs_header #links-box-button .links-box-box .header-box {
+  font-weight: bold;
+  padding: 1em;
+  background: linear-gradient(135deg, var(--grad1_op) 0%, var(--grad2_op) 100%) fixed !important;
+  width: 100%;
+  border-radius: var(--border-r) var(--border-r) 0 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-direction: row;
+  cursor: default;
+}
+body header .tabs_header #links-box-button .links-box-box .header-box i {
+  cursor: pointer;
+}
+body header .tabs_header #links-box-button .links-box-box .links-lks {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  gap: 1em;
+  padding: 1em;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 10px;
+}
+body header .tabs_header #links-box-button .links-box-box .links-lks i:last-child {
+  margin-left: auto;
+}
+body header .tabs_header #links-box-button .links-box-box .links-lks:hover {
+  outline: 2px solid var(--active-color);
+}
+body header .tabs_header #links-box-button .links-box-box:before {
+  display: none;
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+body header .tabs_header #links-box-button.active {
+  color: var(--active-color);
 }
 body header #website-title {
   text-decoration: none;

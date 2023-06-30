@@ -23,6 +23,21 @@
             <i class="fa-solid fa-table-columns"></i>
             <span class="tabs-3"></span>
         </a>
+        <a id="links-box-button">
+            <i class="fa-solid fa-link"></i>
+            <span class="tabs-4"></span>
+            <span class="links-box-box" id="draggable">
+                <span class="header-box">
+                    <p class="title-server-lks"></p>
+                    <i class="fa-solid fa-circle-xmark"></i>
+                </span>
+                <a class="links-lks" data-clone="init">
+                    <i class="icon-lks fa-regular fa-square"></i>
+                    <text class="text-lks">ok</text>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </span>
+        </a>
         <label for="darkMode-input">
             <input type="checkbox" id="darkMode-input">
             <i class="fa-solid fa-circle-half-stroke"></i>

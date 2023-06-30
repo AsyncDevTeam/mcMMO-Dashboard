@@ -6,6 +6,7 @@ const requestUserStats = "resources/php/scripts/get_user_stats.php"
 const requestServerStats = "resources/php/scripts/get_server_stats.php"
 //Some querySelector needed in file
 const website_title = document.querySelector('#website-title');
+const title_server_lks = document.querySelector('.title-server-lks');
 const darkM = document.querySelector("#darkMode-input")
 const server_ip = document.querySelectorAll('.server-ip')
 const copyToClipboardAction = document.querySelectorAll('.copyToClipboardAction')
@@ -19,6 +20,11 @@ const select_radio_section = document.querySelectorAll('.select-radio-section')
 const tog_dm_icon = document.querySelectorAll('.fa-circle-half-stroke')
 const main = document.querySelector('main')
 const loading_bar = document.querySelector('.loading-bar')
+const tooltipBtn = document.getElementById('links-box-button');
+const tooltipBtnClose = document.querySelector('.header-box .fa-circle-xmark');
+const tooltipBox = document.querySelector('.links-box-box');
+var object = document.getElementById('draggable'),
+    initX, initY, firstX, firstY;
 //Variable used in file
 const csrfToken = document.getElementById("csrf_token").value;
 let languageSelect
@@ -29,7 +35,10 @@ let exact_type = window.location.pathname.split("/").at(-1).split('.')[0]
 exact_type.length === 0 ? exact_type = 'index' : exact_type;
 languageSelect = translation.active
 website_title.innerHTML = translation[languageSelect].title_header
+title_server_lks.innerHTML = `${translation[languageSelect].title_header}`
 let sortClick = true
+let initBoxX = '50%'
+let initBoxY = 'calc(100% + 1em)'
 //When page is loaded. There's only one window.onload across all files
 window.onload = function (){
     /**
@@ -44,6 +53,107 @@ window.onload = function (){
     iconModifier(elems)
     //tintX colors set to html DOM element
     setColorsToRoot()
+    loadLinks()
+}
+window.onscroll = function (){
+    /**
+     * Function: window.onscroll
+     * Description: Call for generic function
+     * return: none
+     * */
+    tooltipBox.style.display = 'none';
+    tooltipBtn.classList.remove('active')
+    tooltipBox.style.left = initBoxX
+    tooltipBox.style.top = initBoxY
+}
+tooltipBtn.addEventListener('click', (e) => {
+    /**
+     * Function: /
+     * Description: Show or Hide container with links and reset box position
+     * Next call: none
+     * return: none
+     * */
+    if(tooltipBox.querySelector(`.${e.target.classList[0]}`) !== null) return
+    if(tooltipBox.style.display === 'none'){
+        tooltipBtn.classList.add('active')
+    }else{
+        tooltipBtn.classList.remove('active')
+        tooltipBox.style.left = initBoxX
+        tooltipBox.style.top = initBoxY
+    }
+    tooltipBox.style.display = tooltipBox.style.display === 'flex' ? 'none' : 'flex';
+});
+tooltipBtnClose.addEventListener('click', () => {
+    /**
+     * Function: /
+     * Description: Close links box by clicking on x-mark button
+     * Next call: none
+     * return: none
+     * */
+    tooltipBox.style.display = 'none';
+    tooltipBtn.classList.remove('active')
+    tooltipBox.style.left = initBoxX
+    tooltipBox.style.top = initBoxY
+});
+object.addEventListener('mousedown', function(e) {
+
+    e.preventDefault();
+    initX = this.offsetLeft;
+    initY = this.offsetTop;
+    firstX = e.pageX;
+    firstY = e.pageY;
+
+    this.addEventListener('mousemove', dragIt, false);
+
+    window.addEventListener('mouseup', function() {
+        object.removeEventListener('mousemove', dragIt, false);
+    }, false);
+
+}, false);
+object.addEventListener('touchstart', function(e) {
+
+    e.preventDefault();
+    initX = this.offsetLeft;
+    initY = this.offsetTop;
+    var touch = e.touches;
+    firstX = touch[0].pageX;
+    firstY = touch[0].pageY;
+
+    this.addEventListener('touchmove', swipeIt, false);
+
+    window.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        object.removeEventListener('touchmove', swipeIt, false);
+    }, false);
+
+}, false);
+function dragIt(e) {
+    this.style.left = initX+e.pageX-firstX + 'px';
+    this.style.top = initY+e.pageY-firstY + 'px';
+}
+function swipeIt(e) {
+    var contact = e.touches;
+    this.style.left = initX+contact[0].pageX-firstX + 'px';
+    this.style.top = initY+contact[0].pageY-firstY + 'px';
+}
+const loadLinks = function (){
+    /**
+     * Function: loadLinks
+     * Description: Set user links in header
+     * Next call: none
+     * return: none
+     * */
+    const links_lks = document.querySelector('.links-lks')
+    for (let link in settings.links) {
+        const clone = links_lks.cloneNode(true)
+        clone.setAttribute('data-clone', 'o')
+        const class_ = settings.links[link].i.split(' ')
+        clone.querySelector('.icon-lks').classList.replace('fa-regular', class_[0])
+        clone.querySelector('.icon-lks').classList.replace('fa-square', class_[1])
+        clone.querySelector('.text-lks').innerText = settings.links[link].text
+        clone.href = settings.links[link].url
+        tooltipBox.appendChild(clone)
+    }
 }
 darkM.addEventListener('change', (e) => {
     /**
@@ -95,7 +205,6 @@ if(ss_dm === 'true' || settings.force_darkMode){
     changeLanguageElement(tabs, class_)
 }());
 function changeLanguageElement(entry, selector, s = null){
-
     if(entry !== undefined){
         if(s){
             Object.entries(entry).forEach(e => {

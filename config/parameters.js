@@ -156,6 +156,7 @@ const translation = {
                 'tabs-1': 'Home',
                 'tabs-2': 'Find a player',
                 'tabs-3': 'Comparison',
+                'tabs-4': 'Links',
                 'tabs-dm': 'Dark mode',
             },
             'pages':{
@@ -445,6 +446,7 @@ const translation = {
                 'tabs-1': 'Accueil',
                 'tabs-2': 'Trouver un joueur',
                 'tabs-3': 'Comparaison',
+                'tabs-4': 'Liens',
                 'tabs-dm': 'Mode sombre',
             },
             'pages':{
@@ -735,6 +737,7 @@ const translation = {
                 'tabs-1': 'Startseite',
                 'tabs-2': 'Spieler finden',
                 'tabs-3': 'Vergleich',
+                'tabs-4': 'Verbindungen',
                 'tabs-dm': 'Darkmode',
             },
             'pages':{
@@ -927,6 +930,30 @@ const settings = {
                 'gradient_1': '38 105 46',
                 'gradient_2': '32 96 115'
             }
+        }
+    },
+    'links': {
+        /**
+         * You can add multiple link just by incrementing index of the key -> link_4, link_5...
+         * Go to https://fontawesome.com/icons/ to get exclusive icons
+         * 'i' format : copy and paste class
+         * 'text' : define text to display
+         * 'url' format : should start with https://
+         */
+        'link_1': {
+            'i': 'fa-brands fa-discord',
+            'text': 'Discord',
+            'url': '#'
+        },
+        'link_2': {
+            'i': 'fa-solid fa-map',
+            'text': 'Dynmap',
+            'url': '#'
+        },
+        'link_3': {
+            'i': 'fa-solid fa-globe',
+            'text': 'Website',
+            'url': '#'
         }
     }
 }
