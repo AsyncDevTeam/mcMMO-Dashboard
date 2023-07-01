@@ -23,26 +23,26 @@
             <i class="fa-solid fa-table-columns"></i>
             <span class="tabs-3"></span>
         </a>
-        <a id="links-box-button">
-            <i class="fa-solid fa-link"></i>
-            <span class="tabs-4"></span>
-            <span class="links-box-box" id="draggable">
-                <span class="header-box">
-                    <p class="title-server-lks"></p>
-                    <i class="fa-solid fa-circle-xmark"></i>
-                </span>
-                <a class="links-lks" data-clone="init">
-                    <i class="icon-lks fa-regular fa-square"></i>
-                    <text class="text-lks">ok</text>
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-            </span>
+        <a class="dropdown-more-container">
+            <div class="dropdown-more-button">
+                <i class="fa-solid fa-chevron-down"></i>
+                <span class="tabs-more"></span>
+            </div>
+            <ul class="dropdown-more-menu">
+                <li class="drop-1-title"></li>
+                <li class="links-box-button">
+                    <i class="fa-solid fa-link"></i>
+                    <text class="drop-1"></text>
+                    <span class="links-box-box"></span>
+                </li>
+                <li class="drop-2-title"></li>
+                <label for="darkMode-input">
+                    <input type="checkbox" id="darkMode-input">
+                    <i class="fa-solid fa-circle-half-stroke"></i>
+                    <span class="tabs-dm"></span>
+                </label>
+            </ul>
         </a>
-        <label for="darkMode-input">
-            <input type="checkbox" id="darkMode-input">
-            <i class="fa-solid fa-circle-half-stroke"></i>
-            <span class="tabs-dm"></span>
-        </label>
     </div>
     <div class="loading-bar">
         <div class="container">
@@ -51,3 +51,8 @@
         </div>
     </div>
 </header>
+<a class="links-lks" data-clone="init">
+    <i class="icon-lks fa-regular fa-square"></i>
+    <text class="text-lks">ok</text>
+    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+</a>

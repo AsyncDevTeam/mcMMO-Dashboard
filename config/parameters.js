@@ -30,6 +30,7 @@ const translation = {
     'active': 'EN',
     'EN': {
         'title_header': 'mcMMO Dashboard',
+        'footer_text': 'Made by <a href="https://github.com/Royalphax">@Royalphax</a> and <a href="https://github.com/NicolasVaillant">@NicolasVaillant</a> | Support us with a donation on <a target="_blank" href="https://paypal.me/roytreo28">Paypal</a>',
         'pages_name':{
             'index': 'mcMMO Stats | Home',
             'user': 'mcMMO Stats | _USER_',
@@ -158,6 +159,13 @@ const translation = {
                 'tabs-3': 'Comparison',
                 'tabs-4': 'Links',
                 'tabs-dm': 'Dark mode',
+                'tabs-more': 'More',
+            },
+            'dropdown_menu': {
+                'drop-1-title': 'Links',
+                'drop-1': 'Links',
+                'drop-2-title': 'Dark mode',
+                'drop-2': 'Dark mode',
             },
             'pages':{
                 'search-user': {
@@ -320,6 +328,7 @@ const translation = {
     },
     'FR': {
         'title_header': 'mcMMO Dashboard',
+        'footer_text': 'Créé par <a href="https://github.com/Royalphax">@Royalphax</a> et <a href="https://github.com/NicolasVaillant">@NicolasVaillant</a> | Soutenez-nous avec un don sur <a target="_blank" href="https://paypal.me/roytreo28">Paypal</a>',
         'pages_name':{
             'index': 'mcMMO Stats | Accueil',
             'user': 'mcMMO Stats | _USER_',
@@ -448,6 +457,13 @@ const translation = {
                 'tabs-3': 'Comparaison',
                 'tabs-4': 'Liens',
                 'tabs-dm': 'Mode sombre',
+                'tabs-more': 'Plus',
+            },
+            'dropdown-menu': {
+                'drop-1-title': 'Liens',
+                'drop-1': 'Liens',
+                'drop-2-title': 'Mode sombre',
+                'drop-2': 'Mode sombre',
             },
             'pages':{
                 'search-user': {
@@ -610,6 +626,7 @@ const translation = {
     },
     'DE': {
         'title_header': 'mcMMO Dashboard',
+        'footer_text': 'Erstellt von <a href="https://github.com/Royalphax">@Royalphax</a> und <a href="https://github.com/NicolasVaillant">@NicolasVaillant</a> | Unterstützen Sie uns mit einer Spende auf <a target="_blank" href="https://paypal.me/roytreo28">Paypal</a>',
         'pages_name':{
             'index': 'mcMMO Stats | Willkommen',
             'user': 'mcMMO Stats | _USER_',
@@ -739,6 +756,13 @@ const translation = {
                 'tabs-3': 'Vergleich',
                 'tabs-4': 'Verbindungen',
                 'tabs-dm': 'Darkmode',
+                'tabs-more': 'Mehr',
+            },
+            'dropdown-menu': {
+                'drop-1-title': 'Verbindungen',
+                'drop-1': 'Verbindungen',
+                'drop-2-title': 'Darkmode',
+                'drop-2': 'Darkmode',
             },
             'pages':{
                 'search-user': {

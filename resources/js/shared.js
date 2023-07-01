@@ -6,7 +6,7 @@ const requestUserStats = "resources/php/scripts/get_user_stats.php"
 const requestServerStats = "resources/php/scripts/get_server_stats.php"
 //Some querySelector needed in file
 const website_title = document.querySelector('#website-title');
-const title_server_lks = document.querySelector('.title-server-lks');
+const footer_text = document.querySelector('.footer_text');
 const darkM = document.querySelector("#darkMode-input")
 const server_ip = document.querySelectorAll('.server-ip')
 const copyToClipboardAction = document.querySelectorAll('.copyToClipboardAction')
@@ -20,11 +20,11 @@ const select_radio_section = document.querySelectorAll('.select-radio-section')
 const tog_dm_icon = document.querySelectorAll('.fa-circle-half-stroke')
 const main = document.querySelector('main')
 const loading_bar = document.querySelector('.loading-bar')
-const tooltipBtn = document.getElementById('links-box-button');
-const tooltipBtnClose = document.querySelector('.header-box .fa-circle-xmark');
+const tooltipBtn = document.querySelector('.links-box-button');
 const tooltipBox = document.querySelector('.links-box-box');
-var object = document.getElementById('draggable'),
-    initX, initY, firstX, firstY;
+const dropDownBtn = document.querySelector('.dropdown-more-button');
+const dropDownContainer = document.querySelector('.dropdown-more-container');
+const dropDownBox = document.querySelector('.dropdown-more-menu');
 //Variable used in file
 const csrfToken = document.getElementById("csrf_token").value;
 let languageSelect
@@ -35,10 +35,8 @@ let exact_type = window.location.pathname.split("/").at(-1).split('.')[0]
 exact_type.length === 0 ? exact_type = 'index' : exact_type;
 languageSelect = translation.active
 website_title.innerHTML = translation[languageSelect].title_header
-title_server_lks.innerHTML = `${translation[languageSelect].title_header}`
+footer_text.innerHTML = translation[languageSelect].footer_text
 let sortClick = true
-let initBoxX = '50%'
-let initBoxY = 'calc(100% + 1em)'
 //When page is loaded. There's only one window.onload across all files
 window.onload = function (){
     /**
@@ -61,81 +59,36 @@ window.onscroll = function (){
      * Description: Call for generic function
      * return: none
      * */
-    tooltipBox.style.display = 'none';
-    tooltipBtn.classList.remove('active')
-    tooltipBox.style.left = initBoxX
-    tooltipBox.style.top = initBoxY
 }
 tooltipBtn.addEventListener('click', (e) => {
     /**
      * Function: /
-     * Description: Show or Hide container with links and reset box position
+     * Description: Show or Hide container with links
      * Next call: none
      * return: none
      * */
-    if(tooltipBox.querySelector(`.${e.target.classList[0]}`) !== null) return
-    if(tooltipBox.style.display === 'none'){
+    // if(tooltipBox.querySelector(`.${e.target.classList[0]}`) !== null) return
+    if(tooltipBox.style.display === 'none' || tooltipBox.style.display.length === 0){
         tooltipBtn.classList.add('active')
     }else{
         tooltipBtn.classList.remove('active')
-        tooltipBox.style.left = initBoxX
-        tooltipBox.style.top = initBoxY
     }
     tooltipBox.style.display = tooltipBox.style.display === 'flex' ? 'none' : 'flex';
 });
-tooltipBtnClose.addEventListener('click', () => {
+dropDownBtn.addEventListener('click', (e) => {
     /**
      * Function: /
-     * Description: Close links box by clicking on x-mark button
+     * Description: Show or Hide dropdown container
      * Next call: none
      * return: none
      * */
-    tooltipBox.style.display = 'none';
-    tooltipBtn.classList.remove('active')
-    tooltipBox.style.left = initBoxX
-    tooltipBox.style.top = initBoxY
+    if(dropDownBox.style.display === 'none' || dropDownBox.style.display.length === 0){
+        dropDownContainer.classList.add('active')
+    }else{
+        dropDownContainer.classList.remove('active')
+    }
+    dropDownBox.style.display = dropDownBox.style.display === 'flex' ? 'none' : 'flex';
 });
-object.addEventListener('mousedown', function(e) {
-
-    e.preventDefault();
-    initX = this.offsetLeft;
-    initY = this.offsetTop;
-    firstX = e.pageX;
-    firstY = e.pageY;
-
-    this.addEventListener('mousemove', dragIt, false);
-
-    window.addEventListener('mouseup', function() {
-        object.removeEventListener('mousemove', dragIt, false);
-    }, false);
-
-}, false);
-object.addEventListener('touchstart', function(e) {
-
-    e.preventDefault();
-    initX = this.offsetLeft;
-    initY = this.offsetTop;
-    var touch = e.touches;
-    firstX = touch[0].pageX;
-    firstY = touch[0].pageY;
-
-    this.addEventListener('touchmove', swipeIt, false);
-
-    window.addEventListener('touchend', function(e) {
-        e.preventDefault();
-        object.removeEventListener('touchmove', swipeIt, false);
-    }, false);
-
-}, false);
-function dragIt(e) {
-    this.style.left = initX+e.pageX-firstX + 'px';
-    this.style.top = initY+e.pageY-firstY + 'px';
-}
-function swipeIt(e) {
-    var contact = e.touches;
-    this.style.left = initX+contact[0].pageX-firstX + 'px';
-    this.style.top = initY+contact[0].pageY-firstY + 'px';
-}
 const loadLinks = function (){
     /**
      * Function: loadLinks
@@ -452,6 +405,7 @@ function changeLanguage(value){
     const pages = translation[value].content_page.pages[exact_type]
     const select = translation[value].content_page.select
     const quickView = translation[value].content_page.quickView
+    const dropdown = translation[value].content_page.dropdown_menu
     const buttons = translation[value].content_page.buttons
     const tabs = translation[value].content_page.tabs
     const ab = translation[value].ab
@@ -465,6 +419,7 @@ function changeLanguage(value){
 
     changeLanguageElement(select, class_)
     changeLanguageElement(quickView, class_)
+    changeLanguageElement(dropdown, class_)
     changeLanguageElement(buttons, class_)
 
     if(!['user', 'comparison'].includes(type)){setTable(ab, exact_type)}
