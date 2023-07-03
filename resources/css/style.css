@@ -894,6 +894,7 @@ body main .sidebar-menu .content li:not(.paginate_button):not([data-dtr-index])#
   align-items: center;
   align-content: center;
   justify-content: space-between;
+  flex-direction: column;
   gap: 1em;
   height: 100%;
   align-items: stretch;
@@ -941,12 +942,6 @@ body main .sidebar-menu .content li:not(.paginate_button):not([data-dtr-index])#
 body main .wrapper .content li:not(.paginate_button):not([data-dtr-index])#best-player .content_bp .col .btn-main .rank_img,
 body main .sidebar-menu .content li:not(.paginate_button):not([data-dtr-index])#best-player .content_bp .col .btn-main .rank_img {
   margin-left: auto;
-}
-@media screen and (max-width: 1000px) {
-  body main .wrapper .content li:not(.paginate_button):not([data-dtr-index])#best-player .content_bp,
-body main .sidebar-menu .content li:not(.paginate_button):not([data-dtr-index])#best-player .content_bp {
-    flex-direction: column;
-  }
 }
 @media screen and (max-width: 1000px) {
   body main .wrapper .content li:not(.paginate_button):not([data-dtr-index])#best-player,

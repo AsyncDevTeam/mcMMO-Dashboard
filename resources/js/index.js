@@ -637,12 +637,11 @@ function searchInChart(inputValue) {
 let scrollable_leaderboard = setInterval(() => {
     if(initComplete_leaderboard){
         clearInterval(scrollable_leaderboard)
-        const ele = document.querySelector('#leaderboard_table_wrapper .row:nth-child(2)');
+        const ele = document.querySelector('#leaderboard_table_wrapper .dataTables_scrollBody');
         let pos = { top: 0, left: 0, x: 0, y: 0 };
         const mouseDownHandler = function (e) {
             ele.style.cursor = 'grabbing';
             ele.style.userSelect = 'none';
-
             pos = {
                 left: ele.scrollLeft,
                 top: ele.scrollTop,

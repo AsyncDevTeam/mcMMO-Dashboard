@@ -628,6 +628,7 @@ body{
             .content_bp{
               @include centerFlex;
               justify-content: space-between;
+              flex-direction: column;
               gap: 1em;
               height: 100%;
               align-items: stretch;
@@ -657,9 +658,9 @@ body{
                   }
                 }
               }
-              @media screen and (max-width: 1000px){
-                flex-direction: column;
-              }
+              //@media screen and (max-width: 1000px){
+              //  flex-direction: column;
+              //}
             }
             @media screen and (max-width: 1000px){
               margin-top: 0;
