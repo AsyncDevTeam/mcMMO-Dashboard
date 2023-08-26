@@ -64,7 +64,9 @@ body{
         background: var(--topbar);
         border-radius: 5px;
         cursor: pointer;
-        input{display: none}
+        &.no-input{
+          input{display: none}
+        }
         i{transition: transform .5s}
         &:hover{outline: 2px solid var(--active-color)}
       }
@@ -73,13 +75,17 @@ body{
         position: relative;
         background: none;
         margin: auto 1em auto auto;
-        padding: .2em .5em;
-        border: 1px solid var(--border-color);
+        padding: 0;
         &.active{
-          background: var(--active-color);
-          color: var(--w);
+          outline: 2px solid var(--active-color);
+          outline-offset: 2px;
+        //  todo: cursor coarse for all element as input toggle
         }
-        .dropdown-more-button{}
+        .dropdown-more-button{
+          padding: .2em .5em;
+          border: 1px solid var(--border-color);
+          border-radius: 5px;
+        }
         .dropdown-more-menu{
           display: none;
           position: absolute;
@@ -95,6 +101,11 @@ body{
           border-radius: 6px;
           flex-direction: column;
           gap: .5em;
+          .animation-toggle{
+            display: flex;
+            flex-direction: column;
+            gap: .5em;
+          }
           li:not([class$="-title"]){
             padding: .5em;
             background: var(--topbar);

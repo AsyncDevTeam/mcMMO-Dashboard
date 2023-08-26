@@ -2,10 +2,44 @@ const query = window.location.search.split("?q=")[1]
 const title_section = document.querySelector('.title-section')
 const input = document.querySelector('#filter_group')
 const no_element_found = document.querySelector(".no-element-found")
+const animation_toggle = document.querySelector("#animated-skin-input")
 const filter_group = document.getElementById("filter-group")
 let label_player = {}
 if(!isBrowserOnline){stylePageOffline()}
+(function animatedImgSettings(){
+    const img_static = document.querySelector('.user-skin').querySelector('img')
+    const state = window.getComputedStyle(img_static).display
+    animation_toggle.checked = state !== 'none';
+}());
+animation_toggle.addEventListener('change', (e) => {
+    const storageType_ = settings.localStorage ? localStorage : sessionStorage;
+    const getPlayerData = JSON.parse(storageType_.getItem(`fLoadUser_${query}`));
+    const player = getPlayerData.data
+    const drop_animation = document.querySelector('.drop-3')
+    drop_animation.innerHTML = translation[languageSelect].content_page.dropdown_menu["drop-3"].replace(
+        "__STATE__",
+        e.target.checked ? "ON" : "OFF"
+    )
 
+    const {type, last_update, url} = getSkin(player, 'SKIN')
+
+    if(e.target.checked){
+        //dynamic
+        if(!settings.animated_skins){
+            setSkin(player, url)
+        }
+        document.getElementById("img-skin-user-3d").style.display = "flex";
+        document.getElementById("img-skin-user").style.display = "none";
+    }else{
+        //static
+        if(settings.animated_skins){
+            const img = document.querySelector('#img-skin-user')
+            img.src = getSkin(player, 'BODY_3D').url
+        }
+        document.getElementById("img-skin-user-3d").style.display = "none";
+        document.getElementById("img-skin-user").style.display = "flex";
+    }
+})
 const container_best_ab = document.querySelector('.f-best-ab')
 container_best_ab.onscroll = function (){
     const children = Array.from(container_best_ab.children)
@@ -26,7 +60,6 @@ container_best_ab.onscroll = function (){
     );
     if(index !== -1){setScrollIndicators(index)}
 }
-
 const setScrollIndicators = function (index){
     const container = document.querySelector('.scroll-indicator-f-best-ab')
     const children = Array.from(container.children)
@@ -45,7 +78,6 @@ const createScrollIndicators = function (len){
         container.appendChild(node)
     }
 }
-
 const goToScrollElement = function(e){
     const index = e.dataset.index
     const children = Array.from(container_best_ab.children);
@@ -372,7 +404,6 @@ function userData(player, type, last_update){
     }
 
 }
-
 function setSkin(player, url) {
     if (settings.animated_skins) {
         document.getElementById("img-skin-user").style.display = "none";
@@ -408,7 +439,6 @@ function setSkin(player, url) {
         }
     } else {
         document.getElementById("img-skin-user-3d").style.display = "none";
-
         const img = document.querySelector('#img-skin-user')
         img.src = getSkin(player, 'BODY_3D').url
     }
@@ -634,7 +664,7 @@ function setAllAbilities(player){
         const lvl = player[e].lvl
         const next_level = player[e].max
 
-        console.log(player)
+        // console.log(player)
 
         b.best4Ab.forEach(a => {
             if(lvl === a[1] && e === a[0]){
@@ -666,9 +696,8 @@ function setAllAbilities(player){
 
         const ab_ar_label = clone.querySelector('.ab-bar-label')
         const ab_ar_label_max = clone.querySelector('.ab-bar-label-max')
+        ab_ar_label.innerHTML = `${exp}`
         // ab_ar_label.innerHTML = `${exp}`
-        ab_ar_label.innerHTML = `${exp_test}`
-        console.log(next_level)
         ab_ar_label_max.innerHTML = `${next_level}`
         const ab_ar_level = clone.querySelector('.ab-bar-level')
         ab_ar_level.innerHTML = translation[languageSelect].card.card_level_avt
@@ -676,15 +705,13 @@ function setAllAbilities(player){
 
         const ab_bar = clone.querySelector('.ab-bar')
         const ab_next_level = clone.querySelector('.ab-next-level')
-        console.log(exp_test > next_level, exp_test, next_level)
-        let percent = (exp_test > next_level) ? 100 : Math.floor((100000/next_level)*100)
+        let percent = (exp_test > next_level) ? 100 : Math.floor(((next_level - exp_test)/next_level)*100)
         let exp_left = (exp_test > next_level) ? 0 : next_level - exp_test
-        console.log(percent)
         ab_bar.style.width = percent + "%"
         ab_next_level.innerHTML = translation[languageSelect].card.card_level_next_avt
             .replace('_EXP_PERCENT_', (100 - percent).toString())
-            // .replace('_EXP_LEFT_', (next_level - exp).toString())
-            .replace('_EXP_LEFT_', (exp_left).toString())
+            .replace('_EXP_LEFT_', (next_level - exp_test).toString())
+            // .replace('_EXP_LEFT_', (exp_left).toString())
 
         stack.appendChild(clone)
 
@@ -968,7 +995,6 @@ function setFilterFamilyCard(){
         filter_group.appendChild(element)
     }
 }
-
 function dropdownGroup(){
     if(input.checked){
         filter_group.classList.remove("show")
@@ -976,7 +1002,6 @@ function dropdownGroup(){
         filter_group.classList.add("show")
     }
 }
-
 function changeFilterGroup(){
     const card = document.querySelectorAll('.ab-card[data-clone="o"]')
     const filter = document.querySelectorAll('.filter')

@@ -152,6 +152,17 @@ if(ss_dm === 'true' || settings.force_darkMode){
 (function setTitle(){
     document.title = translation[languageSelect].pages_name[exact_type]
 }());
+(function displayAnimationToggleDropdown(){
+    const drop_animation = document.querySelector('.drop-3')
+    const animation_state = document.querySelector('#animated-skin-input')
+    drop_animation.innerHTML = translation[languageSelect].content_page.dropdown_menu["drop-3"].replace(
+        "__STATE__",
+        animation_state.checked ? "ON" : "OFF"
+    )
+    if(exact_type !== 'user'){
+        document.querySelector('.animation-toggle').classList.add('hidden')
+    }
+}());
 (function (){
     const class_ = '.'
     const tabs = translation[languageSelect].content_page.tabs

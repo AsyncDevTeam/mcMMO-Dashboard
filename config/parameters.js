@@ -166,6 +166,8 @@ const translation = {
                 'drop-1': 'Links',
                 'drop-2-title': 'Dark mode',
                 'drop-2': 'Dark mode',
+                'drop-3-title': 'Animated Skin',
+                'drop-3': 'Animation : __STATE__',
             },
             'pages':{
                 'search-user': {
@@ -933,7 +935,7 @@ const settings = {
     //Set localStorage to true to enable data storage in your localStorage, false is sessionStorage
     //See https://developer.mozilla.org/fr/docs/Web/API/Window/sessionStorage  and
     // https://developer.mozilla.org/fr/docs/Web/API/Window/localStorage for more information
-    'localStorage': true,
+    'localStorage': false,
     //If localStorage is true, set refreshStorage for min time before refresh
     //Supported value: h (hour), 6h (6 hours), 12h (12 hours) and d (day)
     'refreshStorage': 'h',

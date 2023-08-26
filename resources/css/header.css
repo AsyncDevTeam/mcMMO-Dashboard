@@ -72,7 +72,7 @@ body header .tabs_header label {
   border-radius: 5px;
   cursor: pointer;
 }
-body header .tabs_header label input {
+body header .tabs_header label.no-input input {
   display: none;
 }
 body header .tabs_header label i {
@@ -85,12 +85,16 @@ body header .tabs_header .dropdown-more-container {
   position: relative;
   background: none;
   margin: auto 1em auto auto;
-  padding: 0.2em 0.5em;
-  border: 1px solid var(--border-color);
+  padding: 0;
 }
 body header .tabs_header .dropdown-more-container.active {
-  background: var(--active-color);
-  color: var(--w);
+  outline: 2px solid var(--active-color);
+  outline-offset: 2px;
+}
+body header .tabs_header .dropdown-more-container .dropdown-more-button {
+  padding: 0.2em 0.5em;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
 }
 body header .tabs_header .dropdown-more-container .dropdown-more-menu {
   display: none;
@@ -105,6 +109,11 @@ body header .tabs_header .dropdown-more-container .dropdown-more-menu {
   border: 1px solid var(--border-color);
   padding: 0.5em;
   border-radius: 6px;
+  flex-direction: column;
+  gap: 0.5em;
+}
+body header .tabs_header .dropdown-more-container .dropdown-more-menu .animation-toggle {
+  display: flex;
   flex-direction: column;
   gap: 0.5em;
 }

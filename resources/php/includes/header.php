@@ -36,11 +36,18 @@
                     <span class="links-box-box"></span>
                 </li>
                 <li class="drop-2-title"></li>
-                <label for="darkMode-input">
+                <label for="darkMode-input" class="no-input">
                     <input type="checkbox" id="darkMode-input">
                     <i class="fa-solid fa-circle-half-stroke"></i>
                     <span class="tabs-dm"></span>
                 </label>
+                <div class="animation-toggle">
+                    <li class="drop-3-title"></li>
+                    <label for="animated-skin-input">
+                        <input type="checkbox" id="animated-skin-input">
+                        <text class="drop-3"></text>
+                    </label>
+                </div>
             </ul>
         </a>
     </div>
