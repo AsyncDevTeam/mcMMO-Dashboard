@@ -122,8 +122,10 @@ body header .tabs_header .dropdown-more-container .dropdown-more-menu li:not([cl
   background: var(--topbar);
   border-radius: 5px;
 }
-body header .tabs_header .dropdown-more-container .dropdown-more-menu li:not([class$=-title]):hover {
-  outline: 2px solid var(--active-color);
+@media (pointer: fine) {
+  body header .tabs_header .dropdown-more-container .dropdown-more-menu li:not([class$=-title]):hover {
+    outline: 2px solid var(--active-color);
+  }
 }
 body header .tabs_header .dropdown-more-container .dropdown-more-menu li.active {
   color: var(--active-color);

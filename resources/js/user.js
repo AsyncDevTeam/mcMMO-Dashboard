@@ -320,10 +320,13 @@ function chartCompare(best_player, current_player){
 }
 
 function setLabel(player){
+    const stackParent = document.querySelector(".labels");
     if(Object.keys(label_player).length !== 0){
         const labels = getKeyByValue(label_player, player)
         if(labels.length !== 0){
-            createLabel(labels)
+            createLabel(labels, stackParent)
+        }else{
+            stackParent.classList.add('hidden')
         }
     }
 }
@@ -332,10 +335,9 @@ function getKeyByValue(object, value) {
     return Object.keys(object).filter(key => object[key] === value);
 }
 
-function createLabel(array){
+function createLabel(array, stackParent){
     for (let i = 0; i < array.length; i++) {
         const node = document.querySelector(".label-user");
-        const stackParent = document.querySelector(".labels");
         const clone = node.cloneNode(true);
         clone.setAttribute('data-clone', 'total')
 

@@ -110,7 +110,9 @@ body{
             padding: .5em;
             background: var(--topbar);
             border-radius: 5px;
-            &:hover{outline: 2px solid var(--active-color)}
+            @media (pointer: fine) {
+              &:hover{outline: 2px solid var(--active-color)}
+            }
           }
           li{
             &.active{

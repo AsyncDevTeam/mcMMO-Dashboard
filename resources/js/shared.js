@@ -112,9 +112,7 @@ const loadLinks = function (){
     }
 }
 const dropDownAnimationModifier = function () {
-    const img_static = document.querySelector('.user-skin').querySelector('img')
-    const state = window.getComputedStyle(img_static).display
-    animation_toggle.checked = state === 'none';
+    animation_toggle.checked = settings.animated_skins
     const drop_animation = document.querySelector('.drop-3')
     const animation_state = document.querySelector('#animated-skin-input')
     drop_animation.innerHTML = translation[languageSelect].content_page.dropdown_menu["drop-3"].replace(

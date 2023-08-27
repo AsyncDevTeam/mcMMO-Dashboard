@@ -931,7 +931,7 @@ const settings = {
     //Set force_darkMode to true to enable dark mode by default
     'force_darkMode': false,
     //Set animated_skins to true to enable skin animation in user page
-    'animated_skins': true,
+    'animated_skins': false,
     //Set localStorage to true to enable data storage in your localStorage, false is sessionStorage
     //See https://developer.mozilla.org/fr/docs/Web/API/Window/sessionStorage  and
     // https://developer.mozilla.org/fr/docs/Web/API/Window/localStorage for more information

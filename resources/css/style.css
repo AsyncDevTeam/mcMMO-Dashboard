@@ -1471,7 +1471,7 @@ body main .sidebar-menu .content-main .user-infos .wrapper-content .user-skin {
 }
 body main .wrapper .content-main .user-infos .wrapper-content .user-skin img,
 body main .sidebar-menu .content-main .user-infos .wrapper-content .user-skin img {
-  height: 30vh;
+  height: 40vh;
   margin: 2em;
   filter: drop-shadow(0 0 5em rgb(98, 98, 98));
 }
