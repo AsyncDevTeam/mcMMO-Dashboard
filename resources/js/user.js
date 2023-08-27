@@ -2,15 +2,10 @@ const query = window.location.search.split("?q=")[1]
 const title_section = document.querySelector('.title-section')
 const input = document.querySelector('#filter_group')
 const no_element_found = document.querySelector(".no-element-found")
-const animation_toggle = document.querySelector("#animated-skin-input")
 const filter_group = document.getElementById("filter-group")
 let label_player = {}
+let oneTimeAnimationSkinLoad = false
 if(!isBrowserOnline){stylePageOffline()}
-(function animatedImgSettings(){
-    const img_static = document.querySelector('.user-skin').querySelector('img')
-    const state = window.getComputedStyle(img_static).display
-    animation_toggle.checked = state !== 'none';
-}());
 animation_toggle.addEventListener('change', (e) => {
     const storageType_ = settings.localStorage ? localStorage : sessionStorage;
     const getPlayerData = JSON.parse(storageType_.getItem(`fLoadUser_${query}`));
@@ -22,11 +17,13 @@ animation_toggle.addEventListener('change', (e) => {
     )
 
     const {type, last_update, url} = getSkin(player, 'SKIN')
-
     if(e.target.checked){
         //dynamic
-        if(!settings.animated_skins){
-            setSkin(player, url)
+        if(!oneTimeAnimationSkinLoad){
+            if(!settings.animated_skins){
+                oneTimeAnimationSkinLoad = true
+                setSkin(player, url, true)
+            }
         }
         document.getElementById("img-skin-user-3d").style.display = "flex";
         document.getElementById("img-skin-user").style.display = "none";
@@ -404,8 +401,8 @@ function userData(player, type, last_update){
     }
 
 }
-function setSkin(player, url) {
-    if (settings.animated_skins) {
+function setSkin(player, url, force = false) {
+    if (settings.animated_skins || force) {
         document.getElementById("img-skin-user").style.display = "none";
 
         let skinViewer = new skinview3d.SkinViewer({

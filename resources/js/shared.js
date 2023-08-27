@@ -11,6 +11,7 @@ const darkM = document.querySelector("#darkMode-input")
 const server_ip = document.querySelectorAll('.server-ip')
 const copyToClipboardAction = document.querySelectorAll('.copyToClipboardAction')
 const button_back = document.querySelector('.back-to-top-container')
+const animation_toggle = document.querySelector("#animated-skin-input")
 const copyToClipboard = document.querySelector('.copyToClipboard')
 const server_player = document.querySelectorAll('.server-player')
 const max_players_a = document.querySelectorAll('.max_players')
@@ -52,6 +53,8 @@ window.onload = function (){
     //tintX colors set to html DOM element
     setColorsToRoot()
     loadLinks()
+    displayAnimationToggleDropdown()
+    dropDownAnimationModifier()
 }
 window.onscroll = function (){
     /**
@@ -108,6 +111,17 @@ const loadLinks = function (){
         tooltipBox.appendChild(clone)
     }
 }
+const dropDownAnimationModifier = function () {
+    const img_static = document.querySelector('.user-skin').querySelector('img')
+    const state = window.getComputedStyle(img_static).display
+    animation_toggle.checked = state === 'none';
+    const drop_animation = document.querySelector('.drop-3')
+    const animation_state = document.querySelector('#animated-skin-input')
+    drop_animation.innerHTML = translation[languageSelect].content_page.dropdown_menu["drop-3"].replace(
+        "__STATE__",
+        animation_state.checked ? "ON" : "OFF"
+    )
+}
 darkM.addEventListener('change', (e) => {
     /**
      * Function: /
@@ -152,17 +166,11 @@ if(ss_dm === 'true' || settings.force_darkMode){
 (function setTitle(){
     document.title = translation[languageSelect].pages_name[exact_type]
 }());
-(function displayAnimationToggleDropdown(){
-    const drop_animation = document.querySelector('.drop-3')
-    const animation_state = document.querySelector('#animated-skin-input')
-    drop_animation.innerHTML = translation[languageSelect].content_page.dropdown_menu["drop-3"].replace(
-        "__STATE__",
-        animation_state.checked ? "ON" : "OFF"
-    )
+const displayAnimationToggleDropdown = function (){
     if(exact_type !== 'user'){
         document.querySelector('.animation-toggle').classList.add('hidden')
     }
-}());
+};
 (function (){
     const class_ = '.'
     const tabs = translation[languageSelect].content_page.tabs
