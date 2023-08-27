@@ -461,11 +461,13 @@ const translation = {
                 'tabs-dm': 'Mode sombre',
                 'tabs-more': 'Plus',
             },
-            'dropdown-menu': {
+            'dropdown_menu': {
                 'drop-1-title': 'Liens',
                 'drop-1': 'Liens',
                 'drop-2-title': 'Mode sombre',
                 'drop-2': 'Mode sombre',
+                'drop-3-title': 'Skin animé',
+                'drop-3': 'Animation : __STATE__',
             },
             'pages':{
                 'search-user': {
@@ -760,11 +762,13 @@ const translation = {
                 'tabs-dm': 'Darkmode',
                 'tabs-more': 'Mehr',
             },
-            'dropdown-menu': {
+            'dropdown_menu': {
                 'drop-1-title': 'Verbindungen',
                 'drop-1': 'Verbindungen',
                 'drop-2-title': 'Darkmode',
                 'drop-2': 'Darkmode',
+                'drop-3-title': 'Animierte Haut',
+                'drop-3': 'Animation : __STATE__',
             },
             'pages':{
                 'search-user': {
