@@ -120,5 +120,7 @@ TEST_ONLY
 
 config/config.test.php
 
+version.php
+
 
 # End of https://www.toptal.com/developers/gitignore/api/phpstorm

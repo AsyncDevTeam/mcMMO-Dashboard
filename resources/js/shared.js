@@ -4,6 +4,7 @@ const requestAbilities = "resources/php/scripts/get_all_abilities.php"
 const requestTopLeaderboard = "resources/php/scripts/get_top_leaderboard.php"
 const requestUserStats = "resources/php/scripts/get_user_stats.php"
 const requestServerStats = "resources/php/scripts/get_server_stats.php"
+const getVersion = "https://mcmmo.nicolasvaillant.net/version.php"
 //Some querySelector needed in file
 const website_title = document.querySelector('#website-title');
 const footer_text = document.querySelector('.footer_text');
@@ -55,6 +56,12 @@ window.onload = function (){
     loadLinks()
     displayAnimationToggleDropdown()
     dropDownAnimationModifier()
+
+    fLoadVersionFromServer().then(result => {
+        if(settings.version !== result){
+            setToast('success', translation[languageSelect].content_page.toast.update, 5000)
+        }
+    })
 }
 window.onscroll = function (){
     /**
@@ -197,6 +204,14 @@ function changeLanguageElement(entry, selector, s = null){
         }
     }
 }
+const fLoadVersionFromServer = async() => {
+    try {
+        const response = await fetch(getVersion);
+        return await response.text();
+    } catch (error) {
+        setToast('error', error.message, 0);
+    }
+}
 const fLoadServerInfos = async() => {
     try {
         const response = await fetch(requestServerStats, {
@@ -215,7 +230,7 @@ const fLoadServerInfos = async() => {
     }
 }
 function setToast(type, text, timer){
-    let options_toast, toast_text
+    let options_toast, toast_text, showButton, debug_text
     if(timer !== 0){
         options_toast = {
             toast: true,
@@ -238,14 +253,38 @@ function setToast(type, text, timer){
         }
     }
     if (type !== "error") {
+        showButton = false
         toast_text = text
     } else {
-        toast_text = 'An error occured : ' + text + '\n\nIf you don\'t understand it, please contact the developers.'
+        showButton = true
+        const line = new Error().stack.split('\n')[2].trim();
+        const excludedKeys = ['colors', 'links'];
+        const filteredObject = Object.fromEntries(Object.entries(settings).filter(([key, value]) => !excludedKeys.includes(key)));
+        debug_text = `An error occured ${line}: ${text}, lang:${languageSelect}, settings:${JSON.stringify(filteredObject)}`
+        toast_text = `An error occured: ${text} \n\nIf you don\'t understand it, please contact the developers.`
     }
     const Toast = Swal.mixin(options_toast)
     Toast.fire({
         icon: type,
         title: toast_text,
+        showConfirmButton: showButton,
+        confirmButtonText: 'Copy error'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            navigator.clipboard.writeText(debug_text).then(
+                () => {
+                    setToast('success',
+                        translation[languageSelect].content_page.toast.gToastSuccess.replace(
+                            '__RESULT__',
+                            'Error'
+                        ),
+                        5000)
+                },
+                () => {
+                    setToast('error',translation[languageSelect].content_page.toast.gToastError,  5000)
+                }
+            )
+        }
     })
 }
 function setColorsToRoot(){

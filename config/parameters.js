@@ -152,6 +152,9 @@ const translation = {
                 'error_db': 'Data loading error',
                 'URL_success' : 'URL sucessfully copied',
                 'URL_error' : "Error copying URL",
+                'gToastSuccess' : '__RESULT__ copied',
+                'gToastError' : 'Error while copying',
+                'update': 'Update available! Go to GitHub to update your dashboard'
             },
             'tabs': {
                 'tabs-1': 'Home',
@@ -452,6 +455,9 @@ const translation = {
                 'error_db': 'Erreur de chargement des données',
                 'URL_success' : 'URL copié',
                 'URL_error' : "Erreur lors de la copie de l'URL",
+                'gToastSuccess' : '__RESULT__ copié',
+                'gToastError' : 'Erreur lors de la copie',
+                'update': 'Mise à jour disponible ! Rendez-vous sur GitHub pour mettre à jour votre dashboard'
             },
             'tabs': {
                 'tabs-1': 'Accueil',
@@ -752,7 +758,10 @@ const translation = {
                 'best_player': 'Es kann kein Vergleich mit dem besten Spieler auf dem Server angezeigt werden',
                 'error_db': 'Fehler beim Laden der Daten',
                 'URL_success': 'URL erfolgreich kopiert',
-                'URL_error': 'Fehler beim Kopieren der URL'
+                'URL_error': 'Fehler beim Kopieren der URL',
+                'gToastSuccess' : '__RESULT__ kopiert',
+                'gToastError' : 'Fehler beim Kopieren',
+                'update': 'Update verfügbar! Gehe zu GitHub, um dein Dashboard zu aktualisieren'
             },
             'tabs': {
                 'tabs-1': 'Startseite',
@@ -943,6 +952,8 @@ const settings = {
     //If localStorage is true, set refreshStorage for min time before refresh
     //Supported value: h (hour), 6h (6 hours), 12h (12 hours) and d (day)
     'refreshStorage': 'h',
+    //Version of mcMMO Dashboard
+    'version': '1.25.3',
     'colors': {
         'page': {
             'gradient': {
