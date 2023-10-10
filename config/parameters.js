@@ -953,7 +953,7 @@ const settings = {
     //Supported value: h (hour), 6h (6 hours), 12h (12 hours) and d (day)
     'refreshStorage': 'h',
     //Version of mcMMO Dashboard
-    'version': '1.30.0',
+    'version': '1.30.1',
     'colors': {
         'page': {
             'gradient': {
