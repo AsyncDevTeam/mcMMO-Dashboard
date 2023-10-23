@@ -49,15 +49,18 @@ Your hosting machine must have a web server installed (ex: Apache or Nginx) with
 
 ## 📸 Screenshots
 
-![presentation](https://stuff.nicolasvaillant.net/mcMMO/626shots_so.png)
+![626shots_so](https://github.com/AsyncDevTeam/mcMMO-Dashboard/assets/77850354/bf89453e-d365-41ed-8b8e-d66f7249fb6f)
+
 
 Available also on mobile !
 
-![presentation](https://stuff.nicolasvaillant.net/mcMMO/238shots_so.png) 
+![238shots_so](https://github.com/AsyncDevTeam/mcMMO-Dashboard/assets/77850354/64f0c065-5cde-4244-9548-13f2268d922c)
+
 
 ...with a dark mode too
 
-![presentation](https://stuff.nicolasvaillant.net/mcMMO/201shots_so.png)
+![299shots_so](https://github.com/AsyncDevTeam/mcMMO-Dashboard/assets/77850354/1d340e2d-0023-496e-92ff-d817b57a9ff2)
+
 
 ## 📜 License
 
