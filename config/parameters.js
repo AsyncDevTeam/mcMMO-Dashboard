@@ -1,7 +1,7 @@
 //Here you can change translation, gradient colors and more
 
 //Used as template
-const abilities = ['taming', 'mining', 'woodcutting', 'repair', 'unarmed', 'herbalism', 'excavation', 'archery', 'swords', 'axes', 'acrobatics', 'fishing', 'alchemy']
+const abilities = ['taming', 'mining', 'woodcutting', 'repair', 'unarmed', 'herbalism', 'excavation', 'archery', 'swords', 'axes', 'acrobatics', 'fishing', 'alchemy', 'crossbows', 'tridents', 'maces']
 const families = {
     'Gathering': ['Mining', 'Woodcutting', 'Herbalism', 'Fishing'],
     'Crafting': ['Repair', 'Alchemy', 'Taming', 'Excavation'],
@@ -51,7 +51,10 @@ const translation = {
             'axes': 'Axes',
             'acrobatics': 'Acrobatics',
             'fishing': 'Fishing',
-            'alchemy': 'Alchemy'
+            'alchemy': 'Alchemy',
+            'crossbows': 'Crossbows',
+            'tridents': 'Tridents',
+            'maces': 'Maces'
         },
         'family': {
             'Gathering': 'Gathering',
