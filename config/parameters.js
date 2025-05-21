@@ -358,6 +358,9 @@ const translation = {
             'acrobatics': 'Acrobatie',
             'fishing': 'Pêche',
             'alchemy': 'Potions',
+            'crossbows': 'Arbalètes',
+            'tridents': 'Tridents',
+            'maces': 'Masses'
         },
         'family': {
             'Gathering': 'Collecte',
@@ -660,7 +663,10 @@ const translation = {
             'axes': 'Axtkampf',
             'acrobatics': 'Akrobatik',
             'fishing': 'Angeln',
-            'alchemy': 'Alchemie'
+            'alchemy': 'Alchemie',
+            'crossbows': 'Armbrüste',
+            'tridents': 'Dreizacke',
+            'maces': 'Streitkolben'
         },
         'family': {
             'Gathering': 'Sammeln',
@@ -964,7 +970,10 @@ const translation = {
             'axes': '도끼술',
             'acrobatics': '곡예',
             'fishing': '낚시',
-            'alchemy': '연금술'
+            'alchemy': '연금술',
+            'crossbows': '석궁',
+            'tridents': '삼지창',
+            'maces': '철퇴'
         },
         'family': {
             'Gathering': '채집',
