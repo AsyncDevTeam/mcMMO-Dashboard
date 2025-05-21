@@ -13,7 +13,7 @@ if (!isset($_GET['name'])) {
 require "../includes/db_connect.php";
 /** @var OBJECT $dbh */
 
-$skills = array("taming", "mining", "woodcutting", "repair", "unarmed", "herbalism", "excavation", "archery", "swords", "axes", "acrobatics", "fishing", "alchemy");
+$skills = array("taming", "mining", "woodcutting", "repair", "unarmed", "herbalism", "excavation", "archery", "swords", "axes", "acrobatics", "fishing", "alchemy", "crossbows", "tridents", "maces");
 $skills_str = implode(", ", $skills);
 
 $sth_lvl = $dbh->prepare('SELECT lastlogin, total, uuid, '.$skills_str.' FROM mcmmo_users INNER JOIN mcmmo_skills ON mcmmo_users.id = mcmmo_skills.user_id WHERE mcmmo_users.user = :player');

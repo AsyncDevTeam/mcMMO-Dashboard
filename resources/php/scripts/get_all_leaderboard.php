@@ -5,7 +5,7 @@ require "../includes/secure.php";
 require "../includes/db_connect.php";
 /** @var OBJECT $dbh */
 
-$skills = array("taming", "mining", "woodcutting", "repair", "unarmed", "herbalism", "excavation", "archery", "swords", "axes", "acrobatics", "fishing", "alchemy");
+$skills = array("taming", "mining", "woodcutting", "repair", "unarmed", "herbalism", "excavation", "archery", "swords", "axes", "acrobatics", "fishing", "alchemy", "crossbows", "tridents", "maces");
 $skills_str = implode(", ", $skills);
 
 try {

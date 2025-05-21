@@ -1,11 +1,11 @@
 //Here you can change translation, gradient colors and more
 
 //Used as template
-const abilities = ['taming', 'mining', 'woodcutting', 'repair', 'unarmed', 'herbalism', 'excavation', 'archery', 'swords', 'axes', 'acrobatics', 'fishing', 'alchemy']
+const abilities = ['taming', 'mining', 'woodcutting', 'repair', 'unarmed', 'herbalism', 'excavation', 'archery', 'swords', 'axes', 'acrobatics', 'fishing', 'alchemy', 'crossbows', 'tridents', 'maces']
 const families = {
     'Gathering': ['Mining', 'Woodcutting', 'Herbalism', 'Fishing'],
     'Crafting': ['Repair', 'Alchemy', 'Taming', 'Excavation'],
-    'Combat': ['Unarmed', 'Swords', 'Axes', 'Archery'],
+    'Combat': ['Unarmed', 'Swords', 'Axes', 'Archery', 'Crossbows', 'Tridents', 'Maces'],
     'Adventuring': ['Acrobatics']
 }
 //If you have changed the default provided by mcMMO, change them here to
@@ -22,7 +22,10 @@ const abilities_cap = {
     'alchemy': 1500,
     'herbalism': 1500,
     'mining': 1500,
-    'acrobatics': 1500
+    'acrobatics': 1500,
+    'crossbows': 1500,
+    'tridents': 1500,
+    'maces': 1500
 }
 //Change the translation here, by default English is used, set your own language in translation.user and set translation.user.active to true
 //New translation mode
@@ -51,7 +54,10 @@ const translation = {
             'axes': 'Axes',
             'acrobatics': 'Acrobatics',
             'fishing': 'Fishing',
-            'alchemy': 'Alchemy'
+            'alchemy': 'Alchemy',
+            'crossbows': 'Crossbows',
+            'tridents': 'Tridents',
+            'maces': 'Maces'
         },
         'family': {
             'Gathering': 'Gathering',
@@ -355,6 +361,9 @@ const translation = {
             'acrobatics': 'Acrobatie',
             'fishing': 'Pêche',
             'alchemy': 'Potions',
+            'crossbows': 'Arbalètes',
+            'tridents': 'Tridents',
+            'maces': 'Masses'
         },
         'family': {
             'Gathering': 'Collecte',
@@ -657,7 +666,10 @@ const translation = {
             'axes': 'Axtkampf',
             'acrobatics': 'Akrobatik',
             'fishing': 'Angeln',
-            'alchemy': 'Alchemie'
+            'alchemy': 'Alchemie',
+            'crossbows': 'Armbrüste',
+            'tridents': 'Dreizacke',
+            'maces': 'Streitkolben'
         },
         'family': {
             'Gathering': 'Sammeln',
@@ -961,7 +973,10 @@ const translation = {
             'axes': '도끼술',
             'acrobatics': '곡예',
             'fishing': '낚시',
-            'alchemy': '연금술'
+            'alchemy': '연금술',
+            'crossbows': '석궁',
+            'tridents': '삼지창',
+            'maces': '철퇴'
         },
         'family': {
             'Gathering': '채집',
