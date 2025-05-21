@@ -940,6 +940,309 @@ const translation = {
             'fishing' : 'AFK',
             'alchemy' : 'Der Zauberer'
         }
+    },
+    'KO': {
+        'title_header': 'mcMMO 대시보드',
+        'footer_text': '<a href="https://github.com/Royalphax">@Royalphax</a> 및 <a href="https://github.com/NicolasVaillant">@NicolasVaillant</a> 제작 | <a target="_blank" href="https://paypal.me/roytreo28">Paypal</a>을 통해 후원해주세요.',
+        'pages_name': {
+            'index': 'mcMMO 통계 | 홈',
+            'user': 'mcMMO 통계 | _USER_',
+            'search-user': 'mcMMO 통계 | 사용자 검색',
+            'comparison': 'mcMMO 통계 | 비교',
+        },
+        'access': ['ko-KR'],
+        'ab': {
+            'taming': '길들이기',
+            'mining': '채광',
+            'woodcutting': "벌목",
+            'repair': '수리',
+            'unarmed': '맨손 격투',
+            'herbalism': '약초학',
+            'excavation': '발굴',
+            'archery': '양궁',
+            'swords': '검술',
+            'axes': '도끼술',
+            'acrobatics': '곡예',
+            'fishing': '낚시',
+            'alchemy': '연금술'
+        },
+        'family': {
+            'Gathering': '채집',
+            'Crafting': '제작',
+            'Combat': '전투',
+            'Adventuring': '모험'
+        },
+        'ab_labels': {
+            'sum': '경험치',
+            'ab': '능력'
+        },
+        'title': {
+            'best_player_of_server': '서버 최고 레벨 플레이어',
+            'worst_player_of_server': '서버 최저 레벨 플레이어',
+            'last_co_in_server': '최근 접속',
+            'ten_years_ago_co_in_server': '가장 오래된 접속',
+        },
+        'content_page': {
+            'section_names': {
+                'index': {
+                    'section-1': '서버 최고 레벨 플레이어',
+                    'section-2': '리더보드',
+                    'section-3': '레벨별 플레이어 분포',
+                    'section-4': '스킬 분포',
+                },
+                'user': {
+                    'section-1': '스킬 레벨',
+                    'section-2': '모든 능력',
+                    'section-3': '능력치 비교',
+                },
+                'comparison': {
+                    'section-1': '스킬 비교',
+                    'section-2': '비교 차트',
+                }
+            },
+            'section_descriptions': {
+                'index': {
+                    'section-3-desc': '이 꺾은선 그래프는 마인크래프트 서버에서 플레이어의 mcMMO 레벨 분포를 보여줍니다. 각 구간별 플레이어 수를 통해 전체적인 분포를 파악하고 다른 플레이어의 평균 레벨과 비교하여 자신의 위치를 확인할 수 있습니다.',
+                },
+                'user': {
+                    'section-3-desc': '서버 최고 레벨 플레이어와 선택한 플레이어를 비교합니다.',
+                },
+            },
+            'aside': {
+                'header': {
+                    'sc-h-1': "서버 정보",
+                    'sc-h-1-s': "서버 오프라인",
+                    'sc-h-2': '바로가기',
+                    'sc-h-2-a': '정렬 방식',
+                },
+                'index': {
+                    'sc-b-1': '리더보드',
+                    'sc-b-2': '레벨별 플레이어 분포',
+                    'sc-b-3': '스킬 분포',
+                },
+                'user': {
+                    'sc-b-1': '플레이어 정보',
+                    'sc-b-2': '능력 레벨',
+                    'sc-b-3': '능력',
+                    'sc-b-4': '비교 차트',
+                },
+                'comparison': {
+                    'sc-b-1': '스킬 비교',
+                    'sc-b-2': '비교 차트',
+                }
+            },
+            'search': {
+                'search_player_avt': '플레이어 검색',
+                'search_abi_avt': '능력 검색',
+                'no_result': '검색 결과 없음 - 다시 검색해보세요'
+            },
+            'buttons': {
+                'clear_player_avt': '지우기',
+                'sort_avt': '정렬',
+                'sort_a': '알파벳순 정렬',
+                'sort_n': '숫자순 정렬',
+                'back_to_top': '맨 위로',
+                'cp-c': '링크 공유'
+            },
+            'select': {
+                'select-before': '표시',
+                'select-after': '개',
+            },
+            'general': {
+                'best_ab': '최고 능력',
+                'label_ab': '_AB_ 최고 레벨 플레이어',
+                'table_player_label': '플레이어',
+                'table_total_label': '총합',
+                'chart_players_title': '플레이어 레벨 분포',
+                'chart_players_count_y': '플레이어 수',
+                'chart_players_level_x': '레벨',
+                'chart_point_desc': '_PLAYERS_ 명',
+            },
+            'toast': {
+                'IP_success': 'IP 주소 복사 성공',
+                'IP_error': "IP 주소 복사 오류",
+                'best_player': '서버 최고 레벨 플레이어와는 비교할 수 없습니다.',
+                'error_db': '데이터 로딩 오류',
+                'URL_success': 'URL 복사 성공',
+                'URL_error': "URL 복사 오류",
+                'gToastSuccess': '__RESULT__ 복사됨',
+                'gToastError': '복사 중 오류 발생',
+                'update': '업데이트 가능! GitHub에서 대시보드를 업데이트하세요'
+            },
+            'tabs': {
+                'tabs-1': '홈',
+                'tabs-2': '플레이어 찾기',
+                'tabs-3': '비교',
+                'tabs-4': '링크',
+                'tabs-dm': '다크 모드',
+                'tabs-more': '더 보기',
+            },
+            'dropdown_menu': {
+                'drop-1-title': '링크',
+                'drop-1': '링크',
+                'drop-2-title': '다크 모드',
+                'drop-2': '다크 모드',
+                'drop-3-title': '움직이는 스킨',
+                'drop-3': '애니메이션 : __STATE__',
+            },
+            'pages': {
+                'search-user': {
+                    'title': '플레이어 검색',
+                    'subtitle': '사용자 페이지에 접근할 플레이어를 검색하세요',
+                    'button': '검색',
+                },
+                'comparison': {
+                    'explanation': {
+                        'intro': '',
+                        'in_chart': '최대치 _MAX_ 중 _PERCENT_% 달성'
+                    },
+                    'link': {
+                        'see_profile': '프로필 보기'
+                    }
+                }
+            },
+            'quickView': {
+                'qv-tag': '플레이어',
+                'qv-g-rank': '종합',
+                'qv-rank': '현재 랭크',
+                'qv-seeSkills': '스킬 레벨 보기'
+            }
+        },
+        'dataTable': {
+            "sProcessing": "처리 중...",
+            "sLengthMenu": "_MENU_ 개씩 보기",
+            "sZeroRecords": "검색 결과가 없습니다.",
+            "sEmptyTable": "테이블에 데이터가 없습니다.",
+            "sInfo": "_TOTAL_ 개 중 _START_ - _END_ 개 표시",
+            "sInfoEmpty": "0 개 중 0 개 표시",
+            "sInfoFiltered": "(_MAX_ 개에서 필터링됨)",
+            "sSearch": "",
+            "searchPlaceholder": "유저 이름으로 검색",
+            "oPaginate": {
+                "sFirst": "처음",
+                "sLast": "마지막",
+                "sNext": "다음",
+                "sPrevious": "이전"
+            }
+        },
+        'refresh': {
+            'index': '_HOUR_ 시에 새로고침됨',
+            'user': '_DATE_ _HOUR_ 시 _MIN_ 분에 마지막 접속',
+            'skin': '_DATE_ _HOUR_ 시 _MIN_ 분에 마지막 스킨 업데이트',
+        },
+        'card': {
+            'best_card_label_avt': '현재 레벨 : _CURRENT_LVL_/_MAX_LEVEL_',
+            'card_level_avt': '현재 레벨 : _CURRENT_LVL_',
+            'card_level_next_avt': '_EXP_PERCENT_% 남음 - _EXP_LEFT_ 경험치 필요'
+        },
+        'recommendation': {
+            'title_recommendation_avt': '추천 사항을 기반으로 경험치 획득량을 향상시키세요.',
+            'info': '_ABI_ 정보',
+            'info_array': '특수 능력',
+            'link': 'Fandom 웹사이트 링크',
+            'ab': {
+                'swords': {
+                    'def': "검술은 공격에 파열 효과를 추가하고 적의 공격을 반격하는 능력을 포함합니다."
+                },
+                'axes': {
+                    'def': "도끼술은 도끼 도구를 무기로 사용하여 몹과 다른 플레이어와 싸우는 스킬입니다. 다양한 상황에서 유용한 새로운 유형의 무기를 도입하여 게임 플레이에 더 많은 다양성을 제공합니다."
+                },
+                'archery': {
+                    'def': "양궁은 활과 화살을 사용하여 몹과 플레이어에게 데미지를 입히는 데 중점을 둔 스킬입니다."
+                },
+                'unarmed': {
+                    'def': "맨손 격투는 전투 스킬입니다. 플레이어의 빈손을 무기로 사용하며, 무장 해제, 화살 튕겨내기, 더 높은 기본 맨손 공격력 등 다양한 특전을 포함합니다.",
+                    'levels': [
+                        [0, '강철 팔 자세 (패시브)'],
+                        [0, '화살 튕겨내기 (패시브)'],
+                        [0, '무장 해제 (패시브)'],
+                        [0, '강철 손아귀 (패시브)'],
+                        [0, '광전사'],
+                    ]
+                },
+                'taming': {
+                    'def': "길들이기는 mcMMO의 스킬입니다. 레벨이 증가함에 따라 늑대는 공격력, 방어력 등을 증가시키는 능력을 얻습니다.",
+                    'levels': [
+                        [100, '환경 인식'],
+                        [150, '꿰뚫기'],
+                        [200, '강타'],
+                        [200, '빠른 음식 서비스'],
+                        [250, '두꺼운 털'],
+                        [350, '신성한 사냥개'],
+                        [500, '충격 방지'],
+                        [750, '날카로운 발톱'],
+                    ]
+                },
+                'woodcutting': {
+                    'def': "벌목은 도끼로 나무를 베는 것을 중심으로 하는 스킬입니다. 스킬 레벨을 올리면 나무에서 추가 목재가 나올 확률이 증가하고 나무 벌채 능력의 지속 시간이 늘어납니다.",
+                    'levels': [
+                        [0, '벌목 (패시브)'],
+                        [0, '두드리기 (패시브)'],
+                        [5, '나무 벌채'],
+                        [15, '나뭇잎 날리기'],
+                    ]
+                },
+                'excavation': {
+                    'def': "발굴은 모래, 흙, 영혼 모래와 같은 토양 관련 블록을 삽으로 파는 mcMMO 능력입니다. 높은 레벨의 발굴자는 흙에서 다이아몬드를 쉽게 얻을 수 있습니다."
+                },
+                'repair': {
+                    'def': "수리는 현재 광질 및 낚시와 각각 연관된 제련 및 회수의 상위 스킬입니다. 철 블록에서 도구와 갑옷을 수리하는 데 사용할 수 있습니다."
+                },
+                'fishing': {
+                    'def': "낚시는 물고기를 잡을 확률을 높이고 유용한 전리품을 낚아올릴 수 있습니다. 또한 몹을 죽이지 않고도 아이템을 떨어뜨리는 흔들기 능력이 있습니다."
+                },
+                'alchemy': {
+                    'def': "연금술은 양조를 기반으로 하는 기타 스킬입니다. 양조기에서 포션을 만들고 수정하여 레벨을 올립니다. 또한 바닐라 포션으로는 얻을 수 없는 일부 효과에 사용자 지정 레시피가 제공됩니다."
+                },
+                'herbalism': {
+                    'def': "약초학은 나무 및 기타 구조적인 식물 발생을 제외한 식물 및 작물을 수확하는 능력을 관리하는 mcMMO의 스킬입니다. 능력을 최대한 활용하려면 여러 도구가 필요합니다.",
+                    'levels': [
+                        [0, '초록 엄지'],
+                        [0, '버섯 엄지'],
+                        [0, '하일리안 행운'],
+                        [0, '두 배 드롭'],
+                        [50, '푸른 대지'],
+                        [200, '농부의 식단'],
+                    ]
+                },
+                'mining': {
+                    'def': "채광은 돌과 광석을 채굴하는 데 중점을 둔 스킬입니다. 이 스킬의 주목할 만한 특전은 각 광석에서 더 높은 잠재적 수확량을 얻을 수 있다는 것이며, 활성 스킬을 사용하면 훨씬 더 증가합니다.",
+                    'levels': [
+                        [0, '두 배 드롭'],
+                        [50, '슈퍼 브레이커'],
+                        [125, '폭파 채광'],
+                        [375, '더 큰 폭탄'],
+                        [500, '폭파 전문가']
+                    ]
+                },
+                'acrobatics': {
+                    'def': "곡예는 우아한 구르기를 가능하게 하고, 패시브 스킬인 '회피'를 통해 전투 데미지를 무효화합니다."
+                }
+            }
+        },
+        'offline': {
+            'rule': '오프라인 - 인터넷 연결을 확인하고 다시 시도하세요.',
+            'email': '_EMAIL_로 문제 보고'
+        },
+        'labels_user': {
+            'best_player_of_server': {'label': '서버 최고 레벨', 'method': 'max', 'infos': 'total'},
+            'worst_player_of_server': {'label': '서버 최저 레벨', 'method': 'min', 'infos': 'total'},
+            'last_co_in_server': {'label': '하드 게이머', 'method': 'max', 'infos': 'last_connection'},
+            'ten_years_ago_co_in_server': {'label': '프로 잠꾸러기', 'method': 'min', 'infos': 'last_connection'},
+            'taming': '동물 애호가',
+            'mining': "황금 광부",
+            'woodcutting': '벌목꾼',
+            'repair': '버리는 것은 없다',
+            'unarmed': '싸움꾼',
+            'herbalism': '전업 정원사',
+            'excavation': '뭐 잃어버리셨어요?',
+            'archery': "저격수",
+            'swords': '뛰어난 전사',
+            'axes': '이색적인 전사',
+            'acrobatics': "서커스 예술가",
+            'fishing': '잠수함',
+            'alchemy': '마법사'
+        }
     }
 }
 //Change colors
