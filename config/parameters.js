@@ -5,7 +5,7 @@ const abilities = ['taming', 'mining', 'woodcutting', 'repair', 'unarmed', 'herb
 const families = {
     'Gathering': ['Mining', 'Woodcutting', 'Herbalism', 'Fishing'],
     'Crafting': ['Repair', 'Alchemy', 'Taming', 'Excavation'],
-    'Combat': ['Unarmed', 'Swords', 'Axes', 'Archery'],
+    'Combat': ['Unarmed', 'Swords', 'Axes', 'Archery', 'Crossbows', 'Tridents', 'Maces'],
     'Adventuring': ['Acrobatics']
 }
 //If you have changed the default provided by mcMMO, change them here to
@@ -22,7 +22,10 @@ const abilities_cap = {
     'alchemy': 1500,
     'herbalism': 1500,
     'mining': 1500,
-    'acrobatics': 1500
+    'acrobatics': 1500,
+    'crossbows': 1500,
+    'tridents': 1500,
+    'maces': 1500
 }
 //Change the translation here, by default English is used, set your own language in translation.user and set translation.user.active to true
 //New translation mode
