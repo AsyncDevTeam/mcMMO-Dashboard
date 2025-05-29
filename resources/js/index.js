@@ -466,6 +466,9 @@ function databaseLoad(player){
             { data: 'acrobatics' },
             { data: 'fishing' },
             { data: 'alchemy' },
+            { data: 'crossbows' },
+            { data: 'tridents' },
+            { data: 'maces' },
         ],
         lengthMenu: [
             [10, 25, 50],
