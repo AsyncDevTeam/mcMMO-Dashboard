@@ -412,6 +412,15 @@ function setServerStats(infos) {
         displayElement(e, hostname)
     })
     copyToClipboard.value = hostname
+
+    // Hide the server IP container if the hostname is hidden
+    copyToClipboardAction.forEach(e => {
+        if (hostname === "Hidden") {
+            e.classList.add('hidden')
+        } else {
+            e.classList.remove('hidden')
+        }
+    })
 }
 
 function isImageEmpty(imageDataURL) {
