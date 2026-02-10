@@ -30,10 +30,14 @@ $error = $error || ($status == null);
 // Construct our output
 $result = array();
 
-if ($config['server_port'] != "25565") {
-    $result['hostname'] = $config['server_ip'] . ':' . $config['server_port'];
+if (isset($config['hide_server_ip']) && $config['hide_server_ip']) {
+    $result['hostname'] = "Hidden";
 } else {
-    $result['hostname'] = $config['server_ip'];
+    if ($config['server_port'] != "25565") {
+        $result['hostname'] = $config['server_ip'] . ':' . $config['server_port'];
+    } else {
+        $result['hostname'] = $config['server_ip'];
+    }
 }
 
 $result['online_players'] = $error ? -1 : $status['players']['online'];

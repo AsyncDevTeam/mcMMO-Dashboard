@@ -13,6 +13,8 @@ $config = array(
     'server_name'           => 'your_server_name',
     'server_ip'             => 'your_server_ip_here',
     'server_port'           => '25565',
+    # Hide server IP (true/false)
+    'hide_server_ip'        => false,
     # About your database
     'db_ip'                 => 'ip_of_your_database_here',
     'db_port'               => 'port_of_your_database_here',
