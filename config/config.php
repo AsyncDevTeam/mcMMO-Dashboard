@@ -23,7 +23,13 @@ $config = array(
     'db_pass'               => 'password_of_your_database_here',
     # Your database driver (mysql, cubrid, dblib, firebird, ibm, informix, oci, odbc, pgsql, sqlite, sqlsrv)
     # <!> Be careful : you must have installed and enabled the specific php database driver.
-    'db_driver'    => 'mysql',
+    'db_driver'             => 'mysql',
+    # SSL settings for database connection
+    'db_ssl'                => false,
+    'db_ssl_ca'             => '',      // Path to CA certificate (optional)
+    'db_ssl_cert'           => '',      // Path to client certificate (optional)
+    'db_ssl_key'            => '',      // Path to client key (optional)
+    'db_ssl_verify'         => true,    // Verify server certificate (requires db_ssl_ca)
 );
 
 # For test purposes only :
