@@ -542,6 +542,18 @@ function setBestAbilities(player){
                 icon.classList.add('hidden')
                 icon_mdi.classList.add('mdi-axe')
                 break;
+            case 'crossbows':
+                icon.classList.add('hidden')
+                icon_mdi.classList.add('mdi-bow-arrow')
+                break;
+            case 'tridents':
+                icon.classList.add('hidden')
+                icon_mdi.classList.add('mdi-spear')
+                break;
+            case 'maces':
+                icon.classList.add('hidden')
+                icon_mdi.classList.add('mdi-mace')
+                break;
             case 'acrobatics':
                 icon.classList.add('fa-running')
                 icon_mdi.classList.add('hidden')
@@ -643,6 +655,18 @@ function setAllAbilities(player){
             case 'axes':
                 icon.classList.add('hidden')
                 icon_mdi.classList.add('mdi-axe')
+                break;
+            case 'crossbows':
+                icon.classList.add('hidden')
+                icon_mdi.classList.add('mdi-bow-arrow')
+                break;
+            case 'tridents':
+                icon.classList.add('hidden')
+                icon_mdi.classList.add('mdi-spear')
+                break;
+            case 'maces':
+                icon.classList.add('hidden')
+                icon_mdi.classList.add('mdi-mace')
                 break;
             case 'acrobatics':
                 icon.classList.add('fa-running')
